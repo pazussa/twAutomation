@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run crear_cultivo Playwright test",
+			"type": "shell",
+			"command": "npx playwright test tests/crear_cultivo.spec.ts",
+			"group": "test"
+		}
+	]
+}

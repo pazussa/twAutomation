@@ -1,0 +1,23 @@
+{
+  "name": "autoloop-twilio-playwright",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "playwright:install": "playwright install",
+    "pw": "playwright test",
+    "pw:select": "playwright test",
+    "pw:report": "playwright show-report"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "playwright": "^1.55.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
