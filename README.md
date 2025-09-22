@@ -50,65 +50,49 @@ Los PDFs se guardan en `exports/test-results/conversations/`
 
 ## Ejemplo de reporte generado
 
-Los reportes HTML muestran conversaciones detalladas con timestamps, estados de cada mensaje y resultados por intent:
+Los reportes HTML muestran conversaciones detalladas organizadas de forma visual:
 
-```html
-<div class="card">
-  <h1>Crear cultivo - Todos los intents</h1>
-  <div class="meta">
-    <div><strong>Status:</strong> passed</div>
-    <div><strong>Duración:</strong> 2201629 ms</div>
-    <div><strong>Archivo:</strong> tests/crear_cultivo.spec.ts</div>
-  </div>
-  <div class="summary">
-    <div class="chip">Eventos: 426</div>
-    <div class="chip ok">OK: 418</div>
-    <div class="chip fail">FAIL: 8</div>
-    <div class="chip">Intents: 40</div>
-  </div>
-</div>
+### 📊 Crear cultivo - Todos los intents
+**Status:** ✅ passed  
+**Duración:** 2201629 ms  
+**Archivo:** tests/crear_cultivo.spec.ts  
 
-<div class="intent-card">
-  <div class="intent-header">
-    <div class="intent-title">[1/40] crear cultivo</div>
-    <div class="chip ok">OK</div>
-  </div>
-  <table>
-    <thead><tr>
-      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp</th><th>Resultado</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td class="send">Enviado</td>
-        <td>crear cultivo</td>
-        <td>14:19:35</td>
-        <td><span class="badge ok">OK</span></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td class="recv">Recibido</td>
-        <td>Destino del cultivo.</td>
-        <td>14:19:47</td>
-        <td><span class="badge ok">OK</span></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td class="send">Enviado</td>
-        <td>consumo</td>
-        <td>14:19:47</td>
-        <td><span class="badge ok">OK</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-```
+📈 **Resumen:**
+- Eventos: 426
+- ✅ OK: 418  
+- ❌ FAIL: 8
+- 🎯 Intents: 40
 
-Cada reporte incluye:
-- **Resumen general**: Status, duración, estadísticas de OK/FAIL
-- **Conversaciones detalladas**: Por cada intent probado
-- **Timeline completo**: Mensajes enviados/recibidos con timestamps
-- **Estados visuales**: Badges de color para identificar éxitos/errores
+---
+
+### 💬 Conversación por intent
+
+**[1/40] crear cultivo** ✅ OK
+
+| # | Tipo | Texto | Timestamp | Resultado |
+|---|------|-------|-----------|-----------|
+| 1 | 📤 Enviado | crear cultivo | 14:19:35 | ✅ OK |
+| 2 | 📥 Recibido | Destino del cultivo. | 14:19:47 | ✅ OK |
+| 3 | 📤 Enviado | consumo | 14:19:47 | ✅ OK |
+| 4 | 📥 Recibido | Marca del cultivo. | 14:19:57 | ✅ OK |
+| 5 | 📤 Enviado | MarcaTomate123 | 14:19:57 | ✅ OK |
+
+**[2/40] hola quiero crear un cultivo** ✅ OK
+
+| # | Tipo | Texto | Timestamp | Resultado |
+|---|------|-------|-----------|-----------|
+| 1 | 📤 Enviado | hola quiero crear un cultivo | 14:20:15 | ✅ OK |
+| 2 | 📥 Recibido | Destino del cultivo. | 14:20:22 | ✅ OK |
+| 3 | 📤 Enviado | consumo | 14:20:22 | ✅ OK |
+
+---
+
+### 📋 Características del reporte:
+- **Timeline completo** con todos los mensajes enviados y recibidos
+- **Estados visuales** con emojis y colores para éxito/error
+- **Timestamps precisos** de cada interacción
+- **Agrupación por intent** para fácil navegación
+- **Estadísticas globales** de la sesión de pruebas
 
 ## Configuración inicial
 
