@@ -48,6 +48,68 @@ npm run report:pdf
 ```
 Los PDFs se guardan en `exports/test-results/conversations/`
 
+## Ejemplo de reporte generado
+
+Los reportes HTML muestran conversaciones detalladas con timestamps, estados de cada mensaje y resultados por intent:
+
+```html
+<div class="card">
+  <h1>Crear cultivo - Todos los intents</h1>
+  <div class="meta">
+    <div><strong>Status:</strong> passed</div>
+    <div><strong>Duración:</strong> 2201629 ms</div>
+    <div><strong>Archivo:</strong> tests/crear_cultivo.spec.ts</div>
+  </div>
+  <div class="summary">
+    <div class="chip">Eventos: 426</div>
+    <div class="chip ok">OK: 418</div>
+    <div class="chip fail">FAIL: 8</div>
+    <div class="chip">Intents: 40</div>
+  </div>
+</div>
+
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[1/40] crear cultivo</div>
+    <div class="chip ok">OK</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp</th><th>Resultado</th>
+    </tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td class="send">Enviado</td>
+        <td>crear cultivo</td>
+        <td>14:19:35</td>
+        <td><span class="badge ok">OK</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td class="recv">Recibido</td>
+        <td>Destino del cultivo.</td>
+        <td>14:19:47</td>
+        <td><span class="badge ok">OK</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td class="send">Enviado</td>
+        <td>consumo</td>
+        <td>14:19:47</td>
+        <td><span class="badge ok">OK</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+Cada reporte incluye:
+- **Resumen general**: Status, duración, estadísticas de OK/FAIL
+- **Conversaciones detalladas**: Por cada intent probado
+- **Timeline completo**: Mensajes enviados/recibidos con timestamps
+- **Estados visuales**: Badges de color para identificar éxitos/errores
+
 ## Configuración inicial
 
 ### 1. Configurar Twilio Sandbox
