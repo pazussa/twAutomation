@@ -15,6 +15,39 @@ cp .env.example .env
 # Configura las variables en .env según tu entorno
 ```
 
+## Comandos principales
+
+### Ejecutar pruebas específicas
+```bash
+# Ejecutar una prueba específica, ejemplos:
+npm run pw tests/asignar_precios_producto.spec.ts
+npm run pw tests/consultar_campos.spec.ts
+npm run pw tests/consultar_distribucion_cultivos.spec.ts
+npm run pw tests/consultar_trabajos.spec.ts
+npm run pw tests/consultar_trabajos_hoy.spec.ts
+npm run pw tests/crear_campana.spec.ts
+npm run pw tests/crear_cultivo.spec.ts
+npm run pw tests/crear_fertilizante.spec.ts
+npm run pw tests/crear_fitosanitario.spec.ts
+npm run pw tests/listar_cultivos.spec.ts
+npm run pw tests/listar_fertilizantes.spec.ts
+npm run pw tests/listar_fitosanitarios.spec.ts
+```
+
+### Generar reportes HTML
+```bash
+# Ejecutar pruebas (genera reportes automáticamente)
+npm run pw
+```
+Los reportes se guardan en `test-results/conversations/`
+
+### Convertir reportes a PDF
+```bash
+# Convertir todos los reportes HTML a PDF
+npm run report:pdf
+```
+Los PDFs se guardan en `exports/test-results/conversations/`
+
 ## Configuración inicial
 
 ### 1. Configurar Twilio Sandbox
@@ -24,44 +57,6 @@ Antes de ejecutar las pruebas, debes unirte al sandbox de Twilio:
 2. El mensaje debe ser: `join [nombre-del-sandbox]`
 3. Ejemplo: `join weather-assistant` 
 4. Espera la confirmación de que te has unido al sandbox
-
-### 2. Variables de entorno
-Edita `.env` con tus configuraciones:
-```bash
-CONTACT_NAME=Twilio
-HEADLESS=false
-SESSION_DIR=~/.wapp-autoloop-session
-# Configura otros comandos y variables según necesites
-```
-
-## Ejecutar pruebas
-
-### Ejecutar todas las pruebas
-```bash
-npm run pw
-```
-
-### Ejecutar una prueba específica
-```bash
-npx playwright test tests/crear_cultivo.spec.ts
-```
-
-### Modo debug (con navegador visible)
-```bash
-HEADLESS=false npm run pw
-```
-
-### Debug con checkpoints específicos
-```bash
-DEBUG_CHECKPOINTS=before-first-send,after-detect npm run pw
-```
-
-Checkpoints disponibles:
-- `before-first-send`: Antes del primer mensaje
-- `after-send`: Después de enviar mensaje
-- `after-first-wait`: Después de esperar primera respuesta  
-- `after-aggregate`: Después de recopilar mensajes
-- `after-detect`: Después de detectar acción
 
 ## Generar reportes
 
@@ -99,7 +94,7 @@ scripts/
 └── export-report-to-pdf.mjs  # Exportador PDF
 ```
 
-## Agregar nuevos intents
+## Cómo agregar nuevos intents
 
 ### 1. Editar `tests/setup/data.ts`
 Busca `INTENTS_TEMPLATES` y añade tu nueva categoría:
@@ -190,7 +185,7 @@ Las reglas se evalúan en orden de prioridad:
 3. **Finalizadores**: Patrones de éxito/error globales
 4. **Campos**: Respuestas puntuales a preguntas específicas
 
-## Comandos útiles
+## Comandos adicionales
 
 ```bash
 # Verificar tipos TypeScript
@@ -199,12 +194,6 @@ npm run typecheck
 # Ejecutar con navegador visible
 HEADLESS=false npm run pw
 
-# Ejecutar test específico con debug
-DEBUG_CHECKPOINTS=after-detect npx playwright test tests/crear_cultivo.spec.ts
-
-# Generar y exportar reportes
-npm run pw && npm run report:pdf
-
-# Ver reportes HTML
+# Ver reportes HTML en navegador
 npm run pw:report
 ```
