@@ -9,7 +9,8 @@
     "playwright:install": "playwright install",
     "pw": "playwright test",
     "pw:select": "playwright test",
-    "pw:report": "playwright show-report"
+    "pw:report": "playwright show-report",
+    "report:pdf": "node scripts/export-report-to-pdf.mjs"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
