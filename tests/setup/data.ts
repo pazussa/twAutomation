@@ -1,6 +1,12 @@
 import 'dotenv/config';
 import type { Page } from 'playwright';
-import { materialize, materializeAll } from './utils';
+// Inlined helper functions (avoid ESM resolution issues when used outside Playwright runtime)
+function materialize(template: string, vars: Record<string, string>): string {
+  return template.replace(/\{(\w+)\}/g, (_, k) => (k in vars ? vars[k] : `{${k}}`));
+}
+function materializeAll(list: ReadonlyArray<string>, vars: Record<string, string>): string[] {
+  return list.map(t => materialize(t, vars));
+}
 
 export const CFG = {
   contactName: process.env.CONTACT_NAME || 'Twilio',
@@ -95,7 +101,8 @@ export const INTENTS_TEMPLATES = {
     'Apunta cultivo {cultivo} con variedad {variedad}, destino {destino}, marca {marca} cliente {cliente}',
     'Luca agrega cultivo {cultivo}, variedad {variedad}, destino {destino}, marca {marca} para cliente {cliente}',
     'Hola luca, necesito registrar cultivo {cultivo}, variedad {variedad}, destino {destino}, marca {marca} con cliente {cliente}'
-  ],
+
+    ],
   listarCultivos: [
     'listar cultivos', 'dame la lista de cultivos', 'listar cultivos variedad {variedad}',
     'dame los cultivos de {cliente}',

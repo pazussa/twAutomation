@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Intents</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 20px; background:#f5f7fa; color:#1f2937; }
+    h1 { margin-top:0; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); }
+    .card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 16px; box-shadow:0 1px 2px rgba(0,0,0,.05); }
+    pre { background:#0f172a; color:#f1f5f9; padding:8px 10px; border-radius:6px; overflow:auto; font-size:12px; }
+    table { width:100%; border-collapse:collapse; font-size:12px; }
+    th, td { padding:4px 6px; border-bottom:1px solid #e2e8f0; text-align:left; vertical-align:top; }
+    th { background:#f1f5f9; font-weight:600; }
+    code { background:#e2e8f0; padding:2px 4px; border-radius:4px; }
+    input, textarea, select { width:100%; padding:6px 8px; border:1px solid #cbd5e1; border-radius:6px; background:#fff; font:inherit; }
+    textarea { resize: vertical; min-height:60px; }
+    button { background:#2563eb; color:#fff; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:600; }
+    button:hover { background:#1d4ed8; }
+    .muted { color:#64748b; font-size:12px; }
+    .tag { display:inline-block; background:#e0f2fe; color:#0369a1; padding:2px 6px; margin:2px 4px 2px 0; border-radius:12px; font-size:11px; }
+    .flex { display:flex; gap:8px; }
+    .flex-col { display:flex; flex-direction:column; gap:8px; }
+    details summary { cursor:pointer; font-weight:600; margin-bottom:6px; }
+    .danger { color:#b91c1c; }
+    .success { color:#047857; }
+  </style>
+</head>
+<body>
+  <h1>Panel de configuración conversacional</h1>
+  <p class="muted">Visualiza y edita intents, variables y reglas. Todos los cambios se guardan en el archivo <code>tests/setup/data.ts</code> (persistentes).</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Variables</h2>
+      <div id="vars"></div>
+      <h3>Actualizar variables</h3>
+      <form id="form-vars" class="flex-col">
+        <input name="name" placeholder="nombre" required />
+        <input name="value" placeholder="valor" required />
+        <button>Guardar variable</button>
+        <div class="muted">Se aplica de inmediato (runtime).</div>
+      </form>
+      <h3>Nueva variable</h3>
+      <form id="form-new-var" class="flex-col">
+        <input name="name" placeholder="nombre nueva variable" required />
+        <input name="value" placeholder="valor inicial" />
+        <button>Crear variable</button>
+        <div class="muted" id="new-var-result"></div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Agregar ejemplo a intent</h2>
+      <form id="form-intent" class="flex-col">
+        <input name="intent" placeholder="nombre del intent (ej: crearCultivo)" required />
+        <textarea name="example" placeholder="frase de ejemplo con {variables} si aplica" required></textarea>
+        <button>Agregar ejemplo</button>
+      </form>
+      <div id="intent-add-result" class="muted"></div>
+    </div>
+
+    <div class="card">
+      <h2>Crear nuevo intent</h2>
+      <form id="form-new-intent" class="flex-col">
+        <input name="name" placeholder="nombre del intent (ej: consultarPrecios)" required />
+        <textarea name="examples" placeholder="Introduce ejemplos (uno por línea)" required></textarea>
+        <button>Crear intent</button>
+      </form>
+      <div id="new-intent-result" class="muted"></div>
+    </div>
+
+    <div class="card">
+      <h2>Nueva regla</h2>
+      <form id="form-rule" class="flex-col">
+        <input name="regex" placeholder="regex sin / (ej: ^Nombre del cultivo\.?$)" required />
+        <select name="action" required>
+          <option value="END_OK">END_OK</option>
+          <option value="END_ERR">END_ERR</option>
+          <option value="REPLY">REPLY</option>
+        </select>
+        <input name="reply" placeholder="reply (si action = REPLY, ej: {cultivo})" />
+        <input name="note" placeholder="nota opcional" />
+        <button>Agregar regla</button>
+      </form>
+      <div class="muted">Las reglas nuevas se añaden de forma persistente (al final del array).</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Intents y ejemplos</h2>
+    <div id="intents"></div>
+  </div>
+
+  <div class="card">
+    <h2>Reglas</h2>
+    <table id="rules-table"><thead><tr><th>#</th><th>Pattern</th><th>Action</th><th>Nota</th></tr></thead><tbody></tbody></table>
+  </div>
+
+  <script>
+    async function loadState(){
+      const res = await fetch('/api/state');
+      const data = await res.json();
+      renderVars(data.variables);
+      renderIntents(data.intents);
+      renderRules(data.rules);
+    }
+    function renderVars(vars){
+      const c = document.getElementById('vars');
+      c.innerHTML = Object.entries(vars).map(([k,v])=>`<div class="tag"><strong>${k}</strong>: ${v}</div>`).join('');
+    }
+    function renderIntents(intents){
+      const c = document.getElementById('intents');
+      c.innerHTML = intents.map(it=>`
+        <details>
+          <summary>${it.name} <span class="muted">(${it.examples.length})</span></summary>
+          <ul style="margin:4px 0 12px 16px; padding:0; list-style:disc; max-height:200px; overflow:auto;">
+            ${it.examples.map(e=>`<li style="margin-bottom:2px;">${e.replace(/</g,'&lt;')}</li>`).join('')}
+          </ul>
+        </details>
+      `).join('');
+    }
+    function renderRules(rules){
+      const tbody = document.querySelector('#rules-table tbody');
+      tbody.innerHTML = rules.map((r,i)=>`<tr><td>${i+1}</td><td><code>${r.pattern}</code></td><td>${r.action}</td><td>${r.note||''}</td></tr>`).join('');
+    }
+    document.getElementById('form-vars').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const name = fd.get('name');
+      const value = fd.get('value');
+      await fetch('/api/variables',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({[name]:value})});
+      loadState();
+      e.target.reset();
+    });
+    document.getElementById('form-intent').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const intent = fd.get('intent');
+      const example = fd.get('example');
+      const r = await fetch('/api/intents/'+intent,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({example})});
+      const out = await r.json();
+      document.getElementById('intent-add-result').textContent = out.ok?`Añadido. Total: ${out.total}`: (out.error||'Error');
+      loadState();
+      e.target.reset();
+    });
+    document.getElementById('form-new-intent').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const name = fd.get('name');
+      const examples = fd.get('examples');
+      const r = await fetch('/api/intents',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name, examples})});
+      const out = await r.json();
+      document.getElementById('new-intent-result').textContent = out.ok?`Intent creado (${out.total} ejemplos)`:(out.error||'Error');
+      loadState();
+      e.target.reset();
+    });
+    document.getElementById('form-new-var').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const name = fd.get('name');
+      const value = fd.get('value');
+      const r = await fetch('/api/variables/new',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name, value})});
+      const out = await r.json();
+      document.getElementById('new-var-result').textContent = out.ok?`Variable creada`:(out.error||'Error');
+      loadState();
+      e.target.reset();
+    });
+    document.getElementById('form-rule').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const payload = Object.fromEntries(fd.entries());
+      await fetch('/api/rules',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      loadState();
+      e.target.reset();
+    });
+    loadState();
+  </script>
+</body>
+</html>
