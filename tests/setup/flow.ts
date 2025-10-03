@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { chromium, type BrowserContext, type Page } from 'playwright';
 import { test as base, expect } from '@playwright/test';
 import { ensureLogin, openChat, clearChat, typeIntoComposer, countIncoming, getNewIncomingAfter, waitFirstResponse } from './utils';
-import { CFG, INTENTS, VARS, DEFAULT_VARS, setVar, withVars, pickRandomCrop, mutateOneVariableForRetry } from './data';
+import { CFG, INTENTS, VARS, DEFAULT_VARS, setVar, withVars, pickRandomCrop, pickRandomClient, mutateOneVariableForRetry } from './data';
 
 export type ConvKind = 'send' | 'recv' | 'intent';
 export type ConversationLogger = {
@@ -36,21 +36,28 @@ import { resetVarsToDefaults } from './data';
 
 function detectActionFrom(messages: string[]): Action | null {
   const joined = messages.join('\n');
-  if (/Opciones:/i.test(joined)) {
-    const first = extractFirstOption(joined);
-    return { type: 'REPLY', reply: first || '1' };
-  }
-  if (/ya existe/i.test(joined)) return { type: 'RETRY_EXISTS' };
-  for (const rule of KEYWORD_RULES) {
-    if (rule.action.type !== 'REPLY' && rule.pattern.test(joined)) return rule.action;
-  }
-  for (const msg of messages) {
-    for (const rule of KEYWORD_RULES) {
-      if (rule.action.type === 'REPLY' && rule.pattern.test(msg)) {
-        return { type: 'REPLY', reply: materialize(rule.action.reply, VARS) };
+  
+  // Procesar reglas ordenadas por prioridad
+  const sorted = [...KEYWORD_RULES].sort((a, b) => (a.priority || 99) - (b.priority || 99));
+  
+  for (const rule of sorted) {
+    if (rule.pattern.test(joined)) {
+      if (rule.action.type === 'REPLY') {
+        let replyText = rule.action.reply;
+        
+        // Si es __EXTRACT_FIRST_OPTION__, extraer el texto de la primera opción
+        if (replyText === '__EXTRACT_FIRST_OPTION__') {
+          const extracted = extractFirstOption(joined);
+          replyText = extracted || '1'; // Fallback a '1' si no se puede extraer
+        }
+        
+        return { type: 'REPLY', reply: materialize(replyText, VARS) };
+      } else {
+        return rule.action;
       }
     }
   }
+  
   return null;
 }
 
@@ -149,12 +156,20 @@ export const test = base.extend<WppFixtures>({
         if (opts?.resetChat ?? true) await clearChat(page).catch(() => {});
         resetVarsToDefaults();
         const chosen = pickRandomCrop();
-        setVar('cultivo', chosen.cultivo);
-        if (!VARS.variedad || VARS.variedad.toLowerCase() === DEFAULT_VARS.variedad.toLowerCase()) {
-          if (chosen.variedad) setVar('variedad', chosen.variedad);
-        }
-        if (toSend && /maíz|maiz/i.test(toSend)) toSend = toSend.replace(/maíz|maiz/gi, chosen.cultivo);
+        setVar('crop_name', chosen.crop_name);
+        setVar('variety_name', chosen.variety_name);
+        setVar('destination', chosen.destination);
+        setVar('brand', chosen.brand);
+        const chosenClient = pickRandomClient();
+        setVar('client', chosenClient);
+        setVar('client_name', chosenClient);
+        if (toSend && /maíz|maiz/i.test(toSend)) toSend = toSend.replace(/maíz|maiz/gi, chosen.crop_name);
         await pauseIf('before-first-send');
+        
+        // Detectar bucles infinitos: rastrear últimas respuestas enviadas
+        const sentHistory: string[] = [];
+        const MAX_SAME_RESPONSE = 5; // Si se envía la misma respuesta más de 5 veces, es un bucle
+        
         while (true) {
           if (Date.now() > deadline) { conversation.logRecvFailure('Timeout por intent (tiempo excedido)'); await finishIntent(page, conversation, true); return { success: false, reason: 'No response from bot after total intent timeout' }; }
           const baseline = await countIncoming(page);
@@ -181,7 +196,27 @@ export const test = base.extend<WppFixtures>({
           const action = detectActionFrom(newMessages);
           await pauseIf('after-detect');
           if (!action) { toSend = ''; continue; }
-          if (action.type === 'REPLY') { toSend = action.reply || ''; continue; }
+          if (action.type === 'REPLY') { 
+            toSend = action.reply || ''; 
+            
+            // Detectar bucle infinito
+            sentHistory.push(toSend);
+            if (sentHistory.length > MAX_SAME_RESPONSE) {
+              sentHistory.shift(); // Mantener solo las últimas N
+            }
+            
+            // Verificar si las últimas MAX_SAME_RESPONSE respuestas son todas iguales
+            if (sentHistory.length === MAX_SAME_RESPONSE) {
+              const allSame = sentHistory.every(msg => msg === sentHistory[0]);
+              if (allSame) {
+                conversation.logRecvFailure(`⚠️ Bucle infinito detectado: enviando "${toSend}" ${MAX_SAME_RESPONSE} veces consecutivas`);
+                await finishIntent(page, conversation, false);
+                return { success: false, reason: `Infinite loop detected: same response sent ${MAX_SAME_RESPONSE} times consecutively` };
+              }
+            }
+            
+            continue; 
+          }
           if (action.type === 'RETRY_EXISTS') {
             if (!retriedOnExists) { retriedOnExists = true; mutateOneVariableForRetry(); await finishIntent(page, conversation, false); toSend = starter; continue; }
             await finishIntent(page, conversation, false); return { success: false, reason: 'Flow ended with error' };

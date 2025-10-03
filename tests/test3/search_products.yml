@@ -1,0 +1,104 @@
+version: "3.1"
+nlu:
+- intent: search_products
+  examples: |
+    - busca [urea](search_query)
+    - quiero buscar productos que contengan [trigo](search_query)
+    - búscame [pienso](search_query) en los productos del cliente [Juan Perez](client_name)
+    - buscar [herbicida](search_query)
+    - encuentra [abono nitrogenado](search_query) para el cliente [Maria Gomez](client_name)
+    - hay algo de [trigo anastasia](search_query)?
+    - busca [Arroz](search_query) para el cliente [Finca La Paz](client_name)
+    - ¿Qué tipos tengo registrados de [olivo](search_query)?
+    - Muéstrame todas las clases del cultivo [melocotonero](search_query).
+    - Quiero ver las subespecies que tengo actualmente de [nectarino](search_query).
+    - ¿Me podrías mostrar las líneas que tengo registradas del [haboncillo](search_query)?
+    - Consultar las variedades que tengo del [caqui o palosanto](search_query).
+    - Dime qué tipos de [olivo](search_query) tengo activos ahora.
+    - Mostrar las clases de [melocotonero](search_query) que tengo en mis parcelas.
+    - Ver las formas distintas del [nectarino](search_query) registradas.
+    - ¿Qué variantes tengo anotadas del [caqui o palosanto](search_query)?
+    - Lista las variedades agrícolas del cultivo [haboncillo](search_query).
+    - Dime las variedades de [olivo](search_query) registradas por el cliente [Clara](client_name).
+    - ¿Qué clases de [melocotonero](search_query) tiene el cliente [Raúl](client_name)?
+    - Muéstrame las variedades de [nectarino](search_query) que tiene registradas [Alba](client_name).
+    - Consultar subtipos del cultivo [caqui o palosanto](search_query) registrados por [Joaquín Torres](client_name).
+#    - Quiero ver qué formas del [haboncillo](search_query) tiene el cliente [Lorena](client_name).
+#    - Mostrar los tipos de [olivo](search_query) que tiene [Carlos](client_name).
+#    - ¿Qué variantes del [melocotonero](search_query) tiene registradas [Beatriz](client_name)?
+#    - Dime qué clases del cultivo [nectarino](search_query) tiene el cliente [Jordi Lozano](client_name).
+#    - Lista las líneas registradas para el [caqui o palosanto](search_query) de [Paula](client_name).
+#    - Ver las variedades de [haboncillo](search_query) disponibles para el cliente [Rubén](client_name).
+#    - Quiero consultar las clases del [olivo](search_query) que tengo ahora.
+#    - ¿Qué subespecies del [melocotonero](search_query) hay en mi finca?
+#    - Mostrarme qué tipos tengo plantados del cultivo [nectarino](search_query).
+#    - Dime las formas distintas de [caqui o palosanto](search_query) que tengo ahora mismo.
+#    - Quisiera ver las clases disponibles del cultivo [haboncillo](search_query).
+#    - ¿Me enseñas las variedades registradas del [olivo](search_query)?
+#    - Lista los tipos anotados del cultivo [melocotonero](search_query).
+#    - Mostrar qué variantes hay del [nectarino](search_query) para mí.
+#    - Consultar todas las clases del cultivo [caqui o palosanto](search_query) en mi cuenta.
+#    - Ver las líneas del [haboncillo](search_query) que tengo activas.
+#    - ¿Cuántos cultivos de [trigo](search_query) tengo actualmente?
+#    - ¿Cuántos cultivos de [cebada](search_query) tengo actualmente?
+#    - ¿Cuántos registros hay del cultivo [maíz](search_query) en mi cuenta?
+#    - ¿Qué tantas variedades de [arroz](search_query) tengo activas ahora?
+#    - ¿Cuántos tipos de [trigo](search_query) tengo registrados?
+#    - ¿Qué cantidad de formas de [soya](search_query) manejo actualmente?
+#    - ¿Cuántas líneas de [sorgo](search_query) hay en mi finca?
+#    - ¿Cuántos cultivos distintos de [papa](search_query) tengo?
+#    - ¿Qué tantas clases de [café](search_query) tengo asociadas?
+#    - ¿Cuántos tipos de [aguacate](search_query) tengo sembrados?
+#    - ¿Cuántas variantes del cultivo [yuca](search_query) tengo ahora?
+#    - ¿Qué cantidad de subespecies de [fríjol](search_query) tengo registradas?
+#    - ¿Cuántos cultivos de [mandarina](search_query) tengo en el sistema?
+#    - ¿Cuántos cultivos de [maíz](search_query) tiene el cliente [Pedro](client_name)?
+#    - ¿Cuántas clases de [arroz](search_query) tiene registrados [María Gomez](client_name)?
+#    - ¿Qué tantos cultivos de [soya](search_query) tiene anotados [Hacienda El Sol](client_name)?
+#    - ¿Cuántas variedades del cultivo [trigo](search_query) están asociadas al cliente [Carlos Ríos](client_name)?
+#    - ¿Cuántos registros del cultivo [fríjol](search_query) tiene el cliente [Finca La Esperanza](client_name)?
+#    - ¿Qué cantidad de tipos de [aguacate](search_query) tiene el cliente [Alberto Gómez](client_name)?
+#    - Hola Luca,existe el cultivo [Trigo Filon](search_query)?
+#    - ¿qué cultivos de [arroz](search_query) tengo?
+#    - dame mis cultivos de [arroz](search_query)
+#    - mis cultivos de [arroz](search_query)
+#    - muéstrame mis cultivos de [maíz](search_query)
+#    - consulta mis cultivos de [trigo](search_query)
+#    - quiero ver mis cultivos de [cebada](search_query)
+#    - lista mis cultivos de [soya](search_query)
+#    - necesito información sobre mis cultivos de [girasol](search_query)
+#    - ¿qué variedades de [papa](search_query) tengo cultivadas?
+#    - enséñame los cultivos de [aguacate](search_query)
+#    - cultivos de [café](search_query) en mi cuenta
+#    - revisa los cultivos de [frijol](search_query) que tengo
+#    - ¿cuáles son mis cultivos de [tomate](search_query)?
+#    - dame los cultivos de [Abastores del Norte](client_name)
+#    - muestra los cultivos de [Agropecuaria La Vega](client_name)
+#    - ¿qué cultivos de [sorgo](search_query) tiene [Productores Unidos](client_name)?
+#    - necesito ver los cultivos de [algodón](search_query) de [Inversiones Agrícolas](client_name)
+#    - cultivos de [cacao](search_query) para [Finca Los Cerezos](client_name)
+#    - consulta los cultivos de [avena](search_query) que tiene [Cooperativa El Surco](client_name)
+#    - busca el fertilizante [foliar](search_query)
+#    - necesito encontrar abono [foliar](search_query)
+#    - muéstrame fertilizante [foliar] de hierro(search_query)
+#    - ¿hay fertilizante [foliar] para cítricos(search_query)?
+#    - busca nutriente [foliar](search_query) para el cliente [Agrícola La Esperanza](client_name)
+#    - quiero ver [fertilizante nitrogenado](search_query)
+#    - encuentra abono [foliar] líquido(search_query)
+#    - ¿qué tipos de fertilizante [foliar] de calcio(search_query) tenemos?
+#    - lista los nutrientes [foliares](search_query) para [Distribuidora Campo Verde](client_name)
+#    - buscar [abono orgánico](search_query)
+#    - consulta [fertilizante potásico](search_query)
+#    - muéstrame fertilizante [foliar] para tomate(search_query)
+#    - ¿tenemos [abono de liberación lenta](search_query)?
+#    - necesito [fertilizante completo NPK](search_query) para [Hacienda Los Nogales](client_name)
+#    - busca micronutrientes [foliares](search_query)
+#    - quiero ver [fertilizante hidrosoluble](search_query)
+#    - ¿hay estimulante [foliar](search_query) disponible?
+#    - consulta los fertilizantes [foliares](search_query) de [Productores Unidos](client_name)
+#    - busca abono [foliar] con aminoácidos(search_query)
+#    - quiero información sobre [fertilizante para fertirrigación](search_query)
+#    - Hola Luca,existe el fertilizante [foliar](search_query)?
+#    - Hola Luca existe el fertilizante [triple 15](search_query)?
+#    - que cultivo de  [arroz](search_query) tiene el cliente [bomark](client_name)
+#

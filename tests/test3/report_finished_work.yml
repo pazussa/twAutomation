@@ -1,0 +1,22 @@
+version: "3.1"
+nlu:
+- intent: report_finished_work
+  examples: |
+      - Quiero reportar un trabajo finalizado
+      - Reportar trabajo terminado
+      - Reportar horas trabajadas
+      - Reportar el trabajo [64f1b2c3d4e5f6a7b8c9d0e0](work_id) con [6.5](worked_hours) horas
+      - Reportar [workId: 64f1b2c3d4e5f6a7b8c9d0e1](work_id) y [8](worked_hours) horas
+      - Reporta el trabajo con id [64f123abc456def7890](work_id)
+      - Reportar siembra: trabajo [64f1b2c3d4e5f6a7b8c9d0e1](work_id) con [8](worked_hours) horas, dosis aplicada [180](applied_dose)
+      - Reportar fitosanitarios: [64f1b2c3d4e5f6a7b8c9d0e2](work_id), [4.5](worked_hours) horas, dosis general [300](general_dose) L/ha, químicos "Glifosato:2.5, 2,4-D:1.8"
+      - Reporte de cosecha [64f1b2c3d4e5f6a7b8c9d0e3](work_id) con [10](worked_hours) horas y [8500](amount_harvested) kg
+      - Quiero reportar laboreo [64f1b2c3d4e5f6a7b8c9d0e4](work_id) horas [6](worked_hours) profundidad [25](depth) cm
+      - Reportar fertilización [64f1b2c3d4e5f6a7b8c9d0e5](work_id) [7.5](worked_hours) horas, dosis [250](applied_dose) kg/ha
+      - Reportar con máquina "Tractor John Deere" y combustible [45.5](fuel_used) L
+      - Necesito reportar un trabajo (me falta el id)
+      - Quiero reportar un trabajo (me faltan horas)
+      - Reportar un trabajo finalizado (faltan id y horas)
+      - Reportar trabajo [64fabc](work_id) sin horas (falta workedHours)
+      - Reportar horas [5](worked_hours) del trabajo (falta workId)
+

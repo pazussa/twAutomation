@@ -1,0 +1,38 @@
+version: "3.1"
+nlu:
+- intent: get_min_price
+  examples: |
+    - Hola Luca, cuál es el precio mínimo del [trigo](search_query)?
+    - Luca, dime el valor más bajo que ha tenido el [maíz](search_query)
+    - ¿A cómo ha estado el [pienso](search_query) en su punto más bajo?
+    - ¿Cuál fue el precio mínimo del [arroz](search_query)?
+    - Luca, cuánto ha sido lo más barato que me ha costado el [fertilizante nitrogenado](search_query)?
+    - cuál es el menor precio registrado del [trigo altamar aviso](search_query)?
+    - Hola Luca, cuál es el precio mínimo del [trigo](search_query) para [María Gómez](client_name)?
+    - Luca, dime el valor más bajo que ha tenido el [maíz](search_query) para [Juan Pérez](client_name)
+    - ¿A cómo ha estado el [pienso](search_query) en su punto más bajo para [Carlos Rodríguez](client_name)?
+    - Para [Ana Martínez](client_name), ¿cuál fue el precio mínimo del [arroz](search_query)?
+    - Luca, para el cliente [Javier López](client_name) cuánto ha sido lo más barato del [fertilizante](search_query)?
+    - precio mínimo del [trigo](search_query) de [Laura Sánchez](client_name)
+    - [Pedro García](client_name) precio mínimo [maíz](search_query)
+    - necesito saber el precio mínimo del [trigo](search_query) para [Carmen Jiménez](client_name)
+    - quiero consultar el mínimo del [arroz](search_query) para [Antonio Fernández](client_name)
+    - [Isabel Ruiz](client_name) ¿cuál es el precio más bajo del [pienso](search_query)?
+    - Hola Luca, cuál es el precio mínimo del [arroz](search_query) para el cliente [John Pruebas Pruebas](client_name)?
+    - ¿Podrías indicarme cuál ha sido el precio más económico de la [soja](search_query)?
+    - Necesito información sobre el mínimo histórico del [centeno](search_query)
+    - En qué momento la [cebada](search_query) alcanzó su precio más bajo
+    - Consulta de precio mínimo para [semilla de girasol](search_query)
+    - ¿Sabes cuál es el precio más económico al que se ha vendido el [abono orgánico](search_query)?
+    - Para [Miguel Torres](client_name), ¿cuál es el valor mínimo registrado del [sorgo](search_query)?
+    - Dime el mejor precio que puedes ofrecerle a [Lucía Fernández](client_name) para [herbicida](search_query)
+    - Mínimo histórico de [avena](search_query) para la cuenta de [Roberto Sanz](client_name)
+    - El cliente [Daniel Moreno](client_name) quiere saber el precio más bajo del [fungicida](search_query)
+    - [Elena Díaz](client_name) solicita información sobre el mínimo del [insecticida biológico](search_query)
+    - ¿A cuánto ha llegado a bajar el [fertilizante fosfatado](search_query) para [Alejandro Ruiz](client_name)?
+    - Luca, ¿cuál es el menor precio que ha tenido la [semilla certificada](search_query) en nuestra base de datos?
+    - ¿Me puedes decir a qué precio mínimo ha estado el [pesticida ecológico](search_query) para [Sofía Castro](client_name)?
+    - Búscame el mínimo histórico del [maíz dulce](search_query) para el cliente [David Martín](client_name)
+    - [Teresa González](client_name) necesita saber cuándo estuvo más barato el [abono potásico](search_query)
+    - Hola Luca, cuál es el precio mínimo del [herbicida metolachlor](search_query) para [María Gómez](client_name)?
+

@@ -1,0 +1,36 @@
+version: "3.1"
+nlu:
+- intent: get_chemical_products_by_client
+  examples: |
+      - Muéstrame los agroquímicos registrados por [AgroSol S.A.](client_name)
+      - Necesito ver la lista de pesticidas que usa [Campos Verdes S.A.S.](client_name)
+      - Dame los productos químicos del cliente [Hacienda La Esperanza](client_name)
+      - ¿Cuáles plaguicidas tiene anotados [BioCrops Ltd.](client_name)?
+      - Quiero consultar los insecticidas y fungicidas que maneja [AgriTechCorp](client_name)
+      - Listar todos los productos fitosanitarios disponibles para [Granja El Roble](client_name)
+      - Pásame los fungicidas registrados por [Cultivos La Estrella S.A.](client_name)
+      - Enséñame los químicos agrícolas asociados a [Finca Los Olivos](client_name)
+      - Ver la lista completa de agroquímicos de [Villa Verde Agro SAS](client_name)
+      - Dime qué tratamientos fitosanitarios utiliza [Plantaciones Oro Verde](client_name)
+      - ¿Puedes mostrarme los químicos agrícolas de [AgroFinca El Edén](client_name)?
+      - Necesito revisar los pesticidas registrados por [EcoHarvest Inc.](client_name)
+      - Dame el inventario de productos químicos de [Campos del Norte S.A.](client_name)
+      - Lista los insecticidas que usa [GreenFields Agro S.A.S.](client_name)
+      - Quiero ver qué fungicidas tiene registrados [Soluciones Agrícolas Integrales](client_name)
+      - Ver los productos químicos del cliente [Juan Pérez](client_name)
+      - Necesito los insecticidas y acaricidas para [María Gómez](client_name)
+      - Dame el inventario de químicos agrícolas de [Pedro Sánchez](client_name)
+      - Pásame la lista de plaguicidas para [Carlos Ruiz](client_name)
+      - Dime todos los productos fitosanitarios registrados por [Laura Castillo](client_name)
+      - Enséñame los agroquímicos que tiene [Andrés Mejía](client_name)
+      - ¿Puedes mostrarme los insecticidas de [Isabel Moreno](client_name)?
+      - Quiero revisar los tratamientos químicos activos de [Santiago Torres](client_name)
+      - Listar los químicos agrícolas asociados a [Marta López](client_name)
+      - ¿Qué fungicidas y herbicidas tiene registrados [Gabriel Fernández](client_name)?
+      - Dame los pesticidas autorizados para [Carolina Vargas](client_name)
+      - Enséñame los productos químicos que usa [Héctor Ramírez](client_name)
+      - ¿Cuáles tratamientos fitosanitarios tiene actualmente [Raquel Díaz](client_name)?
+      - Lista los fitosanitarios asociados al cliente [Don Ernesto](client_name)
+      - Muéstrame los agroquímicos disponibles para [Sofía Lucía](client_name)
+
+

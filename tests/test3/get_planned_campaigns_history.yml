@@ -1,0 +1,22 @@
+version: "3.1"
+nlu:
+- intent: get_planned_campaigns_history
+  examples: |
+    - Muéstrame el historial de campañas de la granja [Finca Los Olivos](farm_name)
+    - Muestra el historial de campañas de la granja [Explotación de Prueba](farm_name)
+    - Muestra el historial de campañas de la granja [Explotación de Prueba](farm_name) para el campo [Campo de prueba 1](field_name)
+    - Quiero ver el historial de campañas de [Juan Pérez](client_name) en la granja [Finca Los Olivos](farm_name)
+    - Dame el historial del campo [Campo Norte](field_name) en la granja [Finca Los Olivos](farm_name)
+    - Dame el historial del campo [Campo de prueba 1](field_name) en la granja [Explotación de Prueba](farm_name)
+    - Historial de campañas para [Finca El Roble](farm_name)
+    - Muestra las campañas pasadas de [Finca Los Olivos](farm_name)
+    - Quiero el historial de campañas de [Juan Pérez](client_name)
+    - Muéstrame el historial de campañas
+    - Necesito saber las campañas pasadas del campo [Campo Sur](field_name)
+    - Dame el historial del campo [Campo Este](field_name) de la granja [Finca El Roble](farm_name)
+    - Quiero ver las campañas anteriores del cliente [María García](client_name) en [Finca Los Olivos](farm_name)
+    - Consulta el historial de campañas de [Pedro López](client_name) para el campo [Campo Norte](field_name) en [Finca Los Olivos](farm_name)
+    - Historial de campañas del campo [Campo Norte](field_name) de la granja [Finca Los Olivos](farm_name)
+    - ¿Cuál es el historial de campañas en [Finca El Roble](farm_name) campo [Campo Sur](field_name)?
+    - Muéstrame las campañas anteriores en la granja [Finca Los Olivos](farm_name) para el campo [Campo Este](field_name)
+    - Quiero conocer el historial de campañas de [Finca Santa María](farm_name)

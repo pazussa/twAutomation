@@ -1,0 +1,33 @@
+version: "3.1"
+nlu:
+- intent: get_last_work
+  examples: |
+      - Muéstrame el último trabajo
+      - Quiero ver el último trabajo
+      - ¿Cuál fue el último trabajo realizado?
+      - Último trabajo en [Explotación Norte](farm_name)
+      - Último trabajo del [Campo 1](field_name)
+      - Último trabajo en la granja [Mi Explotación](farm_name)
+      - Enséñame el último trabajo del campo [Parcela A](field_name)
+      - Último trabajo de [Juan Pérez](client_name)
+      - Último trabajo de [Juan Pérez](client_name) en [Explotación Norte](farm_name)
+      - Último trabajo en [Explotación Norte](farm_name) del [Campo 1](field_name)
+      - Quiero el último trabajo de [Juan Pérez](client_name) en [Explotación Norte](farm_name) del [Campo 1](field_name)
+      - Dame el último trabajo para el campo [Parcela B](field_name) de la explotación [Mi Finca](farm_name)
+      - ¿Qué se hizo por última vez en el campo [Lote 3](field_name) de [Finca Sur](farm_name)?
+      - Último trabajo del cliente [Agro Servicios SA](client_name) en [Finca Norte](farm_name) [Lote 7](field_name)
+      - Ver último trabajo del campo [Sector 12](field_name)
+      - Ver el último trabajo en la explotación [Finca Los Olivos](farm_name)
+      - Último trabajo para el cliente [Juan Pérez García](client_name)
+      - Muestra el último trabajo en [Explotación Norte](farm_name) campo [Campo 1](field_name)
+      - ¿Cuál es el último trabajo de [Cliente Demo](client_name) en [Mi Explotación](farm_name) [Parcela A](field_name)?
+      - Necesito el último trabajo realizado en [Explotación Sur](farm_name) del campo [Lote 5](field_name)
+      - Último trabajo realizado en [Finca del Valle](farm_name) [Sector A](field_name)
+      - ¿Tienes el último trabajo para [Finca Primavera](farm_name) [Campo Central](field_name)?
+      - Dame el último trabajo (me falta el campo)
+      - Quiero el último trabajo de esta finca [Finca Norte](farm_name) (falta el campo)
+      - Último trabajo del cliente [Acme Agro](client_name) (falta granja y campo)
+      - Último trabajo en la granja [Los Robles](farm_name) (falta campo)
+      - El último trabajo del campo [Alameda 2](field_name) (falta granja)
+      - Último trabajo (falta todo)
+

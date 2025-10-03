@@ -15,231 +15,267 @@ cp .env.example .env
 # Configura las variables en .env según tu entorno
 ```
 
-## Comandos principales
+## 🚀 Inicio Rápido
 
-### Ejecutar pruebas específicas
+### ⚠️ Requisito Previo: Conectar al Bot
+
+**Antes de usar el panel admin**, debes estar conectado al bot de WhatsApp:
+
+1. Abre WhatsApp Web en tu navegador
+2. Escanea el código QR con tu teléfono
+3. Verifica que la sesión esté activa
+
+**Importante**: El bot usa la sesión activa de WhatsApp Web para las pruebas.
+
+### Panel de Administración
 ```bash
-# Ejecutar una prueba específica, ejemplos:
-npm run pw tests/asignar_precios_producto.spec.ts
-npm run pw tests/consultar_campos.spec.ts
-npm run pw tests/consultar_distribucion_cultivos.spec.ts
-npm run pw tests/consultar_trabajos.spec.ts
-npm run pw tests/consultar_trabajos_hoy.spec.ts
-npm run pw tests/crear_campana.spec.ts
-npm run pw tests/crear_cultivo.spec.ts
-npm run pw tests/crear_fertilizante.spec.ts
-npm run pw tests/crear_fitosanitario.spec.ts
-npm run pw tests/listar_cultivos.spec.ts
-npm run pw tests/listar_fertilizantes.spec.ts
-npm run pw tests/listar_fitosanitarios.spec.ts
+npm run admin
 ```
+**Abre automáticamente:** http://localhost:3000
 
-### Generar reportes HTML
-```bash
-# Ejecutar pruebas (genera reportes automáticamente)
-npm run pw
+## 🎯 Características del Panel Admin
+
+### ✨ Funcionalidades
+- ✅ **Selección visual** de ejemplos específicos con checkboxes
+- ✅ **Combinación libre** de ejemplos de diferentes intents
+- ✅ **Variables realistas** extraídas automáticamente de archivos YML
+- ✅ **Ejecución en tiempo real** visible en terminal del servidor
+- ✅ **Generación automática de PDF** al finalizar cada ejecución
+- ✅ **Detección de bucles infinitos** (detiene automáticamente después de 5 respuestas idénticas)
+- ✅ **Acceso directo** a carpeta de reportes con un click
+- ✅ **29 intents sincronizados** desde archivos YML (test2/ y test3/)
+
+### 📋 Flujo de Uso
+1. **Seleccionar**: Marca checkboxes de los ejemplos que deseas probar
+2. **Ejecutar**: Click en "▶ Ejecutar Seleccionados"
+3. **Observar**: Ve la ejecución en tiempo real en la terminal del servidor
+4. **Esperar**: La conversión a PDF se ejecuta automáticamente al terminar
+5. **Ver resultados**: Click en "📊 Abrir Carpeta de Reportes" para ver HTML y PDF
+
+### 🎨 Interfaz
+- **Agrupación por intent**: Todos los ejemplos organizados por categoría
+- **Contador de selección**: Muestra cuántos ejemplos has marcado
+- **Búsqueda rápida**: Filtra intents y ejemplos en tiempo real
+- **Estado de ejecución**: Indica si hay una ejecución en proceso
+
+## 📊 Reportes Generados
+
+### Conversiones Automáticas
+- **HTML**: Generados automáticamente en `playwright-report/`
+- **PDF**: Convertidos automáticamente al finalizar cada ejecución
+- **Ubicación**: Los PDFs se guardan en `exports/playwright-report/` con timestamp
+
+### Ejemplo de Reporte
+
+Los reportes muestran conversaciones detalladas con timeline completo:
+
 ```
-Los reportes se guardan en `test-results/conversations/`
+📊 Crear cultivo - Todos los intents
+Status: ✅ passed  
+Duración: 2201629 ms
 
-### Convertir reportes a PDF
-```bash
-# Convertir todos los reportes HTML a PDF
-npm run report:pdf
-```
-Los PDFs se guardan en `exports/test-results/conversations/`
-
-## Ejemplo de reporte generado
-
-Los reportes HTML muestran conversaciones detalladas organizadas de forma visual:
-
-### 📊 Crear cultivo - Todos los intents
-**Status:** ✅ passed  
-**Duración:** 2201629 ms  
-**Archivo:** tests/crear_cultivo.spec.ts  
-
-📈 **Resumen:**
+📈 Resumen:
 - Eventos: 426
 - ✅ OK: 418  
 - ❌ FAIL: 8
 - 🎯 Intents: 40
 
----
-
-### 💬 Conversación por intent
-
-**[1/40] crear cultivo** ✅ OK
-
-| # | Tipo | Texto | Timestamp | Resultado |
-|---|------|-------|-----------|-----------|
-| 1 | 📤 Enviado | crear cultivo | 14:19:35 | ✅ OK |
-| 2 | 📥 Recibido | Destino del cultivo. | 14:19:47 | ✅ OK |
-| 3 | 📤 Enviado | consumo | 14:19:47 | ✅ OK |
-| 4 | 📥 Recibido | Marca del cultivo. | 14:19:57 | ✅ OK |
-| 5 | 📤 Enviado | MarcaTomate123 | 14:19:57 | ✅ OK |
-
-**[2/40] hola quiero crear un cultivo** ✅ OK
-
-| # | Tipo | Texto | Timestamp | Resultado |
-|---|------|-------|-----------|-----------|
-| 1 | 📤 Enviado | hola quiero crear un cultivo | 14:20:15 | ✅ OK |
-| 2 | 📥 Recibido | Destino del cultivo. | 14:20:22 | ✅ OK |
-| 3 | 📤 Enviado | consumo | 14:20:22 | ✅ OK |
-
----
-
-### 📋 Características del reporte:
-- **Timeline completo** con todos los mensajes enviados y recibidos
-- **Estados visuales** con emojis y colores para éxito/error
-- **Timestamps precisos** de cada interacción
-- **Agrupación por intent** para fácil navegación
-- **Estadísticas globales** de la sesión de pruebas
-
-## Configuración inicial
-
-### 1. Configurar Twilio Sandbox
-Antes de ejecutar las pruebas, debes unirte al sandbox de Twilio:
-
-1. Envía un mensaje WhatsApp a **+1 (415) 523-8886**
-2. El mensaje debe ser: `join [nombre-del-sandbox]`
-3. Ejemplo: `join weather-assistant` 
-4. Espera la confirmación de que te has unido al sandbox
-
-## Generar reportes
-
-### Reportes HTML de conversación
-Los reportes se generan automáticamente en `test-results/conversations/` después de cada ejecución.
-
-### Exportar reportes a PDF
-```bash
-npm run report:pdf
-```
-Los PDFs se guardan en `exports/test-results/conversations/`
-
-### Exportar archivo HTML específico
-```bash
-node scripts/export-report-to-pdf.mjs ruta/al/archivo.html
+💬 Conversación:
+[1/40] crear cultivo ✅ OK
+  📤 Enviado: crear cultivo
+  📥 Recibido: Destino del cultivo.
+  📤 Enviado: consumo
+  📥 Recibido: Marca del cultivo.
+  📤 Enviado: Bayer
+   Recibido: Cultivo registrado exitosamente.
 ```
 
-## Estructura del proyecto
+### Características del Reporte:
+- ✅ Timeline completo con timestamps
+- ✅ Estados visuales (éxito/error)
+- ✅ Agrupación por intent
+- ✅ Estadísticas globales
+- ✅ Detección de bucles infinitos
+- ✅ Exportación automática a PDF
+
+## ⚙️ Configuración Inicial
+
+### Configurar Twilio Sandbox
+Antes de ejecutar pruebas:
+
+1. Envía WhatsApp a: **+1 (415) 523-8886**
+2. Mensaje: `join [tu-sandbox-name]`
+3. Ejemplo: `join weather-assistant`
+4. Espera confirmación de conexión
+
+## 📁 Estructura del Proyecto
 
 ```
 tests/
 ├── setup/
-│   ├── utils.ts      # Utilidades WhatsApp Web y helpers
-│   ├── data.ts       # Configuración, variables, intents y reglas
-│   └── flow.ts       # Fixtures Playwright y flujo principal
-├── _setup.ts         # Re-exporta desde setup/flow
-├── *.spec.ts         # Tests por cada funcionalidad
-└── conversation-reporter.ts  # Reporter personalizado
+│   ├── utils.ts      # Utilidades WhatsApp Web
+│   ├── data.ts       # Variables, intents y reglas (AUTO-GENERADO)
+│   └── flow.ts       # Fixtures Playwright y detección de bucles
+├── test2/            # 11 archivos YML (fuente principal)
+├── test3/            # 18 archivos YML adicionales
+├── _setup.ts         # Re-exporta setup/flow
+└── *.spec.ts         # 29 specs auto-generados (uno por intent)
 
-.vscode/
-├── launch.json       # Configuraciones debug VS Code
-└── tasks.json        # Tareas VS Code
+src/admin/
+├── server.ts         # Backend Express del panel admin
+└── public/
+    └── index.html    # Frontend del panel admin
 
 scripts/
-└── export-report-to-pdf.mjs  # Exportador PDF
+├── export-report-to-pdf.mjs  # Conversión automática HTML→PDF
+└── sync-yml-to-data.mjs      # Sincronizador YML→TypeScript
 ```
 
-## Cómo agregar nuevos intents
+## 🔄 Sistema de Sincronización YML
 
-### 1. Editar `tests/setup/data.ts`
-Busca `INTENTS_TEMPLATES` y añade tu nueva categoría:
+**Los archivos YML son la única fuente de verdad.** Todo se genera automáticamente desde ellos.
 
-```typescript
-const INTENTS_TEMPLATES = {
-  // ... intents existentes
-  miNuevoIntent: [
-    'frase simple',
-    'frase con {variable}',
-    'otra variación con {cliente} y {cultivo}'
-  ]
-} as const;
+### Sincronizar Cambios
+```bash
+npm run sync
 ```
 
-### 2. Agregar variables si es necesario
-En `VARS` define las variables que uses:
-```typescript
-const VARS: Record<string, string> = {
-  // ... variables existentes
-  miVariable: process.env.VAR_MI_VARIABLE || 'valor-por-defecto'
-};
+### Qué se Regenera:
+- ✅ `tests/setup/data.ts` (29 intents, 31 variables)
+- ✅ `tests/*.spec.ts` (29 archivos)
+- ✅ Valores extraídos de anotaciones `[texto](variable)`
+- ✅ Fecha actual para `[hoy]` → `2025-10-03`
+
+### Valores de Variables
+
+**Prioridad de valores:**
+1. **Primero**: Valor anotado en YML `[Nitrofoska](fertilizer_name)`
+2. **Segundo**: Fecha actual si es `[hoy](price_date)`
+3. **Tercero**: Default genérico (fallback)
+
+**Ejemplos de valores extraídos:**
+```yaml
+# En YML:
+- Quiero registrar el [Nitrofoska](fertilizer_name) de tipo [granulado](type_fertilizer)
+- Cultivo [maíz](crop_name) variedad [amarillo costeño](variety_name)
+- Precio [340](price) €/tn desde [hoy](price_date)
+
+# Genera en data.ts:
+fertilizer_name: 'Nitrofoska'      // no "NPK Completo"
+type_fertilizer: 'granulado'       // extraído
+crop_name: 'maíz'                  // no "trigo"
+variety_name: 'amarillo costeño'   // no "Chamorro"
+price: '340'                       // extraído
+price_date: '2025-10-03'           // FECHA ACTUAL
 ```
 
-### 3. Configurar reglas de detección
-En `KEYWORD_RULES` añade patrones para detectar respuestas:
-```typescript
-const KEYWORD_RULES = [
-  // ... reglas existentes
-  { pattern: /mi nuevo patrón exitoso/i, action: { type: 'END_OK' }, note: 'Mi nuevo intent exitoso' },
-  { pattern: /^Mi campo requerido\.?$/i, action: { type: 'REPLY', reply: '{miVariable}' }, note: 'Pide mi variable' }
-];
+## ➕ Agregar Nuevos Intents
+
+### 1. Crear Archivo YML
+En `tests/test2/` o `tests/test3/`:
+
+```yaml
+version: "3.1"
+nlu:
+- intent: mi_nuevo_intent
+  examples: |
+    - frase simple
+    - frase con [Nitrofoska](fertilizer_name)
+    - con cliente [AgroTalavera](client) y precio [hoy](price_date)
 ```
 
-### 4. Crear spec de prueba
-Crea `tests/mi_nuevo_intent.spec.ts`:
-```typescript
-import { test, expect } from './_setup';
+**Importante:**
+- Formato: `[texto visible](nombre_variable)`
+- Nombres: `snake_case` → se convierten a `camelCase`
+- Especial: `[hoy]` → fecha actual automática
 
-test('Mi nuevo intent - Todos los intents', async ({ runAutoLoop, intents, conversation }) => {
-  const fails: string[] = [];
-  const list = intents.miNuevoIntent;
-  
-  for (let i = 0; i < list.length; i++) {
-    const starter = list[i];
-    conversation.logIntent(`[${i + 1}/${list.length}] ${starter}`, i + 1, list.length);
-    
-    const result = await runAutoLoop(starter, { resetChat: true });
-    if (!result.success) {
-      fails.push(`Intent "${starter}" falló: ${result.reason}`);
-    }
-  }
-  
-  expect.soft(fails, fails.join('\\n')).toHaveLength(0);
-});
+### 2. Sincronizar
+```bash
+npm run sync
 ```
 
-## Debugging en VS Code
+### 3. Resultado ✅
+- Nuevo intent en `data.ts`
+- Archivo `tests/mi_nuevo_intent.spec.ts` creado
+- Variables extraídas y materializadas
+- Aparece automáticamente en panel admin
 
-1. Abre VS Code en el proyecto
-2. Ve a "Run and Debug" (Ctrl+Shift+D)
-3. Selecciona una configuración:
-   - **Debug: Current file**: Depura el spec actual abierto
-   - **Debug: By title**: Define `TEST_NAME` con el título del test
-   - **Debug: All tests**: Ejecuta todos los tests en modo debug
+## 🔍 Cómo Funciona el Sistema
 
-### Breakpoints con checkpoints
-Define `DEBUG_CHECKPOINTS` en la configuración del launch para pausar en puntos específicos del flujo conversacional.
+### Flujo de Conversación
+1. **Inicialización**: 
+   - Limpia chat de WhatsApp
+   - Resetea variables a defaults
+   - Selecciona cultivo aleatorio de `CROPS_POOL`
 
-## Cómo funciona
+2. **Envío y Espera**:
+   - Envía mensaje inicial
+   - Espera primera respuesta (timeout: 45s)
+   - Agrega mensajes adicionales (espera: 5s)
 
-### Flujo principal
-1. **Inicialización**: Limpia chat, resetea variables, selecciona cultivo aleatorio
-2. **Envío**: Envía mensaje y espera primera respuesta (45s timeout)
-3. **Agregación**: Espera 5s adicionales para recopilar mensajes múltiples
-4. **Detección**: Analiza mensajes con reglas regex para decidir acción
-5. **Acción**: REPLY (responder), END_OK (éxito), END_ERR (error), RETRY_EXISTS (reintentar con variables mutadas)
+3. **Detección con Reglas**:
+   - Analiza respuesta del bot con `KEYWORD_RULES`
+   - Patrones ordenados por prioridad (1-4)
+   - Detecta: opciones, "ya existe", éxito, error, campos
 
-### Variables dinámicas
-- Los cultivos se seleccionan aleatoriamente de `CROPS_POOL`
-- Las marcas se mutan automáticamente en reintentos "ya existe"
-- El `destino` permanece fijo como "consumo" o "pienso"
+4. **Acción Automática**:
+   - `REPLY`: Responde con valor de variable
+   - `END_OK`: Finaliza exitosamente
+   - `END_ERR`: Finaliza con error
+   - `RETRY_EXISTS`: Reintentar con marca mutada
+   - `__EXTRACT_FIRST_OPTION__`: Extrae primera opción de lista
 
-### Sistema de reglas
-Las reglas se evalúan en orden de prioridad:
-1. **Opciones**: Responde con la primera opción encontrada
-2. **Ya existe**: Reintentar con marca mutada
-3. **Finalizadores**: Patrones de éxito/error globales
-4. **Campos**: Respuestas puntuales a preguntas específicas
+5. **Detección de Bucles**:
+   - Rastrea últimas 5 respuestas enviadas
+   - Si todas son idénticas → detecta bucle infinito
+   - Finaliza automáticamente con error
 
-## Comandos adicionales
+### Variables Dinámicas
+- **Cultivos**: Selección aleatoria de `CROPS_POOL`
+- **Fecha actual**: `[hoy]` → `2025-10-03` (se actualiza diariamente)
+- **Marcas**: Mutación automática en reintentos "ya existe"
+- **Valores YML**: Extraídos de anotaciones `[texto](variable)`
+
+### Sistema de Reglas (Prioridad)
+```
+Priority 1: Opciones (extrae primera opción de listas)
+Priority 2: "Ya existe" (reintenta con marca mutada)
+Priority 3: Finalizadores (éxito/error globales)
+Priority 4: Campos específicos (responde con variable)
+```
+
+### Patrones Flexibles
+```javascript
+// Detecta variaciones de "destino":
+/\bdestino(\s+del\s+cultivo)?/i
+
+// Matches:
+✅ "Destino"
+✅ "Destino."
+✅ "Destino del cultivo"
+✅ "¿Cuál es el destino?"
+```
+
+## 🛠️ Comandos Útiles
 
 ```bash
+# Panel de administración
+npm run admin
+
+# Sincronizar YML → TypeScript
+npm run sync
+
 # Verificar tipos TypeScript
 npm run typecheck
 
-# Ejecutar con navegador visible
-HEADLESS=false npm run pw
-
-# Ver reportes HTML en navegador
-npm run pw:report
+# Convertir reportes HTML → PDF (manual)
+npm run report:pdf
 ```
+
+## 🐛 Debugging
+
+El sistema incluye detección automática de errores:
+- ✅ **Timeouts**: 45s sin respuesta del bot
+- ✅ **Bucles infinitos**: 5 respuestas idénticas consecutivas
+- ✅ **Errores del bot**: Patrones "error", "fallo", "no se pudo"
+- ✅ **Elementos duplicados**: "ya existe" → reintento automático

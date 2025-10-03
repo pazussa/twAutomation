@@ -1,0 +1,40 @@
+version: "3.1"
+nlu:
+- intent: get_pending_works
+  examples: |
+    - Hola Luca, ¿qué trabajos tengo para hacer hoy?
+    - ¿Qué trabajos tengo hoy?
+    - ¿Qué tareas hay hoy en los campos?
+    - ¿Qué fertilizaciones hay programadas para hoy?
+    - Luca, dime los trabajos pendientes
+    - ¿Qué trabajos están por hacer?
+    - ¿Qué tareas hay programadas en mis campos?
+    - ¿Cuántos trabajos hay pendientes?
+    - Hola Luca, ¿qué trabajos tiene el cliente [Jose](client_name) para hoy?
+    - Hola Luca, ¿qué trabajos tiene el cliente [Jose](client_name) del tipo [SIEMBRA](type_work)?
+    - ¿Qué trabajos tengo del tipo [COSECHA](type_work)?
+    - Luca, muéstrame las tareas pendientes de [AgroMart](client_name).
+    - ¿Hay trabajos de [FERTILIZACION](type_work) para el cliente [Pedro Gómez](client_name)?
+    - Necesito saber los trabajos que faltan para [Campos del Norte](client_name).
+    - ¿Qué tareas quedan pendientes para [COSECHA](type_work) hoy?
+    - ¿Cuáles son los trabajos de [General Agro](client_name) del tipo [PLOWING](type_work)?
+    - Luca, ¿puedes decirme si hay algo pendiente con [Siembra Verde](client_name)?
+    - ¿Qué trabajos hay sin terminar?
+    - ¿Qué labores están agendadas para hoy?
+    - ¿Hay alguna tarea pendiente de [PHYTOSANITARY](type_work)?
+    - Quiero ver las tareas del cliente [AgroInnova](client_name).
+    - ¿Qué trabajos están agendados con [Laura Martínez](client_name)?
+    - Luca, necesito la lista de tareas pendientes de [SIEMBRA](type_work).
+    - Dime qué actividades tengo hoy con [Campos del Sur](client_name).
+    - ¿Qué trabajos de [COSECHA](type_work) tengo para hoy?
+    - ¿Hay trabajos pendientes para [AgroSolutions](client_name)?
+    - Consulta las tareas programadas para [Juan López](client_name).
+    - ¿Qué trabajos quedan por hacer del tipo [FERTILIZACION](type_work)?
+    - Luca, muéstrame las tareas pendientes de [PHYTOSANITARY](type_work).
+    - Quiero ver los trabajos programados de [CampoFuturo](client_name).
+    - ¿Qué actividades tengo con [Maria Torres](client_name) hoy?
+    - ¿Hay trabajos de [GENERAL](type_work) para hoy?
+    - ¿Qué trabajos tiene [AgroExport](client_name) para el día?
+    - Luca, dime qué labores hay pendientes con [PLOWING](type_work).
+    - ¿Cuáles son las tareas que faltan por realizar?
+    - Hola Luca, tengo algún trabajo planificado?

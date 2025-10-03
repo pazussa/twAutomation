@@ -1,0 +1,102 @@
+version: "3.1"
+nlu:
+- intent: create_chemical_product
+  examples: |
+    - quiero registrar un producto químico
+    - registrar producto químico
+    - crear producto químico
+    - quiero añadir un nuevo producto químico
+    - agrega un producto químico
+    - necesito crear un producto químico
+    - crear un nuevo producto químico
+    - voy a crear un producto químico
+    - quiero crear un producto químico desde cero
+    - me gustaría registrar un nuevo producto químico
+    - quiero dar de alta un producto químico
+    - agrega un nuevo producto químico
+    - vamos a crear un producto químico
+    - registrar un nuevo producto químico
+    - me gustaría añadir otro producto químico
+    - podemos crear un producto químico?
+    - deseo crear un producto químico
+    - genera un producto químico
+    - alta de un producto químico
+    - crea un producto químico nuevo
+    - crea un nuevo producto químico
+    - registra un producto químico
+    - dame de alta un producto químico
+    - quiero cargar un nuevo producto químico
+    - agregar producto químico
+    - necesito dar de alta un producto químico
+    - quiero introducir un nuevo producto químico
+    - vamos a registrar un producto químico
+    - registrar un producto químico nuevo
+    - crea producto químico
+    - quiero crear un nuevo producto químico en el sistema
+    - me gustaría crear un producto químico nuevo
+    - Añade el fitosanitario [Roundup](chemical_product_name)
+    - Quiero registrar el pesticida [Aliette](chemical_product_name) contra [mildiu](target_pest)
+    - Mete el herbicida [Karate Zeon](chemical_product_name) de tipo [sistémico](mode_of_action)
+    - Apunta el plaguicida [Decis](chemical_product_name) para [mosca blanca](target_pest) de la marca [Bayer](brand)
+    - Apunta el plaguicida [fungicida spiroxamina](chemical_product_name) para [mosca blanca](target_pest) de la marca [bayer cropscience](brand)
+    - Crea un insecticida llamado [Ortiva](chemical_product_name) que sea [curativo](mode_of_action)
+    - Dar de alta el fungicida [Cabrio Top](chemical_product_name) para [roya](target_pest) en [Syngenta](brand)
+    - Registra un producto de control de plagas, [Aliette](chemical_product_name), [preventivo](mode_of_action)
+    - Añade el herbicida [Roundup](chemical_product_name) contra [hierba juncia](target_pest)
+    - Meter insecticida [Karate Zeon](chemical_product_name) de [BASF](brand) que sea [de contacto](mode_of_action)
+    - Apunta el plaguicida [Decis](chemical_product_name) para [trips](target_pest)
+    - Crear el fitosanitario [Ortiva](chemical_product_name) [sistémico](mode_of_action) para [mildiu](target_pest)
+    - Dar de alta un fungicida [Cabrio Top](chemical_product_name) de [Bayer](brand)
+    - Registra herbicida [Roundup](chemical_product_name) de [Monsanto](brand) para [maleza](target_pest)
+    - Quiero añadir insecticida [Karate Zeon](chemical_product_name) para [pulgón](target_pest) [sistémico](mode_of_action)
+    - Apuntar plaguicida [Decis](chemical_product_name) [preventivo](mode_of_action) en cuenta de [AgroMartín SL](client)
+    - Mete fungicida [Ortiva](chemical_product_name) para [roya](target_pest) de [Syngenta](brand)
+    - Crear pesticida [Aliette](chemical_product_name) para [mildiu](target_pest) en [AgroAndalucía](client)
+    - Añadir producto de control de plagas [Cabrio Top](chemical_product_name) para [trips](target_pest)
+    - Apuntar herbicida [Roundup](chemical_product_name) [curativo](mode_of_action)
+    - Mete insecticida [Karate Zeon](chemical_product_name) de [BASF](brand) contra [mosca blanca](target_pest)
+    - Registrar el plaguicida [Decis](chemical_product_name) [sistémico](mode_of_action)
+    - Dar de alta el fitosanitario [Ortiva](chemical_product_name) de [Syngenta](brand)
+    - Añade pesticida [Aliette](chemical_product_name) [preventivo](mode_of_action) para [mildiu](target_pest)
+    - Apuntar herbicida [Roundup](chemical_product_name) para [hierba juncia](target_pest) de [Monsanto](brand)
+    - Mete fungicida [Cabrio Top](chemical_product_name) [curativo](mode_of_action)
+    - Perdona, cambio la marca del insecticida [Karate Zeon](chemical_product_name) a [Bayer](brand)
+    - Me refería a que el fungicida es [curativo](mode_of_action), no preventivo
+    - Corrijo, el plaguicida [Decis](chemical_product_name) es para [trips](target_pest)
+    - El producto de control de plagas [Ortiva](chemical_product_name) es [sistémico](mode_of_action) de [Syngenta](brand)
+    - Quiero registrar pesticida [Aliette](chemical_product_name) para [mildiu](target_pest) de [BASF](brand)
+    - Registra el herbicida [Roundup](chemical_product_name) de [Bayer](brand) por [45](price) euros
+    - Añade el plaguicida [Decis](chemical_product_name) contra [trips](target_pest) [preventivo](mode_of_action) a [60](price)€
+    - Para [Campo Sur](client) mete el fungicida [Ortiva](chemical_product_name) [curativo](mode_of_action) de [Syngenta](brand)
+    - Dar de alta insecticida [Karate Zeon](chemical_product_name) para [pulgón](target_pest) en [AgroMartín SL](client) por [75.5](price) euros
+    - Crear fitosanitario [Cabrio Top](chemical_product_name) [sistémico](mode_of_action) contra [mildiu](target_pest) de [BASF](brand) a [80](price)
+    - Registra pesticida [Aliette](chemical_product_name) de [Bayer](brand) para [roya](target_pest) en [Finca Los Olivos](client)
+    - Apunta producto químico [Roundup](chemical_product_name) [de contacto](mode_of_action) por [50](price)
+    - Añade insecticida [Decis](chemical_product_name) para [mosca blanca](target_pest) de [Syngenta](brand) en [Cooperativa del Campo](client)
+    - Necesito registrar herbicida [Karate Zeon](chemical_product_name) [preventivo](mode_of_action) contra [maleza](target_pest) por [30](price) euros
+    - Para el cliente [AgroExport SA](client), crea el fungicida [Ortiva](chemical_product_name) de [Syngenta](brand) a [90](price)
+    - Dar de alta plaguicida [Cabrio Top](chemical_product_name) para [trips](target_pest) de [Bayer](brand) con precio [65](price)
+    - Registrar fitosanitario [Aliette](chemical_product_name) en [AgroAndalucía](client) [curativo](mode_of_action) por [55,5](price) euros
+    - Crear para el fabricante [bayer cropscience](brand), el producto químico [Acaricida abamectina](chemical_product_name), con el precio de [110](price) para el cliente [Juan Andres Perez Urrutia](client)
+    - Para el fabricante [bayer cropscience](brand), crear el producto químico [Zanahoria 20%](chemical_product_name), con el precio de [155](price) para el cliente [Anita Rodriguez](client)
+    - Luca crea para el fabricante [bayer cropscience](brand), el producto quimico [Fungicida spiroxamina](chemical_product_name), con el precio de [8](price) para el cliente [Juan Andres](client)
+    - Necesito agregar para el fabricante [bayer cropscience](brand), el producto químico [Herbicida fluazifop-p-butil](chemical_product_name), con el precio de [5](price) para el cliente [Juan](client)
+    - Crear para el fabricante [sumito chemical](brand), el producto químico [Herbicida clethodim](chemical_product_name), con el precio de [32](price) para el cliente [Juan Pablo Perez](client)
+    - Crea el producto químico [Herbicida imazapic](chemical_product_name), para el fabricante [chiminova](brand), con el precio de [14](price) para el cliente [Héctor Coral](client)
+    - Oye luca crea el producto quimico [Fungicida pyraclostrobin](chemical_product_name), para el fabricante [sumito chemical](brand), con el precio de [199](price) para el cliente [Juan Agusto](client)
+    - Agrega el producto químico [Insecticida thiamethoxam](chemical_product_name), para el fabricante [sumito chemical](brand), con el precio de [6](price) para el cliente [Juan Pablo Garcia](client)
+    - Quiero agregar para el fabricante [sumito chemical](brand), el producto quimico [Insecticida thiamethoxam](chemical_product_name), con el precio de [20](price) para el cliente [Luisa Torres](client)
+    - Por favor registra el producto químico [Fungicida pyraclostrobin](chemical_product_name), para el fabricante [sumito chemical](brand), con el precio de [188](price) para el cliente [Juan Agusto](client)
+    - Necesito guardar el producto químico [Insecticida thiamethoxam](chemical_product_name), para el fabricante [sumito chemical](brand), con el precio de [6](price) para el cliente [Juan Pablo Garcia](client)
+    - Luca aguardar para el fabricante [sumito chemical](brand), el producto químico [Insecticida thiamethoxam](chemical_product_name), con el precio de [20](price) para el cliente [Luisa Torres](client)
+    - Luca necesito agregar para el fabricante [bast](brand), el producto químico [Herbicida fluazifop-p-butil](chemical_product_name), con el precio de [212](price) para el cliente [Juan](client)
+    - Asocia para el fabricante [bast](brand), el producto químico [Herbicida pendimetalina](chemical_product_name), con el precio de [12](price) para el cliente [Juan Pablo Perez](client)
+    - Facilita el producto químico [Herbicida alaclor](chemical_product_name), para el fabricante [dupont](brand), con el precio de [9](price) para el cliente [Héctor Coral](client)
+    - Oye luca necesito crear el producto químico [Fungicida mancozeb](chemical_product_name), para el fabricante [dupont](brand), con el precio de [28](price) para el cliente [Juan Agusto](client)
+    - Crear para el fabricante [syngenta](brand), el producto quimico [fungicida azoxistrobina](chemical_product_name), con el precio de [20](price)
+    - Crea para el fabricante [nufarm](brand), el producto quimico [herbicida diuron](chemical_product_name), con precio de [20](price) para [Sofia lucia](client)
+    - Crea para el fabricante [nufarm](brand), el producto químico [herbicida diuron](chemical_product_name), con el precio de [20](price) para [Sofia lucia](client)
+    - Para el fabricante [nufarm](brand), crea el producto quimico [herbicida diuron](chemical_product_name) a [20](price) para [Sofia lucia](client)
+    - Para [Sofia lucia](client), crear producto químico [herbicida diuron](chemical_product_name) del fabricante [nufarm](brand) con precio [20](price)
+    - Crear producto quimico [herbicida diuron](chemical_product_name) con precio [20](price) para [Sofia lucia](client) del fabricante [nufarm](brand)
+    - Crear para el fabricante [nufarm](brand), el producto químico [herbicida diuron](chemical_product_name), con precio de [20](price) para [sofia lucia](client)

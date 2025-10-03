@@ -11,7 +11,9 @@
     "pw:select": "playwright test",
     "pw:report": "playwright show-report",
     "report:pdf": "node scripts/export-report-to-pdf.mjs",
-    "admin": "node --loader ts-node/esm src/admin/server.ts"
+    "admin": "node --loader ts-node/esm src/admin/server.ts",
+    "admin:start": "./start-admin.sh",
+    "sync": "node scripts/sync-yml-to-data.mjs"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

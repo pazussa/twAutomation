@@ -1,0 +1,10 @@
+version: "3.1"
+nlu:
+- intent: get_crop_distribution
+  examples: |
+    - Hola Luca, ¿qué distribución de cultivos tengo este año?
+    - Luca, muéstrame los cultivos de este año
+    - ¿Cómo están repartidos mis cultivos?
+    - Quiero ver qué cultivos tengo y en qué campos
+    - ¿Qué superficie tengo sembrada y con qué?
+    - ¿Cuánto espacio tengo cultivado este año?

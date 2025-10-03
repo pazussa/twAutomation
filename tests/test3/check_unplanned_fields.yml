@@ -1,0 +1,13 @@
+version: "3.1"
+nlu:
+- intent: check_unplanned_fields
+  examples: |
+    - Hola Luca, ¿me queda algún campo sin planificar?
+    - Luca, ¿tengo campos sin asignar cultivo?
+    - ¿Hay algún campo que no tenga campaña este año?
+    - Dime si tengo algún campo que no esté planificado
+    - Luca, quiero saber si todos mis campos están cubiertos
+    - ¿Todos los campos tienen cultivos asignados?
+    - Hola Luca, tengo todos los cultivos planificados? 
+    - ¿Me queda algún campo para asignar cultivo? 
+    - ¿Tengo campos pendientes sin planificar?

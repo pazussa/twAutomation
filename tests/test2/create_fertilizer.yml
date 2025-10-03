@@ -1,0 +1,68 @@
+version: "3.1"
+nlu:
+- intent: create_fertilizer
+  examples: |
+    - quiero registrar un fertilizante
+    - registrar fertilizante
+    - crear fertilizante
+    - quiero añadir un nuevo fertilizante
+    - agrega un fertilizante
+    - necesito crear un fertilizante
+    - crear un nuevo fertilizante
+    - voy a crear un fertilizante
+    - quiero crear un fertilizante desde cero
+    - me gustaría registrar un nuevo fertilizante
+    - quiero dar de alta un fertilizante
+    - agrega un nuevo fertilizante
+    - vamos a crear un fertilizante
+    - registrar un nuevo fertilizante
+    - me gustaría añadir otro fertilizante
+    - podemos crear un fertilizante?
+    - deseo crear un fertilizante
+    - generar un fertilizante
+    - alta de un fertilizante
+    - crea un fertilizante nuevo
+    - crea un nuevo fertilizante
+    - registra un fertilizante
+    - dame de alta un fertilizante
+    - quiero cargar un nuevo fertilizante
+    - agregar fertilizante
+    - necesito dar de alta un fertilizante
+    - quiero introducir un nuevo fertilizante
+    - vamos a registrar un fertilizante
+    - registrar un fertilizante nuevo
+    - crea fertilizante
+    - quiero crear un nuevo fertilizante en el sistema
+    - me gustaría crear un fertilizante nuevo
+    - Quiero registrar el [Nitrofoska](fertilizer_name) como fertilizante [granulado](type_fertilizer), del fabricante [FertiMax](brand)
+    - Quiero registrar el fertilizante [Nitrofoska](fertilizer_name) de tipo [granulado](type_fertilizer) de la marca [FertiMax](brand)
+    - Quiero registrar el fertilizante [map monoamónico](fertilizer_name) como [granulado](type_fertilizer) de la marca [mosaic company](brand)
+    - Apúntame un abono [Urea](fertilizer_name) para [consumo humano](composition)
+    - Añade el fertilizante [Triple 15](fertilizer_name) de [FertiEspaña](brand)
+    - Necesito dar de alta un abono [orgánico](type_fertilizer) con [alto en nitrógeno](composition)
+    - Registra un nutriente [Sulfato amónico](fertilizer_name) para [pienso](composition)
+    - Crea el fertilizante [NPK 20-10-10](fertilizer_name) marca [AgroPlus](brand)
+    - Me gustaría meter un abono [mineral](type_fertilizer) llamado [Superfosfato](fertilizer_name)
+    - Anota un fertilizante [líquido](type_fertilizer) de [FertiAgro](brand) con fórmula [15-15-15](composition)
+    - Para la finca, crea el abono [Nitram](fertilizer_name) de tipo [granulado](type_fertilizer)
+    - Dar de alta un corrector [Calcimag](fertilizer_name) de [AgroEspaña](brand) con [calcio y magnesio](composition)
+    - Añadir un fertilizante [orgánico](type_fertilizer) [CompoBio](fertilizer_name) para [consumo humano](composition)
+    - Crea un abono [líquido](type_fertilizer) llamado [FertiMax](fertilizer_name) con fórmula [10-5-20](composition)
+    - Registra un nutriente [Urea](fertilizer_name) para [industria](composition) marca [CampoFértil](brand)
+    - Meter un fertilizante [granulado](type_fertilizer) [Superfosfato](fertilizer_name)
+    - Dar de alta un abono [orgánico](type_fertilizer) de [BioCampo](brand)
+    - Crear fertilizante [NPK 12-12-17](fertilizer_name) marca [AgroFert](brand)
+    - Apuntar un nutriente [Fosfato diamónico](fertilizer_name) para [consumo humano](composition)
+    - Añade fertilizante [Nitrofoska](fertilizer_name) para [aceite](composition)
+    - Registra un abono [Triple 15](fertilizer_name) de [AgroFert](brand) con fórmula [15-15-15](composition)
+    - Crea fertilizante [Urea](fertilizer_name) marca [CampoVerde](brand)
+    - Perdona, la marca del abono es [FertiMax](brand)
+    - Me refería al tipo de fertilizante [orgánico](type_fertilizer)
+    - Cambia la fórmula del nutriente a [20-10-10](composition)
+    - Para el cliente [AgroCampos SL](client), registra fertilizante [NPK 15-15-15](fertilizer_name)
+    - Cliente [Finca Los Olivos](client), dar de alta abono [Superfosfato](fertilizer_name) [granulado](type_fertilizer)
+    - Añadir para [AgroExport SA](client) el fertilizante [Nitram](fertilizer_name) [mineral](type_fertilizer)
+    - Registrar para [Cooperativa del Campo](client) un nutriente [Urea](fertilizer_name) para [pienso](composition)
+    - Crear abono [líquido](type_fertilizer) [FertiAgro](fertilizer_name) para [consumo humano](composition)
+    - Apúntame un corrector [Calcimag](fertilizer_name) de [AgroEspaña](brand)
+    - Dar de alta un fertilizante [Sulfato potásico](fertilizer_name) [granulado](type_fertilizer)

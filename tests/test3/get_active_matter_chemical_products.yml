@@ -1,0 +1,36 @@
+version: "3.1"
+nlu:
+- intent: get_active_matter_chemical_products
+  examples: |
+    - Hola Luca, que productos tienen [diflufenican](active_matter_name)?
+    - Hola luca, que productos tienen [abamectina](active_matter_name)?
+    - Hola Luca, que producto tiene [glifosato](active_matter_name)?
+    - Hola Luca, que producto tiene [calcio](active_matter_name)?
+    - Hola Luca, que producto tiene [Pyraclostrobin](active_matter_name)?Pyraclostrobin
+    - Luca, dime cuántos productos contienen [glifosato](active_matter_name)
+    - Que herbicidas tienen [fluroxipir](active_matter_name)?
+    - Hola Luca, listado de productos con [metsulfuron-metil](active_matter_name)
+    - Cuántos productos contienen [pendimetalina](active_matter_name)?
+    - Luca, que fitosanitarios tienen [imidacloprid](active_matter_name)?
+    - Hola, cuantos productos tienen [prosulfocarb](active_matter_name)?
+    - Dime todos los productos que contienen [2,4-D](active_matter_name)
+    - Luca, cuántos productos químicos contienen [cipermetrina](active_matter_name)?
+    - Que productos con [clorpirifos](active_matter_name) están registrados?
+    - Hola Luca, que fitosanitarios tienen [bromoxinil](active_matter_name)?
+    - Luca, dame la lista de productos con [propiconazol](active_matter_name)
+    - Que insecticidas contienen [lambda cihalotrina](active_matter_name)?
+    - Hola, cuantos productos tienen [dicamba](active_matter_name)?
+    - Luca, listado de químicos con [metribuzina](active_matter_name)
+    - Hola Luca, que productos tienen [azoxistrobin](active_matter_name)?
+    - Cuántos fitosanitarios contienen [mancozeb](active_matter_name)?
+    - Luca, que fungicidas llevan [tebuconazol](active_matter_name)?
+    - Hola, dime los productos que contienen [s-metolacloro](active_matter_name)
+    - Que herbicidas tienen [prosulfocarb](active_matter_name)?
+    - Luca necesito saber qué productos contienen [fosetil-aluminio](active_matter_name)
+    - Productos disponibles con [metomilo](active_matter_name) por favor
+    - ¿Puedes decirme qué fungicidas llevan [clorotalonil](active_matter_name)?
+    - Luca, necesito un listado de productos que contengan [nicosulfuron](active_matter_name)
+    - ¿Me puedes indicar qué herbicidas incluyen [glufosinato](active_matter_name) en su composición?
+    - Oye Luca, ¿qué fitosanitarios hay con [trifluralina](active_matter_name)?
+    - Quiero información de todos los productos que llevan [difenoconazol](active_matter_name)
+    - Lista los productos químicos que tienen [calcio](active_matter_name)

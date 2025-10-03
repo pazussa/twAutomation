@@ -1,181 +1,627 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Admin Intents</title>
+  <meta charset="UTF-8">
+  <title>Admin Conversacional</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body { font-family: system-ui, sans-serif; margin: 20px; background:#f5f7fa; color:#1f2937; }
-    h1 { margin-top:0; }
-    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); }
-    .card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:14px 16px; box-shadow:0 1px 2px rgba(0,0,0,.05); }
-    pre { background:#0f172a; color:#f1f5f9; padding:8px 10px; border-radius:6px; overflow:auto; font-size:12px; }
-    table { width:100%; border-collapse:collapse; font-size:12px; }
-    th, td { padding:4px 6px; border-bottom:1px solid #e2e8f0; text-align:left; vertical-align:top; }
-    th { background:#f1f5f9; font-weight:600; }
-    code { background:#e2e8f0; padding:2px 4px; border-radius:4px; }
-    input, textarea, select { width:100%; padding:6px 8px; border:1px solid #cbd5e1; border-radius:6px; background:#fff; font:inherit; }
-    textarea { resize: vertical; min-height:60px; }
-    button { background:#2563eb; color:#fff; border:none; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:600; }
-    button:hover { background:#1d4ed8; }
-    .muted { color:#64748b; font-size:12px; }
-    .tag { display:inline-block; background:#e0f2fe; color:#0369a1; padding:2px 6px; margin:2px 4px 2px 0; border-radius:12px; font-size:11px; }
+    :root {
+      --bg:#f5f7fa; --card:#fff; --border:#e2e8f0; --accent:#2563eb; --accent-h:#1d4ed8; --danger:#dc2626; --warn:#d97706;
+      --ok:#059669; --muted:#64748b; --radius:12px; --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin:20px; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,sans-serif; background:var(--bg); color:#1f2937; }
+    h1 { margin:0 0 8px; font-size:22px; }
+    h2 { margin:0 0 8px; font-size:16px; }
+    p.muted { color:var(--muted); margin:0 0 16px; }
+    .layout { display:grid; grid-template-columns: 380px 1fr; gap:18px; align-items:start; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    input, textarea, select { width:100%; padding:6px 8px; border:1px solid var(--border); border-radius:8px; background:#fff; font:inherit; }
+    textarea { resize:vertical; min-height:80px; }
+    button { background:var(--accent); color:#fff; border:none; padding:7px 14px; border-radius:8px; cursor:pointer; font-weight:600; font-size:13px; }
+    button:hover { background:var(--accent-h); }
+    button.outline { background:#fff; color:var(--accent); border:1px solid var(--accent); }
+    button.outline:hover { background:var(--accent); color:#fff; }
+    button.danger { background:var(--danger); }
+    button.danger.outline { color:var(--danger); border-color:var(--danger); background:#fff; }
+    button.danger.outline:hover { background:var(--danger); color:#fff; }
+    table { width:100%; border-collapse:collapse; font-size:12.5px; }
+    th, td { padding:6px 6px; border-bottom:1px solid var(--border); text-align:left; vertical-align:top; }
+    th { background:#f1f5f9; font-weight:600; position:sticky; top:0; }
+    .scroll { max-height:420px; overflow:auto; }
+    .tag { display:inline-flex; align-items:center; gap:4px; background:#e0f2fe; color:#0369a1; padding:3px 8px; margin:2px 6px 2px 0; border-radius:999px; font-size:11px; cursor:pointer; }
+    .chips { display:flex; flex-wrap:wrap; margin:6px 0 4px; }
+    .section-header { display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+    .small { font-size:11px; color:var(--muted); }
+    .row-actions { display:flex; gap:4px; }
+    .examples { margin-top:8px; border:1px solid var(--border); border-radius:10px; padding:10px; background:#fff; }
+    .examples h3 { margin:0 0 6px; font-size:13px; display:flex; align-items:center; justify-content:space-between; }
+    .example-row { display:flex; gap:6px; margin-bottom:6px; align-items:center; }
+    .example-row input[type="text"] { flex:1; font-size:12px; }
+    .example-row input[type="checkbox"] { margin:0; align-self:center; }
+    .divider { height:1px; background:var(--border); margin:16px 0; }
+    .inline-form { display:flex; gap:6px; }
+    .pill { background:#eef2ff; color:#4338ca; padding:2px 6px; border-radius:8px; font-size:11px; }
+    code.inline { background:#e2e8f0; padding:2px 4px; border-radius:4px; font-family:var(--mono); font-size:12px; }
+    .status { margin-top:8px; font-size:12px; }
+    .warn { color:var(--warn); }
+    .ok { color:var(--ok); }
+    .danger-txt { color:var(--danger); }
     .flex { display:flex; gap:8px; }
-    .flex-col { display:flex; flex-direction:column; gap:8px; }
-    details summary { cursor:pointer; font-weight:600; margin-bottom:6px; }
-    .danger { color:#b91c1c; }
-    .success { color:#047857; }
+    .grow { flex:1; }
+    .nowrap { white-space:nowrap; }
+    input[type="checkbox"] { width:auto; margin:0; cursor:pointer; }
+    .checkbox-cell { width:30px; text-align:center; }
+    .execute-bar { position:sticky; top:0; z-index:100; background:var(--card); padding:10px; border:1px solid var(--border); border-radius:var(--radius); margin-bottom:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .execute-bar button { background:var(--ok); }
+    .execute-bar button:hover { background:#047857; }
+    .execute-bar button.outline { background:#fff; color:#6366f1; border-color:#6366f1; }
+    .execute-bar button.outline:hover { background:#6366f1; color:#fff; }
+    @media (max-width:1100px){ .layout { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <h1>Panel de configuración conversacional</h1>
-  <p class="muted">Visualiza y edita intents, variables y reglas. Todos los cambios se guardan en el archivo <code>tests/setup/data.ts</code> (persistentes).</p>
+  <p class="muted">CRUD completo de intents, ejemplos, reglas y variables. Persistencia directa en <code class="inline">tests/setup/data.ts</code>.</p>
 
-  <div class="grid">
-    <div class="card">
-      <h2>Variables</h2>
-      <div id="vars"></div>
-      <h3>Actualizar variables</h3>
-      <form id="form-vars" class="flex-col">
-        <input name="name" placeholder="nombre" required />
-        <input name="value" placeholder="valor" required />
-        <button>Guardar variable</button>
-        <div class="muted">Se aplica de inmediato (runtime).</div>
+  <div style="display:flex; flex-direction:column; gap:18px;">
+    <div class="card" id="intents-card">
+        <div class="section-header" style="margin-bottom:6px;"><h2 style="margin:0">Intents</h2><div style="display:flex; gap:8px; align-items:center;">
+          <button type="button" class="outline" id="btn-new-intent">Nuevo intent</button>
+          <div class="small" id="stats-intents"></div></div>
+        </div>
+        <div class="small" style="margin-bottom:8px;">Define los comandos del usuario. Cada intent agrupa frases ejemplo que el bot debe reconocer.</div>
+        <div class="execute-bar">
+          <button type="button" id="btn-execute-selected">▶ Ejecutar seleccionados</button>
+          <button type="button" class="outline" id="btn-open-reports" title="Abrir carpeta de reportes">📊 Reportes</button>
+          <span class="small" id="selected-count" style="margin-left:auto;">0 ejemplos seleccionados</span>
+        </div>
+        <div id="new-intent-inline" style="display:none; margin-bottom:10px; border:1px solid var(--border); padding:10px; border-radius:10px;">
+          <div style="font-weight:600; font-size:13px; margin-bottom:6px;">Crear intent</div>
+          <div class="flex" style="flex-direction:column; gap:6px;">
+            <input id="new-intent-name" placeholder="nombre (sin espacios)" />
+            <textarea id="new-intent-examples" placeholder="Ejemplos (uno por línea)"></textarea>
+            <div class="flex" style="gap:6px;">
+              <button type="button" id="confirm-create-intent">Guardar</button>
+              <button type="button" class="outline" id="cancel-create-intent">Cancelar</button>
+            </div>
+            <div class="small">Usa las variables haciendo click en ellas en el panel lateral.</div>
+            <div class="status" id="status-create-intent"></div>
+          </div>
+        </div>
+        <div class="scroll" id="intents-list"></div>
+        <div class="status" id="status-intent-gen"></div>
+      </div>
+    <div class="card" id="rules-card">
+        <div class="section-header" style="margin-bottom:6px;"><h2 style="margin:0">Reglas - Editables</h2><div style="display:flex; gap:8px; align-items:center;">
+          <button type="button" class="outline" id="btn-new-rule">Nueva regla</button>
+          <div class="small" id="stats-rules-editable"></div></div>
+        </div>
+        <div class="small" style="margin-bottom:8px;">Reglas con patrones simples que se pueden editar directamente. Detectan preguntas del bot y responden con variables.</div>
+        <div class="scroll">
+          <table id="rules-table">
+            <thead><tr><th>#</th><th>Frase</th><th>Acción</th><th>Reply</th><th>Nota</th><th>Acciones</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+    <div class="card" id="rules-readonly-card">
+        <div class="section-header" style="margin-bottom:6px;"><h2 style="margin:0">Reglas - Solo lectura</h2><div style="display:flex; gap:8px; align-items:center;">
+          <div class="small" id="stats-rules-readonly"></div></div>
+        </div>
+        <div class="small" style="margin-bottom:8px;">Reglas con patrones regex complejos (alternativas, grupos de captura). Solo pueden editarse en <code class="inline">tests/setup/data.ts</code>.</div>
+        <div class="scroll">
+          <table id="rules-readonly-table">
+            <thead><tr><th>#</th><th>Patrón</th><th>Acción</th><th>Reply</th><th>Nota</th><th>Info</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+  <div class="card" id="side">
+      <div class="section-header"><h2 style="margin:0">Variables</h2>
+        <div style="display:flex; gap:6px;">
+          <button type="button" class="outline" id="btn-refresh">Refrescar</button>
+        </div>
+      </div>
+      <div class="small" style="margin-bottom:6px;">Valores dinámicos usados en intents y reglas. Click en un chip inserta en el campo activo.</div>
+      <div class="chips" id="var-chips"></div>
+      <table style="font-size:12px; margin-top:4px;" id="vars-table">
+        <thead><tr><th>Var</th><th>Valor</th><th>Pool</th><th style="width:86px">Acciones</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <form id="form-new-var" class="inline-form" style="margin-top:8px;">
+        <input name="name" placeholder="nuevaVar" required style="width:110px" />
+        <input name="value" placeholder="valor" class="grow" />
+        <button>+</button>
       </form>
-      <h3>Nueva variable</h3>
-      <form id="form-new-var" class="flex-col">
-        <input name="name" placeholder="nombre nueva variable" required />
-        <input name="value" placeholder="valor inicial" />
-        <button>Crear variable</button>
-        <div class="muted" id="new-var-result"></div>
-      </form>
+      <div class="status" id="status-var"></div>
     </div>
-
-    <div class="card">
-      <h2>Agregar ejemplo a intent</h2>
-      <form id="form-intent" class="flex-col">
-        <input name="intent" placeholder="nombre del intent (ej: crearCultivo)" required />
-        <textarea name="example" placeholder="frase de ejemplo con {variables} si aplica" required></textarea>
-        <button>Agregar ejemplo</button>
-      </form>
-      <div id="intent-add-result" class="muted"></div>
-    </div>
-
-    <div class="card">
-      <h2>Crear nuevo intent</h2>
-      <form id="form-new-intent" class="flex-col">
-        <input name="name" placeholder="nombre del intent (ej: consultarPrecios)" required />
-        <textarea name="examples" placeholder="Introduce ejemplos (uno por línea)" required></textarea>
-        <button>Crear intent</button>
-      </form>
-      <div id="new-intent-result" class="muted"></div>
-    </div>
-
-    <div class="card">
-      <h2>Nueva regla</h2>
-      <form id="form-rule" class="flex-col">
-        <input name="regex" placeholder="regex sin / (ej: ^Nombre del cultivo\.?$)" required />
-        <select name="action" required>
-          <option value="END_OK">END_OK</option>
-          <option value="END_ERR">END_ERR</option>
-          <option value="REPLY">REPLY</option>
-        </select>
-        <input name="reply" placeholder="reply (si action = REPLY, ej: {cultivo})" />
-        <input name="note" placeholder="nota opcional" />
-        <button>Agregar regla</button>
-      </form>
-      <div class="muted">Las reglas nuevas se añaden de forma persistente (al final del array).</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Intents y ejemplos</h2>
-    <div id="intents"></div>
-  </div>
-
-  <div class="card">
-    <h2>Reglas</h2>
-    <table id="rules-table"><thead><tr><th>#</th><th>Pattern</th><th>Action</th><th>Nota</th></tr></thead><tbody></tbody></table>
   </div>
 
   <script>
-    async function loadState(){
-      const res = await fetch('/api/state');
-      const data = await res.json();
-      renderVars(data.variables);
-      renderIntents(data.intents);
-      renderRules(data.rules);
+    let STATE = { intents: [], materializedIntents: [], rules: [], variables: {}, variablePools: {} };
+    let currentFocusInput = null;
+    document.addEventListener('focusin', e => { if (e.target.matches('input,textarea')) currentFocusInput = e.target; });
+
+    function insertAtCursor(el, text){ if(!el) return; const start = el.selectionStart ?? el.value.length; const end = el.selectionEnd ?? start; const before = el.value.slice(0,start); const after = el.value.slice(end); el.value = before + text + after; const pos = start + text.length; el.selectionStart = el.selectionEnd = pos; el.focus(); el.dispatchEvent(new Event('input',{bubbles:true})); }
+
+    async function fetchState(fresh=false){
+      const url = '/api/state' + (fresh? '?fresh=1':'' );
+      const intentsStatus = document.getElementById('status-intent-gen');
+      intentsStatus.textContent = 'Cargando estado…';
+      try {
+        const r = await fetch(url, { cache:'no-store' });
+        if(!r.ok) throw new Error('HTTP '+r.status);
+        const data = await r.json();
+        if(!data || typeof data!== 'object') throw new Error('Respuesta inválida');
+        if(!Array.isArray(data.intents)) throw new Error('Sin intents');
+        STATE = { 
+          intents: data.intents||[], 
+          materializedIntents: data.materializedIntents||[], 
+          rules: data.rules||[], 
+          variables: data.variables||{}, 
+          variablePools: data.variablePools||{} 
+        };
+        console.log('[Client] Estado cargado:', {
+          intents: STATE.intents.length,
+          materializedIntents: STATE.materializedIntents.length,
+          rules: STATE.rules.length,
+          variables: Object.keys(STATE.variables).length
+        });
+        renderAll();
+        if(!STATE.intents.length && !Object.keys(STATE.variables).length && !STATE.rules.length){
+          intentsStatus.innerHTML = '<span class="warn">No se encontraron datos (intents/rules/vars vacíos)</span>';
+        } else {
+          intentsStatus.textContent = 'Datos cargados';
+          setTimeout(()=>{ if(intentsStatus.textContent==='Datos cargados') intentsStatus.textContent=''; }, 2500);
+        }
+      } catch (err){
+        console.error('Error cargando estado', err);
+        intentsStatus.innerHTML = '<span class="danger-txt">Error cargando estado: '+ (err&&err.message? err.message: err)+'</span>';
+      }
     }
-    function renderVars(vars){
-      const c = document.getElementById('vars');
-      c.innerHTML = Object.entries(vars).map(([k,v])=>`<div class="tag"><strong>${k}</strong>: ${v}</div>`).join('');
+
+    function renderAll(){ renderVariables(); renderIntents(); renderRules(); }
+
+    function el(tag, attrs={}, children=[]) { const n = document.createElement(tag); for (const [k,v] of Object.entries(attrs)) { if (k==='class') n.className=v; else if (k==='html') n.innerHTML=v; else if (k.startsWith('on') && typeof v==='function') n.addEventListener(k.slice(2), v); else n.setAttribute(k,v); } (Array.isArray(children)?children:[children]).forEach(c=>{ if (c==null) return; n.appendChild(typeof c==='string'?document.createTextNode(c):c);}); return n; }
+
+    /************ VARIABLES ************/ 
+    function renderVariables(){
+      const tbody = document.querySelector('#vars-table tbody'); tbody.innerHTML='';
+      const entries = Object.entries(STATE.variables).sort((a,b)=>a[0].localeCompare(b[0]));
+      document.getElementById('var-chips').innerHTML = entries.map(([k])=>`<span class="tag" data-var="${k}">{${k}}</span>`).join('');
+      entries.forEach(([k,v])=>{
+        const pool = STATE.variablePools[k] || [];
+        const poolInfo = pool.length > 0 ? `${pool.length} valores` : '-';
+        
+        const tr = el('tr',{},[
+          el('td',{},k),
+          el('td',{},[el('input',{value:v, 'data-var-name':k, oninput:e=>e.target.dataset.dirty='1'})]),
+          el('td',{style:'font-size:11px; color:var(--muted);'},poolInfo),
+          el('td',{},[
+            el('div',{class:'row-actions'},[
+              el('button',{class:'outline', onclick:()=>updateVarRow(k)},'💾'),
+              el('button',{class:'danger outline', onclick:()=>deleteVarRow(k)},'🗑️')
+            ])
+          ])
+        ]);
+        
+        // Tooltip con los valores del pool
+        if (pool.length > 0) {
+          tr.title = `Pool: ${pool.slice(0, 10).join(', ')}${pool.length > 10 ? '...' : ''}`;
+        }
+        
+        tbody.appendChild(tr);
+      });
+      // variable chip click
+      document.querySelectorAll('[data-var]').forEach(ch=>{
+        ch.addEventListener('click',()=> insertAtCursor(currentFocusInput, ch.textContent));
+      });
     }
-    function renderIntents(intents){
-      const c = document.getElementById('intents');
-      c.innerHTML = intents.map(it=>`
-        <details>
-          <summary>${it.name} <span class="muted">(${it.examples.length})</span></summary>
-          <ul style="margin:4px 0 12px 16px; padding:0; list-style:disc; max-height:200px; overflow:auto;">
-            ${it.examples.map(e=>`<li style="margin-bottom:2px;">${e.replace(/</g,'&lt;')}</li>`).join('')}
-          </ul>
-        </details>
-      `).join('');
+    async function updateVarRow(name){ const input = document.querySelector(`input[data-var-name="${name}"]`); if(!input) return; await fetch(`/api/variables/${encodeURIComponent(name)}`, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({value:input.value})}); fetchState(); }
+    async function deleteVarRow(name){ if(!confirm(`Eliminar variable ${name}?`)) return; await fetch(`/api/variables/${encodeURIComponent(name)}`, {method:'DELETE'}); fetchState(); }
+    document.getElementById('form-new-var').addEventListener('submit', async e=>{ e.preventDefault(); const fd = new FormData(e.target); const name=fd.get('name'); const value=fd.get('value'); const r= await fetch('/api/variables',{method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,value})}); if(!r.ok){ alert('Error creando variable'); } e.target.reset(); fetchState(); });
+    document.getElementById('btn-refresh').addEventListener('click', fetchState);
+    document.getElementById('btn-open-reports').addEventListener('click', async ()=>{
+      try {
+        const r = await fetch('/api/open-reports');
+        const result = await r.json();
+        if(result.ok){
+          alert(`Carpeta de reportes abierta:\n${result.path}`);
+        } else {
+          alert('Error: ' + (result.error || 'No se pudo abrir la carpeta'));
+        }
+      } catch(err){
+        alert('Error de red: ' + err.message);
+      }
+    });
+
+    /************ INTENTS ************/ 
+    function renderIntents(){
+      const container = document.getElementById('intents-list'); container.innerHTML='';
+      document.getElementById('stats-intents').textContent = `${STATE.intents.length} intents`;
+      STATE.intents.sort((a,b)=>a.name.localeCompare(b.name)).forEach(intent=>{
+        const details = el('details',{class:'intent-block', style:'border:1px solid var(--border); border-radius:10px; margin-bottom:8px; background:#fff; padding:4px 8px;'});
+        const intentCheckbox = el('input',{type:'checkbox', 'data-intent-check':intent.name, onchange:(e)=>handleIntentCheckChange(e, intent.name)});
+        const summary = el('summary',{style:'cursor:pointer; display:flex; align-items:center; gap:8px; list-style:none;'},[
+          intentCheckbox,
+          el('strong',{},intent.name),
+          el('span',{class:'pill'}, `${intent.examples.length} ej.`)
+        ]);
+        summary.addEventListener('click', e=>{ if(e.target===intentCheckbox) e.stopPropagation(); });
+        const actionsBar = el('div',{style:'display:flex; gap:6px; margin:8px 0 6px; justify-content:flex-end;'},[
+          el('button',{class:'danger outline', type:'button', onclick:()=> deleteIntent(intent.name)},'Eliminar intent')
+        ]);
+        const examplesBox = el('div',{class:'examples', style:'margin-top:6px;'});
+        intent.examples.forEach((ex,idx)=> examplesBox.appendChild(buildExampleRow(intent.name, idx, ex)) );
+        const addExampleBtn = el('button',{class:'outline', type:'button', style:'margin-top:6px; width:100%;', onclick:()=> addExampleRow(intent.name, details)},'+ ejemplo');
+        examplesBox.appendChild(addExampleBtn);
+        details.appendChild(summary);
+        details.appendChild(actionsBar);
+        details.appendChild(examplesBox);
+        container.appendChild(details);
+      });
     }
-    function renderRules(rules){
+    function buildExampleRow(intentName, idx, value){
+      const checkbox = el('input',{type:'checkbox', 'data-example-check':intentName, 'data-example-idx':idx, onchange:(e)=>handleExampleCheckChange(e, intentName)});
+      const inp = el('input',{type:'text', value, 'data-intent':intentName, 'data-idx':idx, onfocus:e=>currentFocusInput=e.target, style:'flex:1'});
+      const saveBtn = el('button',{class:'outline', title:'Guardar', onclick:()=>saveExample(intentName, idx, inp.value)},'💾');
+      const delBtn = el('button',{class:'danger outline', title:'Eliminar', onclick:()=>deleteExample(intentName, idx)},'🗑️');
+      return el('div',{class:'example-row'}, [checkbox, inp, el('div',{class:'row-actions'},[saveBtn, delBtn])]);
+    }
+    async function addExampleRow(intentName, detailsEl){
+      const block = detailsEl || [...document.querySelectorAll('.intent-block')].find(b=>b.querySelector('strong')?.textContent===intentName);
+      if(block && block.tagName==='DETAILS') block.open = true;
+      const examplesBox = block.querySelector('.examples');
+      const idx = examplesBox.querySelectorAll('.example-row').length;
+      const row = buildExampleRow(intentName, idx, '');
+      examplesBox.appendChild(row);
+      const input = row.querySelector('input'); input.focus();
+    }
+    async function saveExample(intentName, idx, value){
+      if(!value.trim()) { alert('El ejemplo no puede ir vacío'); return; }
+      // Determine if new (idx >= existing length)
+      const intent = STATE.intents.find(i=>i.name===intentName);
+      if (!intent) return;
+      if (idx >= intent.examples.length) {
+        await fetch(`/api/intents/${encodeURIComponent(intentName)}/examples`, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({example:value})});
+      } else {
+        await fetch(`/api/intents/${encodeURIComponent(intentName)}/examples/${idx}`, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({example:value})});
+      }
+      fetchState();
+    }
+    async function deleteExample(intentName, idx){ if(!confirm('Eliminar ejemplo?')) return; await fetch(`/api/intents/${encodeURIComponent(intentName)}/examples/${idx}`, {method:'DELETE'}); fetchState(); }
+    async function deleteIntent(intentName){ if(!confirm(`Eliminar intent "${intentName}" completo?`)) return; await fetch(`/api/intents/${encodeURIComponent(intentName)}`, {method:'DELETE'}); fetchState(); }
+    document.getElementById('btn-new-intent').addEventListener('click', ()=>{
+      const box = document.getElementById('new-intent-inline');
+      box.style.display = box.style.display==='none' ? 'block':'none';
+    });
+    document.getElementById('cancel-create-intent').addEventListener('click', ()=>{
+      document.getElementById('new-intent-name').value='';
+      document.getElementById('new-intent-examples').value='';
+      document.getElementById('new-intent-inline').style.display='none';
+    });
+    document.getElementById('confirm-create-intent').addEventListener('click', async ()=>{
+      const name = document.getElementById('new-intent-name').value.trim();
+      const examplesRaw = document.getElementById('new-intent-examples').value;
+      const status = document.getElementById('status-create-intent');
+      if(!name){ status.textContent='Nombre requerido'; return; }
+      const examples = examplesRaw.split('\n').map(s=>s.trim()).filter(Boolean).join('\n');
+      if(!examples){ status.textContent='Al menos un ejemplo'; return; }
+      const r = await fetch('/api/intents',{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, examples })});
+      const out = await r.json();
+      status.textContent = out.ok? 'Intent creado' : (out.error||'Error');
+      if(out.ok){
+        document.getElementById('new-intent-name').value='';
+        document.getElementById('new-intent-examples').value='';
+        setTimeout(()=>{ document.getElementById('new-intent-inline').style.display='none'; }, 600);
+        fetchState(true);
+      }
+    });
+
+    /************ RULES ************/ 
+    function deriveSimplePhrase(pattern){
+      try {
+        const inner = pattern.replace(/^\/(.*)\/[a-z]*$/i,'$1');
+        // Accept ^(phrase)\.?$  or ^phrase\.?$
+        const m = inner.match(/^\^\(?([^)$]+)\)?\\\.\?\$$/);
+        if(!m) return null;
+        let phrase = m[1];
+        
+        // Si tiene alternativas (|), tomar solo la primera opción
+        if(phrase.includes('|')){
+          const parts = phrase.split('|');
+          phrase = parts[0].trim();
+        }
+        
+        phrase = phrase
+          .replace(/\[aá\]/gi,'a')
+          .replace(/\[eé\]/gi,'e')
+          .replace(/\[ií\]/gi,'i')
+          .replace(/\[oó\]/gi,'o')
+          .replace(/\[uúü\]/gi,'u')
+          .replace(/\\/g,'');
+        if(/[.*+?{}\[\]^$]/.test(phrase)) return null; // treat as complex if metas remain
+        return phrase.trim();
+      } catch { return null; }
+    }
+    function buildPatternFromPhrase(phrase, opts){
+      const esc = phrase.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+      let variant = esc;
+      if(opts.variants){
+        variant = variant
+          .replace(/a/gi,'[aá]')
+          .replace(/e/gi,'[eé]')
+          .replace(/i/gi,'[ií]')
+          .replace(/o/gi,'[oó]')
+          .replace(/u/gi,'[uúü]');
+      }
+      return `^(${variant})${opts.punct? '\\.?':''}$`;
+    }
+    function renderRules(){
+      const tbodyEditable = document.querySelector('#rules-table tbody');
+      const tbodyReadonly = document.querySelector('#rules-readonly-table tbody');
+      tbodyEditable.innerHTML='';
+      tbodyReadonly.innerHTML='';
+      let editableCount = 0;
+      let readonlyCount = 0;
+      STATE.rules.forEach(r=>{
+        const phrase = deriveSimplePhrase(r.pattern);
+        if(phrase) {
+          editableCount++;
+          tbodyEditable.appendChild(buildRuleRow(r.idx, phrase, r, false));
+        } else {
+          readonlyCount++;
+          tbodyReadonly.appendChild(buildComplexRuleRow(r.idx, r));
+        }
+      });
+      document.getElementById('stats-rules-editable').textContent = `${editableCount} reglas`;
+      document.getElementById('stats-rules-readonly').textContent = `${readonlyCount} reglas`;
+    }
+    function buildRuleRow(idx, phrase, rule){
+      const tr = el('tr',{},[]);
+      const phraseInput = el('input',{value: phrase, style:'min-width:170px'});
+      const actionSelect = el('select',{},['END_OK','END_ERR','REPLY'].map(a=> el('option',{value:a, selected: rule.action===a? 'selected': undefined},a)));
+      const replyInput = el('input',{value: rule.action==='REPLY'? rule.reply||'':'', placeholder:'{variable}', style:'width:100px'});
+      if(rule.action!=='REPLY') replyInput.disabled=true;
+      actionSelect.addEventListener('change', ()=>{ if(actionSelect.value==='REPLY') replyInput.disabled=false; else { replyInput.disabled=true; replyInput.value=''; } });
+      const noteInput = el('input',{value: rule.note||'', placeholder:'nota'});
+      const saveBtn = el('button',{class:'outline', title:'Guardar', onclick:()=>{
+        const newPhrase = phraseInput.value.trim(); if(!newPhrase) return alert('Frase vacía');
+        const pattern = buildPatternFromPhrase(newPhrase,{variants:true, punct:true});
+        saveRule(idx, pattern, actionSelect.value, replyInput.value, noteInput.value);
+      }},'💾');
+      const delBtn = el('button',{class:'danger outline', title:'Eliminar', onclick:()=>deleteRule(idx)},'🗑️');
+      tr.appendChild(el('td',{}, String(idx)));
+      tr.appendChild(el('td',{}, phraseInput));
+      tr.appendChild(el('td',{}, actionSelect));
+      tr.appendChild(el('td',{}, replyInput));
+      tr.appendChild(el('td',{}, noteInput));
+      tr.appendChild(el('td',{}, el('div',{class:'row-actions'},[saveBtn, delBtn])));
+      return tr;
+    }
+    function buildComplexRuleRow(idx, rule){
+      const tr = el('tr',{},[]);
+      
+      // Mostrar el patrón regex completo (truncado si es muy largo)
+      let patternText = rule.pattern.replace(/^\/(.*)\/[a-z]*$/i,'$1');
+      if(patternText.length > 100) patternText = patternText.substring(0, 97) + '...';
+      const patternDisplay = el('code',{style:'font-size:11px; color:#475569; user-select:all; background:#f1f5f9; padding:4px 6px; border-radius:4px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap'},patternText);
+      
+      // Action y reply como texto (no editables)
+      const actionBadge = el('span',{
+        class:'pill',
+        style:`background:${rule.action==='END_OK'?'#d1fae5':rule.action==='END_ERR'?'#fee2e2':'#dbeafe'}; color:${rule.action==='END_OK'?'#065f46':rule.action==='END_ERR'?'#991b1b':'#1e40af'}; font-weight:600`
+      },rule.action);
+      
+      const replyText = rule.action==='REPLY' && rule.reply ? rule.reply : '-';
+      const replySpan = el('span',{style:'font-size:12px; color:#64748b; font-family:monospace; font-weight:500'},replyText);
+      
+      const noteSpan = el('span',{style:'font-size:11px; color:#64748b'},rule.note||'(sin nota)');
+      
+      // Botón de info mejorado
+      const infoBtn = el('button',{
+        class:'outline',
+        title:'Ver patrón completo',
+        style:'padding:5px 10px; font-size:12px',
+        onclick:()=>{
+          const msg = `━━━ Regla #${idx} (Solo lectura) ━━━\n\n` +
+                      `📋 Patrón completo:\n${rule.pattern}\n\n` +
+                      `⚡ Acción: ${rule.action}\n` +
+                      `💬 Reply: ${rule.reply||'(ninguno)'}\n` +
+                      `📝 Nota: ${rule.note||'(ninguna)'}\n\n` +
+                      `ℹ️ Esta regla usa expresiones regulares complejas (alternativas, grupos de captura, etc.) y solo puede editarse directamente en el archivo tests/setup/data.ts`;
+          alert(msg);
+        }
+      },'ℹ️ Info');
+      
+      tr.appendChild(el('td',{style:'color:#64748b; font-weight:600'}, String(idx)));
+      tr.appendChild(el('td',{style:'max-width:400px'}, patternDisplay));
+      tr.appendChild(el('td',{}, actionBadge));
+      tr.appendChild(el('td',{}, replySpan));
+      tr.appendChild(el('td',{style:'max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap'}, noteSpan));
+      tr.appendChild(el('td',{}, el('div',{class:'row-actions'},[infoBtn])));
+      return tr;
+    }
+    document.getElementById('btn-new-rule').addEventListener('click', ()=>{
       const tbody = document.querySelector('#rules-table tbody');
-      tbody.innerHTML = rules.map((r,i)=>`<tr><td>${i+1}</td><td><code>${r.pattern}</code></td><td>${r.action}</td><td>${r.note||''}</td></tr>`).join('');
+      // Evitar múltiples filas de creación
+      if(tbody.querySelector('tr[data-new="1"]')) return;
+      const tr = document.createElement('tr'); tr.dataset.new='1';
+      const phraseInput = el('input',{placeholder:'Frase'});
+      const actionSelect = el('select',{},['END_OK','END_ERR','REPLY'].map(a=> el('option',{value:a},a)));
+      const replyInput = el('input',{placeholder:'{variable}', style:'width:100px', disabled:true});
+      actionSelect.addEventListener('change', ()=>{ replyInput.disabled = actionSelect.value!=='REPLY'; if(replyInput.disabled) replyInput.value=''; });
+      const noteInput = el('input',{placeholder:'nota'});
+      const saveBtn = el('button',{class:'outline', onclick:async()=>{
+        const phrase = phraseInput.value.trim(); if(!phrase) return alert('Frase requerida');
+        const pattern = buildPatternFromPhrase(phrase,{variants:true, punct:true});
+        const payload = { regex: pattern, action: actionSelect.value, reply: actionSelect.value==='REPLY'? replyInput.value: undefined, note: noteInput.value, flags:'i' };
+        const r = await fetch('/api/rules',{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+        if(!r.ok){ const err = await r.json().catch(()=>({error:'Error desconocido'})); alert('Error creando regla: '+(err.error||r.status)); return; }
+        fetchState(true);
+      }},'Guardar');
+      const cancelBtn = el('button',{class:'danger outline', onclick:()=> tr.remove()},'Cancelar');
+      tr.appendChild(el('td',{}, '#'));
+      tr.appendChild(el('td',{}, phraseInput));
+      tr.appendChild(el('td',{}, actionSelect));
+      tr.appendChild(el('td',{}, replyInput));
+      tr.appendChild(el('td',{}, noteInput));
+      tr.appendChild(el('td',{}, el('div',{class:'row-actions'},[saveBtn, cancelBtn])));
+      tbody.prepend(tr);
+      phraseInput.focus();
+    });
+    async function saveRule(idx, regex, action, reply, note){ if(!regex.trim()) return alert('Patrón vacío'); const payload={ regex, action, reply: action==='REPLY'? reply: undefined, note, flags:'i' }; await fetch(`/api/rules/${idx}`, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}); fetchState(); }
+    async function deleteRule(idx){ if(!confirm('Eliminar regla?')) return; await fetch(`/api/rules/${idx}`, {method:'DELETE'}); fetchState(); }
+    // (Eliminado formulario lateral de reglas; creación inline en la tabla)
+
+    /************ SELECTION & EXECUTION ************/
+    function handleIntentCheckChange(e, intentName){
+      const isChecked = e.target.checked;
+      // Marcar/desmarcar todos los ejemplos de este intent
+      document.querySelectorAll(`input[data-example-check="${intentName}"]`).forEach(checkbox=>{
+        checkbox.checked = isChecked;
+      });
+      updateSelectedCount();
     }
-    document.getElementById('form-vars').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const name = fd.get('name');
-      const value = fd.get('value');
-      await fetch('/api/variables',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({[name]:value})});
-      loadState();
-      e.target.reset();
+    
+    function handleExampleCheckChange(e, intentName){
+      // Verificar si todos los ejemplos del intent están marcados
+      const allExamples = document.querySelectorAll(`input[data-example-check="${intentName}"]`);
+      const checkedExamples = document.querySelectorAll(`input[data-example-check="${intentName}"]:checked`);
+      const intentCheckbox = document.querySelector(`input[data-intent-check="${intentName}"]`);
+      
+      if(intentCheckbox){
+        // Si todos los ejemplos están marcados, marcar el intent
+        intentCheckbox.checked = (allExamples.length > 0 && allExamples.length === checkedExamples.length);
+      }
+      updateSelectedCount();
+    }
+    
+    function updateSelectedCount(){
+      // Solo contar ejemplos que tienen el check marcado
+      const checkedExamples = document.querySelectorAll('input[data-example-check]:checked');
+      document.getElementById('selected-count').textContent = `${checkedExamples.length} ejemplos seleccionados`;
+    }
+    function getSelectedExamples(){
+      const selected = [];
+      // Solo obtener ejemplos que tienen el checkbox marcado
+      document.querySelectorAll('input[data-example-check]:checked').forEach(ch=>{
+        const intentName = ch.dataset.exampleCheck;
+        const idx = parseInt(ch.dataset.exampleIdx);
+        // Usar materializedIntents (con valores reales) si está disponible, sino usar intents
+        const intentsSource = (STATE.materializedIntents && STATE.materializedIntents.length > 0) 
+          ? STATE.materializedIntents 
+          : STATE.intents;
+        const intent = intentsSource.find(i=>i.name===intentName);
+        if(intent && intent.examples[idx]){
+          selected.push({intent: intentName, example: intent.examples[idx]});
+        }
+      });
+      return selected;
+    }
+    // Verificar estado de ejecución cada 2 segundos
+    let executionCheckInterval = null;
+    
+    async function checkExecutionStatus() {
+      try {
+        const r = await fetch('/api/execution-status');
+        const status = await r.json();
+        const btn = document.getElementById('btn-execute-selected');
+        
+        if(status.isExecuting) {
+          btn.disabled = true;
+          btn.textContent = '⏳ Ejecutando... (ver terminal)';
+          btn.style.opacity = '0.6';
+        } else {
+          btn.disabled = false;
+          btn.textContent = '▶ Ejecutar seleccionados';
+          btn.style.opacity = '1';
+        }
+      } catch(err) {
+        console.error('Error verificando estado:', err);
+      }
+    }
+    
+    // Verificar estado inicial y cada 2 segundos
+    checkExecutionStatus();
+    executionCheckInterval = setInterval(checkExecutionStatus, 2000);
+    
+    document.getElementById('btn-execute-selected').addEventListener('click', async ()=>{
+      console.log('[Execution] Click en botón ejecutar');
+      const selected = getSelectedExamples();
+      console.log('[Execution] Ejemplos seleccionados:', selected.length, selected);
+      
+      if(!selected.length){ 
+        alert('No hay ejemplos seleccionados'); 
+        return; 
+      }
+      
+      console.log('[Execution] Iniciando ejecución automática...');
+      console.log('[Execution] Intents:', [...new Set(selected.map(e=>e.intent))].join(', '));
+      
+      const btn = document.getElementById('btn-execute-selected');
+      const statusEl = document.getElementById('selected-count');
+      btn.disabled = true;
+      btn.textContent = '⏳ Iniciando...';
+      console.log('[Execution] Botón desactivado, enviando petición...');
+      
+      try {
+        console.log('[Execution] Enviando POST /api/execute con', selected.length, 'ejemplos');
+        const r = await fetch('/api/execute', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ examples: selected })
+        });
+        console.log('[Execution] Respuesta recibida:', r.status, r.statusText);
+        const result = await r.json();
+        console.log('[Execution] Resultado:', result);
+        
+        if(r.ok){
+          btn.textContent = '⏳ Ejecutando... (ver terminal)';
+          btn.style.opacity = '0.6';
+          
+          statusEl.innerHTML = `<span class="ok">✓ Ejecución en proceso: ${selected.length} ejemplos (ID: ${result.executionId})</span>`;
+          
+          // Mostrar notificación
+          alert(`✓ Automatización de WhatsApp iniciada\n\n` +
+                `Ejemplos: ${selected.length}\n` +
+                `ID: ${result.executionId}\n\n` +
+                `Mira la terminal del servidor para ver el progreso.\n` +
+                `El botón se reactivará cuando termine.\n\n` +
+                `Los resultados estarán en playwright-report/`);
+          
+          // Actualizar estado más frecuentemente durante la ejecución
+          const fastCheck = setInterval(async () => {
+            await checkExecutionStatus();
+            const status = await fetch('/api/execution-status').then(r=>r.json());
+            if(!status.isExecuting) {
+              clearInterval(fastCheck);
+              statusEl.textContent = `${selected.length} ejemplos seleccionados`;
+              alert('✅ Ejecución completada!\n\nRevisa la terminal para ver los resultados.\nClick en "📊 Reportes" para abrir el reporte HTML.');
+            }
+          }, 1000);
+          
+        } else if(r.status === 409) {
+          alert('⚠️ Ya hay una ejecución en proceso\n\nEspera a que termine la ejecución actual.');
+          btn.disabled = false;
+          btn.textContent = '▶ Ejecutar seleccionados';
+        } else {
+          alert('Error al ejecutar: ' + (result.error || r.status));
+          btn.disabled = false;
+          btn.textContent = '▶ Ejecutar seleccionados';
+        }
+      } catch(err){
+        alert('Error de red: ' + err.message);
+        btn.disabled = false;
+        btn.textContent = '▶ Ejecutar seleccionados';
+      }
     });
-    document.getElementById('form-intent').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const intent = fd.get('intent');
-      const example = fd.get('example');
-      const r = await fetch('/api/intents/'+intent,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({example})});
-      const out = await r.json();
-      document.getElementById('intent-add-result').textContent = out.ok?`Añadido. Total: ${out.total}`: (out.error||'Error');
-      loadState();
-      e.target.reset();
-    });
-    document.getElementById('form-new-intent').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const name = fd.get('name');
-      const examples = fd.get('examples');
-      const r = await fetch('/api/intents',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name, examples})});
-      const out = await r.json();
-      document.getElementById('new-intent-result').textContent = out.ok?`Intent creado (${out.total} ejemplos)`:(out.error||'Error');
-      loadState();
-      e.target.reset();
-    });
-    document.getElementById('form-new-var').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const name = fd.get('name');
-      const value = fd.get('value');
-      const r = await fetch('/api/variables/new',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name, value})});
-      const out = await r.json();
-      document.getElementById('new-var-result').textContent = out.ok?`Variable creada`:(out.error||'Error');
-      loadState();
-      e.target.reset();
-    });
-    document.getElementById('form-rule').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const payload = Object.fromEntries(fd.entries());
-      await fetch('/api/rules',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-      loadState();
-      e.target.reset();
-    });
-    loadState();
+
+    /************ INIT ************/ 
+  // Primera carga forzando fresh para evitar caches del navegador / proxy
+  fetchState(true);
   </script>
 </body>
 </html>

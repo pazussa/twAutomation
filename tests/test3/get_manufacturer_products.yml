@@ -1,0 +1,28 @@
+version: "3.1"
+nlu:
+- intent: get_manufacturer_products
+  examples: |
+    - Hola Luca, dime que fertilizantes tiene [Mosaic Company](manufacturer_name)
+    - Hola Luca, que clasificación de fertilizantes tiene [Timac Agro](manufacturer_name)?
+    - Hola Luca! Que productos de D-Coder tiene [Timac](manufacturer_name)?
+    - Hola Luca, cuántos fertilizantes tiene [Yara](manufacturer_name)
+    - Luca, muéstrame la clasificación de productos químicos de [BASF](manufacturer_name)
+    - Qué gamas de fertilizantes ofrece [Fertiberia](manufacturer_name)
+    - Luca, dime los fertilizantes que tiene [Timac Agro](manufacturer_name)
+    - Quiero saber qué fitosanitarios tiene [Syngenta](manufacturer_name)
+    - Dime las gamas de químicos que vende [Bayer CropScience](manufacturer_name)
+    - Hola Luca, listado de fertilizantes de [Yara](manufacturer_name) por favor
+    - ¿Cuántos productos químicos tiene [Adama](manufacturer_name) en la app?
+    - ¿Cuántos productos químicos tiene [Mosaic Company](manufacturer_name) en la app?
+    - Muestra la clasificación de fertilizantes de [Yara](manufacturer_name)
+    - Hola, dime todos los químicos que ofrece [BASF](manufacturer_name)
+    - Luca, qué gamas de fitosanitarios tiene [Syngenta](manufacturer_name)?
+    - Quiero saber las gamas de fertilizantes de [Fertiberia](manufacturer_name)
+    - Hola Luca, cuántos fitosanitarios vende [Bayer CropScience](manufacturer_name)
+    - Dime todos los fertilizantes de [Timac Agro](manufacturer_name)
+    - Luca, clasificación de fertilizantes de [Yara](manufacturer_name)
+    - Muéstrame cuántos productos químicos tiene [BASF](manufacturer_name)
+    - Qué gamas de fertilizantes hay en [Fertiberia](manufacturer_name)?
+    - Hola Luca, lista de fitosanitarios de [Adama](manufacturer_name)
+    - Clasificación de productos químicos de [Syngenta](manufacturer_name) por favor
+    - Cuántos fertilizantes tiene [Yara](manufacturer_name) en total?

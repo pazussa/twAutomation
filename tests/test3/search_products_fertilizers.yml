@@ -1,0 +1,31 @@
+version: "3.1"
+nlu:
+- intent: search_products_fertilizers
+  examples: |
+    - busca [urea](search_query)
+    - quiero buscar productos que contengan [triple 15](search_query)
+    - encuentra [abono nitrogenado](search_query) para el cliente [Maria Gomez](client_name)
+    - busca el fertilizante [foliar](search_query)
+    - necesito encontrar abono [foliar](search_query)
+    - muéstrame fertilizante [foliar](search_query) de hierro
+    - ¿hay fertilizante [foliar](search_query) para cítricos?
+    - busca nutriente [foliar](search_query) para el cliente [Agrícola La Esperanza](client_name)
+    - quiero ver [nitrogenado](search_query)
+    - encuentra abono [foliar](search_query) líquido
+    - ¿qué tipos de fertilizante [foliar](search_query) de calcio tenemos?
+    - lista los nutrientes [foliares](search_query) para [Distribuidora Campo Verde](client_name)
+    - buscar [abono orgánico](search_query)
+    - consulta [ potásico](search_query)
+    - muéstrame  [foliar](search_query) para tomate
+    - ¿tenemos [abono de liberación lenta](search_query)?
+    - necesito [ completo NPK](search_query) para [Hacienda Los Nogales](client_name)
+    - busca micronutrientes [foliares](search_query)
+    - quiero ver fertilizante [ hidrosoluble](search_query)
+    - ¿hay estimulante [foliar](search_query) disponible?
+    - consulta los fertilizantes [foliares](search_query) de [Productores Unidos](client_name)
+    - busca abono [foliar](search_query) con aminoácidos
+    - quiero información sobre [ fertirrigación](search_query)
+    - Hola Luca,existe el fertilizante [foliar](search_query)?
+    - Hola Luca existe el fertilizante [triple 15](search_query)?
+    - dime los fertilizantes de [*/?](client_name)
+

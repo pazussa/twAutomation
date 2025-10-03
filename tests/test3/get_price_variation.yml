@@ -1,0 +1,42 @@
+version: "3.1"
+nlu:
+- intent: get_price_variation
+  examples: |
+    - Hola Luca, cuál ha sido la variación del precio del [trigo](search_query)?
+    - Luca, dime cuánto ha variado el precio del [maíz](search_query)
+    - ¿Qué tanta variación ha tenido el producto [pienso](search_query)?
+    - quiero saber si el precio del [trigo altamar aviso](search_query) ha subido o bajado
+    - cuánto ha cambiado el valor del [fertilizante nitrogenado](search_query) en los últimos años?
+    - Luca, ¿cuánto ha aumentado o disminuido el precio del [arroz](search_query)?
+    - ¿Cuál ha sido el cambio reciente del precio del [Limonero](search_query)?
+    - Muéstrame cómo ha evolucionado el precio de la [Urea (46-0-0)](search_query).
+    - Quiero consultar las variaciones recientes en el precio del [Puerro](search_query).
+    - Dime cómo ha fluctuado el precio del [Sulfato de amonio (21-0-0)](search_query).
+    - ¿Puedes mostrarme la evolución del coste de [Abamectina](search_query)?
+    - Listar cambios de precio registrados para el producto [Fosfato monoamónico (MAP)](search_query).
+    - Ver cómo ha cambiado últimamente el importe del [Nitrato de amonio (33,5-0-0)](search_query).
+    - Consultar el movimiento reciente en el valor del [Superfosfato simple](search_query).
+    - Muéstrame la tendencia del precio para [Cloruro de potasio (60% K₂O)](search_query).
+    - ¿Qué modificaciones ha tenido el precio del [Benomilo](search_query)?
+    - Mostrar evolución reciente del importe del [Extractos húmicos – fertilizantes orgánicos](search_query).
+    - Dime si ha habido variación en el coste de la [Carboxina](search_query).
+    - ¿Cómo ha fluctuado últimamente el precio del [Tebuconazol](search_query)?
+    - Consultar cambios recientes en la tarifa del [Fosfato diamónico (DAP)](search_query).
+    - Muéstrame la variación reciente del coste del [Sulfato de potasio (50% K₂O)](search_query).
+    - ¿Ha habido cambios últimamente en el valor de la [Calabaza](search_query)?
+    - Quiero ver cómo ha evolucionado el precio del [Epoxiconazol](search_query).
+    - Mostrar la fluctuación reciente en el precio del [Argán](search_query).
+    - Kiero saber los movimientos del precio del [Oxicarboxina](search_query).
+    - ¿Cuál es la tendencia del importe del producto [Enula](search_query)?
+    - Ver modificaciones recientes en el coste del [Superfosfato triple](search_query).
+    - Listar evolución del precio del [Clorofacinona](search_query) para [Sara](client_name).
+    - Muéstrame cómo ha variado el precio de la [Bromadiolona](search_query) para [Javi](client_name).
+    - Dime el cambio reciente en la tarifa de [Difenacum](search_query) registrada por [Lucía](client_name).
+    - ¿Cuál ha sido la fluctuación del precio del producto [Puerro](search_query) para [Mario](client_name)?
+    - Consultar evolución del importe del [Limonero](search_query) asociado a [Pedro](client_name).
+    - Mostrar variaciones recientes del coste del [Fosfato monoamónico (MAP)](search_query) para [Irene](client_name).
+    - ¿Puedes decirme cómo ha cambiado el valor de [Benomilo](search_query) para [Álvaro](client_name)?
+    - Listar modificaciones recientes en el precio de la [Urea (46-0-0)](search_query) registradas por [Laura](client_name).
+    - Ver evolución del precio del [Argán](search_query) en la finca de [Carlos](client_name).
+    - Hola Luca, cuál ha sido la variación del precio del [herbicida metolachlor](search_query)?
+

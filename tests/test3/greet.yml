@@ -1,0 +1,26 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hola
+    - buenos días
+    - hey
+    - buenas tardes
+    - buenas noches
+    - saludos
+    - qué tal
+    - cómo estás
+    - hola Luca
+    - buenos días Luca
+    - oye Luca
+    - hey Luca
+    - ey Luca
+    - Luca, hola
+    - Luca, ¿qué tal?
+    - Luca, buenos días
+    - hola, ¿cómo vas?
+    - un saludo
+    - qué hay
+    - qué pasa
+    - Luca
+

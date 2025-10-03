@@ -1,0 +1,36 @@
+version: "3.1"
+nlu:
+- intent: get_chemical_products
+  examples: |
+    - Dame los productos químicos que tengo
+    - ¿Cuáles son los químicos que manejo?
+    - Muéstrame la lista de productos químicos
+    - Químicos disponibles
+    - ¿Cuál es mi inventario de químicos?
+    - Muéstrame qué plaguicidas tengo registrados ahora mismo
+    - ¿Qué productos químicos tengo actualmente en la finca?
+    - Quiero consultar los pesticidas que tengo registrados
+    - Lista todos los agroquímicos que tengo ahora
+    - ¿Me puedes mostrar los tratamientos fitosanitarios que tengo en uso?
+    - Dime qué insecticidas y fungicidas tengo registrados
+    - ¿Qué productos para plagas tengo registrados en mis cultivos?
+    - Muestra los químicos agrícolas que tengo actualmente
+    - Quiero ver qué herbicidas y fungicidas tengo ahora mismo registrados
+    - Lista todos los tratamientos que tengo para protección vegetal
+    - Consulta rápida de los pesticidas que estoy usando
+    - ¿Me podrías enseñar los agroquímicos que tengo en mis parcelas?
+    - Consulta qué productos fitosanitarios tengo activos ahora
+    - Lista todos los productos químicos que utilizo en mis cultivos
+    - Dime qué insecticidas tengo registrados en la finca ahora
+    - ¿Qué fungicidas y herbicidas tengo registrados actualmente?
+    - Muéstrame los tratamientos agrícolas disponibles
+    - Quiero consultar los pesticidas registrados ahora mismo
+    - ¿Qué agroquímicos tengo disponibles para aplicar en mis campos?
+    - Lista todos los productos para plagas que tengo en la finca ahora
+    - Muéstrame los productos químicos agrícolas que tengo en uso
+    - Enséñame el inventario de químicos agrícolas que poseo
+    - ¿Podrías listar mis productos fitosanitarios?
+    - Necesito revisar los químicos que tengo disponibles hoy
+    - Quiero saber qué plaguicidas y fungicidas están activos en mis cultivos
+
+

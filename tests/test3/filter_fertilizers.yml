@@ -1,0 +1,48 @@
+version: "3.1"
+nlu:
+- intent: filter_fertilizers
+  examples: |
+    - qué fertilizantes con [20](nitrogen_level)% de nitrógeno tengo
+    - muéstrame los fertilizantes líquidos
+    - quiero ver abonos inorgánicos
+    - qué fertilizantes con más de [15](nitrogen_level)% de nitrógeno tengo disponibles
+    - dime los fertilizantes que tienen nitrógeno [15](nitrogen_level)
+    - fertilizantes con nitrógeno del [20](nitrogen_level)%
+    - dime qué fertilizantes tienen forma [líquido](form_type)
+    - qué fertilizantes con tipo [orgánico](type_fertilizer) tengo creados
+    - Hola Luca, que fertilizantes con [20](nitrogen_level)% de nitrógeno tengo creados?
+    - Hola Luca, muéstrame los fertilizantes con forma [líquido](form_type) que tengo.
+    - Hola Luca, quiero ver los fertilizantes con tipo [orgánico](type_fertilizer) que tengo.
+    - Hola Luca, qué fertilizantes con [15](nitrogen_level)% de nitrógeno tengo disponibles?
+    - Hola Luca, dime los fertilizantes que tienen nitrógeno [20](nitrogen_level).
+    - Hola Luca, fertilizantes con nitrógeno del [20](nitrogen_level)%.
+    - fertilizantes con [20](nitrogen_level)% de nitrógeno
+    - fertilizantes con nitrógeno al [20](nitrogen_level) por ciento
+    - fertilizantes con porcentaje de nitrógeno igual a [20](nitrogen_level)
+    - fertilizantes con nitrógeno del [20](nitrogen_level)%
+    - fertilizantes que contienen [20](nitrogen_level) porciento de nitrógeno
+    - fertilizantes con concentración de nitrógeno [20](nitrogen_level)
+    - fertilizantes donde el nitrógeno sea [20](nitrogen_level)%
+    - qué fertilizantes tengo con exactamente [20](nitrogen_level) por ciento de nitrógeno
+    - muéstrame los fertilizantes con nitrógeno igual a [20](nitrogen_level)%
+    - abonos con nitrógeno del [20](nitrogen_level)%
+    - qué abonos tienen [20](nitrogen_level)% de nitrógeno
+    - Luca, muéstrame los fertilizantes que contienen [20](nitrogen_level)% de nitrógeno
+    - Hola Luca, necesito ver fertilizantes con [20](nitrogen_level) porciento de nitrógeno
+    - Luca, qué abonos tienen exactamente [20](nitrogen_level)% de nitrógeno
+    - Luca, enséñame los fertilizantes con concentración de nitrógeno del [20](nitrogen_level)%
+    - Luca, quiero ver los fertilizantes donde el nitrógeno sea [20](nitrogen_level)%
+    - Luca, fertilizantes con nitrógeno al [20](nitrogen_level)%
+    - Luca, qué fertilizantes tengo registrados con [20](nitrogen_level)% de nitrógeno
+    - Dime Luca, qué abonos con nitrógeno del [20](nitrogen_level)% tengo disponibles
+    - Luca, fertilizantes con nitrógeno igual a [20](nitrogen_level)
+    - Luca, lista los fertilizantes que contengan [20](nitrogen_level) porciento de nitrógeno
+    - Hola Luca, ¿qué fertilizantes usan nitrógeno del [20](nitrogen_level)%?
+    - Luca, quiero consultar los fertilizantes que tienen [20](nitrogen_level)% de nitrógeno
+    - Luca, filtra los abonos con nivel de nitrógeno de [20](nitrogen_level)%
+    - Luca, muéstrame solo los fertilizantes que tienen [20](nitrogen_level)% de nitrógeno
+    - Luca, qué fertilizantes tengo creados con una concentración de [20](nitrogen_level)% en nitrógeno
+    - Luca, lista de abonos que tengan nitrógeno del [20](nitrogen_level) por ciento, por favor
+    - Luca, dame los fertilizantes con nitrógeno [20](nitrogen_level)
+
+

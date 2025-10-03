@@ -1,0 +1,36 @@
+version: "3.1"
+nlu:
+- intent: search_products_crops
+  examples: |
+    - ¿Existe el cultivo [limonero](search_query) registrado?
+    - Muéstrame todas las plantaciones con el nombre [puerro](search_query).
+    - Quiero ver los cultivos que coincidan con [lenteja](search_query).
+    - ¿Me podrías decir si tengo alguna siembra llamada [enula](search_query)?
+    - Listar los cultivos que contengan la palabra [calabaza](search_query).
+    - Dime si hay alguna plantación registrada como [argán](search_query).
+    - ¿Qué especies agrícolas coinciden con [limonero](search_query)?
+    - Mostrarme si tengo algún cultivo con nombre [puerro](search_query).
+    - Consultar las siembras registradas con la palabra [lenteja](search_query).
+    - Kiero saber si existe alguna especie vegetal con el nombre [enula](search_query).
+    - ¿Puedes listar las plantaciones con nombre [calabaza](search_query)?
+    - Dime si tengo registrados cultivos como [argán](search_query).
+    - Ver si [Marta](client_name) tiene algún cultivo llamado [limonero](search_query).
+    - ¿Tiene [García](client_name) alguna plantación con el nombre [puerro](search_query)?
+    - Mostrar los cultivos de [Lucía](client_name) que contengan [lenteja](search_query).
+    - Consultar si [Pedro](client_name) ha registrado alguna siembra como [enula](search_query).
+    - Muéstrame los cultivos que [Álvarez](client_name) tiene con el nombre [calabaza](search_query).
+    - Listar plantaciones de [Sergio](client_name) que se llamen [argán](search_query).
+    - ¿Qué especies vegetales tiene [María](client_name) llamadas [limonero](search_query)?
+    - Dime si existe alguna plantación llamada [puerro](search_query) para [Carlos](client_name).
+    - ¿Me muestras si [Laura](client_name) tiene algún cultivo con nombre [lenteja](search_query)?
+    - Quiero consultar las siembras con el nombre [enula](search_query) asociadas a [Sánchez](client_name).
+    - Mostrarme especies agrícolas registradas por [Elena](client_name) que contengan [calabaza](search_query).
+    - Dime qué cultivos con el nombre [argán](search_query) tiene [Fernando](client_name).
+    - Consultar las plantaciones llamadas [limonero](search_query) que tiene [Irene](client_name).
+    - ¿Puedes listar si [José](client_name) tiene registrado el cultivo [puerro](search_query)?
+    - Listar especies vegetales que coincidan con [lenteja](search_query).
+    - Ver plantaciones con nombre [enula](search_query) registradas por [Antonio](client_name).
+    - Muéstrame los cultivos registrados con la palabra [calabaza](search_query).
+    - Dime si [Raquel](client_name) tiene alguna siembra llamada [argán](search_query).
+    - ¿qué cultivos de [arroz](search_query) tiene el cliente [yesid](client_name)?
+

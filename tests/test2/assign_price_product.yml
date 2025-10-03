@@ -1,0 +1,28 @@
+version: "3.1"
+nlu:
+- intent: assign_price_product
+  examples: |
+    - Hola Luca, asigna un precio de [340](price)€/tonelada al [Trigo Filón](product_name) [hoy](price_date)
+    - Hola Luca, asigna un precio de [340](price)€/tonelada al [trigo blando](product_name) [hoy](price_date)
+    - Hola Luca, acabo de recibir una factura a [380](price)€/tonelada el [Trigo Filón](product_name) a fecha [2 de agosto](price_date)
+    - Establece [410](price) €/tn para el [Girasol Alto Oleico](product_name) [hoy](price_date)
+    - Establece [410](price) €/tn para el [trigo blando](product_name) [hoy](price_date)
+    - Hola Luca, el [Maíz Seco](product_name) queda a [275](price) euros por tonelada desde el [15 de julio de 2024](price_date)
+    - Sube el precio del [Trigo Orlogue](product_name) a [352](price) €/tn [hoy](price_date)
+    - Asigna para la [Soja](product_name) un precio de [498](price) euros/tn con fecha de [hoy](price_date)
+    - Coloca [210](price) €/tonelada al [Garbanzo Pedrosillano](product_name) a partir del [03/09/2023](price_date)
+    - Luca, el precio del [Trigo Filón](product_name) será de [340,5](price) €/tn desde [hoy](price_date)
+    - Para el [Cebada Maltera](product_name), pon [290](price) euros por tonelada [hoy](price_date)
+    - Ponme [310](price) euros/tn a la [Colza](product_name) de este año [hoy](price_date)
+    - Quiero que el precio de la [Alfalfa](product_name) sea de [195](price) €/tn a fecha [01/06/2022](price_date)
+    - El [Maíz Grano](product_name) sube a [260.75](price) €/tonelada desde el [10 de octubre de 2025](price_date)
+    - Fija para la [Lenteja Pardina](product_name) un precio de [420](price) €/tn [hoy mismo](price_date)
+    - Quiero [285](price) euros por tonelada para la [Cebada Pienso](product_name) del [5 de mayo de 2024](price_date)
+    - Pon el [Trigo R1](product_name) a [325](price) €/tn desde [hoy](price_date)
+    - Luca, actualiza el precio de la [Soja Convencional](product_name) a [472](price) euros/tn, fecha [20 de febrero de 2023](price_date)
+    - Para la [Colza](product_name), establece [305](price) €/tonelada desde el [28/08/2025](price_date)
+    - Sube la [Cebada Maltera](product_name) a [299,5](price) €/tn [hoy](price_date)
+    - [Lenteja Castellana](product_name) a [450](price) €/tonelada desde el [12 de marzo de 2024](price_date)
+    - Quiero asignar para el [Girasol Linoleico](product_name) un precio de [385](price) euros/tn [hoy](price_date)
+    - Pon el [Maíz Húmedo](product_name) a [198](price) €/tn, fecha [30 de noviembre de 2022](price_date)
+    - Fija [hoy mismo](price_date) [315](price) euros por tonelada para la [Colza de invierno](product_name)

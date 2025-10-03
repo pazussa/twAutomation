@@ -60,7 +60,10 @@ export default class ConversationReporter implements Reporter {
     } catch { return; }
     if (!payload) return;
 
-    const fileBase = `${sanitize(test.title)}.${sanitize(result.status)}`;
+    // Agregar fecha y hora al nombre del archivo
+    const now = new Date();
+    const timestamp = now.toISOString().replace(/:/g, '-').replace(/\..+/, '').replace('T', '_');
+    const fileBase = `${sanitize(test.title)}.${timestamp}.${sanitize(result.status)}`;
     const htmlPath = path.join(this.outputDir, `${fileBase}.html`);
 
     // Agrupar por INTENT (si no hay, un solo grupo)

@@ -8,11 +8,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Import using explicit .ts so ts-node ESM can resolve the source file
 // We'll lazy import the data module to avoid ESM resolution issues with ts-node.
-let INTENTS_TEMPLATES: any; let VARS: any; let KEYWORD_RULES: any; let setVar: any; let withVars: any; let DEFAULT_VARS: any;
+let INTENTS_TEMPLATES: any; let INTENTS: any; let VARS: any; let KEYWORD_RULES: any; let setVar: any; let withVars: any; let DEFAULT_VARS: any;
 async function loadDataModule() {
   if (!INTENTS_TEMPLATES) {
   const mod = await import('../../tests/setup/data.ts');
     INTENTS_TEMPLATES = mod.INTENTS_TEMPLATES;
+    INTENTS = mod.INTENTS;
     VARS = mod.VARS;
     KEYWORD_RULES = mod.KEYWORD_RULES;
     setVar = mod.setVar;
@@ -127,14 +128,25 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Helper to rebuild intents preview (without materialization here for simplicity)
+// Helper to rebuild intents preview
 function getState() {
-  return {
+  const state = {
     variables: { ...VARS },
     defaultVariables: { ...DEFAULT_VARS },
+    // Enviar INTENTS_TEMPLATES (con {variables}) para el panel de edición
     intents: Object.entries(INTENTS_TEMPLATES as Record<string, string[]>).map(([k, arr]) => ({ name: k, examples: arr })),
-    rules: (KEYWORD_RULES as Array<{ pattern: RegExp; action: { type: string; reply?: string }; note?: string }>).map(r => ({ pattern: r.pattern.toString(), action: r.action.type, note: r.note || '' }))
+    // Enviar INTENTS materializados para ejecución
+    materializedIntents: INTENTS ? Object.entries(INTENTS as Record<string, string[]>).map(([k, arr]) => ({ name: k, examples: arr })) : [],
+    rules: (KEYWORD_RULES as Array<{ pattern: RegExp; action: { type: string; reply?: string }; note?: string }>).map((r, idx) => ({ 
+      idx: idx,
+      pattern: r.pattern.toString(), 
+      action: r.action.type, 
+      reply: r.action.reply || '', 
+      note: r.note || '' 
+    }))
   };
+  console.log(`[State] Enviando ${state.intents.length} intents (templates) y ${state.materializedIntents.length} intents (materializados)`);
+  return state;
 }
 
 app.get('/api/state', async (_req, res) => {
@@ -209,6 +221,151 @@ app.post('/api/rules', async (req, res) => {
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-app.listen(3000, () => {
+// ========== Execution endpoints ==========
+import { spawn } from 'child_process';
+import crypto from 'crypto';
+
+let isExecuting = false;
+let currentExecutionId: string | null = null;
+
+app.post('/api/execute', async (req, res) => {
+  if (isExecuting) {
+    return res.status(409).json({ error: 'Ya hay una ejecución en proceso' });
+  }
+
+  const { examples } = req.body || {};
+  if (!Array.isArray(examples) || examples.length === 0) {
+    return res.status(400).json({ error: 'Se requiere array de ejemplos' });
+  }
+
+  // Generate execution ID
+  const executionId = crypto.randomBytes(8).toString('hex');
+  currentExecutionId = executionId;
+
+  // Save selected examples to temp file
+  const tempConfigPath = path.resolve(__dirname, `../../temp-exec-${executionId}.json`);
+  try {
+    await fs.writeFile(tempConfigPath, JSON.stringify({ examples }, null, 2), 'utf8');
+  } catch (e: any) {
+    return res.status(500).json({ error: `Error escribiendo config temporal: ${e.message}` });
+  }
+
+  // Respond immediately
+  res.json({ ok: true, executionId, examples: examples.length });
+
+  // Start Playwright execution in background
+  isExecuting = true;
+  const child = spawn('npx', ['playwright', 'test', 'tests/execute-selected.spec.ts', '--headed'], {
+    cwd: path.resolve(__dirname, '../..'),
+    stdio: 'inherit', // Show output in server terminal
+    env: { ...process.env, EXEC_CONFIG: tempConfigPath }
+  });
+
+  child.on('close', async (code) => {
+    isExecuting = false;
+    currentExecutionId = null;
+    console.log(`\n[Execution] Proceso finalizado con código: ${code}`);
+    
+    // Convert HTML reports to PDF automatically (ALWAYS, even if there were errors)
+    console.log(`\n[Execution] 📄 Convirtiendo reportes HTML a PDF...`);
+    const pdfChild = spawn('node', ['scripts/export-report-to-pdf.mjs'], {
+      cwd: path.resolve(__dirname, '../..'),
+      stdio: 'inherit',
+      env: { ...process.env }
+    });
+    
+    pdfChild.on('close', async (pdfCode) => {
+      if (pdfCode === 0) {
+        console.log(`[Execution] ✅ Reportes convertidos a PDF exitosamente`);
+      } else {
+        console.warn(`[Execution] ⚠️ Error al convertir reportes a PDF (código ${pdfCode})`);
+      }
+      
+      // Clean up temp file after PDF conversion
+      try {
+        await fs.unlink(tempConfigPath);
+      } catch (e) {
+        // Silent cleanup - ignore errors
+      }
+    });
+    
+    pdfChild.on('error', (err) => {
+      console.error(`[Execution] ❌ Error al convertir a PDF: ${err.message}`);
+      // Clean up temp file silently
+      fs.unlink(tempConfigPath).catch(() => {});
+    });
+  });
+
+  child.on('error', (err) => {
+    isExecuting = false;
+    currentExecutionId = null;
+    console.error(`[Execution] Error en spawn: ${err.message}`);
+  });
+});
+
+app.get('/api/execution-status', (_req, res) => {
+  res.json({ 
+    isExecuting, 
+    executionId: currentExecutionId 
+  });
+});
+
+app.get('/api/open-reports', async (_req, res) => {
+  const reportsPath = path.resolve(__dirname, '../../exports/test-results/conversations');
+  
+  try {
+    // Check if the directory exists
+    try {
+      await fs.access(reportsPath);
+    } catch {
+      return res.status(404).json({ 
+        error: 'La carpeta de reportes no existe aún. Ejecuta algunos tests primero.',
+        path: reportsPath 
+      });
+    }
+
+    // Open file explorer based on OS
+    const { exec } = await import('child_process');
+    const command = process.platform === 'win32' 
+      ? `explorer "${reportsPath}"`
+      : process.platform === 'darwin'
+      ? `open "${reportsPath}"`
+      : `xdg-open "${reportsPath}"`;
+
+    exec(command, (error) => {
+      if (error) {
+        console.error(`Error abriendo carpeta: ${error.message}`);
+      }
+    });
+
+    res.json({ 
+      ok: true, 
+      path: reportsPath,
+      message: 'Abriendo explorador de archivos...'
+    });
+  } catch (e: any) {
+    res.status(500).json({ 
+      error: `Error: ${e.message}`,
+      path: reportsPath 
+    });
+  }
+});
+
+app.listen(3000, async () => {
   console.log('Admin UI disponible en http://localhost:3000');
+  
+  // Auto-open browser
+  const { exec } = await import('child_process');
+  const url = 'http://localhost:3000';
+  const command = process.platform === 'win32'
+    ? `start ${url}`
+    : process.platform === 'darwin'
+    ? `open ${url}`
+    : `xdg-open ${url}`;
+  
+  exec(command, (error) => {
+    if (error) {
+      console.log('No se pudo abrir el navegador automáticamente. Abre manualmente:', url);
+    }
+  });
 });

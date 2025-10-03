@@ -1,0 +1,7 @@
+version: "3.1"
+nlu:
+- intent: create_planned_work
+  examples: |
+    - crear un trabajo planificado
+    - planificar un trabajo
+    - quiero crear un trabajo en una campaña

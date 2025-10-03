@@ -1,0 +1,30 @@
+version: "3.1"
+nlu:
+- intent: request_otp
+  examples: |
+    - enviar otp
+    - necesito un código de verificación
+    - mándame el código
+    - quiero verificar mi número
+    - envíame un OTP
+    - puedes mandarme el código?
+    - envía el otp a mi número
+    - mándalo a mi WhatsApp
+    - quiero recibir el código
+    - verifica mi número
+    - necesito que me llegue el otp
+    - mándame el código a mi WhatsApp
+    - envíame el código, por favor
+    - me puedes mandar el otp?
+    - necesito un código para verificar
+    - quiero verificar mi cuenta
+    - envíalo a mi WhatsApp
+    - mándame ese código
+    - puedes enviar el código?
+    - código, por favor
+    - necesito un OTP para entrar
+    - manda el código a mi celular
+    - envía la verificación
+    - quiero el código en mi teléfono registrado
+    - mándame un código para acceder
+

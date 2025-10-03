@@ -1,0 +1,47 @@
+version: "3.1"
+nlu:
+- intent: get_last_price
+  examples: |
+    - Hola Luca, cuál es el último precio de [trigo](search_query)?
+    - Luca, dime el precio más reciente del [arroz](search_query)
+    - cuánto fue lo último que pagué por [maíz](search_query)?
+    - cuál fue el último precio registrado del [pienso](search_query)?
+    - dime el precio actualizado del [avena](search_query)
+    - Luca, ¿cuánto costó por última vez el [fertilizante nitrogenado](search_query)?
+    - cuál es el precio más reciente que tengo del [trigo blando](search_query)?
+    - quiero saber el último valor de venta de [trigo altamar aviso](search_query)
+    - Luca, ¿a cómo estuvo el [trigo](search_query) en la última compra?
+    - ¿A cómo he comprado la última vez [Enula](search_query)?
+    - Muéstrame el precio más reciente del producto [Calabaza](search_query).
+    - Quiero consultar el valor actual de la [Lenteja](search_query).
+    - Dime cuál es el coste registrado de [Argán](search_query).
+    - ¿Puedes mostrar el precio actualizado de [Benomilo](search_query)?
+    - Listar el último importe registrado para [Fosfato monoamónico (MAP)](search_query).
+    - Ver el último coste anotado del [Superfosfato triple](search_query).
+    - Dime el precio reciente del producto [Urea](search_query).
+    - ¿Cuál es la última tarifa del [Sulfato de potasio (50% K₂O)](search_query)?
+    - Mostrar el importe más reciente registrado para [Carboxina](search_query).
+    - Kiero ver a cuánto está actualmente la [Oxicarboxina](search_query).
+    - ¿A qué valor tengo registrado el producto [Abamectina](search_query)?
+    - Dime el importe reciente que pagó [Laura](nombre_usuario_cliente) por [Calabaza](search_query).
+    - ¿Cuál es el precio actualizado de [Enula](search_query) para [Mario](nombre_usuario_cliente)?
+    - Muéstrame el valor más reciente de la [Lenteja](search_query) registrada por [Eva](nombre_usuario_cliente).
+    - Consultar coste del [Argán](search_query) para [Rubén](nombre_usuario_cliente).
+    - Listar el importe registrado del producto [Benomilo](search_query) para [Sandra](nombre_usuario_cliente).
+    - Ver tarifa actual del [Fosfato monoamónico (MAP)](search_query) que tiene [Andrea](nombre_usuario_cliente).
+    - ¿Qué valor tiene anotado [Sergio](nombre_usuario_cliente) para el producto [Superfosfato triple](search_query)?
+    - Dime el coste más reciente de [Urea (46-0-0)](search_query) para [Lucas](nombre_usuario_cliente).
+    - ¿Puedes mostrarme la tarifa actual del [Sulfato de potasio (50% K₂O)](search_query)?
+    - Listar precio reciente del producto [Carboxina](search_query) para mis parcelas.
+    - Muéstrame el importe registrado del [Oxicarboxina](search_query) en mi cuenta.
+    - Consultar el coste actualizado de la [Abamectina](search_query).
+    - ¿A cuánto he comprado la última vez [Enula](search_query) en mis fincas?
+    - Ver precio reciente anotado para el producto [Calabaza](search_query).
+    - Dime el valor actual que tengo del [Argán](search_query).
+    - Listar tarifa más reciente para el producto [Benomilo](search_query).
+    - ¿Qué importe tengo registrado para [Fosfato monoamónico (MAP)](search_query)?
+    - Mostrar coste actualizado del [Superfosfato triple](search_query).
+    - Hola Luca, cuál es el último precio del [febo](search_query) para el cliente [John pruebas Pruebas](nombre_usuario_cliente)
+    - Hola Luca, cuál es el último precio del [tigre](search_query) para el cliente [John pruebas Pruebas](nombre_usuario_cliente)
+    - Hola Luca, cuál es el último precio de [urea](search_query) para el cliente [John pruebas Pruebas](nombre_usuario_cliente)
+    - Hola Luca, cuál es el último precio de [herbicida metolachlor](search_query) para el cliente [John pruebas Pruebas](nombre_usuario_cliente)

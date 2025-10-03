@@ -1,0 +1,29 @@
+version: "3.1"
+nlu:
+- intent: create_planned_campaign
+  examples: |
+    - Hola Luca, pon en la parcela [1](field_name) el cultivo de [trigo](crop_name)
+    - pon [trigo](crop_name) en la parcela [2](field_name)
+    - planifica [colza](crop_name) en [Chapardia](farm_name)
+    - pon [trigo](crop_name) variedad [Orloge](variety_name) en la parcela [2](field_name)
+    - planifica [colza](crop_name) variedad [DK Exlevel](variety_name) en la parcela [4](field_name)
+    - mete [trigo](crop_name) [Filón](variety_name) en [Orcamendi](farm_name) y [Chapardia](farm_name)
+    - pon [Chimene](variety_name) de [avena](crop_name) en la parcela [7](field_name)
+    - quiero [girasol](crop_name) [Alto Oleico](variety_name) en la parcela [9](field_name)
+    - este año quiero [trigo](crop_name) [Fortunato](variety_name) en [Larraga](farm_name)
+    - pon [trigo](crop_name) [Orloge](variety_name) en la parcela [1](field_name) y [2](field_name)
+    - planifica [cebada](crop_name) [Hispan](variety_name) en [Chapardia](farm_name)
+    - mete [avena](crop_name) [Previsión](variety_name) en [Larraga](farm_name)
+    - planifica [trigo](crop_name) [Fortunato](variety_name) en [Orcamendi](farm_name) y [Linos](farm_name)
+    - planifica [trigo](crop_name) en [Finca Los Olivos](farm_name)
+    - planifica [trigo](crop_name) [Triticum Duro](variety_name) en [Finca Los Olivos](farm_name) [Campo Norte](field_name)
+    - para [Juan Pérez](client) planifica [trigo](crop_name) [Triticum Duro](variety_name) en [Finca Los Olivos](farm_name) [Campo Norte](field_name)
+    - pon [cebada](crop_name) en [Finca Santa María](farm_name)
+    - quiero poner [trigo](crop_name), [cebada](crop_name) y [avena](crop_name)
+    - añade [trigo](crop_name) [Orloge](variety_name) en [Campo Norte](field_name)
+    - crear una campaña planificada
+    - quiero crear una campaña planificada
+    - añade una campaña planificada
+    - agregar una campaña planificada
+    - crear campaña planificada
+    - planificar una campaña

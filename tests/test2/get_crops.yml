@@ -1,0 +1,90 @@
+version: "3.1"
+nlu:
+- intent: get_crops
+  examples: |
+    - dame la lista de cultivos
+    - dame los cultivos de [Héctor](client_name)
+    - dame los cultivos de [Finca Santa María](client_name)
+    - dame la lista de cultivos de [Finca San José](client_name)
+    - quiero ver los cultivos
+    - muéstrame los cultivos disponibles
+    - ver los cultivos del cliente [Juan Perez](client_name)
+    - para el cliente [Maria Gomez](client_name), cuáles son sus cultivos
+    - necesito los cultivos del cliente [Finca La Paz](client_name)
+    - ver cultivos de [Hacienda Primavera](client_name)
+    - Muéstrame qué cultivos tengo ahora mismo en la finca.
+    - ¿Qué plantaciones tengo registradas?
+    - Listar todos los cultivos que tengo actualmente.
+    - Quiero consultar las plantas que tengo en mis parcelas.
+    - ¿Puedes mostrarme las cosechas que tengo disponibles?
+    - Dime qué cultivos están registrados en mi cuenta.
+    - Lista las siembras que tengo activas.
+    - Ver las especies vegetales que tengo en mis campos.
+    - ¿Qué vegetales tengo plantados actualmente?
+    - Consultar las plantaciones que maneja [María](client_name).
+    - Mostrarme qué cultivos tiene registrados [Javier](client_name).
+    - ¿Qué especies agrícolas tiene registradas [Lucía Gómez](client_name)?
+    - Quisiera ver las cosechas que tiene ahora [Antonio](client_name).
+    - Dime qué plantas tiene disponibles [Carmen](client_name).
+    - Listar las siembras registradas para [José Luis](client_name).
+    - ¿Puedes mostrarme los cultivos que maneja [Ana](client_name)?
+    - Consulta rápida de vegetales que tiene [Francisco](client_name).
+    - Mostrar qué plantaciones tiene actualmente [Laura Díaz](client_name).
+    - Listar todas las especies vegetales de [Miguel Ángel](client_name).
+    - Dime las cosechas que tiene [Isabel](client_name).
+    - ¿Qué cultivos tiene ahora mismo [Sergio](client_name)?
+    - Kiero consultar las plantas que tiene registradas [Silvia Navarro](client_name).
+    - Mostrar las siembras activas para [David](client_name).
+    - Listar vegetales disponibles en la finca de [Patricia](client_name).
+    - ¿Qué especies agrícolas tiene registradas [Fernando](client_name)?
+    - Quiero ver qué plantaciones tiene actualmente [Beatriz](client_name).
+    - Muéstrame los cultivos que maneja [Pablo Domínguez](client_name).
+    - Consultar plantas registradas por [Cristina](client_name).
+    - Dime qué cosechas tiene ahora [Alberto](client_name).
+    - Ver las especies vegetales registradas para [Raquel](client_name).
+    - Listame los cultivos de [Lucia](client_name).
+    - Muéstrame las plantaciones de [Carlos](client_name).
+    - Dame un informe de los cultivos de [Marta](client_name).
+    - ¿Qué tiene sembrado [Pedro](client_name)?
+    - Consulta los cultivos registrados por [Julia](client_name).
+    - Ver cultivos actuales de [Alejandro](client_name).
+    - ¿Puedes mostrarme las siembras de [Sofía](client_name)?
+    - Quiero conocer los cultivos de [Diego](client_name).
+    - Lista las cosechas de [Finca El Paraíso](client_name).
+    - ¿Qué plantaciones tiene [Valeria](client_name)?
+    - Necesito ver los cultivos de [Gabriel](client_name).
+    - Consulta rápida de las siembras de [Hacienda Los Olivos](client_name).
+    - Dame la información de cultivos de [Natalia](client_name).
+    - Mostrar plantaciones registradas para [Emilio](client_name).
+    - ¿Cuáles son los cultivos activos de [Carolina](client_name)?
+    - Ver especies cultivadas por [Rubén](client_name).
+    - Lista de plantas registradas de [Granja San Rafael](client_name).
+    - Cultivos actuales de [Adriana](client_name).
+    - ¿Me puedes decir qué tiene sembrado [Tomás](client_name)?
+    - Quiero ver las plantaciones de [Alicia](client_name).
+    - Mostrar cultivos asociados a [Marcos](client_name).
+    - ¿Qué está cultivando [Finca La Esperanza](client_name)?
+    - Dame la lista de siembras de [Victoria](client_name).
+    - Necesito saber qué cultiva [Guillermo](client_name).
+    - ¿Qué plantaciones tiene registradas [Marina](client_name)?
+    - Ver los cultivos de [Huerto Familiar López](client_name).
+    - Información sobre las siembras de [Ricardo](client_name).
+    - Lista los cultivos que maneja [Daniela](client_name).
+    - ¿Cuáles son las plantaciones de [Víctor](client_name)?
+    - Muéstrame qué está cultivando [Teresa](client_name).
+    - dame los cultivos de [Abastores del Norte](client_name)
+    - dame los cultivos de [Agrícola La Esperanza](client_name)
+    - dame los cultivos de [Distribuidora Campo Verde](client_name)
+    - dame los cultivos de [Productores Unidos](client_name)
+    - dame los cultivos de [Comercializadora El Granero](client_name)
+    - dame los cultivos de [Cooperativa Agraria del Sur](client_name)
+    - dame los cultivos de [Hacienda Los Nogales](client_name)
+    - dame los cultivos de [Agroexportadora San Isidro](client_name)
+    - dame los cultivos de [Viveros La Huerta](client_name)
+    - dame los cultivos de [Semillas del Bosque](client_name)
+    - dame los cultivos de [Grupo Agroindustrial El Surco](client_name)
+    - dame los cultivos de [Productora Orgánica Tierra Fértil](client_name)
+    - dame los cultivos de [Inversiones Agrícolas Montaña](client_name)
+    - dame los cultivos de [Agropecuaria Nuevo Amanecer](client_name)
+    - dame los cultivos de [Fincas Asociadas El Vergel](client_name)
+
