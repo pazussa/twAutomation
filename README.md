@@ -32,7 +32,7 @@ npm run admin
 ```
 **Abre automáticamente:** http://localhost:3000
 
-## 🎯 Características del Panel Admin
+##  Características del Panel Admin
 
 
 ### 📋 Flujo de Uso
@@ -42,14 +42,14 @@ npm run admin
 4. **Esperar**: La conversión a PDF se ejecuta automáticamente al terminar
 5. **Ver resultados**: Click en "📊 Abrir Carpeta de Reportes" para ver HTML y PDF
 
-### 🎨 Interfaz
+###  Interfaz
 - **Agrupación por intent**: Todos los ejemplos organizados por categoría
 - **Contador de selección**: Muestra cuántos ejemplos has marcado
 - **Búsqueda rápida**: Filtra intents y ejemplos en tiempo real
 - **Estado de ejecución**: Indica si hay una ejecución en proceso
 - **Edición y creación de intents/ejemplos** = mediante el panel de admin puedes agregar nuevas frases y nuevos intents para pruebas
 
-## 📊 Reportes Generados
+##  Reportes Generados
 
 ### Conversiones Automáticas
 - **HTML**: Generados automáticamente en `playwright-report/`
