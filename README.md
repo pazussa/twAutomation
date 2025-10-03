@@ -12,7 +12,6 @@ Proyecto de automatización para probar conversaciones WhatsApp usando Playwrigh
 npm install
 npm run playwright:install
 cp .env.example .env
-# Configura las variables en .env según tu entorno
 ```
 
 
