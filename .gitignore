@@ -1,24 +1,2 @@
 # Dependencies
 node_modules/
-
-# Playwright artifacts
-test-results/
-playwright-report/
-*.zip
-
-# Env files
-.env
-tests/.env
-
-# Editors/OS
-.vscode/
-.idea/
-.DS_Store
-
-# Builds/coverage/temp
-dist/
-build/
-coverage/
-.cache/
-.tmp/
-*.log
