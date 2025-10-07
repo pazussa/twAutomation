@@ -1,0 +1,76 @@
+\clearpage
+\pagenumbering{arabic}
+\section{Introducción}
+El presente informe documenta el trabajo realizado durante la pasantía desarrollada en la empresa 
+\textbf{Grandtek}, enfocada en el \textit{desarrollo de soluciones especializadas de software} basadas en 
+tecnologías de la información y las comunicaciones (TIC). Grandtek ofrece servicios de mantenimiento y 
+soporte informático, así como desarrollo de software especializado para diversos sectores, respaldados por 
+un equipo de ingenieros expertos en diseñar soluciones confiables basadas en TIC. 
+
+La pasantía se orientó a la \textbf{automatización de pruebas de conversaciones de WhatsApp} para un bot del 
+ámbito agrícola, con el propósito de validar historias de usuario a lo largo de \textit{tres fases del proyecto} de la 
+aplicación de Agricultura de Precisión. Este trabajo se articuló en torno al ámbito de la automatización web, 
+pruebas end-to-end con la librería Playwright y gestión reproducible de datos de prueba.
+
+El desarrollo de este proyecto se sustenta en principios establecidos de ingeniería de software, automatización de pruebas y sistemas conversacionales. Las pruebas automatizadas son una práctica fundamental en el desarrollo de software moderno. Según Garousi y Mäntylä \cite{garousi2016citations}, las pruebas automatizadas reducen significativamente el tiempo de ejecución de pruebas repetitivas y aumentan la cobertura de código, permitiendo detectar regresiones tempranamente. En el contexto de aplicaciones web, las pruebas end-to-end (E2E) validan el sistema completo desde la perspectiva del usuario final, asegurando que todos los componentes integrados funcionen correctamente en conjunto \cite{leotta2016comparing}. El patrón \textit{Page Object Model} (POM), utilizado en este proyecto, es reconocido como una práctica efectiva para estructurar pruebas automatizadas de interfaces de usuario. Leotta et al. \cite{leotta2013capture} demuestran que POM mejora la mantenibilidad del código de pruebas al encapsular la lógica de interacción con elementos de la interfaz, reduciendo la duplicación y facilitando la adaptación a cambios en la UI. Por su parte, los agentes conversacionales o \textit{chatbots} han experimentado un crecimiento exponencial en diversos dominios. Adamopoulou y Moussiades \cite{adamopoulou2020chatbots} clasifican los chatbots según su arquitectura en: basados en reglas, basados en recuperación de información, y basados en modelos generativos. El bot bajo prueba en este proyecto se enmarca en sistemas híbridos que combinan procesamiento de lenguaje natural con lógica de negocio específica del dominio agrícola.
+
+WhatsApp Web presenta desafíos específicos para la automatización debido a su naturaleza asíncrona, actualizaciones en tiempo real y dependencia de servicios externos. La literatura sobre testing de aplicaciones de mensajería instantánea \cite{amalfitano2012using} destaca la importancia de: (i) esperas inteligentes con estrategias de \textit{polling} para sincronización con el servidor; (ii) manejo robusto de variabilidad en tiempos de respuesta; y (iii) aislamiento de datos entre pruebas para garantizar reproducibilidad. El enfoque implementado en este proyecto, basado en detección de patrones mediante expresiones regulares y sistema de reglas con prioridades, se alinea con las mejores prácticas identificadas en la literatura para testing de interfaces conversacionales no determinísticas \cite{langevin2021testing}.
+
+
+Los antecedentes que motivaron esta pasantía incluyen la experiencia previa del pasante en 
+\textbf{desarrollo web} y \textbf{automatización de pruebas}, lo cual facilitó la adopción de tecnologías como 
+TypeScript y Playwright, así como el diseño de \textit{flujos conversacionales automatizados} que interactúan con 
+WhatsApp Web. Este punto de partida permitió alinear el trabajo con las necesidades del 
+proyecto.
+
+La pasantía se articula con la formación del programa específicamente en el énfasis en \textbf{Telemática}, al integrar patrones de diseño de software, plataformas de 
+comunicación en red y pruebas de software para construir soluciones de validación de extremo a extremo. 
+Esta experiencia fortaleció competencias técnicas y blandas alineadas con el perfil del estudiante.
+
+El alcance de la pasantía abarcó: (i) la validación de historias de usuario priorizadas en las \textit{tres fases} 
+del proyecto; (ii) la definición y materialización de \textbf{datos de prueba versionados} para dominios 
+agrícolas (cultivos, fertilizantes, fitosanitarios); (iii) la \textbf{automatización de flujos conversacionales} en 
+WhatsApp Web con Playwright; y (iv) la \textbf{estandarización de reportes} de resultados de ejecución.
+
+Entre las principales limitaciones se encuentran: la dependencia de la disponibilidad de \textit{WhatsApp Web} 
+y del bot bajo prueba; restricciones de tiempo propias del periodo de práctica que acotan el trabajo a 
+las historias priorizadas de Fases 1--3.
+
+
+\subsection*{Objetivos}
+\textbf{Objetivo general.} Desarrollar un conjunto de pruebas automatizadas de WhatsApp que valide las 
+funcionalidades de las historias de usuario de las tres fases del proyecto de la app de Agricultura de 
+precisión, generando una base para futuras extensiones del proyecto.
+
+\medskip
+\noindent\textbf{Objetivos específicos.}
+\begin{enumerate}[label=\arabic*)]
+  \item \textbf{Modelo de datos de prueba reproducible y seguro.} Diseñar un modelo de datos de prueba 
+  para conversaciones, con entregables que incluyan: conjunto de datos versionados (cultivos, fertilizantes, 
+  fitosanitarios, etc.), plantillas y selección de dataset por etiqueta/ambiente.
+  \item \textbf{Automatización de intercambio de mensajes (Fases 1--3).} Automatizar end-to-end el 
+  intercambio de mensajes usuario–bot para las historias de usuario priorizadas de Fase 1, 2 y 3, mediante 
+  \textit{steps} y \textit{Page Objects} reutilizables. Entregables: repositorio de steps para todas las fases (enviar 
+  mensaje, seleccionar opción, validar respuesta), orquestación por etiquetas de Fase/HU y ejecución 
+  paralela local.
+  \item \textbf{Generación de reportes estandarizada.} Implementar y estandarizar la generación de reportes 
+  post-ejecución con Playwright, consolidando HTML, JSON y evidencia de capturas automáticas. Entregable: 
+  script de generación de reportes que produce HTML y reporte de casos exitosos y pasos completados.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

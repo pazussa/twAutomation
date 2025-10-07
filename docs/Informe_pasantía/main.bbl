@@ -1,0 +1,73 @@
+\begin{thebibliography}{1}
+
+\bibitem{garousi2016citations}
+Vahid Garousi and Mika~V M{\"a}ntyl{\"a}.
+\newblock Citations, research topics and active countries in software
+  engineering: A bibliometrics study.
+\newblock {\em Computer Science Review}, 19:56--77, 2016.
+\newblock DOI: 10.1016/j.cosrev.2015.12.002.
+
+\bibitem{leotta2016comparing}
+Maurizio Leotta, Andrea Stocco, Filippo Ricca, and Paolo Tonella.
+\newblock Comparing the maintainability of selenium webdriver test suites
+  employing different locators: A case study.
+\newblock In {\em Proceedings of the 2016 ACM SIGSOFT International Workshop on
+  Software Analytics}, pages 53--59. ACM, 2016.
+\newblock DOI: 10.1145/2989238.2989244.
+
+\bibitem{leotta2013capture}
+Maurizio Leotta, Diego Clerissi, Filippo Ricca, and Paolo Tonella.
+\newblock Capture-replay vs. programmable web testing: An empirical assessment
+  during test case evolution.
+\newblock In {\em 2013 20th Working Conference on Reverse Engineering (WCRE)},
+  pages 272--281. IEEE, 2013.
+\newblock DOI: 10.1109/WCRE.2013.6671303.
+
+\bibitem{adamopoulou2020chatbots}
+Eleni Adamopoulou and Lefteris Moussiades.
+\newblock Chatbots: History, technology, and applications.
+\newblock {\em Machine Learning with Applications}, 2:100006, 2020.
+\newblock DOI: 10.1016/j.mlwa.2020.100006.
+
+\bibitem{folstad2018experimental}
+Asbjørn F{\o}lstad, Theo Araujo, Effie L-C Law, Petter~Bae Brandtzaeg, Symeon
+  Papadopoulos, Luis Reis, Marcos Baez, Guy Laban, Patrick McAllister, Carolin
+  Ischen, et~al.
+\newblock An experimental study of the effects of an empathetic chatbot on
+  student learning.
+\newblock In {\em Extended Abstracts of the 2018 CHI Conference on Human
+  Factors in Computing Systems}, pages 1--6. ACM, 2018.
+\newblock DOI: 10.1145/3170427.3188553.
+
+\bibitem{alshahwan2021web}
+Nadia Alshahwan, Xiaocheng Gao, Mark Harman, Yue Jia, Ke~Mao, Alexander Mols,
+  Taijin Tei, and Ilya Zorin.
+\newblock Web application testing: A systematic literature review.
+\newblock In {\em ACM Transactions on Software Engineering and Methodology
+  (TOSEM)}, volume~30, pages 1--63. ACM, 2021.
+\newblock DOI: 10.1145/3450965.
+
+\bibitem{alégroth2013visual}
+Emil Al{\'e}groth, Robert Feldt, and Helena~Holmstr{\"o}m Olsson.
+\newblock Visual gui testing in practice: challenges, problemsand limitations.
+\newblock In {\em Empirical Software Engineering}, volume~20, pages 694--744.
+  Springer, 2015.
+\newblock DOI: 10.1007/s10664-013-9293-5.
+
+\bibitem{amalfitano2012using}
+Domenico Amalfitano, Anna~Rita Fasolino, Porfirio Tramontana, Salvatore
+  De~Carmine, and Atif~M Memon.
+\newblock Using gui ripping for automated testing of android applications.
+\newblock In {\em Proceedings of the 27th IEEE/ACM International Conference on
+  Automated Software Engineering}, pages 258--261. ACM, 2012.
+\newblock DOI: 10.1145/2351676.2351717.
+
+\bibitem{langevin2021testing}
+Ross Langevin, Ross~J Lordon, Talia Avrahami, Benjamin~R Cowan, Tad Hirsch, and
+  Gary Hsieh.
+\newblock Testing conversational ai systems: Challenges and opportunities.
+\newblock {\em Proceedings of the ACM on Human-Computer Interaction},
+  5(CSCW1):1--25, 2021.
+\newblock DOI: 10.1145/3449254.
+
+\end{thebibliography}

@@ -1,0 +1,77 @@
+\section{Anexos}
+\label{sec:anexos}
+
+\subsection{Anexo A: Repositorio del proyecto}
+
+El código completo del proyecto de automatización de pruebas de WhatsApp se encuentra disponible en el repositorio público de GitHub:
+
+\begin{center}
+\textbf{Repositorio:} \url{https://github.com/pazussa/twAutomation}
+\end{center}
+
+\subsubsection{Contenido del repositorio}
+
+El repositorio incluye:
+
+\begin{itemize}
+  \item \textbf{Código fuente completo:} Todas las especificaciones de prueba (\texttt{tests/*.spec.ts}), módulos de utilidades (\texttt{tests/setup/}), servidor de administración (\texttt{src/admin/}) y scripts auxiliares (\texttt{scripts/})
+  
+  \item \textbf{Configuración del proyecto:} Archivos \texttt{package.json}, \texttt{tsconfig.json}, \texttt{playwright.config.ts} con todas las dependencias y configuraciones necesarias
+  
+  \item \textbf{Documentación:} Archivo \texttt{README.md} con instrucciones detalladas de instalación, configuración y uso del sistema
+  
+  \item \textbf{Datos de prueba:} Módulo \texttt{tests/setup/data.ts} con los 29 intents y 942 variaciones de frases de entrada
+  
+  \item \textbf{Sistema de reportes:} Reportero personalizado (\texttt{tests/conversation-reporter.ts}) y script de exportación a PDF (\texttt{scripts/export-report-to-pdf.mjs})
+  
+  \item \textbf{Panel de administración:} Código del servidor Express y frontend HTML para gestión visual de intents
+\end{itemize}
+
+\subsubsection{Estructura del repositorio}
+
+\begin{verbatim}
+twAutomation/
+  tests/
+    *.spec.ts              (30 especificaciones de prueba)
+    setup/
+      data.ts              (Intents y datos de prueba)
+      flow.ts              (Logica de flujos conversacionales)
+      utils.ts             (Utilidades de interaccion WhatsApp)
+    conversation-reporter.ts (Generador de reportes)
+  src/
+    admin/
+      server.ts            (Servidor Express)
+      public/              (Frontend del panel)
+  scripts/
+    export-report-to-pdf.mjs
+    sync-yml-to-data.mjs
+  package.json
+  tsconfig.json
+  playwright.config.ts
+  README.md
+\end{verbatim}
+
+\subsubsection{Instrucciones de uso}
+
+Para replicar el entorno de desarrollo y ejecutar las pruebas:
+
+\begin{enumerate}
+  \item Clonar el repositorio: \texttt{git clone https://github.com/pazussa/twAutomation}
+  \item Instalar dependencias: \texttt{npm install}
+  \item Configurar variables de entorno en archivo \texttt{.env}
+  \item Ejecutar pruebas: \texttt{npx playwright test}
+  \item Iniciar panel de administración: \texttt{npm run admin}
+\end{enumerate}
+
+Consultar el archivo \texttt{README.md} del repositorio para instrucciones detalladas de configuración y uso avanzado.
+
+\subsection{Anexo B: Información de la empresa}
+
+\subsubsection{Grandtek - Soluciones Especializadas de Software}
+
+La pasantía se desarrolló en Grandtek, empresa especializada en desarrollo de soluciones de software basadas en tecnologías de la información y las comunicaciones (TIC).
+
+\begin{center}
+\textbf{Sitio web:} \url{https://grandtek.co/}
+\end{center}
+

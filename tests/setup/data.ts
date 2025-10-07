@@ -1137,6 +1137,19 @@ export const KEYWORD_RULES: Array<{
   { pattern: /reporte enviado|trabajo reportado/i, action: { type: 'END_OK' }, note: 'Reporte exitoso', priority: 3 },
   { pattern: /exito|exitoso|exitosa|exitosos|exitosas/i, action: { type: 'END_OK' }, note: 'Éxito detectado (cualquier variante)', priority: 3 },
   
+  // Finalizadores para consultas GET (devuelven información sin acción adicional)
+  { pattern: /actualmente tienes \d+ cultivo/i, action: { type: 'END_OK' }, note: 'Lista de cultivos completada', priority: 3 },
+  { pattern: /tienes \d+ fertilizante/i, action: { type: 'END_OK' }, note: 'Lista de fertilizantes completada', priority: 3 },
+  { pattern: /estos son los (\d+ )?productos/i, action: { type: 'END_OK' }, note: 'Lista de productos completada', priority: 3 },
+  { pattern: /aqu[ií] est[áa]n?:?\s*\.?\s*\n.*(?:cultivo|fertilizante|producto|trabajo|campaña)/i, action: { type: 'END_OK' }, note: 'Lista de resultados mostrada', priority: 3 },
+  { pattern: /no hay (cultivos|fertilizantes|productos|trabajos|campañas) disponibles/i, action: { type: 'END_OK' }, note: 'Consulta sin resultados', priority: 3 },
+  { pattern: /no se encontr[óo] ningún/i, action: { type: 'END_OK' }, note: 'Consulta sin resultados', priority: 3 },
+  { pattern: /el [úu]ltimo (precio|trabajo|campaña)/i, action: { type: 'END_OK' }, note: 'Consulta de último registro', priority: 3 },
+  { pattern: /la distribuci[óo]n (de cultivos )?es:/i, action: { type: 'END_OK' }, note: 'Distribución mostrada', priority: 3 },
+  { pattern: /trabajos pendientes.*:/i, action: { type: 'END_OK' }, note: 'Lista de pendientes', priority: 3 },
+  { pattern: /historial de campañas/i, action: { type: 'END_OK' }, note: 'Historial mostrado', priority: 3 },
+  { pattern: /variaci[óo]n de precio/i, action: { type: 'END_OK' }, note: 'Variación mostrada', priority: 3 },
+  
   // Finalizadores de error
   { pattern: /error|fallo|problema|no se pudo|no se encontró|no existe|inválido/i, action: { type: 'END_ERR' }, note: 'Error detectado', priority: 3 },
   

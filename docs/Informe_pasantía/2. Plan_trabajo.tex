@@ -1,0 +1,136 @@
+\section{Plan de trabajo avalado}
+\label{sec:methodology}
+
+
+
+
+\subsection{Actividades}
+
+\subsubsection{Preparación y configuración inicial}
+\begin{itemize}
+  \item Recopilar criterios de aceptación por HU.
+  \item Reescribir criterios de aceptación iniciales en Gherkin
+  \item Configurar repo TS + Cucumber + Playwright.
+  \item Login persistente a WhatsApp Web (state.json) y chat Twilio o Whatsapp Business.
+  \item Definir convenciones: tags por HU/Fase, nombres de steps, estructura de\\
+  carpetas, formato de reporte.
+\end{itemize}
+
+\subsubsection{Base de automatización}
+\begin{itemize}
+  \item POM WhatsApp: abrir chat, enviar mensaje, esperar respuesta, confirmar textos,\\
+  manejar multi-turno.
+  \item Wait helpers: esperas activas por “pregunta del bot”, “confirma”, “listado”.
+  \item Message parsers: utilidades para detectar prompts del bot y listas/tablas en texto.
+  \item Modelo de datos mínimo: crear/limpiar cultivos y productos de prueba.
+\end{itemize}
+
+\subsubsection{Automatización de Fase 1}
+\begin{itemize}
+  \item HU‐002: Escenarios de usuario válido/ inválido y sesión expirada.
+  \item HU‐006: Listado y filtrado de cultivos.
+  \item HU‐007 a HU‐019: Listado de variedades, fertilizantes, fitosanitarios y otros\\
+  recursos.
+  \item Refactorización de pasos comunes (inicio/cierre de sesión, navegación).
+  \item Registro de incidentes detectados durante la ejecución.
+\end{itemize}
+
+\subsubsection{Automatización de Fase 2}
+\begin{itemize}
+  \item HU‐020/021/022: Creación de productos (cultivo, fertilizante, químico) con\\
+  validación de campos.
+  \item HU‐003: Listar productos por fabricante
+  \item HU‐004: Asignación de precio de producto y verificación de persistencia.
+  \item HU‐005: Búsqueda por materia activa (coincidencias exactas y parciales).
+  \item Reutilización de page objects y steps; generación de reportes básicos.
+\end{itemize}
+
+\subsubsection{Automatización de Fase 3}
+\begin{itemize}
+  \item HU‐023: Creación de campañas (manejo de datos y fechas).
+  \item HU‐024: Consulta de historial de campañas (filtrado, orden, detalle).
+  \item HU‐025: Planificación de trabajos a campos, confirmando estados.
+  \item Integración parcial de flujos end‐to‐end combinando fases anteriores.
+\end{itemize}
+
+\subsubsection{Revisión, documentación y entrega}
+\begin{itemize}
+  \item Consolidar scripts y pasos en un README final con instrucciones detalladas.
+  \item Especificar dependencias y cómo añadir nuevas pruebas.
+  \item Redactar informe de cobertura, hallazgos y recomendaciones futuras para abordar\\
+  CI/CD.
+  \item Elaborar un informe de retrospectiva con aprendizajes y sugerencias.
+\end{itemize}
+
+\subsection{Cronograma de la pasantía:}
+
+\subsubsection{Semana 1 — Page objects reutilizables — 40 h}
+\begin{itemize}
+  \item Reescritura Gherkin; definición de tags y convenciones — 10 h
+  \item Setup repo; POM WhatsApp (buscar chat, enviar/leer) + wait helpers base — 10 h
+  \item DataFactory v1 (cultivos/variedades mínimas) + datasets versionados — 6 h
+  \item Login persistente y validación de sesión/chat objetivo — 2 h
+  \item Implementación HU-002 + evidencia — 4 h
+  \item Implementación HU-006 + evidencia — 4 h
+  \item Revisión y ajustes — 4 h
+\end{itemize}
+Entregables: repositorio funcional, features/steps ejecutables, reporte HTML con\\
+screenshots.
+
+\subsubsection{Semana 2 — Fase 1 completa + “Crear cultivo” — 40 h}
+\begin{itemize}
+  \item HU-016 listar por nombre: exacto/parcial/inexistente — 4 h
+  \item HU-007 listar variedades — 3 h
+  \item HU-008 listar fertilizantes — 2 h
+  \item HU-009 listar fitosanitarios — 2 h
+  \item HU-010 fertilizantes por nombre — 2 h
+  \item HU-011 último precio producto — 2 h
+  \item HU-012 variación precio producto — 2 h
+  \item HU-013 precio mínimo producto — 2 h
+  \item HU-014 consultar campos sin planificar — 2 h
+  \item HU-017 consultar distribución cultivos — 3 h
+  \item HU-018 consultar planificación campaña — 3 h
+  \item HU-019 consultar trabajos — 2 h
+  \item Flujo “Crear cultivo” — 6 h
+  \item Refactor de pasos comunes + consolidación de message parsers + registro de\\
+  bugs — 5 h
+\end{itemize}
+Entregables: HUs de Fase 1 + Crear cultivo automatizados; reporte y matriz de\\
+cobertura v1.
+
+\subsubsection{Semana 3 — Fase 2 — 40 h}
+\begin{itemize}
+  \item HU-021 crear fertilizante: campos obligatorios/valores inválidos — 8 h
+  \item HU-004 asignar precio: persistencia/validaciones de rango — 8 h
+  \item HU-005 buscar por materia activa: exacta/parcial/sin resultados — 7 h
+  \item HU-003 listar productos por fabricante (fertilizantes y fitosanitarios) — 5 h
+  \item Automatización HU-020 y HU-022 — 6 h
+  \item Validación manual + ajustes de fixtures + reportes + refactor — 6 h
+\end{itemize}
+Entregables: Automatización HUs de Fase 2, reportes con evidencias.
+
+\subsubsection{Semana 4 — Fase 3 — 40 h}
+\begin{itemize}
+  \item U-023 crear campaña fechas validaciones estado — 10 h
+  \item HU-024 consultar historial de campañas filtros orden detalle — 5 h
+  \item HU-025 planificar trabajo a un campo estados confirmaciones — 5 h
+  \item HU-026 reportar trabajo en un campo — 4 h
+  \item HU-027 consultar último trabajo realizado — 4 h
+  \item HU-028 implementación del RAG — 6 h
+  \item Estabilización medir flakiness, afinar waits reintentos — 3 h
+  \item Documentación final README guía para nuevas HUs matriz de cobertura informe\\
+  de hallazgos proyección CD CI — 3 h
+\end{itemize}
+Entregables: HUs fase 3 completa; matriz final HU–Escenarios–Evidencia;\\
+reportes con screenshots; informe final.
+
+\subsubsection{Duración: 4 semanas}
+
+\subsubsection{Intensidad horaria: 160 horas (40 h / semana)}
+
+\subsubsection{Número de créditos: 3}
+
+
+
+
+

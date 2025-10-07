@@ -1,0 +1,260 @@
+% ==============
+% DOCUMENT CLASS
+% ==============
+
+\documentclass[11pt,twoside]{report} % submission version
+
+% Paquetes habituales
+\usepackage{subcaption}
+
+\usepackage{amsmath, amssymb, amsfonts}
+
+
+\usepackage{algorithm}          % define el entorno  algorithm
+\usepackage[noend]{algpseudocode} % comandos \State, \For, …
+
+% Opción B (paquete único que combina ambos)
+% \usepackage[ruled,vlined]{algorithm2e}
+
+\usepackage{booktabs}
+% ==============
+% LaTeX PACKAGES
+% ==============
+% -----
+% Colorhttps://www.overleaf.com/project/62e10511d8d14d11520e3ef4
+\usepackage{color}
+\usepackage[table,xcdraw]{xcolor} 
+\usepackage{enumitem}
+\newlist{myitemize}{itemize}{1}
+\setlist[myitemize]{itemsep=0.1em, topsep=0.1pt, label=\textbullet}
+% -----
+% Fonts
+\usepackage{lmodern}
+\usepackage{capt-of}
+\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+\renewcommand\thesection{\arabic{section}}
+\usepackage[T1]{fontenc}
+% -----------https://es.overleaf.com/project/62e10511d8d14d11520e3ef4
+% Other fonts
+\usepackage{listings}
+\usepackage{verbatim}
+
+% -------
+% Margins
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,tmargin=3cm,bmargin=2.5cm,lmargin=3cm,rmargin=2.5cm,headheight=3cm,headsep=1cm}
+\usepackage{siunitx}
+% Micro-typographic improvements and overfull mitigation
+\usepackage{microtype}
+\tolerance=1000
+\emergencystretch=3em
+\pretolerance=100
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
+ 
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{longtable}
+% (geometry already loaded above)
+
+
+% -----------
+% Hyphenation
+% Language: try Spanish if available; otherwise, fall back to English
+\IfFileExists{spanish.ldf}{%
+    \usepackage[spanish,es-nodecimaldot,es-lcroman]{babel}%
+    % Forzar que diga "Tabla" en lugar de "Cuadro"
+    \addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
+}{%
+    \usepackage[english]{babel}%
+}
+% -------------
+% Alignment
+\usepackage{array}
+% -------------
+% External PDFs
+\usepackage{pdfpages}
+% ----
+% Math
+\usepackage{amsmath}
+% -------
+% Symbols
+\usepackage{amssymb}
+% --------
+% Graphics
+\usepackage{graphicx}
+% Eliminado paquete subfigure (conflicta con subcaption)
+\graphicspath{{figures/}} % path(s)
+%\DeclareGraphicsExtensions{.eps} % extension(s)
+% ------------
+% Bibliography
+\usepackage[sort&compress, numbers]{natbib}
+% ------------
+% Period label separation instead of colon
+\usepackage[labelsep=period]{caption}
+% ----------------
+% Hyper-references
+\usepackage[unicode=true, bookmarks=true,bookmarksnumbered=true,bookmarksopen=false, breaklinks=true, pdfborder={0 0 0},backref=page,colorlinks=true]{hyperref}
+% ----------------
+% Table formatting
+\usepackage{threeparttable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{float}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definición de colores para la tabla
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{rigor}{RGB}{169, 218, 255}
+\definecolor{diseño}{rgb}{0.0, 0.0, 1.0}
+\definecolor{relevancia}{RGB}{53, 161, 244}
+
+\definecolor{transformacion}{RGB}{56, 182, 255}
+\definecolor{cuantificador}{RGB}{0, 74, 173}
+\definecolor{evaluacion}{RGB}{0, 35, 114}
+
+\definecolor{green}{rgb}{.1, .4, .0}
+\definecolor{lightgreen}{rgb}{.0, .9 .0}
+
+\definecolor{salmon}{rgb}{.78, .36, .34}
+\definecolor{lightsalmon}{rgb}{.93, .76, .58}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ===== INICIO DOCUMENTO =====
+\begin{document}
+
+
+
+% ===============
+% LaTeX UTILITIES
+% ===============
+% ----------------
+% Hyper-references
+\hypersetup{pdftitle={REINFORCEMENT LEARNING-BASED TIME SCHEDULING FOR TIME-SENSITIVE NETWORKING}, pdfauthor={Juan Paz}, colorlinks=true, citecolor=blue, linkcolor=black, urlcolor=green}
+% ----------------
+% Grayscale colors
+%\definecolor{red}{0.20}
+\definecolor{americanrose}{rgb}{1.0, 0.01, 0.24}
+\definecolor{brightpink}{rgb}{1.0, 0.0, 0.5}
+\definecolor{blue}{rgb}{0.0, 0.0, 1.0}
+\definecolor{purple}{rgb}{0.01,0.01,0.01}
+\definecolor{black}{rgb}{0.001,0.001,0.001}
+
+\newcommand{\omc}[1]{\textcolor{violet}{#1}}
+\newcommand{\jah}[1]{\textcolor{brightpink}{#1}}
+\newcommand{\rev}[1]{\textcolor{americanrose}{#1}}
+\newcommand{\cht}[1]{\textcolor{blue}{#1}}
+\newcommand{\arendon}[1]{\textcolor{orange}{#1}}
+% ---------------------------------------------------------------
+% Pages with more than 80% of floats become pure float-only pages
+\renewcommand{\floatpagefraction}{.8}%
+% -----------------------
+% Extra height for tables
+\renewcommand{\arraystretch}{1.6}
+% ==================
+% DOCUMENT UTILITIES
+% ==================
+% -------------
+% --------------------------------------------------------------------
+%  PORTADA  –  Datos básicos del trabajo de grado
+% --------------------------------------------------------------------
+
+% PORTADA
+% suprime numeración en la portada
+\pagenumbering{gobble}
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    \includegraphics[scale=0.5]{logo_unicauca.pdf}
+    
+    \vspace{0.5cm}
+    {\huge \bfseries Automatización de pruebas de procesamiento de lenguaje natural \par}
+
+    
+    \vspace{5cm}
+    
+    {\Large Autor: \par}
+    {\large Juan Martín Paz Ussa \\ Cód. 100613020435 \par}
+
+
+    
+    {\Large Asesores: \par}
+    {\large Oscar Mauricio Caicedo Rendón, Ph.D. \par}
+    \large Hebert Jair Gómez Fajardo
+    \vspace{3cm}
+       
+    %{\large Línea de investigación: \textbf{\lineresearch} \par}
+    
+    \vspace{0.6cm}
+       
+    {\scshape\LARGE Universidad del Cauca \par}
+    \vspace{0.1cm}
+    {\scshape\Large Facultad de Ingeniería Electrónica y Telecomunicaciones \par}
+    \vspace{0.1cm}
+    {\Large Programa de Ingeniería Electrónica y Telecomunicaciones \par}
+    {\large Octubre 2025 \par}
+    \vspace{0.1cm}
+    
+    
+    
+   
+    
+\end{titlepage}
+\clearpage
+
+% páginas preliminares con números romanos
+\pagenumbering{roman}
+
+% (Paquetes tikz / titlesec eliminados aquí: deben ir en el preámbulo si se necesitan)
+% (Eliminado segundo \begin{document} redundante)
+% -----------------------------------------------
+% Build the cover page (generated from arguments)
+% -----------
+% Roman pages
+% -----------------
+% Table of contents
+%\pdfbookmark{\contentsname}{toc}
+\renewcommand{\contentsname}{\LARGE\centerline{Contenido}}
+\tableofcontents{}
+\newpage
+% ---------------
+
+% ---------------
+% End roman pages
+
+% inicio del cuerpo del documento con numeración arábiga
+\clearpage
+\pagenumbering{arabic}
+
+% ------------------------------
+% Paragraph spacing for document
+\setlength{\parskip}{1em}
+% Paragraph spacing for sections in documents
+%\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 4pt minus 2pt}
+% -----------------
+
+\input{1. Introduction}
+\input{2. Plan_trabajo}
+\input{3. Actividades}
+\input{4. Recursos}
+\input{5. Conclusiones}
+\input{7. Recomendaciones}
+
+% Bibliografía
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+% Anexos
+\input{6. Anexos}
+
+\end{document}

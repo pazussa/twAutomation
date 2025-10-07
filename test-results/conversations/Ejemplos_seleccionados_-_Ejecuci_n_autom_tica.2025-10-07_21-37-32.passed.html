@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Ejemplos seleccionados - Ejecución automática – PASSED</title>
+<style>
+  :root {
+    --ok: #10b981;
+    --fail: #ef4444;
+    --send: #1d4ed8;
+    --recv: #6b7280;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e5e7eb;
+  }
+  html,body{background:var(--bg);}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;margin:24px;color:#0f172a;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:18px 20px;margin-bottom:18px;}
+  h1{font-size:20px;margin:0 0 4px;}
+  .meta{color:#475569;margin:0 0 12px;font-size:14px}
+  .summary{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 0}
+  .chip{border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:13px;background:#fff}
+  .chip.ok{border-color:var(--ok);color:var(--ok)}
+  .chip.fail{border-color:var(--fail);color:var(--fail)}
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px}
+  thead th{font-weight:600;text-align:left;color:#334155;border-bottom:1px solid var(--border);padding:8px}
+  tbody td{border-top:1px solid var(--border);padding:8px;vertical-align:top}
+  td.idx{width:44px;color:#64748b}
+  td.tipo.send{color:var(--send);font-weight:600}
+  td.tipo.recv{color:var(--recv);font-weight:600}
+  td.tipo.intent{color:#7c3aed;font-weight:700}
+  td.time{white-space:nowrap;color:#64748b}
+  td.texto{white-space:pre-wrap;word-wrap:break-word}
+  .badge{display:inline-block;border-radius:8px;padding:2px 8px;font-size:12px;border:1px solid}
+  .badge.ok{border-color:var(--ok);color:var(--ok);background:rgba(16,185,129,.08)}
+  .badge.fail{border-color:var(--fail);color:var(--fail);background:rgba(239,68,68,.08)}
+  .intent-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin:14px 0}
+  .intent-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .intent-title{font-weight:700}
+  .intent-sub{color:#64748b;font-weight:500;margin-left:6px}
+  footer{margin-top:16px;color:#64748b;font-size:12px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Ejemplos seleccionados - Ejecución automática</h1>
+    <div class="meta">
+      <div><strong>Status:</strong> passed</div>
+      <div><strong>Duración:</strong> 25183 ms</div>
+      <div><strong>Archivo:</strong> /home/user/newautomwpp/2/tests/execute-selected.spec.ts:45</div>
+    </div>
+    <div class="summary">
+      <div class="chip">Eventos: 4</div>
+      <div class="chip ok">OK: 4</div>
+      <div class="chip fail">FAIL: 0</div>
+      <div class="chip">Intents: 1</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 8px;font-size:16px">Conversación por intent</h2>
+    <div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[1/1] getCrops › dame la lista de cultivos <span class="intent-sub">(1/1)</span></div>
+    <div class="chip ok">OK</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">dame la lista de cultivos</td>
+  <td class="time">2025-10-07T21:37:17.055Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¡Actualmente tienes 9 cultivo(s)! Aquí están:.</td>
+  <td class="time">2025-10-07T21:37:30.475Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Cultivo: girasol Variedad: solaris Marca: SunFields_68di Destino: pienso Precio actual: No reporta — Cultivo: girasol Variedad: solaris Marca: SunFields Destino: pienso Precio actual: No reporta — Cultivo: maíz Variedad: p 8660 Marca: SeedTech Destino: consumo Precio actual: No reporta — Cultivo: tomate Variedad: raf Marca: GrainMaster Destino: consumo Precio actual: No reporta — Cultivo: alfalfa Variedad: pr59n49 Marca: marcax para cliente AgroTalavera Destino: consumo Precio actual: 15 — Cultivo: avena Variedad: prevision Marca: marcax Destino: consumo Precio actual: No reporta — Cultivo: pastizal de 5 o mas años Variedad: sin variedad Marca: marcax … Cultivo: girasol Variedad: solaris Marca: SunFields_68di Destino: pienso Precio actual: No reporta — Marca: SunFields Cultivo: maíz Variedad: p 8660 Marca: SeedTech Destino: consumo Cultivo: tomate Variedad: raf Marca: GrainMaster Cultivo: alfalfa Variedad: pr59n49 Marca: marcax para cliente AgroTalavera Precio actual: 15 Cultivo: avena Variedad: prevision Marca: marcax Cultivo: pastizal de 5 o mas años Variedad: sin variedad Marca: marcax ….</td>
+  <td class="time">2025-10-07T21:37:30.475Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+    <footer>Generado por ConversationReporter</footer>
+  </div>
+</body>
+</html>

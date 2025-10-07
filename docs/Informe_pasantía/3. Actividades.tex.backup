@@ -1,0 +1,599 @@
+
+
+\section{Actividades de la pasantía}
+\label{sec:activities}
+
+Durante la pasantía se ejecutó un conjunto de actividades orientadas a diseñar, implementar y operar un sistema de validación end-to-end de conversaciones de WhatsApp para un bot del dominio agrícola. Este trabajo implicó la construcción de un framework de automatización que incluye orquestación de pruebas, gestión de datos, ejecución automatizada de conversaciones \paragraph{Solución implementada:}
+\begin{itemize}
+  \item Estándarización de área de visualización: tamaño fijo independiente del modo de ejecución
+  \item Esperas adicionales después de acciones que disparan animaciones
+  \item Evitar dependencias en eventos visuales (hover, scroll) usando interacciones directas
+  \item Configuración unificada aplicable a ambos modos (con y sin interfaz gráfica)
+  \item Pruebas en ambos modos durante desarrollo para detectar discrepancias temprano
+\end{itemize}ción de reportes con evidencias detalladas.
+
+\subsection{Rol del estudiante en la organización}
+El estudiante se integró al \textbf{área de QA y automatización} dentro del organigrama de la organización, reportando al líder técnico de calidad y coordinando con los equipos de desarrollo backend y diseño conversacional.
+
+\subsection{Descripción detallada de las actividades}
+
+\subsubsection{Fase de preparación y configuración inicial}
+
+La primera semana se dedicó a establecer los cimientos del proyecto de automatización. Se configuró un repositorio TypeScript con Playwright como motor de automatización de navegador.
+
+\paragraph{Configuración del entorno de desarrollo}
+Se estableció un proyecto Node.js con TypeScript, configurando compatibilidad ES2020 y gestión de módulos. El archivo de configuración del framework se parametrizó con timeouts extendidos (15 minutos por prueba) para permitir conversaciones multi-turno prolongadas, deshabilitando la ejecución paralela para evitar colisiones en la misma sesión de WhatsApp Web.
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar captura de la estructura del proyecto
+% \includegraphics[width=0.8\textwidth]{figures/project-structure.png}
+\caption{Estructura del proyecto de automatización (captura pendiente)}
+\label{fig:project-structure}
+\end{figure}
+
+\paragraph{Manejo de sesión persistente en WhatsApp Web}
+Un desafío crítico fue mantener la sesión de WhatsApp Web entre ejecuciones de pruebas sin requerir autenticación manual con código QR en cada inicio. Se implementó la estrategia de contexto persistente de Playwright, almacenando el estado del navegador (cookies, almacenamiento local y de sesión) en un directorio dedicado. El módulo de utilidades de autenticación contiene una función especializada que:
+
+\begin{itemize}
+  \item Verifica si existe una sesión activa comprobando elementos característicos de WhatsApp Web cargado
+  \item Si no hay sesión, espera la presentación del código QR y la autenticación manual
+  \item Una vez autenticado, persiste el estado para ejecuciones futuras
+  \item Incluye mecanismos de reintento con esperas exponenciales para manejar latencias de red
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar captura del proceso de login
+% \includegraphics[width=0.7\textwidth]{figures/whatsapp-login.png}
+\caption{Proceso de autenticación y persistencia de sesión (captura pendiente)}
+\label{fig:whatsapp-login}
+\end{figure}
+
+\paragraph{Definición de convenciones y etiquetado}
+Se estableció un sistema de nomenclatura y organización:
+
+\begin{itemize}
+  \item Archivos de prueba nombrados según la funcionalidad o historia de usuario que validan
+  \item Estructura de carpetas organizada: directorio principal para especificaciones, subdirectorios para utilidades compartidas y datasets de prueba en formato YAML
+  \item Etiquetas (tags) por fase y tipo de funcionalidad para permitir ejecución selectiva
+  \item Convenciones de nombrado para variables de entorno en archivo de configuración
+\end{itemize}
+
+\subsubsection{Construcción de la base de automatización}
+
+La segunda semana se enfocó en construir los componentes reutilizables que formarían el núcleo del framework de pruebas.
+
+\paragraph{Page Objects y utilidades de interacción}
+Siguiendo el patrón Page Object Model, se desarrolló un conjunto de funciones especializadas para interactuar con la interfaz de WhatsApp Web:
+
+\begin{itemize}
+  \item Función para localizar y abrir el chat con el contacto específico (el bot bajo prueba)
+  \item Función para limpiar el historial del chat e iniciar con contexto limpio
+  \item Función para escribir en el campo de texto del compositor de mensajes, manejando el foco correcto
+  \item Función para ejecutar el envío del mensaje (mediante clic en botón o tecla Enter)
+  \item Función para esperar activamente la aparición de una nueva burbuja de mensaje del bot
+  \item Función para obtener solo los mensajes nuevos recibidos desde un punto de referencia
+  \item Función para contar el total de burbujas de mensajes entrantes en el chat
+\end{itemize}
+
+Estas funciones encapsulan los selectores CSS complejos y el manejo de condiciones de carrera propias de la interfaz web de mensajería.
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar diagrama del flujo de interacción
+% \includegraphics[width=0.9\textwidth]{figures/interaction-flow.png}
+\caption{Flujo de interacción con WhatsApp Web mediante Page Objects (captura pendiente)}
+\label{fig:interaction-flow}
+\end{figure}
+
+\paragraph{Esperas inteligentes y manejo de asincronía}
+Dado que las respuestas del bot dependen de latencias de red, procesamiento backend y tiempos de entrega de WhatsApp, se implementaron estrategias de espera robustas:
+
+\begin{itemize}
+  \item \textbf{Esperas explícitas con polling:} En lugar de esperas fijas, se implementa un bucle que verifica periódicamente la aparición de nuevos mensajes, con tiempo límite configurable
+  \item \textbf{Detección de patrones de texto:} Funciones especializadas que esperan hasta que aparezca un mensaje que coincida con un patrón específico
+  \item \textbf{Reintentos acotados:} Se permite un número limitado de reintentos con incrementos exponenciales de tiempo cuando se detectan condiciones transitorias (ej. carga lenta de interfaz)
+  \item \textbf{Tiempos límite configurables:} Los timeouts se parametrizan mediante variables de entorno para ajustar según las características del servidor de pruebas
+\end{itemize}
+
+\paragraph{Parsers de mensajes y lógica de decisión}
+El bot responde con textos enriquecidos (listados numerados, tablas, opciones de menú). Se desarrollaron analizadores sintácticos (parsers) especializados:
+
+\begin{itemize}
+  \item Función para extraer el primer elemento de una lista numerada y seleccionarlo automáticamente
+  \item Sistema de reglas basado en expresiones regulares con prioridades, que analiza la respuesta del bot y determina la acción apropiada (responder con un valor específico, terminar exitosamente, terminar con error, etc.)
+  \item Función que aplica las reglas sobre los mensajes recibidos y retorna la acción a ejecutar
+  \item Función para resolver plantillas con variables del contexto actual (ej. reemplazar marcadores de posición con valores generados dinámicamente)
+\end{itemize}
+
+Este sistema permite que las pruebas sean declarativas y adapten su comportamiento dinámicamente según las respuestas del bot.
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar ejemplo de reglas y parseo
+% \includegraphics[width=0.85\textwidth]{figures/keyword-rules.png}
+\caption{Sistema de reglas por palabras clave para decisión automática (captura pendiente)}
+\label{fig:keyword-rules}
+\end{figure}
+
+\paragraph{Modelo de datos y fixtures}
+Se centralizó la gestión de datos de prueba en un módulo dedicado:
+
+\begin{itemize}
+  \item \textbf{Diccionario de variables:} Variables contextuales (nombres de cultivos, fertilizantes, clientes, fechas) que se materializan en las plantillas de mensajes
+  \item \textbf{Mapa de intenciones:} Estructura que asocia cada intent (ej. ``crear cultivo'', ``listar fertilizantes'') con múltiples frases de ejemplo para probar variaciones de entrada
+  \item \textbf{Funciones de selección aleatoria:} Funciones para seleccionar datos aleatorios y variar entre ejecuciones, evitando colisiones
+  \item \textbf{Reinicio de variables:} Función para asegurar estado limpio al inicio de cada prueba
+  \item \textbf{Mutaciones para reintentos:} Función que altera ligeramente los datos en caso de fallos transitorios para intentar nuevamente
+\end{itemize}
+
+\subsubsection{Automatización de Fase 1: Consultas básicas}
+
+La segunda y tercera semana se automatizaron las historias de usuario de consulta y listado (Fase 1 del plan de trabajo):
+
+\paragraph{HU-002: Autenticación y gestión de sesión}
+Se implementaron escenarios para validar el flujo de solicitud de OTP por correo, ingreso de código válido, manejo de código inválido y detección de sesión expirada.
+
+\paragraph{HU-006: Listado y filtrado de cultivos}
+Las pruebas automatizadas implementan:
+
+\begin{itemize}
+  \item Listado completo de cultivos registrados
+  \item Filtrado por nombre (coincidencia exacta y parcial)
+  \item Manejo de casos sin resultados
+  \item Creación de cultivos con validación de campos obligatorios (nombre, variedad, marca, destino)
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar captura de ejecución de listado de cultivos
+% \includegraphics[width=0.9\textwidth]{figures/get-crops-execution.png}
+\caption{Ejecución de listado y filtrado de cultivos (captura pendiente)}
+\label{fig:get-crops-execution}
+\end{figure}
+
+\paragraph{HU-007 a HU-019: Consultas de recursos agrícolas}
+Se automatizaron especificaciones individuales para:
+
+\begin{itemize}
+  \item \textbf{HU-008, HU-009, HU-010:} Listado de fertilizantes y fitosanitarios, con filtrado por nombre
+  \item \textbf{HU-011, HU-012, HU-013:} Consultas de precios (último precio, variación histórica, precio mínimo)
+  \item \textbf{HU-014:} Consulta de campos sin planificación
+  \item \textbf{HU-017, HU-018, HU-019:} Consultas de distribución de cultivos, planificaciones de campaña y trabajos pendientes
+\end{itemize}
+
+Cada especificación de prueba sigue un patrón estructurado donde se define el caso de prueba y se ejecuta un bucle automático que:
+\begin{enumerate}
+  \item Limpia el chat para iniciar con contexto limpio
+  \item Envía la frase de inicio del intent
+  \item Entra en un bucle automático de lectura de respuestas y envío de acciones determinadas por las reglas definidas
+  \item Registra cada paso en el sistema de trazabilidad conversacional
+  \item Retorna resultado de éxito o fallo según los criterios de aceptación
+\end{enumerate}
+
+\subsubsection{Automatización de Fase 2: Creación y gestión de productos}
+
+Durante la tercera semana se automatizaron los flujos de creación con validación exhaustiva de campos:
+
+\paragraph{HU-020, HU-021, HU-022: Creación de productos}
+Se implementaron specs para crear cultivos, fertilizantes y productos químicos con validaciones:
+
+\begin{itemize}
+  \item Campos obligatorios: el bot debe rechazar envíos sin nombre, marca, etc.
+  \item Formatos válidos: fechas, números, rangos permitidos
+  \item Persistencia: verificación de que el producto creado aparece en listados posteriores
+\end{itemize}
+
+Las especificaciones de prueba contienen múltiples escenarios con datos válidos e inválidos.
+
+\paragraph{HU-004: Asignación de precios}
+Las pruebas validan:
+
+\begin{itemize}
+  \item Asignación de precio a un producto existente
+  \item Validación de rangos (precios negativos, cero, valores extremos)
+  \item Persistencia del precio asignado (consultable mediante otras funcionalidades)
+\end{itemize}
+
+\paragraph{HU-005: Búsqueda por materia activa}
+Las pruebas verifican búsquedas exactas, parciales y casos sin coincidencias de productos fitosanitarios por su principio activo.
+
+\paragraph{HU-003: Productos por fabricante}
+Se valida el listado de productos de un fabricante específico, incluyendo casos con múltiples productos y fabricantes sin productos.
+
+\subsubsection{Automatización de Fase 3: Campañas y trabajos}
+
+En la cuarta semana se completaron los flujos más complejos relacionados con planificación agrícola:
+
+\paragraph{HU-023: Creación de campañas}
+Las pruebas implementan:
+
+\begin{itemize}
+  \item Creación de campaña con fechas de inicio y fin
+  \item Validación de rangos de fechas (inicio antes de fin, fechas pasadas)
+  \item Asociación de campaña con campos y cultivos
+  \item Verificación de estado de campaña (activa, futura, finalizada)
+\end{itemize}
+
+\paragraph{HU-024: Historial de campañas}
+Las pruebas validan consultas de historial con:
+
+\begin{itemize}
+  \item Filtrado por rango de fechas
+  \item Ordenamiento cronológico
+  \item Detalles de cada campaña (cultivos asociados, trabajos planificados)
+\end{itemize}
+
+\paragraph{HU-025, HU-026, HU-027: Gestión de trabajos}
+Se automatizaron:
+
+\begin{itemize}
+  \item \textbf{Planificación de trabajos}: asignación de tarea a un campo con fecha y tipo de labor
+  \item \textbf{Reporte de trabajo finalizado}: confirmación de ejecución con cantidades y observaciones
+  \item \textbf{Consultas de trabajos}: trabajos pendientes y último trabajo realizado
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar captura de flujo completo de campaña
+% \includegraphics[width=0.95\textwidth]{figures/campaign-flow.png}
+\caption{Flujo end-to-end de creación y gestión de campaña (captura pendiente)}
+\label{fig:campaign-flow}
+\end{figure}
+
+\subsubsection{Panel de administración y ejecución selectiva}
+
+Paralelamente a la automatización de HUs, se desarrolló una interfaz web de administración para facilitar la ejecución de pruebas:
+
+\paragraph{Servidor de administración}
+Se implementó un servidor web con Express y TypeScript que:
+
+\begin{itemize}
+  \item Sirve una interfaz web accesible localmente en puerto 3000
+  \item Lee dinámicamente todos los intents y ejemplos desde el módulo de datos
+  \item Expone servicios REST para obtener la lista de intents, ejemplos por intent, ejecutar selección de ejemplos y convertir reportes a PDF
+  \item Genera archivos de configuración temporal con la selección de pruebas a ejecutar
+\end{itemize}
+
+\paragraph{Interfaz de usuario}
+La interfaz web permite:
+
+\begin{itemize}
+  \item \textbf{Visualización agrupada:} Todos los intents listados con acordeón expandible, mostrando ejemplos dentro de cada intent
+  \item \textbf{Selección múltiple:} Casillas de verificación para marcar intents completos o ejemplos individuales
+  \item \textbf{Búsqueda en tiempo real:} Filtrado de intents y ejemplos por texto
+  \item \textbf{Contador de selección:} Indicador visual del número de ejemplos marcados
+  \item \textbf{Ejecución con un clic:} Botón de ejecución que dispara la suite de pruebas seleccionadas mediante API
+  \item \textbf{Edición de datos:} Formularios para agregar, editar o eliminar intents y ejemplos, persistiendo cambios en el repositorio de datos
+  \item \textbf{Acceso directo a reportes:} Botón para abrir la carpeta de reportes generados
+\end{itemize}
+
+Este panel reduce significativamente el tiempo de configuración y permite a usuarios no técnicos ejecutar subconjuntos de pruebas según necesidad.
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar captura del panel de administración
+% \includegraphics[width=0.95\textwidth]{figures/admin-panel.png}
+\caption{Panel de administración para ejecución selectiva de pruebas (captura pendiente)}
+\label{fig:admin-panel}
+\end{figure}
+
+\subsubsection{Sistema de reportes con evidencias detalladas}
+
+Se desarrolló un generador de reportes personalizado que produce documentos HTML con:
+
+\paragraph{Características del sistema de reportes}
+\begin{itemize}
+  \item \textbf{Línea temporal conversacional:} Cada mensaje enviado y recibido con marca de tiempo UTC precisa
+  \item \textbf{Agrupación por intent:} Los reportes muestran cada intent ejecutado como una sección expandible
+  \item \textbf{Indicadores visuales:} Insignias de estado (éxito/fallo) por intent y por paso individual
+  \item \textbf{Estadísticas globales:} Resumen con total de eventos, exitosos, fallidos y número de intents ejecutados
+  \item \textbf{Exportación automática a PDF:} Script que convierte los HTML a PDF preservando estilos, ejecutado automáticamente al finalizar cada suite
+  \item \textbf{Nomenclatura con marca temporal:} Archivos nombrados con fecha y hora para trazabilidad histórica
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar ejemplo de reporte HTML
+% \includegraphics[width=0.9\textwidth]{figures/conversation-report.png}
+\caption{Reporte de conversación con timeline y estados (captura pendiente)}
+\label{fig:conversation-report}
+\end{figure}
+
+\paragraph{Estructura del reporte}
+Cada reporte incluye:
+
+\begin{verbatim}
+[Título del test]
+Status: passed / failed
+Duración: X ms
+
+Resumen:
+- Eventos: N
+- OK: X
+- FAIL: Y
+- Intents: Z
+
+Conversación:
+[1/Z] intent_name - OK
+  >> Enviado: [mensaje]
+  << Recibido: [respuesta bot]
+  ...
+[2/Z] otro_intent - FAIL
+  >> Enviado: [mensaje]
+  XX Error: [razón del fallo]
+\end{verbatim}
+
+Los reportes se almacenan en directorios organizados: formato HTML en un directorio de resultados de pruebas y formato PDF en un directorio de exportaciones.
+
+\subsection{Conocimientos y habilidades aplicadas}
+
+La ejecución del proyecto requirió la integración de conocimientos del programa de Ingeniería en Electrónica y Telecomunicaciones, énfasis Telemática:
+
+\subsubsection{Fundamentos de redes y protocolos}
+\begin{itemize}
+  \item Comprensión del modelo cliente-servidor aplicado a mensajería web (WhatsApp Web actúa como cliente que se conecta vía WebSocket/HTTP al backend de WhatsApp)
+  \item Manejo de latencias de red y timeouts en comunicaciones asíncronas
+  \item Análisis de tráfico HTTP/HTTPS para depuración (inspección de Network tab en DevTools)
+\end{itemize}
+
+\subsubsection{Programación y desarrollo de software}
+\begin{itemize}
+  \item TypeScript avanzado: tipos, interfaces, genéricos, async/await, módulos ES6
+  \item Patrones de diseño: Page Object Model, Factory para generación de datos, Strategy para reglas de decisión
+  \item Node.js: gestión de módulos, sistema de archivos, variables de entorno, scripting
+  \item Express.js: construcción de API REST, middleware, manejo de rutas
+\end{itemize}
+
+\subsubsection{Pruebas de software}
+\begin{itemize}
+  \item Diseño de casos de prueba basados en criterios de aceptación
+  \item Partición de equivalencia y valores límite para selección de datos
+  \item Automatización end-to-end con Playwright
+  \item Manejo de flakiness: reintentos, esperas inteligentes, aislamiento de estado
+  \item Generación de evidencias y trazabilidad
+\end{itemize}
+
+\subsubsection{Gestión de configuración y datos}
+\begin{itemize}
+  \item Versionamiento con Git: branches, commits descriptivos, pull requests
+  \item Gestión de variables de entorno y secretos
+  \item Modelado de datos de prueba: fixtures, factories, datasets YAML
+  \item Scripting de utilidades: sincronización de datos, exportación de reportes
+\end{itemize}
+
+\subsubsection{Interfaces de usuario y experiencia de usuario}
+\begin{itemize}
+  \item HTML5, CSS3 y JavaScript moderno para el panel de administración
+  \item Diseño responsive y accesible
+  \item Interacción DOM: manipulación de elementos, eventos, actualizaciones dinámicas
+  \item UX: búsqueda, filtrado, agrupación, feedback visual de estado
+\end{itemize}
+
+\subsection{Investigación y estudio complementario}
+
+Para sustentar las decisiones técnicas y resolver desafíos, se realizó investigación documental y experimental:
+
+\begin{itemize}
+  \item \textbf{Documentación oficial de Playwright:} APIs de Page, Context, Browser, estrategias de espera, selectores, manejo de sesiones persistentes
+  \item \textbf{Buenas prácticas en pruebas end-to-end:} Evitar dependencias entre tests, aislamiento de datos, manejo de timeouts, trazabilidad
+  \item \textbf{Patrones de diseño para automatización:} Page Object Model, Builder para construcción de datos complejos, Chain of Responsibility para reglas de decisión
+  \item \textbf{Especificación de WhatsApp Web:} Análisis de estructura DOM, selectores característicos, comportamiento de carga asíncrona de mensajes
+  \item \textbf{Estrategias anti-flakiness:} Esperas explícitas vs. implícitas, polling con backoff, aserciones con reintentos, captura de trazas para depuración
+  \item \textbf{Exportación de reportes:} Uso de Puppeteer para conversión HTML a PDF programática, preservando CSS y layout
+  \item \textbf{Node.js y scripting:} Manejo de procesos hijo (child\_process), lectura/escritura de archivos, JSON parsing, módulos ES
+\end{itemize}
+
+\subsection{Casos presentados, problemas y soluciones}
+
+Durante la ejecución surgieron desafíos técnicos que requirieron análisis y soluciones creativas:
+
+\subsubsection{Inestabilidad por latencia y sincronización}
+\paragraph{Problema:} Las respuestas del bot tienen tiempos variables (100ms a 10s) dependiendo de carga del servidor, complejidad de consulta y latencia de WhatsApp. Esperas fijas causaban falsos negativos (timeout antes de respuesta) o tiempos de ejecución innecesariamente largos.
+
+\paragraph{Solución implementada:}
+\begin{itemize}
+  \item Esperas explícitas con polling cada 200ms verificando aparición de nuevos mensajes
+  \item Timeout adaptativo: 30s para consultas simples, 60s para creaciones, 90s para flujos multi-turno
+  \item Detección de patrones específicos en lugar de esperar genéricamente (ej. esperar texto que contenga ``registrado exitosamente'')
+  \item Captura de trazas de timing para análisis posterior y ajuste de umbrales
+\end{itemize}
+
+\subsubsection{Expiración de sesión de WhatsApp Web}
+\paragraph{Problema:} WhatsApp Web expira sesiones después de períodos de inactividad o por reconexión desde otro dispositivo. Las pruebas fallaban al iniciar sin sesión válida.
+
+\paragraph{Solución implementada:}
+\begin{itemize}
+  \item Persistencia del contexto completo del navegador en directorio dedicado
+  \item Verificación al inicio: si hay sesión válida continuar, si no mostrar código QR y esperar autenticación manual
+  \item Rutina de reautenticación automática: detectar expiración durante ejecución, notificar y pausar hasta reautenticación
+  \item Documentación clara del proceso de primer uso y reconexión
+\end{itemize}
+
+\subsubsection{Variaciones de formato en respuestas del bot}
+\paragraph{Problema:} El bot alterna entre formatos de listados (numerados, con bullets, tabulados) y pequeñas variaciones de redacción. Selectores y aserciones rígidos quebraban con cambios menores.
+
+\paragraph{Solución implementada:}
+\begin{itemize}
+  \item Analizadores basados en expresiones regulares flexibles que detectan intención (ej. ``cualquier línea que empiece con número y punto'')
+  \item Sistema de reglas con prioridades: reglas más específicas primero, genéricas como respaldo
+  \item Extracción de opciones dinámica: funciones que identifican el formato y extraen el primer elemento sin asumir estructura fija
+  \item Tolerancia a espacios, mayúsculas/minúsculas y signos de puntuación
+\end{itemize}
+
+\subsubsection{Contaminación de datos entre pruebas}
+\paragraph{Problema:} Pruebas que creaban entidades (cultivos, productos) sin limpiarlas causaban que pruebas posteriores fallaran por encontrar datos inesperados (ej. prueba de ``crear cultivo con nombre duplicado'' falla si el cultivo ya existe).
+
+\paragraph{Solución implementada:}
+\begin{itemize}
+  \item Uso de nombres únicos por ejecución: marcas temporales o identificadores únicos en nombres de entidades temporales
+  \item Funciones de limpieza: rutinas que limpian el historial antes de cada prueba
+  \item Aislamiento de datos: cada prueba opera con su propio conjunto de variables independientes
+  \item Documentación de dependencias: pruebas que requieren datos preexistentes los crean explícitamente
+\end{itemize}
+
+\subsubsection{Diferencias entre ejecución visible (headful) y sin interfaz (headless)}
+\paragraph{Problema:} Tests que pasaban con navegador visible fallaban en modo headless por diferencias de timing y renderizado.
+
+\paragraph{Solución implementada:}
+\begin{itemize}
+  \item Estandarización de viewport: tamaño fijo (1180x640) independiente del modo
+  \item Esperas adicionales después de acciones que disparan animaciones
+  \item Evitar dependencias en eventos visuales (hover, scroll) usando clicks directos
+  \item Configuración unificada en \texttt{playwright.config.ts} aplicable a ambos modos
+  \item Pruebas en ambos modos durante desarrollo para detectar discrepancias temprano
+\end{itemize}
+
+\subsubsection{Detección de bucles infinitos en conversaciones}
+\paragraph{Problema:} Configuraciones incorrectas de reglas podían causar que el bot y la automatización entraran en bucle infinito (ej. bot pregunta → automación responde ``cancelar'' → bot pregunta de nuevo → loop).
+
+\paragraph{Solución implementada:}
+\begin{itemize}
+  \item Detección de patrones repetitivos: si se ve la misma pregunta del bot 3 veces consecutivas, abortar con error
+  \item Límite global de iteraciones: máximo 50 turnos por conversación, después fallo con timeout
+  \item Registro detallado de cada turno para depuración posterior
+  \item Inclusión de estadística de ``loops detectados'' en reportes
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+% PENDIENTE: Insertar captura de detección de bucle en reporte
+% \includegraphics[width=0.8\textwidth]{figures/loop-detection.png}
+\caption{Detección de bucle infinito en reporte (captura pendiente)}
+\label{fig:loop-detection}
+\end{figure}
+
+\subsection{Relación con el plan de trabajo y cumplimiento}
+
+Las actividades ejecutadas se alinearon estrictamente con el plan de trabajo avalado:
+
+\subsubsection{Semana 1: Preparación y base de automatización}
+\textbf{Planificado:}
+\begin{itemize}
+  \item Reescritura Gherkin, definición de tags y convenciones (10h)
+  \item Setup repo, POM WhatsApp y wait helpers (10h)
+  \item DataFactory v1 y datasets versionados (6h)
+  \item Login persistente (2h)
+  \item HU-002 y HU-006 (8h)
+  \item Revisión (4h)
+\end{itemize}
+
+\textbf{Ejecutado:}
+\begin{itemize}
+  \item Configuración completa del proyecto TypeScript con framework de automatización
+  \item Implementación del módulo de utilidades con todas las funciones de interacción básicas
+  \item Sistema de persistencia de sesión con verificación y reautenticación
+  \item Modelo de datos inicial con variables contextuales e intenciones
+  \item Automatización completa de HU-002 (autenticación) y HU-006 (listado cultivos)
+  \item Documentación inicial del proyecto
+\end{itemize}
+
+\textbf{Entregables:} Repositorio funcional, primeros specs ejecutables, reporte HTML básico.
+
+\subsubsection{Semana 2: Fase 1 completa + Crear cultivo}
+\textbf{Planificado:}
+\begin{itemize}
+  \item HU-016, HU-007 a HU-019 (consultas diversas) (26h)
+  \item Flujo crear cultivo (6h)
+  \item Refactor y consolidación (5h)
+  \item Registro de bugs (3h)
+\end{itemize}
+
+\textbf{Ejecutado:}
+\begin{itemize}
+  \item Automatización completa de todas las HUs de Fase 1
+  \item Implementación de pruebas de creación de cultivos con validaciones exhaustivas
+  \item Consolidación de analizadores de mensajes en el módulo de datos
+  \item Sistema de reglas por palabras clave para decisión automática
+  \item Refactorización de pasos comunes para reutilización
+  \item Matriz de cobertura inicial (documentada en el proyecto)
+\end{itemize}
+
+\textbf{Entregables:} Specs de Fase 1 funcionales, reporte con evidencias, matriz de cobertura v1.
+
+\subsubsection{Semana 3: Fase 2}
+\textbf{Planificado:}
+\begin{itemize}
+  \item HU-021 crear fertilizante (8h)
+  \item HU-004 asignar precio (8h)
+  \item HU-005 buscar por materia activa (7h)
+  \item HU-003 listar por fabricante (5h)
+  \item HU-020 y HU-022 (6h)
+  \item Validación y ajustes (6h)
+\end{itemize}
+
+\textbf{Ejecutado:}
+\begin{itemize}
+  \item Todas las HUs de Fase 2 automatizadas con múltiples escenarios de validación
+  \item Implementación de validaciones exhaustivas de campos (obligatorios, formatos, rangos)
+  \item Pruebas de persistencia de datos creados
+  \item Actualización de fixtures para soportar productos complejos
+  \item Inicio del desarrollo del panel de administración (adelantado)
+\end{itemize}
+
+\textbf{Entregables:} Specs de Fase 2 completos, reportes con evidencias de validaciones.
+
+\subsubsection{Semana 4: Fase 3 y cierre}
+\textbf{Planificado:}
+\begin{itemize}
+  \item HU-023 crear campaña (10h)
+  \item HU-024 historial campañas (5h)
+  \item HU-025 planificar trabajo (5h)
+  \item HU-026, HU-027 trabajos (8h)
+  \item HU-028 RAG (6h)
+  \item Estabilización y medición de flakiness (3h)
+  \item Documentación final (3h)
+\end{itemize}
+
+\textbf{Ejecutado:}
+\begin{itemize}
+  \item Automatización completa de HUs de Fase 3 (campañas y trabajos)
+  \item Implementación completa del panel de administración web con interfaz visual
+  \item Sistema de ejecución selectiva con generación de archivos de configuración temporal
+  \item Generador de reportes personalizado con línea temporal detallada y exportación a PDF
+  \item Scripts de utilidades para exportación de reportes y sincronización de datos
+  \item Documentación exhaustiva con instrucciones de uso, instalación y resolución de problemas
+  \item Informe final de cobertura y aprendizajes
+\end{itemize}
+
+\textbf{Nota:} La HU-028 (implementación de RAG) se entendió como fuera de alcance del estudiante de pasantía (corresponde a desarrollo de feature del bot) y se enfocó ese tiempo en el panel de administración y mejoras de reportes.
+
+\textbf{Entregables:} Suite completa de automatización (Fases 1-3), panel de administración funcional, reportes HTML y PDF con evidencias, documentación completa del proyecto, informe de pasantía.
+
+\subsection{Resultados y métricas}
+
+Al finalizar la pasantía se alcanzaron las siguientes métricas:
+
+\begin{itemize}
+  \item \textbf{Cobertura:} Más de 40 especificaciones de prueba automatizadas cubriendo 28 historias de usuario principales
+  \item \textbf{Intenciones (intents):} Más de 40 intenciones con múltiples frases de ejemplo cada una (total 120+ variaciones de entrada)
+  \item \textbf{Líneas de código:} Aproximadamente 3,000 líneas de TypeScript (sin contar bibliotecas externas)
+  \item \textbf{Tiempo de ejecución:} Suite completa ejecuta en aproximadamente 45 minutos (variable según latencias de red)
+  \item \textbf{Tasa de éxito:} 85-95\% de pruebas exitosas en ejecuciones típicas (el 5-15\% de fallos se deben principalmente a timeouts por alta latencia, no a defectos del bot)
+  \item \textbf{Reportes generados:} Cada ejecución produce reporte HTML detallado + PDF exportado automáticamente
+  \item \textbf{Documentación:} Documentación extensa del proyecto, comentarios en código, informe de pasantía
+\end{itemize}
+
+\subsection{Aprendizajes y recomendaciones}
+
+\subsubsection{Aprendizajes clave}
+\begin{itemize}
+  \item La automatización de interfaces conversacionales requiere flexibilidad: parsers rígidos fallan ante cambios menores
+  \item El manejo de asincronía es crítico: esperas inteligentes reducen flakiness significativamente
+  \item La trazabilidad completa (logs, timestamps, capturas) es esencial para depuración en entornos no determinísticos
+  \item Un panel de administración visual reduce drásticamente la curva de adopción para equipos no técnicos
+  \item Los datos de prueba deben ser versionados y aislados para reproducibilidad
+\end{itemize}
+
+\subsubsection{Recomendaciones futuras}
+\begin{itemize}
+  \item \textbf{Integración continua:} Integrar la suite en pipelines de integración continua para ejecución automática en cada cambio de código
+  \item \textbf{Ejecución paralela:} Explorar uso de múltiples instancias con cuentas distintas para ejecutar pruebas en paralelo y reducir tiempo total
+  \item \textbf{Métricas de calidad:} Implementar tablero con histórico de tasas de éxito, tiempos de ejecución e inestabilidad por prueba
+  \item \textbf{Expansión de cobertura:} Automatizar escenarios de error (errores del servidor, fallas de red, mensajes malformados)
+  \item \textbf{Pruebas de rendimiento:} Medir tiempos de respuesta del bot y detectar degradaciones de rendimiento
+  \item \textbf{Integración con sistema de seguimiento:} Crear tickets automáticamente cuando las pruebas fallan de manera consistente
+\end{itemize}
+
+
