@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Ejemplos seleccionados - Ejecución automática – PASSED</title>
+<style>
+  :root {
+    --ok: #10b981;
+    --fail: #ef4444;
+    --send: #1d4ed8;
+    --recv: #6b7280;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e5e7eb;
+  }
+  html,body{background:var(--bg);}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;margin:24px;color:#0f172a;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:18px 20px;margin-bottom:18px;}
+  h1{font-size:20px;margin:0 0 4px;}
+  .meta{color:#475569;margin:0 0 12px;font-size:14px}
+  .summary{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 0}
+  .chip{border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:13px;background:#fff}
+  .chip.ok{border-color:var(--ok);color:var(--ok)}
+  .chip.fail{border-color:var(--fail);color:var(--fail)}
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px}
+  thead th{font-weight:600;text-align:left;color:#334155;border-bottom:1px solid var(--border);padding:8px}
+  tbody td{border-top:1px solid var(--border);padding:8px;vertical-align:top}
+  td.idx{width:44px;color:#64748b}
+  td.tipo.send{color:var(--send);font-weight:600}
+  td.tipo.recv{color:var(--recv);font-weight:600}
+  td.tipo.intent{color:#7c3aed;font-weight:700}
+  td.time{white-space:nowrap;color:#64748b}
+  td.texto{white-space:pre-wrap;word-wrap:break-word}
+  .badge{display:inline-block;border-radius:8px;padding:2px 8px;font-size:12px;border:1px solid}
+  .badge.ok{border-color:var(--ok);color:var(--ok);background:rgba(16,185,129,.08)}
+  .badge.fail{border-color:var(--fail);color:var(--fail);background:rgba(239,68,68,.08)}
+  .intent-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin:14px 0}
+  .intent-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .intent-title{font-weight:700}
+  .intent-sub{color:#64748b;font-weight:500;margin-left:6px}
+  footer{margin-top:16px;color:#64748b;font-size:12px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Ejemplos seleccionados - Ejecución automática</h1>
+    <div class="meta">
+      <div><strong>Status:</strong> passed</div>
+      <div><strong>Duración:</strong> 155493 ms</div>
+      <div><strong>Archivo:</strong> C:\Users\jm\Desktop\tw\twAutomation2\tests\execute-selected.spec.ts:45</div>
+    </div>
+    <div class="summary">
+      <div class="chip">Eventos: 26</div>
+      <div class="chip ok">OK: 26</div>
+      <div class="chip fail">FAIL: 0</div>
+      <div class="chip">Intents: 2</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 8px;font-size:16px">Conversación por intent</h2>
+    <div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[1/2] createChemicalProduct › quiero registrar un producto químico <span class="intent-sub">(1/2)</span></div>
+    <div class="chip ok">OK</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">quiero registrar un producto químico</td>
+  <td class="time">2025-10-15T21:09:55.973Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del fabricante del producto químico que deseas registrar.</td>
+  <td class="time">2025-10-15T21:10:11.305Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Mosaic Company</td>
+  <td class="time">2025-10-15T21:10:11.351Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del producto químico que deseas registrar.</td>
+  <td class="time">2025-10-15T21:10:23.037Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Roundup</td>
+  <td class="time">2025-10-15T21:10:23.067Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">No se encontró el fabricante "mosaic company". Verifique el nombre del fabricante..</td>
+  <td class="time">2025-10-15T21:10:35.614Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Opciones: sumitomo chemical, nufarm, helm ag, bayer cropscience, arysta lifescience.</td>
+  <td class="time">2025-10-15T21:10:35.614Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del fabricante del producto químico que deseas registrar.</td>
+  <td class="time">2025-10-15T21:10:35.615Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">sumitomo chemical</td>
+  <td class="time">2025-10-15T21:10:35.628Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">No se encontró el producto químico "Roundup" para el fabricante "sumitomo chemical"..</td>
+  <td class="time">2025-10-15T21:10:47.673Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">11</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Opciones: insecticida thiamethoxam, herbicida clethodim, fungicida pyraclostrobin.</td>
+  <td class="time">2025-10-15T21:10:47.673Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">12</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del producto químico que deseas registrar.</td>
+  <td class="time">2025-10-15T21:10:47.674Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">13</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">insecticida thiamethoxam</td>
+  <td class="time">2025-10-15T21:10:47.691Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">14</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Producto químico creado exitosamente..</td>
+  <td class="time">2025-10-15T21:11:01.675Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[2/2] createFertilizer › quiero registrar un fertilizante <span class="intent-sub">(2/2)</span></div>
+    <div class="chip ok">OK</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">quiero registrar un fertilizante</td>
+  <td class="time">2025-10-15T21:11:06.827Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del fabricante del producto que deseas registrar.</td>
+  <td class="time">2025-10-15T21:11:18.355Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Mosaic Company</td>
+  <td class="time">2025-10-15T21:11:18.369Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del fertilizante que deseas registrar.</td>
+  <td class="time">2025-10-15T21:11:28.640Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Nitrofoska</td>
+  <td class="time">2025-10-15T21:11:28.650Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">No se encontró el fertilizante "Nitrofoska" para el fabricante "mosaic company"..</td>
+  <td class="time">2025-10-15T21:11:41.000Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Opciones: superfosfato triple, map monoamónico.</td>
+  <td class="time">2025-10-15T21:11:41.000Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del fertilizante que deseas registrar.</td>
+  <td class="time">2025-10-15T21:11:41.001Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">superfosfato triple</td>
+  <td class="time">2025-10-15T21:11:41.017Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Fertilizante creado exitosamente..</td>
+  <td class="time">2025-10-15T21:11:55.419Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+    <footer>Generado por ConversationReporter</footer>
+  </div>
+</body>
+</html>

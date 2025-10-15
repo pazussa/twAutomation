@@ -1,0 +1,12 @@
+{
+  "examples": [
+    {
+      "intent": "createCrop",
+      "example": "quiero registrar un cultivo"
+    },
+    {
+      "intent": "createCrop",
+      "example": "registrar cultivo"
+    }
+  ]
+}

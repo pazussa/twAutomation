@@ -13,7 +13,7 @@ function materializeAll(list: ReadonlyArray<string>, vars: Record<string, string
 export const CFG = {
   contactName: process.env.CONTACT_NAME || 'Twilio',
   headless: (process.env.HEADLESS || 'false').toLowerCase() === 'true',
-  sessionDir: (process.env.SESSION_DIR || '~/.wapp-autoloop-session').replace('~', process.env.HOME || ''),
+  sessionDir: (process.env.SESSION_DIR || '~/.wapp-autoloop-session').replace('~', process.env.USERPROFILE || process.env.HOME || ''),
   cmds: {
     assignPriceProduct: process.env.CMD_ASSIGN_PRICE_PRODUCT || 'AssignPriceProduct',
     createChemicalProduct: process.env.CMD_CREATE_CHEMICAL_PRODUCT || 'CreateChemicalProduct',
@@ -1111,7 +1111,7 @@ export const CROPS_POOL = [
   { crop_name: 'maíz', variety_name: 'p 8660', destination: 'consumo', brand: 'SeedTech' },
   { crop_name: 'cebada', variety_name: 'Golden', destination: 'pienso', brand: 'HarvestPlus' },
   { crop_name: 'avena', variety_name: 'Premium', destination: 'consumo', brand: 'FarmSelect' },
-  { crop_name: 'girasol', variety_name: 'Solaris', destination: 'aceite', brand: 'SunFields' },
+  { crop_name: 'girasol', variety_name: 'Solaris', destination: 'consumo', brand: 'SunFields' },
   { crop_name: 'tomate', variety_name: 'Raf', destination: 'consumo', brand: 'VeggieTop' }
 ];
 

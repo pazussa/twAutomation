@@ -11,8 +11,7 @@
     "pw:select": "playwright test",
     "pw:report": "playwright show-report",
     "report:pdf": "node scripts/export-report-to-pdf.mjs",
-    "admin": "node --loader ts-node/esm src/admin/server.ts",
-    "admin:start": "./start-admin.sh",
+    "admin": "tsx src/admin/server.ts",
     "sync": "node scripts/sync-yml-to-data.mjs"
   },
   "dependencies": {
@@ -24,6 +23,7 @@
     "@playwright/test": "^1.55.0",
     "@types/express": "^4.17.21",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "tsx": "^4.16.0"
   }
 }

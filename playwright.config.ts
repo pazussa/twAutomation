@@ -14,6 +14,9 @@ export default defineConfig({
   ],
   use: {
     actionTimeout: 15_000,
-    navigationTimeout: 20_000
+    navigationTimeout: 20_000,
+    // Forzar modo headed (navegador visible)
+    headless: false,
+    viewport: { width: 1280, height: 720 },
   }
 });

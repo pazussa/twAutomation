@@ -77,7 +77,7 @@ export type WppFixtures = {
 export const test = base.extend<WppFixtures>({
   context: async ({}, use) => {
     const context = await chromium.launchPersistentContext(CFG.sessionDir, {
-      headless: CFG.headless,
+      headless: false, // Siempre en modo visible para ver la automatización
       args: ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1200,720']
     });
     await use(context);

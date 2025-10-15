@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import fs from 'fs/promises';
 
 // ESM dirname emulation early so later helpers can use it
@@ -11,7 +11,19 @@ const __dirname = path.dirname(__filename);
 let INTENTS_TEMPLATES: any; let INTENTS: any; let VARS: any; let KEYWORD_RULES: any; let setVar: any; let withVars: any; let DEFAULT_VARS: any;
 async function loadDataModule() {
   if (!INTENTS_TEMPLATES) {
-  const mod = await import('../../tests/setup/data.ts');
+    // Resolve to .ts when running via ts-node/tsx, or .js when running compiled
+    const baseRel = '../../tests/setup/data';
+    const tsPath = path.resolve(__dirname, baseRel + '.ts');
+    const jsPath = path.resolve(__dirname, baseRel + '.js');
+    let resolvedFile: string;
+    try {
+      await fs.access(tsPath);
+      resolvedFile = tsPath;
+    } catch {
+      await fs.access(jsPath); // will throw if not exists
+      resolvedFile = jsPath;
+    }
+    const mod = await import(pathToFileURL(resolvedFile).href);
     INTENTS_TEMPLATES = mod.INTENTS_TEMPLATES;
     INTENTS = mod.INTENTS;
     VARS = mod.VARS;
@@ -258,7 +270,12 @@ app.post('/api/execute', async (req, res) => {
   const child = spawn('npx', ['playwright', 'test', 'tests/execute-selected.spec.ts', '--headed'], {
     cwd: path.resolve(__dirname, '../..'),
     stdio: 'inherit', // Show output in server terminal
-    env: { ...process.env, EXEC_CONFIG: tempConfigPath }
+    shell: true, // Required for Windows to find npx.cmd
+    env: { 
+      ...process.env, 
+      EXEC_CONFIG: tempConfigPath,
+      HEADLESS: 'false' // Force headless to false
+    }
   });
 
   child.on('close', async (code) => {
@@ -351,21 +368,31 @@ app.get('/api/open-reports', async (_req, res) => {
   }
 });
 
-app.listen(3000, async () => {
-  console.log('Admin UI disponible en http://localhost:3000');
+const PORT = Number(process.env.PORT) || 3000;
+const server = app.listen(PORT, async () => {
+  console.log(`Admin UI disponible en http://localhost:${PORT}`);
   
   // Auto-open browser
   const { exec } = await import('child_process');
-  const url = 'http://localhost:3000';
+  const url = `http://localhost:${PORT}`;
   const command = process.platform === 'win32'
-    ? `start ${url}`
+    ? `start "" "${url}"`
     : process.platform === 'darwin'
-    ? `open ${url}`
-    : `xdg-open ${url}`;
+    ? `open "${url}"`
+    : `xdg-open "${url}"`;
   
   exec(command, (error) => {
     if (error) {
       console.log('No se pudo abrir el navegador automáticamente. Abre manualmente:', url);
     }
   });
+});
+
+server.on('error', (err: any) => {
+  if (err && err.code === 'EADDRINUSE') {
+    console.error(`\n[Admin] Error: El puerto ${PORT} ya está en uso. Cambia la variable de entorno PORT o cierra el proceso que lo usa.`);
+  } else {
+    console.error(`\n[Admin] Error al iniciar el servidor: ${err?.message || err}`);
+  }
+  process.exit(1);
 });

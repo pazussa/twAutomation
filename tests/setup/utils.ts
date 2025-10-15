@@ -45,21 +45,60 @@ export async function ensureLogin(page: Page, totalTimeout = 180_000) {
 
 export async function openChat(page: Page, name: string) {
   await page.waitForSelector(SELECTORS.appReady, { timeout: 30_000 });
-  for (const variant of TWILIO_VARIANTS(name)) {
-    const chatItem = page.locator(`span[title='${variant}']`).first();
-    if (await chatItem.isVisible().catch(() => false)) {
-      await chatItem.click();
-      await page.waitForSelector(SELECTORS.composer, { timeout: 10_000 });
-      return;
+  
+  console.log('[openChat] Esperando a que se carguen los chats...');
+  
+  // Esperar hasta encontrar el contacto Twilio con reintentos
+  const maxAttempts = 20; // 20 intentos = hasta 60 segundos
+  let attempt = 0;
+  let chatFound = false;
+  
+  while (attempt < maxAttempts && !chatFound) {
+    attempt++;
+    console.log(`[openChat] Intento ${attempt}/${maxAttempts} buscando contacto...`);
+    
+    // Intentar encontrar Twilio con todas sus variantes DIRECTAMENTE
+    for (const variant of TWILIO_VARIANTS(name)) {
+      const chatItem = page.locator(`span[title='${variant}']`).first();
+      const isVisible = await chatItem.isVisible().catch(() => false);
+      
+      if (isVisible) {
+        console.log(`[openChat] ✓ Encontrado chat con variante: ${variant}`);
+        await chatItem.click();
+        await page.waitForSelector(SELECTORS.composer, { timeout: 10_000 });
+        chatFound = true;
+        return;
+      } else {
+        console.log(`[openChat] Variante "${variant}" no visible aún`);
+      }
+    }
+    
+    if (!chatFound) {
+      console.log('[openChat] Twilio no encontrado aún, esperando 3 segundos...');
+      await page.waitForTimeout(3000);
     }
   }
-  const chatItems = page.locator(SELECTORS.chatListItems);
-  if ((await chatItems.count()) > 0) {
-    await chatItems.first().click();
-    await page.waitForSelector(SELECTORS.composer, { timeout: 10_000 });
-    return;
+  
+  if (!chatFound) {
+    // Fallback: abrir el primer chat disponible
+    console.log('[openChat] ⚠ No se encontró Twilio después de todos los intentos, intentando fallback...');
+    
+    // Intentar con el selector de lista de chats
+    try {
+      const chatItems = page.locator(SELECTORS.chatListItems);
+      const count = await chatItems.count();
+      if (count > 0) {
+        console.log(`[openChat] Encontrados ${count} chats en la lista, abriendo el primero`);
+        await chatItems.first().click();
+        await page.waitForSelector(SELECTORS.composer, { timeout: 10_000 });
+        return;
+      }
+    } catch (e) {
+      console.log('[openChat] Fallback también falló:', e);
+    }
+    
+    throw new Error('No se pudo abrir ningún chat después de esperar');
   }
-  throw new Error('No se pudo abrir ningún chat');
 }
 
 export async function clearChat(page: Page) {
