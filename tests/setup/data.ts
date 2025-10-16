@@ -1155,7 +1155,7 @@ export const KEYWORD_RULES: Array<{
   
   // Campos de Cultivo
   { pattern: /\bnombre\s+de\s+la\s+variedad/i, action: { type: 'REPLY', reply: '{variety_name}' }, note: 'Pide variedad', priority: 4 },
-  { pattern: /\bvariedad(\s+del\s+cultivo)?/i, action: { type: 'REPLY', reply: '{variety_name}' }, note: 'Pide variedad', priority: 4 },
+  { pattern: /\bvariedad(\s+del\s+cultivo)?[\s]*[?:]/i, action: { type: 'REPLY', reply: '{variety_name}' }, note: 'Pide variedad', priority: 4 },
   { pattern: /\bnombre\s+del\s+cultivo/i, action: { type: 'REPLY', reply: '{crop_name}' }, note: 'Pide nombre cultivo', priority: 4 },
   { pattern: /\bqu[ée]\s+cultivo/i, action: { type: 'REPLY', reply: '{crop_name}' }, note: 'Pide qué cultivo', priority: 4 },
   { pattern: /\bdestino(\s+del\s+cultivo)?/i, action: { type: 'REPLY', reply: '{destination}' }, note: 'Pide destino', priority: 4 },
@@ -1204,17 +1204,34 @@ export const KEYWORD_RULES: Array<{
   { pattern: /\bdosis\s+aplicada/i, action: { type: 'REPLY', reply: '{applied_dose}' }, note: 'Pide dosis aplicada', priority: 4 },
   { pattern: /\bdosis\s+general/i, action: { type: 'REPLY', reply: '{general_dose}' }, note: 'Pide dosis general', priority: 4 },
   { pattern: /\bcantidad\s+cosechada/i, action: { type: 'REPLY', reply: '{amount_harvested}' }, note: 'Pide cantidad cosechada', priority: 4 },
-  { pattern: /^Profundidad\.?$/i, action: { type: 'REPLY', reply: '{depth}' }, note: 'Pide profundidad', priority: 4 },
-  { pattern: /^Combustible usado\.?$/i, action: { type: 'REPLY', reply: '{fuel_used}' }, note: 'Pide combustible', priority: 4 },
+  { pattern: /Profundidad/i, action: { type: 'REPLY', reply: '{depth}' }, note: 'Pide profundidad', priority: 4 },
+  { pattern: /Combustible usado/i, action: { type: 'REPLY', reply: '{fuel_used}' }, note: 'Pide combustible', priority: 4 },
   
   // Campos de Precio
-  { pattern: /^Precio\.?$/i, action: { type: 'REPLY', reply: '{price}' }, note: 'Pide precio', priority: 4 },
-  { pattern: /^Fecha del precio\.?$/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'Pide fecha precio', priority: 4 },
-  { pattern: /^Nombre del producto\.?$/i, action: { type: 'REPLY', reply: '{product_name}' }, note: 'Pide nombre producto', priority: 4 },
+  { pattern: /Precio/i, action: { type: 'REPLY', reply: '{price}' }, note: 'Pide precio', priority: 4 },
+  { pattern: /Fecha del precio/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'Pide fecha precio', priority: 4 },
+  { pattern: /Nombre del producto/i, action: { type: 'REPLY', reply: '{product_name}' }, note: 'Pide nombre producto', priority: 4 },
   
   // Búsquedas
-  { pattern: /^Búsqueda\.?$/i, action: { type: 'REPLY', reply: '{search_query}' }, note: 'Pide búsqueda', priority: 4 },
-  { pattern: /^¿Qué producto buscar\??$/i, action: { type: 'REPLY', reply: '{search_query}' }, note: 'Pide producto búsqueda', priority: 4 },
+  { pattern: /Búsqueda/i, action: { type: 'REPLY', reply: '{search_query}' }, note: 'Pide búsqueda', priority: 4 },
+  { pattern: /Qué producto buscar/i, action: { type: 'REPLY', reply: '{search_query}' }, note: 'Pide producto búsqueda', priority: 4 },
+  
+  
+  { pattern: /T[oó]t[aá]l:/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /[ií]ngr[eé]s[aá] l[aá] f[eé]ch[aá]/i, action: { type: 'REPLY', reply: '2026-10-15' }, note: 'fecha', priority: 1 },
+  { pattern: /H[eé]ch[oó]:/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /pl[aá]n[ií]f[ií]c[aá]d[aá] [eé]n d[eé]c[ií]m[aá]l/i, action: { type: 'REPLY', reply: '180.0' }, note: 'd', priority: 1 },
+  { pattern: /[ií]ngr[eé]s[aá] l[aá] h[oó]r[aá]/i, action: { type: 'REPLY', reply: '14:30' }, note: 'yy', priority: 1 },
+  { pattern: /N[oó]mbr[eé] d[eé]l [oó]p[eé]r[aá]d[oó]r/i, action: { type: 'REPLY', reply: 'José' }, note: 'jose', priority: 1 },
+  { pattern: /D[oó]s[ií]s d[eé]l c[uúü]lt[ií]v[oó]/i, action: { type: 'REPLY', reply: '120.0' }, note: 'jj', priority: 1 },
+  { pattern: /[aá]ct[uúü][aá]lm[eé]nt[eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /L[oó] s[ií][eé]nt[oó], n[oó] l[oó]gré [eé]nc[oó]ntr[aá]r l[aá] [ií]nf[oó]rm[aá]c[ií]ón q[uúü][eé] b[uúü]sc[aá]s/i, action: { type: 'END_ERR' }, note: 'err', priority: 1 },
+  { pattern: /¡H[oó]l[aá]!, l[oó]s pr[oó]d[uúü]ct[oó]\(s\) q[uúü][eé] t[ií][eé]n[eé]s cr[eé][aá]d[oó]s s[oó]n/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /n[oó] l[oó]gré [eé]nc[oó]ntr[aá]r/i, action: { type: 'END_ERR' }, note: 'err', priority: 1 },
+  { pattern: /l[oó]s pr[oó]d[uúü]ct[oó]\(s\) q[uúü][eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /D[ií]str[ií]b[uúü]c[ií]ón d[eé] c[uúü]lt[ií]v[oó]s p[oó]r cl[ií][eé]nt[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /[eé]nc[oó]ntré l[oó] s[ií]g[uúü][ií][eé]nt[eé]/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /N[oó] s[eé] [eé]nc[oó]ntr[aá]r[oó]n tr[aá]b[aá]j[oó]s p[eé]nd[ií][eé]nt[eé]s p[aá]r[aá] h[oó]y [eé]n t[uúü]s c[aá]mp[oó]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
 ];
 
 export type ActionResult = 

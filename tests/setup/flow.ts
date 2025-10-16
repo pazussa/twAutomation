@@ -15,12 +15,11 @@ export type ConversationLogger = {
 const AUTO_CANCEL_AFTER_INTENT = true;
 const MAX_INTENT_MS = Number.POSITIVE_INFINITY;
 
-async function finishIntent(page: Page, conversation: ConversationLogger, isTimeout: boolean = false) {
-  if (isTimeout && AUTO_CANCEL_AFTER_INTENT) {
-    conversation.logSent('cancelar');
-    await typeIntoComposer(page, 'cancelar');
-    await page.waitForTimeout(500).catch(() => {});
-  }
+async function finishIntent(page: Page, conversation: ConversationLogger) {
+  // Siempre enviar "cancelar" antes de limpiar el chat
+  conversation.logSent('cancelar');
+  await typeIntoComposer(page, 'cancelar');
+  await page.waitForTimeout(3000).catch(() => {}); // Espera de 3 segundos después de cancelar
   await clearChat(page).catch(() => {});
 }
 
@@ -129,7 +128,7 @@ export const test = base.extend<WppFixtures>({
       if (true) { // AUTO_CANCEL_AFTER_INTENT
         conversation.logSent('cancelar');
         await typeIntoComposer(page, 'cancelar');
-        await page.waitForTimeout(250).catch(() => {});
+        await page.waitForTimeout(3000).catch(() => {}); // Espera de 3 segundos después de cancelar
       }
       return msgs;
     };
@@ -171,7 +170,7 @@ export const test = base.extend<WppFixtures>({
         const MAX_SAME_RESPONSE = 5; // Si se envía la misma respuesta más de 5 veces, es un bucle
         
         while (true) {
-          if (Date.now() > deadline) { conversation.logRecvFailure('Timeout por intent (tiempo excedido)'); await finishIntent(page, conversation, true); return { success: false, reason: 'No response from bot after total intent timeout' }; }
+          if (Date.now() > deadline) { conversation.logRecvFailure('Timeout por intent (tiempo excedido)'); await finishIntent(page, conversation); return { success: false, reason: 'No response from bot after total intent timeout' }; }
           const baseline = await countIncoming(page);
           if (toSend && toSend.trim()) { conversation.logSent(toSend); await typeIntoComposer(page, toSend); }
           await pauseIf('after-send');
@@ -181,7 +180,7 @@ export const test = base.extend<WppFixtures>({
           if (!gotFirst) {
             await page.waitForTimeout(1500).catch(() => {});
             newMessages = await getNewIncomingAfter(page, baseline).catch(() => []);
-            if (newMessages.length === 0) { conversation.logRecvFailure('Sin respuesta tras 45s'); await finishIntent(page, conversation, true); return { success: false, reason: 'No response from bot after 45s timeout' }; }
+            if (newMessages.length === 0) { conversation.logRecvFailure('Sin respuesta tras 45s'); await finishIntent(page, conversation); return { success: false, reason: 'No response from bot after 45s timeout' }; }
           } else {
             await page.waitForTimeout(5000).catch(() => {});
             newMessages = await getNewIncomingAfter(page, baseline).catch(() => []);
@@ -210,7 +209,7 @@ export const test = base.extend<WppFixtures>({
               const allSame = sentHistory.every(msg => msg === sentHistory[0]);
               if (allSame) {
                 conversation.logRecvFailure(`⚠️ Bucle infinito detectado: enviando "${toSend}" ${MAX_SAME_RESPONSE} veces consecutivas`);
-                await finishIntent(page, conversation, false);
+                await finishIntent(page, conversation);
                 return { success: false, reason: `Infinite loop detected: same response sent ${MAX_SAME_RESPONSE} times consecutively` };
               }
             }
@@ -218,15 +217,15 @@ export const test = base.extend<WppFixtures>({
             continue; 
           }
           if (action.type === 'RETRY_EXISTS') {
-            if (!retriedOnExists) { retriedOnExists = true; mutateOneVariableForRetry(); await finishIntent(page, conversation, false); toSend = starter; continue; }
-            await finishIntent(page, conversation, false); return { success: false, reason: 'Flow ended with error' };
+            if (!retriedOnExists) { retriedOnExists = true; mutateOneVariableForRetry(); await finishIntent(page, conversation); toSend = starter; continue; }
+            await finishIntent(page, conversation); return { success: false, reason: 'Flow ended with error' };
           }
-          if (action.type === 'END_OK')  { await finishIntent(page, conversation, false); return { success: true,  reason: 'Flow completed successfully' }; }
-          if (action.type === 'END_ERR') { await finishIntent(page, conversation, false); return { success: false, reason: 'Flow ended with error' }; }
+          if (action.type === 'END_OK')  { await finishIntent(page, conversation); return { success: true,  reason: 'Flow completed successfully' }; }
+          if (action.type === 'END_ERR') { await finishIntent(page, conversation); return { success: false, reason: 'Flow ended with error' }; }
         }
       } catch {
         conversation.logRecvFailure('Excepción durante el flujo');
-        await finishIntent(page, conversation, false);
+        await finishIntent(page, conversation);
         return { success: false, reason: 'Flow interrupted by page closure' };
       }
     };

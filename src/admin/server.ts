@@ -101,9 +101,9 @@ async function persistAddRule(regex: string, action: { type: string; reply?: str
   const ruleLineParts: string[] = [];
   const regEscaped = regex.replace(/\//g, '/');
   if (action.type === 'REPLY') {
-    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}' },`);
+    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1 },`);
   } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
-    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}' },`);
+    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1 },`);
   } else {
     throw new Error('Acción no soportada para persistencia');
   }
@@ -116,6 +116,94 @@ async function persistAddRule(regex: string, action: { type: string; reply?: str
   } else {
     KEYWORD_RULES.push({ pattern, action: { type: action.type }, note });
   }
+}
+
+async function persistUpdateRule(idx: number, regex: string, action: { type: string; reply?: string }, note?: string) {
+  await loadDataModule();
+  if (idx < 0 || idx >= KEYWORD_RULES.length) throw new Error('Índice de regla inválido');
+  
+  const file = await readDataFile();
+  const marker = 'export const KEYWORD_RULES:';
+  const arrStart = file.indexOf(marker);
+  if (arrStart === -1) throw new Error('No se encontró KEYWORD_RULES');
+  
+  // Find the specific rule line by counting rules
+  const lines = file.split('\n');
+  let ruleCount = 0;
+  let targetLineIdx = -1;
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line.includes('{ pattern:') && line.includes('action:')) {
+      if (ruleCount === idx) {
+        targetLineIdx = i;
+        break;
+      }
+      ruleCount++;
+    }
+  }
+  
+  if (targetLineIdx === -1) throw new Error('No se pudo localizar la regla a actualizar');
+  
+  // Build new rule line
+  const regEscaped = regex.replace(/\//g, '/');
+  let newRuleLine: string;
+  if (action.type === 'REPLY') {
+    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1 },`;
+  } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
+    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1 },`;
+  } else {
+    throw new Error('Acción no soportada para persistencia');
+  }
+  
+  // Replace the line
+  lines[targetLineIdx] = newRuleLine;
+  const updated = lines.join('\n');
+  await writeDataFile(updated);
+  
+  // Update in memory
+  const pattern = new RegExp(regex, 'i');
+  if (action.type === 'REPLY') {
+    KEYWORD_RULES[idx] = { pattern, action: { type: 'REPLY', reply: action.reply }, note };
+  } else {
+    KEYWORD_RULES[idx] = { pattern, action: { type: action.type }, note };
+  }
+}
+
+async function persistDeleteRule(idx: number) {
+  await loadDataModule();
+  if (idx < 0 || idx >= KEYWORD_RULES.length) throw new Error('Índice de regla inválido');
+  
+  const file = await readDataFile();
+  const marker = 'export const KEYWORD_RULES:';
+  const arrStart = file.indexOf(marker);
+  if (arrStart === -1) throw new Error('No se encontró KEYWORD_RULES');
+  
+  // Find the specific rule line by counting rules
+  const lines = file.split('\n');
+  let ruleCount = 0;
+  let targetLineIdx = -1;
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line.includes('{ pattern:') && line.includes('action:')) {
+      if (ruleCount === idx) {
+        targetLineIdx = i;
+        break;
+      }
+      ruleCount++;
+    }
+  }
+  
+  if (targetLineIdx === -1) throw new Error('No se pudo localizar la regla a eliminar');
+  
+  // Remove the line
+  lines.splice(targetLineIdx, 1);
+  const updated = lines.join('\n');
+  await writeDataFile(updated);
+  
+  // Update in memory
+  KEYWORD_RULES.splice(idx, 1);
 }
 
 async function persistAddVariable(name: string, value: string) {
@@ -152,8 +240,7 @@ function getState() {
     rules: (KEYWORD_RULES as Array<{ pattern: RegExp; action: { type: string; reply?: string }; note?: string }>).map((r, idx) => ({ 
       idx: idx,
       pattern: r.pattern.toString(), 
-      action: r.action.type, 
-      reply: r.action.reply || '', 
+      action: r.action, // Enviar el objeto completo { type, reply? }
       note: r.note || '' 
     }))
   };
@@ -217,18 +304,64 @@ app.post('/api/rules', async (req, res) => {
   if (!regex || !action) return res.status(400).json({ error: 'regex y action requeridos' });
   let pattern: RegExp;
   try { pattern = new RegExp(regex, 'i'); } catch { return res.status(400).json({ error: 'regex inválida' }); }
+  
+  // Normalizar action: puede venir como string o como objeto { type, reply }
+  const actionType = typeof action === 'string' ? action : action.type;
+  const actionReply = typeof action === 'object' && action.reply ? action.reply : reply;
+  
   const act = (() => {
-    if (action === 'END_OK') return { type: 'END_OK' } as const;
-    if (action === 'END_ERR') return { type: 'END_ERR' } as const;
-    if (action === 'REPLY') {
-      if (!reply) return res.status(400).json({ error: 'reply requerido para action REPLY' });
-      return { type: 'REPLY', reply: String(reply) } as const;
+    if (actionType === 'END_OK') return { type: 'END_OK' } as const;
+    if (actionType === 'END_ERR') return { type: 'END_ERR' } as const;
+    if (actionType === 'REPLY') {
+      if (!actionReply) return res.status(400).json({ error: 'reply requerido para action REPLY' });
+      return { type: 'REPLY', reply: String(actionReply) } as const;
     }
     return null;
   })();
   if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, REPLY)' });
   try {
     await persistAddRule(regex, act as any, note);
+    res.json({ ok: true, total: KEYWORD_RULES.length });
+  } catch (e: any) { res.status(400).json({ error: e.message }); }
+});
+
+app.put('/api/rules/:idx', async (req, res) => {
+  await loadDataModule();
+  const idx = parseInt(req.params.idx);
+  if (isNaN(idx)) return res.status(400).json({ error: 'Índice inválido' });
+  
+  const { regex, action, note, reply } = req.body || {};
+  if (!regex || !action) return res.status(400).json({ error: 'regex y action requeridos' });
+  let pattern: RegExp;
+  try { pattern = new RegExp(regex, 'i'); } catch { return res.status(400).json({ error: 'regex inválida' }); }
+  
+  // Normalizar action: puede venir como string o como objeto { type, reply }
+  const actionType = typeof action === 'string' ? action : action.type;
+  const actionReply = typeof action === 'object' && action.reply ? action.reply : reply;
+  
+  if (actionType === 'REPLY' && !actionReply) {
+    return res.status(400).json({ error: 'reply requerido para action REPLY' });
+  }
+  const act = (() => {
+    if (actionType === 'END_OK') return { type: 'END_OK' } as const;
+    if (actionType === 'END_ERR') return { type: 'END_ERR' } as const;
+    if (actionType === 'REPLY') return { type: 'REPLY', reply: String(actionReply) } as const;
+    return null;
+  })();
+  if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, REPLY)' });
+  try {
+    await persistUpdateRule(idx, regex, act as any, note);
+    res.json({ ok: true, total: KEYWORD_RULES.length });
+  } catch (e: any) { res.status(400).json({ error: e.message }); }
+});
+
+app.delete('/api/rules/:idx', async (req, res) => {
+  await loadDataModule();
+  const idx = parseInt(req.params.idx);
+  if (isNaN(idx)) return res.status(400).json({ error: 'Índice inválido' });
+  
+  try {
+    await persistDeleteRule(idx);
     res.json({ ok: true, total: KEYWORD_RULES.length });
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });

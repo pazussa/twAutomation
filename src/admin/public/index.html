@@ -184,7 +184,26 @@
 
     function renderAll(){ renderVariables(); renderIntents(); renderRules(); }
 
-    function el(tag, attrs={}, children=[]) { const n = document.createElement(tag); for (const [k,v] of Object.entries(attrs)) { if (k==='class') n.className=v; else if (k==='html') n.innerHTML=v; else if (k.startsWith('on') && typeof v==='function') n.addEventListener(k.slice(2), v); else n.setAttribute(k,v); } (Array.isArray(children)?children:[children]).forEach(c=>{ if (c==null) return; n.appendChild(typeof c==='string'?document.createTextNode(c):c);}); return n; }
+    function el(tag, attrs={}, children=[]) { 
+      const n = document.createElement(tag); 
+      for (const [k,v] of Object.entries(attrs)) { 
+        if (k==='class') n.className=v; 
+        else if (k==='html') n.innerHTML=v; 
+        else if (k.startsWith('on') && typeof v==='function') n.addEventListener(k.slice(2), v); 
+        else if (v !== undefined) n.setAttribute(k,v); 
+      } 
+      (Array.isArray(children)?children:[children]).forEach(c=>{ 
+        if (c==null || c===undefined) return; 
+        if (typeof c==='string') {
+          n.appendChild(document.createTextNode(c));
+        } else if (c instanceof Node) {
+          n.appendChild(c);
+        } else {
+          console.error('Invalid child for appendChild:', c);
+        }
+      }); 
+      return n; 
+    }
 
     /************ VARIABLES ************/ 
     function renderVariables(){
@@ -324,6 +343,21 @@
     function deriveSimplePhrase(pattern){
       try {
         const inner = pattern.replace(/^\/(.*)\/[a-z]*$/i,'$1');
+        
+        // Check for substring pattern (no anchors) - used for patterns ending with ':'
+        // Example: T[oó]t[aá]l:
+        if(!/^\^/.test(inner) && !/\$$/.test(inner)){
+          let phrase = inner
+            .replace(/\[aá\]/gi,'a')
+            .replace(/\[eé\]/gi,'e')
+            .replace(/\[ií\]/gi,'i')
+            .replace(/\[oó\]/gi,'o')
+            .replace(/\[uúü\]/gi,'u')
+            .replace(/\\/g,'');
+          if(/[.*+?{}\[\]^$]/.test(phrase)) return null; // treat as complex if metas remain
+          return phrase.trim();
+        }
+        
         // Accept ^(phrase)\.?$  or ^phrase\.?$
         const m = inner.match(/^\^\(?([^)$]+)\)?\\\.\?\$$/);
         if(!m) return null;
@@ -357,7 +391,10 @@
           .replace(/o/gi,'[oó]')
           .replace(/u/gi,'[uúü]');
       }
-      return `^(${variant})${opts.punct? '\\.?':''}$`;
+      
+      // Siempre crear patrón de substring match (sin anchors)
+      // para que detecte la palabra/frase en cualquier parte del mensaje
+      return variant;
     }
     function renderRules(){
       const tbodyEditable = document.querySelector('#rules-table tbody');
@@ -382,9 +419,15 @@
     function buildRuleRow(idx, phrase, rule){
       const tr = el('tr',{},[]);
       const phraseInput = el('input',{value: phrase, style:'min-width:170px'});
-      const actionSelect = el('select',{},['END_OK','END_ERR','REPLY'].map(a=> el('option',{value:a, selected: rule.action===a? 'selected': undefined},a)));
-      const replyInput = el('input',{value: rule.action==='REPLY'? rule.reply||'':'', placeholder:'{variable}', style:'width:100px'});
-      if(rule.action!=='REPLY') replyInput.disabled=true;
+      const actionType = rule.action && rule.action.type ? rule.action.type : rule.action;
+      const replyValue = (rule.action && rule.action.reply) ? rule.action.reply : '';
+      const actionSelect = el('select',{},['END_OK','END_ERR','REPLY'].map(a=> {
+        const attrs = {value: a};
+        if(actionType === a) attrs.selected = 'selected';
+        return el('option', attrs, a);
+      }));
+      const replyInput = el('input',{value: actionType==='REPLY'? replyValue:'', placeholder:'{variable}', style:'width:100px'});
+      if(actionType!=='REPLY') replyInput.disabled=true;
       actionSelect.addEventListener('change', ()=>{ if(actionSelect.value==='REPLY') replyInput.disabled=false; else { replyInput.disabled=true; replyInput.value=''; } });
       const noteInput = el('input',{value: rule.note||'', placeholder:'nota'});
       const saveBtn = el('button',{class:'outline', title:'Guardar', onclick:()=>{
@@ -455,12 +498,12 @@
       actionSelect.addEventListener('change', ()=>{ replyInput.disabled = actionSelect.value!=='REPLY'; if(replyInput.disabled) replyInput.value=''; });
       const noteInput = el('input',{placeholder:'nota'});
       const saveBtn = el('button',{class:'outline', onclick:async()=>{
-        const phrase = phraseInput.value.trim(); if(!phrase) return alert('Frase requerida');
-        const pattern = buildPatternFromPhrase(phrase,{variants:true, punct:true});
-        const payload = { regex: pattern, action: actionSelect.value, reply: actionSelect.value==='REPLY'? replyInput.value: undefined, note: noteInput.value, flags:'i' };
-        const r = await fetch('/api/rules',{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
-        if(!r.ok){ const err = await r.json().catch(()=>({error:'Error desconocido'})); alert('Error creando regla: '+(err.error||r.status)); return; }
-        fetchState(true);
+  const phrase = phraseInput.value.trim(); if(!phrase) return alert('Frase requerida');
+  const pattern = buildPatternFromPhrase(phrase,{variants:true, punct:true});
+  const payload = { regex: pattern, action: actionSelect.value, reply: actionSelect.value==='REPLY'? replyInput.value: undefined, note: noteInput.value, flags:'i', priority: 1 };
+  const r = await fetch('/api/rules',{method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+  if(!r.ok){ const err = await r.json().catch(()=>({error:'Error desconocido'})); alert('Error creando regla: '+(err.error||r.status)); return; }
+  fetchState(true);
       }},'Guardar');
       const cancelBtn = el('button',{class:'danger outline', onclick:()=> tr.remove()},'Cancelar');
       tr.appendChild(el('td',{}, '#'));
@@ -472,8 +515,41 @@
       tbody.prepend(tr);
       phraseInput.focus();
     });
-    async function saveRule(idx, regex, action, reply, note){ if(!regex.trim()) return alert('Patrón vacío'); const payload={ regex, action, reply: action==='REPLY'? reply: undefined, note, flags:'i' }; await fetch(`/api/rules/${idx}`, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}); fetchState(); }
-    async function deleteRule(idx){ if(!confirm('Eliminar regla?')) return; await fetch(`/api/rules/${idx}`, {method:'DELETE'}); fetchState(); }
+    async function saveRule(idx, regex, action, reply, note){ 
+      if(!regex.trim()) return alert('Patrón vacío');
+      let actionObj;
+      if(action === 'REPLY') {
+        actionObj = { type: 'REPLY', reply };
+      } else {
+        actionObj = { type: action };
+      }
+      const payload = { regex, action: actionObj, note, flags: 'i', priority: 1 };
+      try {
+        const r = await fetch(`/api/rules/${idx}`, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+        if(!r.ok) {
+          const err = await r.json().catch(()=>({error:'Error desconocido'}));
+          alert('Error actualizando regla: '+(err.error||r.status));
+          return;
+        }
+        fetchState();
+      } catch(e) {
+        alert('Error de conexión al actualizar regla: ' + e.message);
+      }
+    }
+    async function deleteRule(idx){ 
+      if(!confirm('Eliminar regla?')) return; 
+      try {
+        const r = await fetch(`/api/rules/${idx}`, {method:'DELETE'});
+        if(!r.ok) {
+          const err = await r.json().catch(()=>({error:'Error desconocido'}));
+          alert('Error eliminando regla: '+(err.error||r.status));
+          return;
+        }
+        fetchState(); 
+      } catch(e) {
+        alert('Error de conexión al eliminar regla: ' + e.message);
+      }
+    }
     // (Eliminado formulario lateral de reglas; creación inline en la tabla)
 
     /************ SELECTION & EXECUTION ************/
