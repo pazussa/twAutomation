@@ -1,4 +1,26 @@
 # Dependencies
 node_modules/
+
 # Informe de pasantía (privado)
 docs/informe-pasantia/
+
+# Sesiones de navegador (no deben estar en el repo)
+.wapp-autoloop-session/
+C:/
+
+# Directorios de sesión temporales
+ersjmDesktoptwtwAutomation2
+
+# Archivos de log
+*.log
+admin.log
+
+# Reportes y exports generados
+exports/
+playwright-report/
+test-results/
+
+# Virtual environments
+.venv/
+venv/
+env/

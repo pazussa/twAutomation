@@ -1,7 +1,0 @@
-nohup: no se tendrá en cuenta la entrada
-
-> autoloop-twilio-playwright@0.1.0 admin
-> tsx src/admin/server.ts
-
-
-[Admin] Error: El puerto 3000 ya está en uso. Cambia la variable de entorno PORT o cierra el proceso que lo usa.
