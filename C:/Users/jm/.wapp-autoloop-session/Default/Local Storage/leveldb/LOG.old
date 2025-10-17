@@ -1,3 +1,6 @@
-2025/10/16-15:08:41.464 6f55e Reusing MANIFEST /home/user/newautomwpp/2/C:/Users/jm/.wapp-autoloop-session/Default/Local Storage/leveldb/MANIFEST-000001
-2025/10/16-15:08:41.472 6f55e Recovering log #16
-2025/10/16-15:08:41.473 6f55e Reusing old log /home/user/newautomwpp/2/C:/Users/jm/.wapp-autoloop-session/Default/Local Storage/leveldb/000016.log 
+2025/10/16-21:15:59.835 98a00 Reusing MANIFEST /home/user/newautomwpp/2/C:/Users/jm/.wapp-autoloop-session/Default/Local Storage/leveldb/MANIFEST-000001
+2025/10/16-21:15:59.840 98a00 Recovering log #20
+2025/10/16-21:15:59.843 98a00 Reusing old log /home/user/newautomwpp/2/C:/Users/jm/.wapp-autoloop-session/Default/Local Storage/leveldb/000020.log 
+2025/10/16-21:23:00.777 98a00 Level-0 table #24: started
+2025/10/16-21:23:00.782 98a00 Level-0 table #24: 16032 bytes OK
+2025/10/16-21:23:00.784 98a00 Delete type=0 #20

@@ -1,0 +1,1569 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Ejemplos seleccionados - Ejecución automática – FAILED</title>
+<style>
+  :root {
+    --ok: #10b981;
+    --fail: #ef4444;
+    --send: #1d4ed8;
+    --recv: #6b7280;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --border: #e5e7eb;
+  }
+  html,body{background:var(--bg);}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;margin:24px;color:#0f172a;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:18px 20px;margin-bottom:18px;}
+  h1{font-size:20px;margin:0 0 4px;}
+  .meta{color:#475569;margin:0 0 12px;font-size:14px}
+  .summary{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 0}
+  .chip{border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:13px;background:#fff}
+  .chip.ok{border-color:var(--ok);color:var(--ok)}
+  .chip.fail{border-color:var(--fail);color:var(--fail)}
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px}
+  thead th{font-weight:600;text-align:left;color:#334155;border-bottom:1px solid var(--border);padding:8px}
+  tbody td{border-top:1px solid var(--border);padding:8px;vertical-align:top}
+  td.idx{width:44px;color:#64748b}
+  td.tipo.send{color:var(--send);font-weight:600}
+  td.tipo.recv{color:var(--recv);font-weight:600}
+  td.tipo.intent{color:#7c3aed;font-weight:700}
+  td.time{white-space:nowrap;color:#64748b}
+  td.texto{white-space:pre-wrap;word-wrap:break-word}
+  .badge{display:inline-block;border-radius:8px;padding:2px 8px;font-size:12px;border:1px solid}
+  .badge.ok{border-color:var(--ok);color:var(--ok);background:rgba(16,185,129,.08)}
+  .badge.fail{border-color:var(--fail);color:var(--fail);background:rgba(239,68,68,.08)}
+  .intent-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin:14px 0}
+  .intent-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .intent-title{font-weight:700}
+  .intent-sub{color:#64748b;font-weight:500;margin-left:6px}
+  footer{margin-top:16px;color:#64748b;font-size:12px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Ejemplos seleccionados - Ejecución automática</h1>
+    <div class="meta">
+      <div><strong>Status:</strong> failed</div>
+      <div><strong>Duración:</strong> 1187949 ms</div>
+      <div><strong>Archivo:</strong> /home/user/newautomwpp/2/tests/execute-selected.spec.ts:45</div>
+    </div>
+    <div class="summary">
+      <div class="chip">Eventos: 201</div>
+      <div class="chip ok">OK: 181</div>
+      <div class="chip fail">FAIL: 20</div>
+      <div class="chip">Intents: 21</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 8px;font-size:16px">Conversación por intent</h2>
+    <div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[1/21] searchProducts › busca Girasol <span class="intent-sub">(1/21)</span></div>
+    <div class="chip ok">OK</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">busca Girasol</td>
+  <td class="time">2025-10-17T02:48:07.057Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Cultivo: girasol (Variedad: solaris) - Marca: SunFields - Destino: pienso Cultivo: girasol (Variedad: solaris) - Marca: SunFields - Destino: pienso.</td>
+  <td class="time">2025-10-17T02:48:21.862Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¡Encontré 3 resultado(s) para tu búsqueda de 'girasol'!.</td>
+  <td class="time">2025-10-17T02:48:21.862Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Cultivo: girasol (Variedad: solaris) - Marca: SunFields - Destino: consumo Cultivo: girasol (Variedad: solaris) - Marca: SunFields - Destino: consumo.</td>
+  <td class="time">2025-10-17T02:48:21.862Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Cultivo: girasol (Variedad: solaris) - Marca: SunFields_68di - Destino: pienso Cultivo: girasol (Variedad: solaris) - Marca: SunFields_68di - Destino: pienso.</td>
+  <td class="time">2025-10-17T02:48:21.862Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para el producto 'girasol' encontré lo siguiente:.</td>
+  <td class="time">2025-10-17T02:48:21.862Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:48:21.863Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[2/21] searchProducts › quiero buscar productos que contengan Girasol <span class="intent-sub">(2/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con campos no planificados y consejos genéricos de búsqueda.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">quiero buscar productos que contengan Girasol</td>
+  <td class="time">2025-10-17T02:48:28.787Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He preparado un resumen de campos no planificados. Aquí tienes los detalles:.</td>
+  <td class="time">2025-10-17T02:48:35.843Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Variedades Plantadas Maíz / Amoroso Girasol / Solaris Variedades Plantadas Maíz / Amoroso Girasol / Solaris Maíz / Amoroso Girasol / Solaris.</td>
+  <td class="time">2025-10-17T02:48:35.843Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T02:48:35.847Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Puedes buscar así:.</td>
+  <td class="time">2025-10-17T02:48:54.073Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Escribe simplemente "girasol" en la barra de búsqueda (funciona en Google, Amazon, MercadoLibre y supermercados). Para productos con girasol en la receta prueba: "con girasol" o "contiene girasol" (entre comillas para resultados exactos). Búsquedas específicas: "aceite de girasol", "semillas de girasol", "muesli con girasol", "barritas con girasol". Usa filtros de categoría (Aceites, Frutos secos, Snacks) y lee "ingredientes" o etiqueta de alérgenos. En apps de tienda, usa el escáner de código de barras si tienes el producto físico. Escribe simplemente "girasol" en la barra de búsqueda (funciona en Google, Amazon, MercadoLibre y supermercados). Para productos con girasol en la receta prueba: "con girasol" o "contiene girasol" (entre comillas para resultados exactos). Búsquedas específicas: "aceite de girasol", "semillas de girasol", "muesli con girasol", "barritas con girasol". Usa filtros de categoría (Aceites, Frutos secos, Snacks) y lee "ingredientes" o etiqueta de alérgenos. En apps de tienda, usa el escáner de código de barras si tienes el producto físico..</td>
+  <td class="time">2025-10-17T02:48:54.073Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿Quieres que lo busque en alguna tienda concreta? Díme cuál..</td>
+  <td class="time">2025-10-17T02:48:54.073Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Girasol</td>
+  <td class="time">2025-10-17T02:48:54.077Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "campo"? Podría ser: el campo = zona rural/campestre, campo laboral/estudio = área profesional o temática, campo en física = campo magnético/eléctrico, campo en matemáticas = estructura algebraica, campo en un formulario = casilla o entrada de datos. ¿A qué te refieres con "campo"? Podría ser: el campo = zona rural/campestre, campo laboral/estudio = área profesional o temática, campo en física = campo magnético/eléctrico, campo en matemáticas = estructura algebraica, campo en un formulario = casilla o entrada de datos. el campo = zona rural/campestre, campo laboral/estudio = área profesional o temática, campo en física = campo magnético/eléctrico, campo en matemáticas = estructura algebraica, campo en un formulario = casilla o entrada de datos..</td>
+  <td class="time">2025-10-17T02:49:06.814Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime cuál y te explico corto y claro..</td>
+  <td class="time">2025-10-17T02:49:06.814Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">11</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T02:49:06.817Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">12</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Orobanche cumana (jopo) es un parásito obligado del girasol que carece de clorofila y extrae agua y nutrientes de las raíces, pudiendo reducir o incluso anular la cosecha si no se emplean híbridos genéticamente resistentes. Su ciclo transcurre mayoritariamente bajo tierra: las semillas germinan sólo en presencia de estimulantes exudados por las raíces del girasol (estrigolactonas, cuya producción aumenta con déficit de fósforo), y la plántula muere si no encuentra huésped en los primeros días. Al emerger forma tallos sin hojas que florecen junto al girasol; cada planta puede producir más de 500.000 semillas, viables hasta 20 años en el suelo. El periodo crítico es desde la siembra hasta 4–6 semanas después; la mejor estrategia es prevenir la instalación usando variedades resistentes y seguimiento del cultivo..</td>
+  <td class="time">2025-10-17T02:49:21.555Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">13</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">líquido</td>
+  <td class="time">2025-10-17T02:49:21.559Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">14</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "campo"? Te doy ejemplos según el sentido:.</td>
+  <td class="time">2025-10-17T02:49:33.525Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">15</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime cuál quieres o escribe el contexto y te doy la pregunta exacta..</td>
+  <td class="time">2025-10-17T02:49:33.525Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">16</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¡Hola actualmente tienes 2 productos! que son:.</td>
+  <td class="time">2025-10-17T02:49:33.525Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">17</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Solution 32 Fabricante: Nutrien Formato: Líquido Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Solution 32 Fabricante: Nutrien Formato: Líquido.</td>
+  <td class="time">2025-10-17T02:49:33.525Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">18</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:49:33.525Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[3/21] searchProducts › búscame Girasol en los productos del cliente Automatización Clnt <span class="intent-sub">(3/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">búscame Girasol en los productos del cliente Automatización Clnt</td>
+  <td class="time">2025-10-17T02:49:40.498Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Puedo buscarlo, pero no tengo acceso a tus sistemas. Dime dónde quieres que busque (ERP/CRM, base de datos, Excel/Google Sheets, Salesforce, etc.) o sube el archivo y lo busco..</td>
+  <td class="time">2025-10-17T02:50:10.010Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Mientras tanto, aquí tienes ejemplos rápidos según el sistema:.</td>
+  <td class="time">2025-10-17T02:50:10.010Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">SQL (Postgres): SELECT * FROM productos WHERE cliente = 'Automatización Clnt' AND product_name ILIKE '%girasol%'; SQL (Postgres): SELECT * FROM productos WHERE cliente = 'Automatización Clnt' AND product_name ILIKE '%girasol%';.</td>
+  <td class="time">2025-10-17T02:50:10.010Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Excel (o CSV): usa Filtro por columna cliente = "Automatización Clnt" y luego Ctrl+F en la columna producto; o fórmula FILTER: =FILTER(A2:E, (A2:A="Automatización Clnt")*(ISNUMBER(SEARCH("girasol", C2:C)))) Excel (o CSV): usa Filtro por columna cliente = "Automatización Clnt" y luego Ctrl+F en la columna producto; o fórmula FILTER: =FILTER(A2:E, (A2:A="Automatización Clnt")*(ISNUMBER(SEARCH("girasol", C2:C)))).</td>
+  <td class="time">2025-10-17T02:50:10.010Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">MySQL: SELECT * FROM productos WHERE cliente = 'Automatización Clnt' AND LOWER(product_name) LIKE '%girasol%'; MySQL: SELECT * FROM productos WHERE cliente = 'Automatización Clnt' AND LOWER(product_name) LIKE '%girasol%';.</td>
+  <td class="time">2025-10-17T02:50:10.010Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nota: revisa mayúsculas/acentos y posibles variantes (“girasol”, “Girasól”, códigos). ¿Me indicas dónde buscar o me subes el archivo para que lo encuentre?.</td>
+  <td class="time">2025-10-17T02:50:10.010Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Google Sheets: =FILTER(A:E; A:A="Automatización Clnt"; REGEXMATCH(LOWER(C:C);"girasol")) Google Sheets: =FILTER(A:E; A:A="Automatización Clnt"; REGEXMATCH(LOWER(C:C);"girasol")).</td>
+  <td class="time">2025-10-17T02:50:10.011Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">El Cortijo</td>
+  <td class="time">2025-10-17T02:50:10.013Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Salesforce: crea lista con filtros: Cliente = "Automatización Clnt" y Nombre contiene "Girasol"..</td>
+  <td class="time">2025-10-17T02:50:16.302Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">11</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">El Cortijo</td>
+  <td class="time">2025-10-17T02:50:16.304Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">12</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "El Cortijo"? Puedes ser:.</td>
+  <td class="time">2025-10-17T02:50:30.998Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">13</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Un restaurante (p. ej. El Cortijo en [ciudad]) Un barrio o urbanización llamada El Cortijo Un cortijo tradicional andaluz (tipo de vivienda) Otra cosa (película, canción, finca...) Un restaurante (p. ej. El Cortijo en [ciudad]) Un barrio o urbanización llamada El Cortijo Un cortijo tradicional andaluz (tipo de vivienda) Otra cosa (película, canción, finca...).</td>
+  <td class="time">2025-10-17T02:50:30.998Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">14</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime cuál de estas opciones (y la ciudad si es un lugar) y te doy dirección, horario, reseñas, historia o lo que necesites..</td>
+  <td class="time">2025-10-17T02:50:30.998Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">15</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "El Cortijo"? ¿Un lugar (casa/municipio), un restaurante, una película/serie/libro, una canción o algo distinto? Dime cuál y qué necesitas (historia, ubicación, reseña, resumen, direcciones...) y te lo paso..</td>
+  <td class="time">2025-10-17T02:50:44.587Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">16</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sin respuesta tras 45s</td>
+  <td class="time">2025-10-17T02:51:31.174Z</td>
+  <td class="estado"><span class="badge fail">FAIL</span></td>
+</tr>
+<tr>
+  <td class="idx">17</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:51:31.174Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[4/21] searchProducts › buscar Girasol <span class="intent-sub">(4/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">buscar Girasol</td>
+  <td class="time">2025-10-17T02:51:38.140Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Girasol (Helianthus) puede ser atacado por la planta parásita Orobanche cumana (jopo), que carece de clorofila y extrae agua y nutrientes del girasol, pudiendo llegar a anular la cosecha si no se usan híbridos resistentes. La germinación del jopo se induce por compuestos (estrigolactonas) liberados por las raíces del girasol, y aumenta con déficit de fósforo; la plántula muere si no encuentra huésped en los primeros días. Al emerger produce tallos sin hojas y flores; cada individuo genera &gt;500.000 semillas que pueden permanecer viables en el suelo hasta 20 años, y los síntomas en el cultivo aparecen como tallos tipo “espárrago”, plantas más bajas y marchitez al florecer. El periodo crítico es desde la siembra hasta 4–6 semanas después, por lo que la mejor es….</td>
+  <td class="time">2025-10-17T02:52:03.714Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sin respuesta tras 45s</td>
+  <td class="time">2025-10-17T02:52:50.425Z</td>
+  <td class="estado"><span class="badge fail">FAIL</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:52:50.425Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[5/21] searchProducts › encuentra Girasol para el cliente Automatización Clnt <span class="intent-sub">(5/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">encuentra Girasol para el cliente Automatización Clnt</td>
+  <td class="time">2025-10-17T02:52:57.367Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He localizado la "GUÍA DE GIRASOL" (Gestión Integrada de Plagas): incluye manejo de gusanos de alambre, verticilosis, Botrytis, umbrales de intervención y medidas culturales, biológicas, físicas y químicas. ¿La adjunto al expediente del cliente "Automatización Clnt" o prefieres que la envíe por otro medio?.</td>
+  <td class="time">2025-10-17T02:53:23.697Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Finca Los Olivos</td>
+  <td class="time">2025-10-17T02:53:23.702Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "Finca Los Olivos"? Puedo ayudarte con: 1) Ubicación y cómo llegar 2) Precios y disponibilidad 3) Servicios, capacidad y fotos 4) Alquiler para eventos (bodas, reuniones) 5) Contacto del propietario/encargado ¿A qué te refieres con "Finca Los Olivos"? Puedo ayudarte con: 1) Ubicación y cómo llegar 2) Precios y disponibilidad 3) Servicios, capacidad y fotos 4) Alquiler para eventos (bodas, reuniones) 5) Contacto del propietario/encargado.</td>
+  <td class="time">2025-10-17T02:53:44.941Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime la opción o pregunta concreta y te respondo..</td>
+  <td class="time">2025-10-17T02:53:44.941Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">340</td>
+  <td class="time">2025-10-17T02:53:44.943Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">El Código no es valido o ha expirado. Por favor, intenta de nuevo..</td>
+  <td class="time">2025-10-17T02:53:56.943Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sin respuesta tras 45s</td>
+  <td class="time">2025-10-17T02:54:43.553Z</td>
+  <td class="estado"><span class="badge fail">FAIL</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:54:43.553Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[6/21] searchProducts › hay algo de Girasol? <span class="intent-sub">(6/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con un resumen de campos no planificados.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">hay algo de Girasol?</td>
+  <td class="time">2025-10-17T02:54:50.514Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He preparado un resumen de campos no planificados. Aquí tienes los detalles:.</td>
+  <td class="time">2025-10-17T02:54:57.057Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Variedades Plantadas Maíz / Amoroso Girasol / Solaris Variedades Plantadas Maíz / Amoroso Girasol / Solaris Maíz / Amoroso Girasol / Solaris.</td>
+  <td class="time">2025-10-17T02:54:57.057Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Total: 10 Planificados: 3 Sin planificar: 7 Total: 10 Planificados: 3 Sin planificar: 7.</td>
+  <td class="time">2025-10-17T02:54:57.057Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:54:57.057Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[7/21] searchProducts › busca Girasol para el cliente Automatización Clnt <span class="intent-sub">(7/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con información sobre parásitos (Orobanche cumana) y campos no planificados.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">busca Girasol para el cliente Automatización Clnt</td>
+  <td class="time">2025-10-17T02:55:03.985Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sí. El contexto describe a Orobanche cumana (jopo), una planta parásita del girasol que carece de clorofila y extrae agua y nutrientes, pudiendo poner en peligro la producción de semilla. Su ciclo es mayoritariamente subterráneo: germina sólo en presencia del girasol por compuestos como las estrigolactonas (que aumentan con déficit de fósforo), puede producir &gt;500.000 semillas por individuo y las semillas permanecen viables hasta 20 años. Las medidas recomendadas son usar variedades resistentes a la raza local (en España predomina la raza F), emplear semillas certificadas, limpiar maquinaria, evitar entrada de ganado procedente de parcelas infestadas y destruir los tallos antes de la floración..</td>
+  <td class="time">2025-10-17T02:55:17.297Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He preparado un resumen de campos no planificados. Aquí tienes los detalles:.</td>
+  <td class="time">2025-10-17T02:55:17.297Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Total: 10 Planificados: 3 Sin planificar: 7 Total: 10 Planificados: 3 Sin planificar: 7.</td>
+  <td class="time">2025-10-17T02:55:17.297Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:55:17.298Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[8/21] searchProducts › ¿Qué tipos tengo registrados de Girasol? <span class="intent-sub">(8/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con Fertilizantes (Superfosfato Triple y Solution 32) que NO son cultivos de Girasol.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">¿Qué tipos tengo registrados de Girasol?</td>
+  <td class="time">2025-10-17T02:55:24.142Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Resumen para "Girasol" (cliente Automatización Clnt):.</td>
+  <td class="time">2025-10-17T02:55:41.287Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¡Hola actualmente tienes 2 productos! que son:.</td>
+  <td class="time">2025-10-17T02:55:41.287Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Solution 32 Fabricante: Nutrien Formato: Líquido Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Solution 32 Fabricante: Nutrien Formato: Líquido.</td>
+  <td class="time">2025-10-17T02:55:41.287Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:55:41.287Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[9/21] searchProducts › Muéstrame todas las clases del cultivo Girasol. <span class="intent-sub">(9/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con información sobre enfermedades (verticilosis, Botrytis).</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Muéstrame todas las clases del cultivo Girasol.</td>
+  <td class="time">2025-10-17T02:55:48.221Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Enfermedades relevantes: verticilosis por Verticillium dahliae (prevención como única opción; desinfectar balsas de riego si hay contaminación) y podredumbre gris por Botrytis cinerea (favorecida por tiempo fresco y muy húmedo; conidias germinan con agua libre y 15–25 ºC, con períodos de latencia importantes). Manejo agronómico: la siembra directa y el uso de variedades resistentes ayudan a reducir la verticilosis; realizar seguimiento tras la detección para evitar propagación. Medidas físicas y culturales: solarización bajo plástico húmedo (~60 días) reduce microesclerocios (poco factible en grandes superficies); inundación o acidificación del suelo son teóricamente eficaces pero difíciles de practicar. No se describen medios biológicos ni biotecnoló … Enfermedades relevantes: verticilosis por Verticillium dahliae (prevención como única opción; desinfectar balsas de riego si hay contaminación) y podredumbre gris por Botrytis cinerea (favorecida por tiempo fresco y muy húmedo; conidias germinan con agua libre y 15–25 ºC, con períodos de latencia importantes). Manejo agronómico: la siembra directa y el uso de variedades resistentes ayudan a reducir la verticilosis; realizar seguimiento tras la detección para evitar propagación. Medidas físicas y culturales: solarización bajo plástico húmedo (~60 días) reduce microesclerocios (poco factible en grandes superficies); inundación o acidificación del suelo son teóricamente eficaces pero difíciles de practicar. No se describen medios biológicos ni biotecnoló.</td>
+  <td class="time">2025-10-17T02:55:57.187Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para el producto 'girasol' encontré lo siguiente:.</td>
+  <td class="time">2025-10-17T02:55:57.187Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:55:57.187Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[10/21] searchProducts › Quiero ver las subespecies que tengo actualmente de Girasol. <span class="intent-sub">(10/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con campos no planificados.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Quiero ver las subespecies que tengo actualmente de Girasol.</td>
+  <td class="time">2025-10-17T02:56:04.038Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He preparado un resumen de campos no planificados. Aquí tienes los detalles:.</td>
+  <td class="time">2025-10-17T02:56:11.378Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Total: 10 Planificados: 3 Sin planificar: 7 Total: 10 Planificados: 3 Sin planificar: 7.</td>
+  <td class="time">2025-10-17T02:56:11.378Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Variedades Plantadas Maíz / Amoroso Girasol / Solaris Variedades Plantadas Maíz / Amoroso Girasol / Solaris Maíz / Amoroso Girasol / Solaris.</td>
+  <td class="time">2025-10-17T02:56:11.378Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:56:11.378Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[11/21] searchProducts › ¿Me podrías mostrar las líneas que tengo registradas del Girasol? <span class="intent-sub">(11/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con campos no planificados.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">¿Me podrías mostrar las líneas que tengo registradas del Girasol?</td>
+  <td class="time">2025-10-17T02:56:18.270Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He preparado un resumen de campos no planificados. Aquí tienes los detalles:.</td>
+  <td class="time">2025-10-17T02:56:25.775Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Total: 10 Planificados: 3 Sin planificar: 7 Total: 10 Planificados: 3 Sin planificar: 7.</td>
+  <td class="time">2025-10-17T02:56:25.775Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Variedades Plantadas Maíz / Amoroso Girasol / Solaris Variedades Plantadas Maíz / Amoroso Girasol / Solaris Maíz / Amoroso Girasol / Solaris.</td>
+  <td class="time">2025-10-17T02:56:25.775Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:56:25.775Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[12/21] searchProducts › Consultar las variedades que tengo del Girasol. <span class="intent-sub">(12/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con explicaciones genéricas sobre cómo consultar líneas.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Consultar las variedades que tengo del Girasol.</td>
+  <td class="time">2025-10-17T02:56:32.763Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres exactamente con “líneas” del girasol (líneas genéticas/híbridos, lotes de semilla, parcelas/filas de siembra, o registros en una app/sistema)?.</td>
+  <td class="time">2025-10-17T02:56:48.966Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para mostrarlas puedes: Revisar los certificados/etiquetas de semilla o facturas del proveedor (nombre de la línea, código de lote). Consultar tu software de gestión agrícola (filtrar por cultivo = girasol → sección “variedades”, “líneas” o “lotes”). Buscar en tu hoja de cálculo: columnas típicas “Nombre línea / Código / Variedad / Nº lote / Fecha registro / Observaciones”. Para mostrarlas puedes: Revisar los certificados/etiquetas de semilla o facturas del proveedor (nombre de la línea, código de lote). Consultar tu software de gestión agrícola (filtrar por cultivo = girasol → sección “variedades”, “líneas” o “lotes”). Buscar en tu hoja de cálculo: columnas típicas “Nombre línea / Código / Variedad / Nº lote / Fecha registro / Observaciones”. Revisar los certificados/etiquetas de semilla o facturas del proveedor (nombre de la línea, código de lote). Consultar tu software de gestión agrícola (filtrar por cultivo = girasol → sección “variedades”, “líneas” o “lotes”). Buscar en tu hoja de cálculo: columnas típicas “Nombre línea / Código / Variedad / Nº lote / Fecha registro / Observaciones”..</td>
+  <td class="time">2025-10-17T02:56:48.966Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Si quieres, pega aquí la lista o sube el archivo (o dime qué sistema usas) y te ayudo a extraer y presentar las líneas en un formato claro (por ejemplo: Nombre — Código — Lote — Fecha siembra — Observaciones)..</td>
+  <td class="time">2025-10-17T02:56:48.966Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para el producto 'girasol' encontré lo siguiente:.</td>
+  <td class="time">2025-10-17T02:56:48.966Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:56:48.966Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[13/21] searchProducts › Dime qué tipos de Girasol tengo activos ahora. <span class="intent-sub">(13/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con campos no planificados.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Dime qué tipos de Girasol tengo activos ahora.</td>
+  <td class="time">2025-10-17T02:56:55.903Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He preparado un resumen de campos no planificados. Aquí tienes los detalles:.</td>
+  <td class="time">2025-10-17T02:57:02.986Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Total: 10 Planificados: 3 Sin planificar: 7 Total: 10 Planificados: 3 Sin planificar: 7.</td>
+  <td class="time">2025-10-17T02:57:02.986Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Variedades Plantadas Maíz / Amoroso Girasol / Solaris Variedades Plantadas Maíz / Amoroso Girasol / Solaris Maíz / Amoroso Girasol / Solaris.</td>
+  <td class="time">2025-10-17T02:57:02.986Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:57:02.986Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[14/21] searchProducts › Mostrar las clases de Girasol que tengo en mis parcelas. <span class="intent-sub">(14/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con preguntas de aclaración y tipos generales de girasol.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Mostrar las clases de Girasol que tengo en mis parcelas.</td>
+  <td class="time">2025-10-17T02:57:09.854Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿Te refieres a plantas/variedades de girasol en el campo (cultivares) o a elementos llamados "Girasol" en un sistema/campaña?.</td>
+  <td class="time">2025-10-17T02:57:23.162Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Si hablas de cultivares de girasol, los tipos habituales son: girasol para aceite (convencional o alto-oleico), girasol para pipa/confectionery, girasol de doble propósito (grano + forraje) y líneas/híbridos con tolerancias específicas (por ejemplo, Clearfield). Dime a qué tipo de "Girasol" te refieres y, si es sobre tus parcelas o sistema, pásame los datos para comprobar cuáles tienes activos ahora..</td>
+  <td class="time">2025-10-17T02:57:23.162Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para el producto 'girasol' encontré lo siguiente:.</td>
+  <td class="time">2025-10-17T02:57:23.162Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:57:23.162Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[15/21] searchProducts › Ver las formas distintas del Girasol registradas. <span class="intent-sub">(15/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Respondió con campos no planificados.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Ver las formas distintas del Girasol registradas.</td>
+  <td class="time">2025-10-17T02:57:30.159Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">He preparado un resumen de campos no planificados. Aquí tienes los detalles:.</td>
+  <td class="time">2025-10-17T02:57:37.197Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Total: 10 Planificados: 3 Sin planificar: 7 Total: 10 Planificados: 3 Sin planificar: 7.</td>
+  <td class="time">2025-10-17T02:57:37.197Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Variedades Plantadas Maíz / Amoroso Girasol / Solaris Variedades Plantadas Maíz / Amoroso Girasol / Solaris Maíz / Amoroso Girasol / Solaris.</td>
+  <td class="time">2025-10-17T02:57:37.197Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:57:37.197Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[16/21] searchProducts › ¿Qué variantes tengo anotadas del Girasol? <span class="intent-sub">(16/21)</span></div>
+    <div class="chip ok">OK</div>
+  </div>
+  <p style="color:#10b981;font-size:13px;margin:6px 0;font-weight:600;">✅ Correcto: El bot devolvió 3 resultados de productos de Girasol (Cultivo: girasol - Variedad: solaris).</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">¿Qué variantes tengo anotadas del Girasol?</td>
+  <td class="time">2025-10-17T02:57:44.082Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para el producto 'girasol' encontré lo siguiente:.</td>
+  <td class="time">2025-10-17T02:57:56.357Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¡Encontré 3 resultado(s) para tu búsqueda de 'girasol'!.</td>
+  <td class="time">2025-10-17T02:57:56.357Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Cultivo: girasol (Variedad: solaris) - Marca: SunFields_68di - Destino: pienso Cultivo: girasol (Variedad: solaris) - Marca: SunFields_68di - Destino: pienso.</td>
+  <td class="time">2025-10-17T02:57:56.357Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Cultivo: girasol (Variedad: solaris) - Marca: SunFields - Destino: pienso Cultivo: girasol (Variedad: solaris) - Marca: SunFields - Destino: pienso.</td>
+  <td class="time">2025-10-17T02:57:56.357Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:57:56.357Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[17/21] searchProducts › Lista las variedades agrícolas del cultivo Girasol. <span class="intent-sub">(17/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <p style="color:#ef4444;font-size:13px;margin:6px 0;font-weight:600;">❌ El bot NO devolvió productos de Girasol. Solo respondió con "Para el producto 'girasol' encontré lo siguiente:" pero sin mostrar resultados.</p>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Lista las variedades agrícolas del cultivo Girasol.</td>
+  <td class="time">2025-10-17T02:58:03.287Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para el producto 'girasol' encontré lo siguiente:.</td>
+  <td class="time">2025-10-17T02:58:15.729Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:58:15.729Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[18/21] searchProducts › Dime las variedades de Girasol registradas por el cliente Automatización Clnt. <span class="intent-sub">(18/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Dime las variedades de Girasol registradas por el cliente Automatización Clnt.</td>
+  <td class="time">2025-10-17T02:58:22.684Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Variedades Plantadas Maíz / Amoroso Girasol / Solaris Variedades Plantadas Maíz / Amoroso Girasol / Solaris Maíz / Amoroso Girasol / Solaris.</td>
+  <td class="time">2025-10-17T02:58:30.231Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Necesito que me digas el nombre del producto o cultivo que deseas buscar..</td>
+  <td class="time">2025-10-17T02:58:30.231Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Trigo Filón</td>
+  <td class="time">2025-10-17T02:58:30.238Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del cultivo.</td>
+  <td class="time">2025-10-17T02:58:41.399Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">tomate</td>
+  <td class="time">2025-10-17T02:58:41.412Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre de la variedad.</td>
+  <td class="time">2025-10-17T02:58:51.709Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Raf</td>
+  <td class="time">2025-10-17T02:58:51.714Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sin respuesta tras 45s</td>
+  <td class="time">2025-10-17T02:59:39.478Z</td>
+  <td class="estado"><span class="badge fail">FAIL</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T02:59:39.478Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[19/21] searchProducts › ¿Qué clases de Girasol tiene el cliente Automatización Clnt? <span class="intent-sub">(19/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">¿Qué clases de Girasol tiene el cliente Automatización Clnt?</td>
+  <td class="time">2025-10-17T02:59:46.400Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con “clases de Girasol” para el cliente Automatización Clnt: categorías comerciales/uso (aceite, confitera, ornamental), variedades/híbridos (convencional, híbrido, resistente a plagas) o clases registradas en su sistema/ERP?.</td>
+  <td class="time">2025-10-17T03:00:18.612Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para orientarte, categorías habituales (generales) son: Híbridos para aceite (oilseed). Variedades confiteras (grano grande para consumo). Variedades/semillas ornamentales. Híbridos resistentes a jopo (Orobanche cumana) — relevante según el contexto que compartiste. Variedades resistentes a Verticillium u otras enfermedades del suelo. Para orientarte, categorías habituales (generales) son: Híbridos para aceite (oilseed). Variedades confiteras (grano grande para consumo). Variedades/semillas ornamentales. Híbridos resistentes a jopo (Orobanche cumana) — relevante según el contexto que compartiste. Variedades resistentes a Verticillium u otras enfermedades del suelo. Híbridos para aceite (oilseed). Variedades confiteras (grano grande para consumo). Variedades/semillas ornamentales. Híbridos resistentes a jopo (Orobanche cumana) — relevante según el contexto que compartiste. Variedades resistentes a Verticillium u otras enfermedades del suelo..</td>
+  <td class="time">2025-10-17T03:00:18.612Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Si quieres, puedo: a) buscar en el catálogo/inventario del cliente si me proporcionas el listado o acceso, o b) indicarte dónde localizar esa información en su ERP/base de datos (tabla de productos, campo “tipo/variedad” o etiquetas de producto). ¿Cómo prefieres proceder?.</td>
+  <td class="time">2025-10-17T03:00:18.612Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">El Cortijo</td>
+  <td class="time">2025-10-17T03:00:18.615Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "El Cortijo"?.</td>
+  <td class="time">2025-10-17T03:00:42.255Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Opciones rápidas: 1) Un lugar/bar/restaurante/urbanización. 2) Una película o serie. 3) Una canción o disco. 4) Un libro/obra. 5) Otro (especifica). Opciones rápidas: 1) Un lugar/bar/restaurante/urbanización. 2) Una película o serie. 3) Una canción o disco. 4) Un libro/obra. 5) Otro (especifica)..</td>
+  <td class="time">2025-10-17T03:00:42.255Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime cuál y qué necesitas (ubicación, historia, reseña, horario, sinopsis, letra, cómo llegar, reservas, etc.)..</td>
+  <td class="time">2025-10-17T03:00:42.255Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sin respuesta tras 45s</td>
+  <td class="time">2025-10-17T03:01:28.824Z</td>
+  <td class="estado"><span class="badge fail">FAIL</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T03:01:28.824Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[20/21] searchProducts › Muéstrame las variedades de Girasol que tiene registradas Automatización Clnt. <span class="intent-sub">(20/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Muéstrame las variedades de Girasol que tiene registradas Automatización Clnt.</td>
+  <td class="time">2025-10-17T03:01:35.961Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Necesito que me digas el nombre del producto o cultivo que deseas buscar..</td>
+  <td class="time">2025-10-17T03:01:47.425Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Trigo Filón</td>
+  <td class="time">2025-10-17T03:01:47.431Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del cultivo.</td>
+  <td class="time">2025-10-17T03:01:58.767Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">avena</td>
+  <td class="time">2025-10-17T03:01:58.770Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre de la variedad.</td>
+  <td class="time">2025-10-17T03:02:09.974Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Premium</td>
+  <td class="time">2025-10-17T03:02:09.978Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre de la granja.</td>
+  <td class="time">2025-10-17T03:02:20.475Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">prueba</td>
+  <td class="time">2025-10-17T03:02:20.479Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre del campo.</td>
+  <td class="time">2025-10-17T03:02:31.115Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">11</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T03:02:31.121Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">12</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dosis planificada en decimal (Kg/H) ej: 180.0.</td>
+  <td class="time">2025-10-17T03:02:41.820Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">13</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">180.0</td>
+  <td class="time">2025-10-17T03:02:41.824Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">14</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">No se encontró la variedad "Premium" para el cultivo "avena"..</td>
+  <td class="time">2025-10-17T03:02:54.401Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">15</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Opciones: prevision, chimene.</td>
+  <td class="time">2025-10-17T03:02:54.401Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">16</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Nombre de la variedad.</td>
+  <td class="time">2025-10-17T03:02:54.401Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">17</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">prevision</td>
+  <td class="time">2025-10-17T03:02:54.414Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">18</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">El campo "campo" ya tiene una campaña activa para el cultivo "girasol - solaris". No se puede crear otra campaña hasta que la actual esté completada..</td>
+  <td class="time">2025-10-17T03:03:06.382Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">19</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T03:03:06.386Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">20</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿Te refieres a “campo” como lugar rural, área de estudio/trabajo o campo de un formulario? Ejemplos de preguntas según el sentido: Rural: “¿Te gusta vivir en el campo?” Área: “¿Cuál es tu campo de especialización?” Formulario: “¿Qué dato debo poner en el campo ‘teléfono’?” ¿Te refieres a “campo” como lugar rural, área de estudio/trabajo o campo de un formulario? Ejemplos de preguntas según el sentido: Rural: “¿Te gusta vivir en el campo?” Área: “¿Cuál es tu campo de especialización?” Formulario: “¿Qué dato debo poner en el campo ‘teléfono’?” Rural: “¿Te gusta vivir en el campo?” Área: “¿Cuál es tu campo de especialización?” Formulario: “¿Qué dato debo poner en el campo ‘teléfono’?”.</td>
+  <td class="time">2025-10-17T03:03:27.907Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">21</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime cuál quieres y te ayudo a formularla mejor..</td>
+  <td class="time">2025-10-17T03:03:27.907Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">22</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T03:03:27.913Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">23</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Resumen de manejo en campo según el contexto:.</td>
+  <td class="time">2025-10-17T03:04:04.420Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">24</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Umbrales de seguimiento: amapola (Papaver rhoeas) 15 plantas/m2; capitana (Salsola spp.) 3 plantas/m2; lapa/galium (Galium aparine) 5 plantas/m2. Prevención: evitar entrada de semillas con la semilla de cultivo y la maquinaria, limpiar rastrojos y maquinaria, y usar rotaciones con cultivos de primavera. Medidas culturales y mecánicas: aumentar la densidad de siembra, retrasar la siembra combinada con falsas siembras (según caso), empleo de grada de varillas flexibles y picado de rastrojos. Control químico: preferir aplicaciones precoces (p. ej. desde 1.ª hoja hasta aparición del 2.º nudo), diversificar herbicidas por modos de acción (ver clasificación HRAC: http://www.semh.net/resistencia_herbicidas.html) y utilizar solo productos autorizados en el … Umbrales de seguimiento: amapola (Papaver rhoeas) 15 plantas/m2; capitana (Salsola spp.) 3 plantas/m2; lapa/galium (Galium aparine) 5 plantas/m2. Prevención: evitar entrada de semillas con la semilla de cultivo y la maquinaria, limpiar rastrojos y maquinaria, y usar rotaciones con cultivos de primavera. Medidas culturales y mecánicas: aumentar la densidad de siembra, retrasar la siembra combinada con falsas siembras (según caso), empleo de grada de varillas flexibles y picado de rastrojos. Control químico: preferir aplicaciones precoces (p. ej. desde 1.ª hoja hasta aparición del 2.º nudo), diversificar herbicidas por modos de acción (ver clasificación HRAC: http://www.semh.net/resistencia_herbicidas.html) y utilizar solo productos autorizados en el.</td>
+  <td class="time">2025-10-17T03:04:04.420Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">25</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T03:04:04.432Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">26</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sin respuesta tras 45s</td>
+  <td class="time">2025-10-17T03:05:00.176Z</td>
+  <td class="estado"><span class="badge fail">FAIL</span></td>
+</tr>
+<tr>
+  <td class="idx">27</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T03:05:00.176Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+<div class="intent-card">
+  <div class="intent-header">
+    <div class="intent-title">[21/21] searchProducts › Consultar subtipos del cultivo Girasol registrados por Automatización Clnt. <span class="intent-sub">(21/21)</span></div>
+    <div class="chip fail">FAIL</div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+    </tr></thead>
+    <tbody><tr>
+  <td class="idx">1</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">Consultar subtipos del cultivo Girasol registrados por Automatización Clnt.</td>
+  <td class="time">2025-10-17T03:05:07.172Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">2</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿Te refieres a qué significa "campo", a cómo formular una pregunta sobre el campo, o a otra cosa?.</td>
+  <td class="time">2025-10-17T03:05:14.782Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">3</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Breve definición y ejemplos: Campo = zona rural / naturaleza. Ej: "¿Cómo está el campo en esta temporada?" Campo = terreno o parcela. Ej: "¿De cuánto es el campo que vendes?" Campo = área de estudio o trabajo. Ej: "¿En qué campo trabajas?" Campo = campo de juego. Ej: "¿A qué hora empieza el partido en el campo?" Breve definición y ejemplos: Campo = zona rural / naturaleza. Ej: "¿Cómo está el campo en esta temporada?" Campo = terreno o parcela. Ej: "¿De cuánto es el campo que vendes?" Campo = área de estudio o trabajo. Ej: "¿En qué campo trabajas?" Campo = campo de juego. Ej: "¿A qué hora empieza el partido en el campo?" Campo = zona rural / naturaleza. Ej: "¿Cómo está el campo en esta temporada?" Campo = terreno o parcela. Ej: "¿De cuánto es el campo que vendes?" Campo = área de estudio o trabajo. Ej: "¿En qué campo trabajas?" Campo = campo de juego. Ej: "¿A qué hora empieza el partido en el campo?".</td>
+  <td class="time">2025-10-17T03:05:14.782Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">4</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime cuál quieres y te ayudo..</td>
+  <td class="time">2025-10-17T03:05:14.782Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">5</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T03:05:14.786Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">6</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Por lo general, los subtipos de girasol que suelen registrarse en sistemas de gestión son:.</td>
+  <td class="time">2025-10-17T03:05:43.029Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">7</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Para comprobar exactamente qué subtipos aparecen en Automatización Clnt, abra el catálogo de cultivos &gt; busque “Girasol” &gt; acceda a la pestaña “Subtipos/Variedades” y exporte o copie el listado disponible..</td>
+  <td class="time">2025-10-17T03:05:43.029Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">8</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Oleaginoso (aceitera): variedades para producción de aceite — linoleicas, alto-oleico, etc. Confitero (confection): semillas grandes para consumo directo y tostado. Forrajero/silaje: destinado a alimentación animal. Ornamental/dwarf: para flor cortada o decoración. Variedades con tolerancias/resistencias específicas: por ejemplo, insensibles a inhibidores de la ALS. Oleaginoso (aceitera): variedades para producción de aceite — linoleicas, alto-oleico, etc. Confitero (confection): semillas grandes para consumo directo y tostado. Forrajero/silaje: destinado a alimentación animal. Ornamental/dwarf: para flor cortada o decoración. Variedades con tolerancias/resistencias específicas: por ejemplo, insensibles a inhibidores de la ALS..</td>
+  <td class="time">2025-10-17T03:05:43.029Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">9</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "campo"? Dame contexto y lo preparo. Ejemplos de lo que podrías querer:.</td>
+  <td class="time">2025-10-17T03:05:58.435Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">10</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">1) Zona rural / naturaleza: “¿Qué actividades se pueden hacer en el campo?” 2) Campo de cultivo / agronomía: “¿Cómo mejorar la productividad de un campo de maíz?” 3) Campo laboral / de estudio: “¿Qué habilidades se requieren en el campo de la informática?” 4) Campo en un formulario / dato: “¿Qué información debo poner en el campo ‘dirección’?” 1) Zona rural / naturaleza: “¿Qué actividades se pueden hacer en el campo?” 2) Campo de cultivo / agronomía: “¿Cómo mejorar la productividad de un campo de maíz?” 3) Campo laboral / de estudio: “¿Qué habilidades se requieren en el campo de la informática?” 4) Campo en un formulario / dato: “¿Qué información debo poner en el campo ‘dirección’?”.</td>
+  <td class="time">2025-10-17T03:05:58.435Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">11</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Elige una opción o dinos exactamente qué necesitas..</td>
+  <td class="time">2025-10-17T03:05:58.435Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">12</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">campo</td>
+  <td class="time">2025-10-17T03:05:58.438Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">13</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">¿A qué te refieres con "campo"? Puedes elegir una opción y te formulo la pregunta exacta:.</td>
+  <td class="time">2025-10-17T03:06:22.876Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">14</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Zona rural: "¿Te gustaría vivir en el campo o en la ciudad? ¿Por qué?" Campo de un formulario: "¿Qué información debe pedir ese campo?" Campo deportivo: "¿Qué deporte quieres practicar en ese campo?" Campo físico (eléctrico/magnético): "¿Cómo se calcula el campo eléctrico de una carga puntual?" Campo académico/profesional: "¿En qué campo te gustaría especializarte?" Campo agrícola: "¿Qué cultivo es más rentable para ese campo?" Zona rural: "¿Te gustaría vivir en el campo o en la ciudad? ¿Por qué?" Campo de un formulario: "¿Qué información debe pedir ese campo?" Campo deportivo: "¿Qué deporte quieres practicar en ese campo?" Campo físico (eléctrico/magnético): "¿Cómo se calcula el campo eléctrico de una carga puntual?" Campo académico/profesional: "¿En qué campo te gustaría especializarte?" Campo agrícola: "¿Qué cultivo es más rentable para ese campo?".</td>
+  <td class="time">2025-10-17T03:06:22.876Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">15</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Dime cuál y la adapto..</td>
+  <td class="time">2025-10-17T03:06:22.876Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">16</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">avena</td>
+  <td class="time">2025-10-17T03:06:22.879Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">17</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Avena (avena loca/avena mala: Avena sterilis y A. fatua) es una gramínea anual con panícula, que puede alcanzar hasta 1,5 m; la plántula es verde-azulada, la prefoliación está enrollada y la hoja gira en sentido contrario a las agujas del reloj (al contrario que los cereales cultivados). Presenta una lígula larga y ligeramente dentada, sin aurículas, y a veces cilios en los márgenes de la base de la hoja; A. sterilis suele nacer otoñal-invernal (subsp. sterilis más termófila, ludoviciana más común en el norte) mientras que A. fatua nace más tarde (invernal‑primaveral) y tiene semillas más pequeñas que se desprenden individualmente. Es difícil distinguir las especies en plántula; en gestión se recomienda rotación, laboreo, eliminación de ricio y evitar siembr….</td>
+  <td class="time">2025-10-17T03:06:52.385Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr>
+<tr>
+  <td class="idx">18</td>
+  <td class="tipo recv">Recibido</td>
+  <td class="texto">Sin respuesta tras 45s</td>
+  <td class="time">2025-10-17T03:07:39.013Z</td>
+  <td class="estado"><span class="badge fail">FAIL</span></td>
+</tr>
+<tr>
+  <td class="idx">19</td>
+  <td class="tipo send">Enviado</td>
+  <td class="texto">cancelar</td>
+  <td class="time">2025-10-17T03:07:39.013Z</td>
+  <td class="estado"><span class="badge ok">OK</span></td>
+</tr></tbody>
+  </table>
+</div>
+    <footer>Generado por ConversationReporter</footer>
+  </div>
+</body>
+</html>
