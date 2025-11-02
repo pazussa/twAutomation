@@ -102,6 +102,7 @@ export async function openChat(page: Page, name: string) {
 }
 
 export async function clearChat(page: Page) {
+  
   const overflowBtn = page.locator('header div[role="button"]:has(span[data-icon="more-refreshed"])').last();
   await overflowBtn.click({ timeout: 5_000 }).catch(() => {});
   await page.waitForSelector('[role="menu"], [role="menuitem"], li:has-text("Vaciar chat"), li:has-text("Clear chat")', { timeout: 5_000 }).catch(() => {});
