@@ -33,14 +33,55 @@ import { KEYWORD_RULES, extractFirstOption } from './data';
 import { materialize } from './utils';
 import { resetVarsToDefaults } from './data';
 
-function detectActionFrom(messages: string[]): Action | null {
+function detectActionFrom(messages: string[], currentIntent?: string): Action | null {
   const joined = messages.join('\n');
   
   // Procesar reglas ordenadas por prioridad
   const sorted = [...KEYWORD_RULES].sort((a, b) => (a.priority || 99) - (b.priority || 99));
   
   for (const rule of sorted) {
+    // Filtrar por intents si está especificado
+    // undefined = todos los intents (comportamiento por defecto)
+    // [] = ningún intent (la regla no se aplica nunca)
+    // [intent1, intent2] = solo esos intents específicos
+    
+    if (rule.intents !== undefined) {
+      // Si intents está definido (sea array vacío o con elementos)
+      if (rule.intents.length === 0) {
+        // Array vacío explícito = ningún intent, saltar esta regla
+        continue;
+      }
+      
+      // Si hay intents específicos y estamos en un intent concreto
+      if (currentIntent && !rule.intents.includes(currentIntent)) {
+        // El intent actual no está en la lista, saltar esta regla
+        continue;
+      }
+    }
+    // Si rule.intents es undefined, la regla se aplica a todos los intents (no se filtra)
+    
     if (rule.pattern.test(joined)) {
+      // 🔍 REGLA DETERMINANTE ENCONTRADA - Mostrar en terminal
+      const actionType = rule.action.type;
+      const ruleNote = rule.note || 'Sin descripción';
+      const rulePattern = rule.pattern.toString();
+      
+      let intentFilter = '';
+      if (rule.intents === undefined) {
+        intentFilter = ' [Todos los intents]';
+      } else if (rule.intents.length === 0) {
+        intentFilter = ' [Ningún intent]';
+      } else {
+        intentFilter = ` [Intents: ${rule.intents.join(', ')}]`;
+      }
+      
+      console.log(`\n🔍 REGLA DETERMINANTE:`);
+      console.log(`   Acción: ${actionType}`);
+      console.log(`   Descripción: ${ruleNote}`);
+      console.log(`   Patrón: ${rulePattern}`);
+      console.log(`   Alcance:${intentFilter}`);
+      console.log(`   Prioridad: ${rule.priority || 99}`);
+      
       if (rule.action.type === 'REPLY') {
         let replyText = rule.action.reply;
         
@@ -50,7 +91,10 @@ function detectActionFrom(messages: string[]): Action | null {
           replyText = extracted || '1'; // Fallback a '1' si no se puede extraer
         }
         
-        return { type: 'REPLY', reply: materialize(replyText, VARS) };
+        const materializedReply = materialize(replyText, VARS);
+        console.log(`   Respuesta: "${materializedReply}"`);
+        
+        return { type: 'REPLY', reply: materializedReply };
       } else {
         return rule.action;
       }
@@ -67,7 +111,7 @@ export type WppFixtures = {
   sendAndWait: (message: string, extraWaitMs?: number) => Promise<string[]>;
   cmds: typeof CFG.cmds;
   intents: typeof INTENTS;
-  runAutoLoop: (starter: string, opts?: { resetChat?: boolean }) => Promise<{ success: boolean; reason: string }>;
+  runAutoLoop: (starter: string, opts?: { resetChat?: boolean; intentName?: string }) => Promise<{ success: boolean; reason: string }>;
   setVar: (name: string, value: string) => void;
   withVars: (vars: Record<string, string>) => void;
   conversation: ConversationLogger;
@@ -139,7 +183,7 @@ export const test = base.extend<WppFixtures>({
   setVar: async ({}, use) => { await use((name, value) => setVar(name, value)); },
   withVars: async ({}, use) => { await use((vars) => withVars(vars)); },
   runAutoLoop: async ({ page, conversation }, use) => {
-    const fn = async (starter: string, opts?: { resetChat?: boolean }) => {
+    const fn = async (starter: string, opts?: { resetChat?: boolean; intentName?: string }) => {
       try {
         let toSend = starter;
         let retriedOnExists = false;
@@ -192,7 +236,7 @@ export const test = base.extend<WppFixtures>({
           }
           await pauseIf('after-aggregate');
           if (newMessages.length) conversation.logReceived(newMessages); else conversation.logRecvFailure('Sin mensajes');
-          const action = detectActionFrom(newMessages);
+          const action = detectActionFrom(newMessages, opts?.intentName);
           await pauseIf('after-detect');
           if (!action) { toSend = ''; continue; }
           if (action.type === 'REPLY') { 

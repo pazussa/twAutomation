@@ -64,7 +64,7 @@ test('Ejemplos seleccionados - Ejecución automática', async ({ runAutoLoop, co
       console.log(`\n[${totalProcessed}/${totalExamples}] 📝 "${starter}"`);
       conversation.logIntent(`[${totalProcessed}/${totalExamples}] ${intentName} › ${starter}`, totalProcessed, totalExamples);
 
-      const result = await runAutoLoop(starter, { resetChat: true });
+      const result = await runAutoLoop(starter, { resetChat: true, intentName });
       
       if (result.success) {
         console.log(`✅ OK`);

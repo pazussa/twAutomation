@@ -89,7 +89,7 @@ async function persistAddIntentExample(name: string, example: string) {
   arr.push(example);
 }
 
-async function persistAddRule(regex: string, action: { type: string; reply?: string }, note?: string) {
+async function persistAddRule(regex: string, action: { type: string; reply?: string }, note?: string, intents?: string[]) {
   await loadDataModule();
   const file = await readDataFile();
   const marker = 'export const KEYWORD_RULES:';
@@ -100,10 +100,16 @@ async function persistAddRule(regex: string, action: { type: string; reply?: str
   const insertionPoint = endIdx === -1 ? file.lastIndexOf('];') : endIdx;
   const ruleLineParts: string[] = [];
   const regEscaped = regex.replace(/\//g, '/');
+  
+  // Formatear intents para guardarlo (solo si no está vacío)
+  const intentsStr = (intents && intents.length > 0) 
+    ? `, intents: [${intents.map(i => `'${i.replace(/'/g, "\\'")}'`).join(', ')}]` 
+    : '';
+  
   if (action.type === 'REPLY') {
-    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1 },`);
+    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`);
   } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
-    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1 },`);
+    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`);
   } else {
     throw new Error('Acción no soportada para persistencia');
   }
@@ -112,13 +118,13 @@ async function persistAddRule(regex: string, action: { type: string; reply?: str
   // reflect in memory
   const pattern = new RegExp(regex, 'i');
   if (action.type === 'REPLY') {
-    KEYWORD_RULES.push({ pattern, action: { type: 'REPLY', reply: action.reply }, note });
+    KEYWORD_RULES.push({ pattern, action: { type: 'REPLY', reply: action.reply }, note, intents });
   } else {
-    KEYWORD_RULES.push({ pattern, action: { type: action.type }, note });
+    KEYWORD_RULES.push({ pattern, action: { type: action.type }, note, intents });
   }
 }
 
-async function persistUpdateRule(idx: number, regex: string, action: { type: string; reply?: string }, note?: string) {
+async function persistUpdateRule(idx: number, regex: string, action: { type: string; reply?: string }, note?: string, intents?: string[]) {
   await loadDataModule();
   if (idx < 0 || idx >= KEYWORD_RULES.length) throw new Error('Índice de regla inválido');
   
@@ -147,11 +153,17 @@ async function persistUpdateRule(idx: number, regex: string, action: { type: str
   
   // Build new rule line
   const regEscaped = regex.replace(/\//g, '/');
+  
+  // Formatear intents para guardarlo (solo si no está vacío)
+  const intentsStr = (intents && intents.length > 0) 
+    ? `, intents: [${intents.map(i => `'${i.replace(/'/g, "\\'")}'`).join(', ')}]` 
+    : '';
+  
   let newRuleLine: string;
   if (action.type === 'REPLY') {
-    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1 },`;
+    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`;
   } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
-    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1 },`;
+    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`;
   } else {
     throw new Error('Acción no soportada para persistencia');
   }
@@ -164,9 +176,9 @@ async function persistUpdateRule(idx: number, regex: string, action: { type: str
   // Update in memory
   const pattern = new RegExp(regex, 'i');
   if (action.type === 'REPLY') {
-    KEYWORD_RULES[idx] = { pattern, action: { type: 'REPLY', reply: action.reply }, note };
+    KEYWORD_RULES[idx] = { pattern, action: { type: 'REPLY', reply: action.reply }, note, intents };
   } else {
-    KEYWORD_RULES[idx] = { pattern, action: { type: action.type }, note };
+    KEYWORD_RULES[idx] = { pattern, action: { type: action.type }, note, intents };
   }
 }
 
@@ -223,6 +235,39 @@ async function persistAddVariable(name: string, value: string) {
   VARS[name] = value;
 }
 
+async function persistUpdateVariable(name: string, value: string) {
+  await loadDataModule();
+  name = sanitizeIdentifier(name);
+  if (!Object.prototype.hasOwnProperty.call(VARS, name)) throw new Error('La variable no existe');
+  const file = await readDataFile();
+  
+  // Buscar la línea de la variable
+  const varPattern = new RegExp(`^(\\s*${name}:\\s*)'([^']*)'(,?)$`, 'gm');
+  const match = varPattern.exec(file);
+  
+  if (!match) throw new Error('No se pudo localizar la variable en el archivo');
+  
+  const newLine = `${match[1]}'${value.replace(/'/g, "\\'")}'${match[3]}`;
+  const updated = file.replace(varPattern, newLine);
+  
+  await writeDataFile(updated);
+  VARS[name] = value;
+}
+
+async function persistDeleteVariable(name: string) {
+  await loadDataModule();
+  name = sanitizeIdentifier(name);
+  if (!Object.prototype.hasOwnProperty.call(VARS, name)) throw new Error('La variable no existe');
+  const file = await readDataFile();
+  
+  // Buscar y eliminar la línea de la variable
+  const varPattern = new RegExp(`\\s*${name}:\\s*'[^']*',?\\n`, 'gm');
+  const updated = file.replace(varPattern, '');
+  
+  await writeDataFile(updated);
+  delete VARS[name];
+}
+
 
 const app = express();
 app.use(express.json());
@@ -237,11 +282,12 @@ function getState() {
     intents: Object.entries(INTENTS_TEMPLATES as Record<string, string[]>).map(([k, arr]) => ({ name: k, examples: arr })),
     // Enviar INTENTS materializados para ejecución
     materializedIntents: INTENTS ? Object.entries(INTENTS as Record<string, string[]>).map(([k, arr]) => ({ name: k, examples: arr })) : [],
-    rules: (KEYWORD_RULES as Array<{ pattern: RegExp; action: { type: string; reply?: string }; note?: string }>).map((r, idx) => ({ 
+    rules: (KEYWORD_RULES as Array<{ pattern: RegExp; action: { type: string; reply?: string }; note?: string; intents?: string[] }>).map((r, idx) => ({ 
       idx: idx,
       pattern: r.pattern.toString(), 
       action: r.action, // Enviar el objeto completo { type, reply? }
-      note: r.note || '' 
+      note: r.note || '',
+      intents: r.intents || [] // Enviar array de intents (vacío = todos)
     }))
   };
   console.log(`[State] Enviando ${state.intents.length} intents (templates) y ${state.materializedIntents.length} intents (materializados)`);
@@ -269,6 +315,25 @@ app.post('/api/variables/new', async (req, res) => {
     if (!name || typeof name !== 'string') return res.status(400).json({ error: 'name requerido' });
     await persistAddVariable(name, String(value ?? ''));
     res.json({ ok: true });
+  } catch (e: any) { res.status(400).json({ error: e.message }); }
+});
+
+app.put('/api/variables/:name', async (req, res) => {
+  try {
+    const name = req.params.name;
+    const { value } = req.body || {};
+    if (!name) return res.status(400).json({ error: 'name requerido' });
+    await persistUpdateVariable(name, String(value ?? ''));
+    res.json({ ok: true, name, value: VARS[name] });
+  } catch (e: any) { res.status(400).json({ error: e.message }); }
+});
+
+app.delete('/api/variables/:name', async (req, res) => {
+  try {
+    const name = req.params.name;
+    if (!name) return res.status(400).json({ error: 'name requerido' });
+    await persistDeleteVariable(name);
+    res.json({ ok: true, deleted: name });
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
@@ -300,7 +365,7 @@ app.post('/api/intents', async (req, res) => {
 
 app.post('/api/rules', async (req, res) => {
   await loadDataModule();
-  const { regex, action, note, reply } = req.body || {};
+  const { regex, action, note, reply, intents } = req.body || {};
   if (!regex || !action) return res.status(400).json({ error: 'regex y action requeridos' });
   let pattern: RegExp;
   try { pattern = new RegExp(regex, 'i'); } catch { return res.status(400).json({ error: 'regex inválida' }); }
@@ -320,7 +385,7 @@ app.post('/api/rules', async (req, res) => {
   })();
   if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, REPLY)' });
   try {
-    await persistAddRule(regex, act as any, note);
+    await persistAddRule(regex, act as any, note, intents);
     res.json({ ok: true, total: KEYWORD_RULES.length });
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
@@ -330,7 +395,7 @@ app.put('/api/rules/:idx', async (req, res) => {
   const idx = parseInt(req.params.idx);
   if (isNaN(idx)) return res.status(400).json({ error: 'Índice inválido' });
   
-  const { regex, action, note, reply } = req.body || {};
+  const { regex, action, note, reply, intents } = req.body || {};
   if (!regex || !action) return res.status(400).json({ error: 'regex y action requeridos' });
   let pattern: RegExp;
   try { pattern = new RegExp(regex, 'i'); } catch { return res.status(400).json({ error: 'regex inválida' }); }
@@ -350,7 +415,7 @@ app.put('/api/rules/:idx', async (req, res) => {
   })();
   if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, REPLY)' });
   try {
-    await persistUpdateRule(idx, regex, act as any, note);
+    await persistUpdateRule(idx, regex, act as any, note, intents);
     res.json({ ok: true, total: KEYWORD_RULES.length });
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
