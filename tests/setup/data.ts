@@ -1232,7 +1232,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /l[oó]s pr[oó]d[uúü]ct[oó]\(s\) q[uúü][eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
   { pattern: /D[ií]str[ií]b[uúü]c[ií]ón d[eé] c[uúü]lt[ií]v[oó]s p[oó]r cl[ií][eé]nt[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
   { pattern: /[eé]nc[oó]ntré l[oó] s[ií]g[uúü][ií][eé]nt[eé]/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
-  { pattern: /d[ií]sp[oó]n[eé] d[eé]/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
+  { pattern: /d[ií]sp[oó]n[eé] d[eé]/i, action: { type: 'END_OK' }, note: 'ok', priority: 1, intents: ['checkUnplannedFields', 'createChemicalProduct', 'createCrop', 'createFertilizer', 'createPlannedCampaign', 'createPlannedWork', 'filterFertilizers', 'getActiveMatterChemicalProducts', 'getChemicalProducts', 'getChemicalProductsByClient', 'getCropDistribution', 'getCrops', 'getFertilizers', 'getLastPrice', 'getLastWork', 'getManufacturerProducts', 'getMinPrice', 'getPendingWorks', 'getPlannedCampaignsHistory', 'getPriceVariation', 'getSeedsNeeded', 'goodbye', 'greet', 'reportFinishedWork', 'requestOtp', 'searchProducts', 'searchProductsCrops', 'searchProductsFertilizers'] },
   { pattern: /H[eé] r[eé]g[ií]str[aá]d[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['createCrop'] },
   { pattern: /N[oó] s[eé] [eé]nc[oó]ntr[aá]r[oó]n tr[aá]b[aá]j[oó]s p[eé]nd[ií][eé]nt[eé]s p[aá]r[aá] h[oó]y [eé]n t[uúü]s c[aá]mp[oó]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['getPendingWorks'] },
 ];
