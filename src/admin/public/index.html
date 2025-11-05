@@ -93,9 +93,8 @@
       <button type="button" class="carousel-nav" id="carousel-prev">‹</button>
       <div class="carousel-indicators">
         <button type="button" class="indicator active" data-section="0">Intents</button>
-        <button type="button" class="indicator" data-section="1">Reglas Editables</button>
-        <button type="button" class="indicator" data-section="2">Reglas Solo Lectura</button>
-        <button type="button" class="indicator" data-section="3">Variables</button>
+        <button type="button" class="indicator" data-section="1">Reglas</button>
+        <button type="button" class="indicator" data-section="2">Variables</button>
       </div>
       <button type="button" class="carousel-nav" id="carousel-next">›</button>
     </div>
@@ -133,10 +132,10 @@
           </div>
         </div>
         
-        <!-- Sección 1: Reglas Editables -->
+        <!-- Sección 1: Reglas -->
         <div class="carousel-section">
           <div class="card" id="rules-card">
-        <div class="section-header" style="margin-bottom:6px;"><h2 style="margin:0">Reglas - Editables</h2><div style="display:flex; gap:8px; align-items:center;">
+        <div class="section-header" style="margin-bottom:6px;"><h2 style="margin:0">Reglas</h2><div style="display:flex; gap:8px; align-items:center;">
           <button type="button" class="outline" id="btn-new-rule">Nueva regla</button>
           <div class="small" id="stats-rules-editable"></div></div>
         </div>
@@ -150,8 +149,8 @@
           </div>
         </div>
         
-        <!-- Sección 2: Reglas Solo Lectura -->
-        <div class="carousel-section">
+        <!-- Reglas Solo Lectura (ocultas del carrusel pero disponibles) -->
+        <div style="display:none;">
           <div class="card" id="rules-readonly-card">
         <div class="section-header" style="margin-bottom:6px;"><h2 style="margin:0">Reglas - Solo lectura</h2><div style="display:flex; gap:8px; align-items:center;">
           <div class="small" id="stats-rules-readonly"></div></div>
@@ -166,7 +165,7 @@
           </div>
         </div>
         
-        <!-- Sección 3: Variables -->
+        <!-- Sección 2: Variables -->
         <div class="carousel-section">
           <div class="card" id="side">
       <div class="section-header"><h2 style="margin:0">Variables</h2>
@@ -1045,7 +1044,7 @@
 
     /************ CAROUSEL NAVIGATION ************/
     let currentSection = 0;
-    const totalSections = 4;
+    const totalSections = 3;
 
     function updateCarousel() {
       const track = document.querySelector('.carousel-track');
