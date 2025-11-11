@@ -1305,12 +1305,59 @@ export function mutateOneVariableForRetry() {
 }
 
 export function extractFirstOption(text: string): string | null {
-  // Buscar patrón "Opciones: opcion1, opcion2, opcion3"
-  const match = text.match(/opciones:\s*([^,]+)/i);
-  if (match) {
-    return match[1].trim();
+  console.log('[extractFirstOption] Texto completo recibido:');
+  console.log(text);
+  console.log('--- FIN TEXTO ---');
+  
+  // 1. Buscar patrón "Opciones: opcion1, opcion2, opcion3" (case insensitive)
+  const optionsMatch = text.match(/opciones:\s*([^,\n]+)/i);
+  if (optionsMatch) {
+    let firstOption = optionsMatch[1].trim();
+    // Remover cualquier punto final
+    firstOption = firstOption.replace(/\.$/, '');
+    console.log('[extractFirstOption] ✅ Encontrado en "Opciones:":', firstOption);
+    return firstOption;
   }
-  // Fallback: buscar patrones numerados como "1) Opción" o "1. Opción"
-  const numberedMatch = text.match(/^\s*1[\)\.:]?\s*(.+)$/m);
-  return numberedMatch ? numberedMatch[1].trim() : null;
+  
+  // 2. Buscar patrones numerados como "1) Opción", "1. Opción", "1: Opción"
+  const numberedMatch = text.match(/^\s*1[\)\.:\-]\s*(.+)$/m);
+  if (numberedMatch) {
+    let firstOption = numberedMatch[1].trim();
+    // Remover cualquier punto final o coma
+    firstOption = firstOption.replace(/[,\.]$/, '');
+    console.log('[extractFirstOption] ✅ Encontrado numerado:', firstOption);
+    return firstOption;
+  }
+  
+  // 3. Buscar líneas separadas (caso de lista vertical)
+  const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+  for (const line of lines) {
+    // Si encuentra una línea que parece ser una opción válida (no es pregunta ni metadata)
+    if (!line.match(/opciones:/i) && 
+        !line.match(/nombre\s+del?\s+fabricante/i) && 
+        !line.match(/que?\s+deseas/i) &&
+        line.length > 2 &&
+        !line.includes('?')) {
+      let firstOption = line.trim();
+      // Remover cualquier punto final o coma
+      firstOption = firstOption.replace(/[,\.]$/, '');
+      console.log('[extractFirstOption] ✅ Encontrado en línea separada:', firstOption);
+      return firstOption;
+    }
+  }
+  
+  // 4. Fallback: buscar la primera frase que no sea una pregunta
+  const sentences = text.split(/[.!?]/).map(s => s.trim()).filter(s => s.length > 2);
+  for (const sentence of sentences) {
+    if (!sentence.includes('?') && 
+        !sentence.match(/opciones/i) && 
+        !sentence.match(/nombre/i) &&
+        !sentence.match(/fabricante/i)) {
+      console.log('[extractFirstOption] ✅ Encontrado como fallback:', sentence);
+      return sentence;
+    }
+  }
+  
+  console.log('[extractFirstOption] ❌ No se encontró ningún patrón válido');
+  return null;
 }

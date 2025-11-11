@@ -89,6 +89,7 @@ function detectActionFrom(messages: string[], currentIntent?: string): Action | 
         if (replyText === '__EXTRACT_FIRST_OPTION__') {
           const extracted = extractFirstOption(joined);
           replyText = extracted || '1'; // Fallback a '1' si no se puede extraer
+          console.log(`   🎯 OPCIÓN EXTRAÍDA: "${replyText}"`);
         }
         
         const materializedReply = materialize(replyText, VARS);
@@ -226,15 +227,20 @@ export const test = base.extend<WppFixtures>({
             newMessages = await getNewIncomingAfter(page, baseline).catch(() => []);
             if (newMessages.length === 0) { conversation.logRecvFailure('Sin respuesta tras 45s'); await finishIntent(page, conversation); return { success: false, reason: 'No response from bot after 45s timeout' }; }
           } else {
-            await page.waitForTimeout(5000).catch(() => {});
+            // Esperar más tiempo para asegurar que se reciban todos los mensajes del bot
+            await page.waitForTimeout(8000).catch(() => {});
             newMessages = await getNewIncomingAfter(page, baseline).catch(() => []);
             if (newMessages.length === 0) {
-              await page.waitForTimeout(2000).catch(() => {});
+              await page.waitForTimeout(3000).catch(() => {});
               newMessages = await getNewIncomingAfter(page, baseline).catch(() => []);
-              if (newMessages.length === 0) { await page.waitForTimeout(1000).catch(() => {}); newMessages = await getNewIncomingAfter(page, baseline).catch(() => []); }
+              if (newMessages.length === 0) { 
+                await page.waitForTimeout(2000).catch(() => {}); 
+                newMessages = await getNewIncomingAfter(page, baseline).catch(() => []); 
+              }
             }
           }
           await pauseIf('after-aggregate');
+          console.log(`[DEBUG] Mensajes recibidos: ${newMessages.length}`, newMessages);
           if (newMessages.length) conversation.logReceived(newMessages); else conversation.logRecvFailure('Sin mensajes');
           const action = detectActionFrom(newMessages, opts?.intentName);
           await pauseIf('after-detect');
