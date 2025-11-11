@@ -300,8 +300,8 @@ export const INTENTS_TEMPLATES = {
     'Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}, cliente {client}',
     'Luca agrega cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para cliente {client}',
     'Hola luca, necesito registrar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}',
-    'synonym: consumo',
-    'para consumo'
+  
+  
   ],
   createFertilizer: [
     'quiero registrar un fertilizante',
