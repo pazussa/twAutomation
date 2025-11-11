@@ -55,6 +55,8 @@
     .execute-bar { position:sticky; top:0; z-index:100; background:var(--card); padding:10px; border:1px solid var(--border); border-radius:var(--radius); margin-bottom:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
     .execute-bar button { background:var(--ok); }
     .execute-bar button:hover { background:#047857; }
+    .execute-bar .btn-set-selector { background:#6366f1; font-size:14px; }
+    .execute-bar .btn-set-selector:hover { background:#4f46e5; }
     .execute-bar button.outline { background:#fff; color:#6366f1; border-color:#6366f1; }
     .execute-bar button.outline:hover { background:#6366f1; color:#fff; }
     @media (max-width:1100px){ .layout { grid-template-columns:1fr; } }
@@ -113,6 +115,12 @@
           <button type="button" id="btn-execute-selected">▶ Ejecutar seleccionados</button>
           <button type="button" class="outline" id="btn-open-reports" title="Abrir carpeta de reportes">📊 Reportes</button>
           <span class="small" id="selected-count" style="margin-left:auto;">0 ejemplos seleccionados</span>
+        </div>
+        <div class="execute-bar" style="margin-top:6px; gap:4px;">
+          <button type="button" class="outline" id="btn-select-create-set" title="Seleccionar todos los intents create*">🛠️ Set Creación</button>
+          <button type="button" class="outline" id="btn-select-query-set" title="Seleccionar todos los intents no-create*">🔍 Set Consulta</button>
+          <button type="button" class="outline" id="btn-clear-selection" title="Deseleccionar todos">❌ Limpiar</button>
+          <span class="small">Sets de prueba predefinidos</span>
         </div>
         <div id="new-intent-inline" style="display:none; margin-bottom:10px; border:1px solid var(--border); padding:10px; border-radius:10px;">
           <div style="font-weight:600; font-size:13px; margin-bottom:6px;">Crear intent</div>
@@ -910,14 +918,24 @@
     }
     
     function handleExampleCheckChange(e, intentName){
-      // Verificar si todos los ejemplos del intent están marcados
+      // Verificar si al menos un ejemplo del intent está marcado
       const allExamples = document.querySelectorAll(`input[data-example-check="${intentName}"]`);
       const checkedExamples = document.querySelectorAll(`input[data-example-check="${intentName}"]:checked`);
       const intentCheckbox = document.querySelector(`input[data-intent-check="${intentName}"]`);
       
       if(intentCheckbox){
-        // Si todos los ejemplos están marcados, marcar el intent
-        intentCheckbox.checked = (allExamples.length > 0 && allExamples.length === checkedExamples.length);
+        // Marcar el intent si al menos un ejemplo está seleccionado
+        intentCheckbox.checked = (checkedExamples.length > 0);
+        
+        // Si todos los ejemplos están marcados, marcar como completo
+        if(allExamples.length > 0 && allExamples.length === checkedExamples.length) {
+          intentCheckbox.indeterminate = false;
+        } else if(checkedExamples.length > 0) {
+          // Si solo algunos están marcados, mostrar estado intermedio
+          intentCheckbox.indeterminate = true;
+        } else {
+          intentCheckbox.indeterminate = false;
+        }
       }
       updateSelectedCount();
     }
@@ -926,6 +944,92 @@
       // Solo contar ejemplos que tienen el check marcado
       const checkedExamples = document.querySelectorAll('input[data-example-check]:checked');
       document.getElementById('selected-count').textContent = `${checkedExamples.length} ejemplos seleccionados`;
+    }
+    
+    function selectCreateSet(){
+      // Desmarcar todos primero
+      clearSelection();
+      
+      // Definir los intents de creación
+      const createIntents = ['createChemicalProduct', 'createCrop', 'createFertilizer', 'createPlannedCampaign', 'createPlannedWork'];
+      
+      // Seleccionar máximo 5 ejemplos de intents de creación
+      createIntents.forEach(intentName => {
+        // Seleccionar máximo 5 ejemplos de este intent
+        const exampleCheckboxes = document.querySelectorAll(`input[data-example-check="${intentName}"]`);
+        const maxToSelect = Math.min(5, exampleCheckboxes.length);
+        
+        for(let i = 0; i < maxToSelect; i++) {
+          exampleCheckboxes[i].checked = true;
+        }
+        
+        // Actualizar el estado del checkbox del intent
+        const intentCheckbox = document.querySelector(`input[data-intent-check="${intentName}"]`);
+        if(intentCheckbox && maxToSelect > 0) {
+          intentCheckbox.checked = true;
+          // Si se seleccionaron todos los ejemplos disponibles, no mostrar estado intermedio
+          if(maxToSelect === exampleCheckboxes.length) {
+            intentCheckbox.indeterminate = false;
+          } else {
+            // Si solo se seleccionaron algunos, mostrar estado intermedio
+            intentCheckbox.indeterminate = true;
+          }
+        }
+      });
+      
+      updateSelectedCount();
+    }
+    
+    function selectQuerySet(){
+      // Desmarcar todos primero
+      clearSelection();
+      
+      // Definir los intents de consulta (todos los que NO son create*)
+      const queryIntents = ['assignPriceProduct', 'checkUnplannedFields', 'getActiveMattersChemicalProducts', 
+                           'getChemicalProducts', 'getChemicalProductsByClient', 'getCropDistribution', 'getCrops', 
+                           'getFertilizers', 'getLastPrice', 'getLastWork', 'getManufacturerProducts', 'getMinPrice', 
+                           'getPendingWorks', 'getPlannedCampaignsHistory', 'getPriceVariation', 'getSeedsNeeded', 
+                           'goodbye', 'greet', 'reportFinishedWork', 'requestOtp', 'searchProducts', 
+                           'searchProductsCrops', 'searchProductsFertilizers', 'filterFertilizers'];
+      
+      // Seleccionar máximo 5 ejemplos de intents de consulta
+      queryIntents.forEach(intentName => {
+        // Seleccionar máximo 5 ejemplos de este intent
+        const exampleCheckboxes = document.querySelectorAll(`input[data-example-check="${intentName}"]`);
+        const maxToSelect = Math.min(5, exampleCheckboxes.length);
+        
+        for(let i = 0; i < maxToSelect; i++) {
+          exampleCheckboxes[i].checked = true;
+        }
+        
+        // Actualizar el estado del checkbox del intent
+        const intentCheckbox = document.querySelector(`input[data-intent-check="${intentName}"]`);
+        if(intentCheckbox && maxToSelect > 0) {
+          intentCheckbox.checked = true;
+          // Si se seleccionaron todos los ejemplos disponibles, no mostrar estado intermedio
+          if(maxToSelect === exampleCheckboxes.length) {
+            intentCheckbox.indeterminate = false;
+          } else {
+            // Si solo se seleccionaron algunos, mostrar estado intermedio
+            intentCheckbox.indeterminate = true;
+          }
+        }
+      });
+      
+      updateSelectedCount();
+    }
+    
+    function clearSelection(){
+      // Desmarcar todos los checkboxes
+      document.querySelectorAll('input[data-intent-check]').forEach(checkbox => {
+        checkbox.checked = false;
+        checkbox.indeterminate = false;
+      });
+      document.querySelectorAll('input[data-example-check]').forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      
+      updateSelectedCount();
     }
     function getSelectedExamples(){
       const selected = [];
@@ -1105,6 +1209,21 @@
         });
         
         updateCarousel();
+        
+        // Event listeners para botones de selección de sets
+        const btnSelectCreate = document.getElementById('btn-select-create-set');
+        const btnSelectQuery = document.getElementById('btn-select-query-set');
+        const btnClearSelection = document.getElementById('btn-clear-selection');
+        
+        if (btnSelectCreate) {
+          btnSelectCreate.addEventListener('click', selectCreateSet);
+        }
+        if (btnSelectQuery) {
+          btnSelectQuery.addEventListener('click', selectQuerySet);
+        }
+        if (btnClearSelection) {
+          btnClearSelection.addEventListener('click', clearSelection);
+        }
       }
     }, 100);
 

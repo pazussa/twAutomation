@@ -12,7 +12,11 @@
     "pw:report": "playwright show-report",
     "report:pdf": "node scripts/export-report-to-pdf.mjs",
     "admin": "tsx src/admin/server.ts",
-    "sync": "node scripts/sync-yml-to-data.mjs"
+    "sync": "node scripts/sync-yml-to-data.mjs",
+    "test:creation": "playwright test tests/creation-set.spec.ts --headed",
+    "test:query": "playwright test tests/query-set.spec.ts --headed",
+    "test:creation-headless": "playwright test tests/creation-set.spec.ts",
+    "test:query-headless": "playwright test tests/query-set.spec.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
