@@ -1251,6 +1251,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /F[eé]ch[aá] d[eé]l pr[eé]c[ií][oó]/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'UI added', priority: 1 },
   { pattern: /v[aá]r[ií][eé]d[aá]d/i, action: { type: 'REPLY', reply: 'premium' }, note: 'premium', priority: 1 },
   { pattern: /Y[aá] [eé]x[ií]st[eé]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
+  { pattern: /[aá]ct[uúü][aá]lm[eé]nt[eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
 ];
 
 export type ActionResult = 
