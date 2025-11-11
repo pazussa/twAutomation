@@ -70,7 +70,6 @@ export const VARS: Record<string, string> = {
   nitrogen_level: process.env.VAR_NITROGEN_LEVEL || '20',
   nombre_usuario_cliente: process.env.VAR_NOMBRE_USUARIO_CLIENTE || 'Automatización Clnt',
   price: process.env.VAR_PRICE || '340',
-  price_date: process.env.VAR_PRICE_DATE || '2025-10-03',
   product_name: process.env.VAR_PRODUCT_NAME || 'Trigo Filón',
   search_query: process.env.VAR_SEARCH_QUERY || 'Girasol',
   target_pest: process.env.VAR_TARGET_PEST || 'mildiu',
@@ -79,6 +78,8 @@ export const VARS: Record<string, string> = {
   variety_name: process.env.VAR_VARIETY_NAME || 'amarillo costeño',
   work_id: process.env.VAR_WORK_ID || '64f1b2c3d4e5f6a7b8c9d0e0',
   worked_hours: process.env.VAR_WORKED_HOURS || '6.5',
+  price_date: 'hoy',
+
 };
 
 export const DEFAULT_VARS: Readonly<Record<string, string>> = { ...VARS };
@@ -1165,21 +1166,21 @@ export const KEYWORD_RULES: Array<{
   // Campos de Cliente
   { pattern: /\bnombre\s+del\s+cliente/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 4 },
   { pattern: /\bpara\s+qu[ée]\s+cliente/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 4 },
-  { pattern: /\bcliente/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 4 },
+  { pattern: /cl[ií][eé]nt[eé]/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 1 },
   { pattern: /\bnombre\s+de\s+usuario\s+del\s+cliente/i, action: { type: 'REPLY', reply: '{nombre_usuario_cliente}' }, note: 'Pide usuario cliente (usado en: requestOtp)', priority: 4 },
   { pattern: /\busuario\s+del\s+cliente/i, action: { type: 'REPLY', reply: '{nombre_usuario_cliente}' }, note: 'Pide usuario cliente (usado en: requestOtp)', priority: 4 },
   
   // Campos de Fertilizante
   { pattern: /\bnombre\s+del\s+fertilizante/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 4 },
-  { pattern: /\bfertilizante/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 4 },
+  { pattern: /f[eé]rt[ií]l[ií]z[aá]nt[eé]/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 1 },
   { pattern: /\btipo\s+de\s+fertilizante/i, action: { type: 'REPLY', reply: '{type_fertilizer}' }, note: 'Pide tipo fertilizante (usado en: createFertilizer, filterFertilizers)', priority: 4 },
-  { pattern: /\bcomposici[oó]n/i, action: { type: 'REPLY', reply: '{composition}' }, note: 'Pide composición (usado en: createFertilizer)', priority: 4 },
+  { pattern: /c[oó]mp[oó]s[ií]c[ií][oó]n/i, action: { type: 'REPLY', reply: '{composition}' }, note: 'Pide composición (usado en: createFertilizer)', priority: 1 },
   { pattern: /\bforma(\s+del\s+fertilizante)?/i, action: { type: 'REPLY', reply: '{form_type}' }, note: 'Pide forma (usado en: createFertilizer, filterFertilizers)', priority: 4 },
   { pattern: /\bnivel\s+de\s+nitr[oó]geno/i, action: { type: 'REPLY', reply: '{nitrogen_level}' }, note: 'Pide nitrógeno (usado en: createFertilizer, filterFertilizers)', priority: 4 },
   
   // Campos de Producto Químico
   { pattern: /\bnombre\s+del\s+fabricante/i, action: { type: 'REPLY', reply: '{manufacturer_name}' }, note: 'Pide fabricante (usado en: createChemicalProduct, createFertilizer, getManufacturerProducts)', priority: 4 },
-  { pattern: /\bfabricante/i, action: { type: 'REPLY', reply: '{manufacturer_name}' }, note: 'Pide fabricante (usado en: createChemicalProduct, createFertilizer, getManufacturerProducts)', priority: 4 },
+  { pattern: /f[aá]br[ií]c[aá]nt[eé]/i, action: { type: 'REPLY', reply: '{manufacturer_name}' }, note: 'Pide fabricante (usado en: createChemicalProduct, createFertilizer, getManufacturerProducts)', priority: 1 },
   { pattern: /\bnombre\s+del\s+producto\s+qu[ií]mico/i, action: { type: 'REPLY', reply: '{chemical_product_name}' }, note: 'Pide producto químico (usado en: createChemicalProduct, getActiveMatterChemicalProducts)', priority: 4 },
   { pattern: /\bproducto\s+qu[ií]mico/i, action: { type: 'REPLY', reply: '{chemical_product_name}' }, note: 'Pide producto químico (usado en: createChemicalProduct, getActiveMatterChemicalProducts)', priority: 4 },
   { pattern: /\bmateria\s+activa/i, action: { type: 'REPLY', reply: '{active_matter_name}' }, note: 'Pide materia activa (usado en: getActiveMatterChemicalProducts)', priority: 4 },
@@ -1240,6 +1241,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /y[aá] t[ií][eé]n[eé] [uúü]n[aá] c[aá]mp[aá]ñ[aá] [aá]ct[ií]v[aá]/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1, intents: ['createPlannedCampaign'] },
   { pattern: /[eé]st[oó]y [eé]sp[eé]c[ií][aá]l[ií]z[aá]d[oó] ún[ií]c[aá]m[eé]nt[eé] [eé]n t[eé]m[aá]s [aá]gríc[oó]l[aá]s;/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1 },
   { pattern: /h[aá]s cr[eé][aá]d[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['filterFertilizers'] },
+  { pattern: /F[eé]ch[aá] d[eé]l pr[eé]c[ií][oó]/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'UI added', priority: 1 },
 ];
 
 export type ActionResult = 
