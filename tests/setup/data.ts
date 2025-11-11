@@ -1133,6 +1133,13 @@ export const KEYWORD_RULES: Array<{
   // Ya existe
   { pattern: /ya\s+exist/i, action: { type: 'RETRY_EXISTS' }, note: 'Elemento ya existe - reintentar', priority: 2 },
   
+  // Finalizadores específicos (máxima prioridad para evitar que sean capturados por reglas genéricas)
+  { pattern: /fertilizante creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fertilizante creado exitosamente', priority: 1 },
+  { pattern: /cultivo creado exitosamente/i, action: { type: 'END_OK' }, note: 'Cultivo creado exitosamente', priority: 1 },
+  { pattern: /campaña (cread[oa]) exitosamente/i, action: { type: 'END_OK' }, note: 'Campaña creada exitosamente', priority: 1 },
+  { pattern: /(fitosanitario|producto químico|producto) creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fitosanitario/Producto creado exitosamente', priority: 1 },
+  { pattern: /(precio (asignado|actualizado|registrado)|asigno un precio|precio fijado)/i, action: { type: 'END_OK' }, note: 'Precio asignado/actualizado exitosamente', priority: 1 },
+  
   // Finalizadores de éxito
   { pattern: /creado correctamente|registrado correctamente|guardado correctamente|planificado correctamente|asignado correctamente/i, action: { type: 'END_OK' }, note: 'Creación exitosa', priority: 3 },
   { pattern: /operación completada|proceso finalizado|todo listo|completado exitosamente/i, action: { type: 'END_OK' }, note: 'Operación exitosa', priority: 3 },
