@@ -1253,6 +1253,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /Y[aá] [eé]x[ií]st[eé]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
   { pattern: /[aá]ct[uúü][aá]lm[eé]nt[eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
   { pattern: /ddddd/i, action: { type: 'REPLY', reply: 'dddd' }, note: 'UI added', priority: 1 },
+  { pattern: /H[eé] c[oó]l[oó]c[aá]d[oó] [eé]l c[uúü]lt[ií]v[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['createPlannedCampaign'] },
 ];
 
 export type ActionResult = 
