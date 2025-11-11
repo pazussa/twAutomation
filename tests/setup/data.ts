@@ -506,34 +506,47 @@ export const KEYWORD_RULES: Array<{
   pattern: RegExp;
   action: Exclude<Action, { type: 'RETRY_EXISTS' }>;
   note?: string;
+  priority?: number;
 }> = [
-  { pattern: /No se encontró el cultivo|Cultivo no encontrado|no se pudo encontrar/i, action: { type: 'END_ERR' }, note: 'Cultivo no encontrado - termina' },
-  { pattern: /Ha ocurrido un error|Error al procesar|no se pudo completar/i, action: { type: 'END_ERR' }, note: 'Error general - termina' },
-  { pattern: /Gracias por usar|Hasta luego|Adiós/i, action: { type: 'END_OK' }, note: 'Despedida - termina' },
-  { pattern: /Cultivo:/i, action: { type: 'END_OK' }, note: 'Lista de cultivos recibida' },
-  { pattern: /campaña (cread[oa]) exitosamente/i, action: { type: 'END_OK' }, note: 'Campaña creada' },
-  { pattern: /cultivo creado exitosamente/i, action: { type: 'END_OK' }, note: 'Cultivo creado' },
-  { pattern: /fertilizante creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fertilizante creado' },
-  { pattern: /(fitosanitario|producto químico|producto) creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fitosanitario/Producto creado' },
-  { pattern: /(cread[oa]) exitosamente|éxito|confirmad[oa]/i, action: { type: 'END_OK' }, note: 'Éxito genérico' },
-  { pattern: /(precio (asignado|actualizado|registrado)|asigno un precio|precio fijado)/i, action: { type: 'END_OK' }, note: 'Precio asignado/actualizado' },
-  { pattern: /(error|falla|inválid[oa]|no\s+válido)/i, action: { type: 'END_ERR' }, note: 'Error explícito' },
-  { pattern: /^Nombre del cultivo\.?$/i,        action: { type: 'REPLY', reply: '{cultivo}' },   note: 'Pide cultivo' },
-  { pattern: /^Nombre de la variedad\.?$/i,     action: { type: 'REPLY', reply: '{variedad}' },  note: 'Pide variedad' },
-  { pattern: /^Destino del cultivo\.?$/i,       action: { type: 'REPLY', reply: '{destino}' },   note: 'Pide destino' },
-  { pattern: /^Marca del cultivo\.?$/i,         action: { type: 'REPLY', reply: '{marca}' },     note: 'Pide marca' },
-  { pattern: /^(Nombre del cliente|Cliente)\.?$/i, action: { type: 'REPLY', reply: '{cliente}' }, note: 'Pide cliente' },
-  { pattern: /^Nombre de la campaña\.?$/i,      action: { type: 'REPLY', reply: '{campana}' },   note: 'Pide campaña' },
-  { pattern: /^Nombre de la granja\.?$/i,       action: { type: 'REPLY', reply: '{granja}' },    note: 'Pide granja' },
-  { pattern: /^Nombre del campo\.?$/i,          action: { type: 'REPLY', reply: '{campo}' },     note: 'Pide campo' },
+  // Errores específicos (prioridad alta)
+  { pattern: /No se encontró el cultivo|Cultivo no encontrado|no se pudo encontrar/i, action: { type: 'END_ERR' }, note: 'Cultivo no encontrado - termina', priority: 100 },
+  { pattern: /Ha ocurrido un error|Error al procesar|no se pudo completar/i, action: { type: 'END_ERR' }, note: 'Error general - termina', priority: 100 },
+  
+  // Éxitos específicos (prioridad muy alta para que capturen antes que el genérico)
+  { pattern: /fertilizante creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fertilizante creado', priority: 90 },
+  { pattern: /cultivo creado exitosamente/i, action: { type: 'END_OK' }, note: 'Cultivo creado', priority: 90 },
+  { pattern: /campaña (cread[oa]) exitosamente/i, action: { type: 'END_OK' }, note: 'Campaña creada', priority: 90 },
+  { pattern: /(fitosanitario|producto químico|producto) creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fitosanitario/Producto creado', priority: 90 },
+  { pattern: /(precio (asignado|actualizado|registrado)|asigno un precio|precio fijado)/i, action: { type: 'END_OK' }, note: 'Precio asignado/actualizado', priority: 90 },
+  
+  // Finalizadores generales
+  { pattern: /Gracias por usar|Hasta luego|Adiós/i, action: { type: 'END_OK' }, note: 'Despedida - termina', priority: 80 },
+  { pattern: /Cultivo:/i, action: { type: 'END_OK' }, note: 'Lista de cultivos recibida', priority: 80 },
+  
+  // Éxito genérico (prioridad baja para que sea el último recurso)
+  { pattern: /(cread[oa]) exitosamente|éxito|confirmad[oa]/i, action: { type: 'END_OK' }, note: 'Éxito genérico', priority: 10 },
+  
+  // Errores genéricos (prioridad baja)
+  { pattern: /(error|falla|inválid[oa]|no\s+válido)/i, action: { type: 'END_ERR' }, note: 'Error explícito', priority: 10 },
+  
+  // Campos específicos (prioridad media-alta)
+  { pattern: /^Nombre del cultivo\.?$/i,        action: { type: 'REPLY', reply: '{cultivo}' },   note: 'Pide cultivo', priority: 70 },
+  { pattern: /^Nombre de la variedad\.?$/i,     action: { type: 'REPLY', reply: '{variedad}' },  note: 'Pide variedad', priority: 70 },
+  { pattern: /^Destino del cultivo\.?$/i,       action: { type: 'REPLY', reply: '{destino}' },   note: 'Pide destino', priority: 70 },
+  { pattern: /^Marca del cultivo\.?$/i,         action: { type: 'REPLY', reply: '{marca}' },     note: 'Pide marca', priority: 70 },
+  { pattern: /^(Nombre del cliente|Cliente)\.?$/i, action: { type: 'REPLY', reply: '{cliente}' }, note: 'Pide cliente', priority: 70 },
+  { pattern: /^Nombre de la campaña\.?$/i,      action: { type: 'REPLY', reply: '{campana}' },   note: 'Pide campaña', priority: 70 },
+  { pattern: /^Nombre de la granja\.?$/i,       action: { type: 'REPLY', reply: '{granja}' },    note: 'Pide granja', priority: 70 },
+  { pattern: /^Nombre del campo\.?$/i,          action: { type: 'REPLY', reply: '{campo}' },     note: 'Pide campo', priority: 70 },
   {
     pattern: /\bDosis\b(?:\s+(?:planificada|recomendada))?(?:\s*\((?:Kg\/?H|Kg\/?Ha|kg\/?h|kg\/?ha|KG\/?H|KG\/?HA)\))?\s*\.?$/i,
     action: { type: 'REPLY', reply: '{dosis}' },
-    note: 'Pide dosis: responder {dosis}'
+    note: 'Pide dosis: responder {dosis}',
+    priority: 70
   },
-  { pattern: /^(Producto|Nombre del producto|Nombre del artículo)\.?$/i, action: { type: 'REPLY', reply: '{productName}' }, note: 'Pide producto' },
-  { pattern: /^(Precio|Importe|Valor|Coste|Costo)\.?$/i,                 action: { type: 'REPLY', reply: '{price}' },       note: 'Pide precio' },
-  { pattern: /^Fecha( de vigencia| de precio)?\.?$/i,                    action: { type: 'REPLY', reply: '{priceDate}' },   note: 'Pide fecha precio' }
+  { pattern: /^(Producto|Nombre del producto|Nombre del artículo)\.?$/i, action: { type: 'REPLY', reply: '{productName}' }, note: 'Pide producto', priority: 70 },
+  { pattern: /^(Precio|Importe|Valor|Coste|Costo)\.?$/i,                 action: { type: 'REPLY', reply: '{price}' },       note: 'Pide precio', priority: 70 },
+  { pattern: /^Fecha( de vigencia| de precio)?\.?$/i,                    action: { type: 'REPLY', reply: '{priceDate}' },   note: 'Pide fecha precio', priority: 70 }
 ];
 
 export function extractFirstOption(message: string): string | null {

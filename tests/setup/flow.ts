@@ -36,21 +36,39 @@ import { resetVarsToDefaults } from './data';
 
 function detectActionFrom(messages: string[]): Action | null {
   const joined = messages.join('\n');
+  
+  // Ordena las reglas por prioridad (de mayor a menor), luego por orden original
+  const sortedRules = [...KEYWORD_RULES].sort((a, b) => {
+    const priorityA = a.priority ?? 50; // prioridad por defecto
+    const priorityB = b.priority ?? 50;
+    return priorityB - priorityA; // orden descendente
+  });
+  
+  // Primero verifica opciones (máxima prioridad)
   if (/Opciones:/i.test(joined)) {
     const first = extractFirstOption(joined);
     return { type: 'REPLY', reply: first || '1' };
   }
+  
+  // Luego verifica "ya existe" (alta prioridad)
   if (/ya existe/i.test(joined)) return { type: 'RETRY_EXISTS' };
-  for (const rule of KEYWORD_RULES) {
-    if (rule.action.type !== 'REPLY' && rule.pattern.test(joined)) return rule.action;
+  
+  // Evalúa reglas END_OK y END_ERR ordenadas por prioridad
+  for (const rule of sortedRules) {
+    if (rule.action.type !== 'REPLY' && rule.pattern.test(joined)) {
+      return rule.action;
+    }
   }
+  
+  // Evalúa reglas REPLY ordenadas por prioridad
   for (const msg of messages) {
-    for (const rule of KEYWORD_RULES) {
+    for (const rule of sortedRules) {
       if (rule.action.type === 'REPLY' && rule.pattern.test(msg)) {
         return { type: 'REPLY', reply: materialize(rule.action.reply, VARS) };
       }
     }
   }
+  
   return null;
 }
 
