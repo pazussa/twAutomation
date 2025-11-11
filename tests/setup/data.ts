@@ -1239,6 +1239,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /H[ií]st[oó]r[ií][aá]l d[eé] c[aá]mp[aá]ñ[aá]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['getPlannedCampaignsHistory'] },
   { pattern: /y[aá] t[ií][eé]n[eé] [uúü]n[aá] c[aá]mp[aá]ñ[aá] [aá]ct[ií]v[aá]/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1, intents: ['createPlannedCampaign'] },
   { pattern: /[eé]st[oó]y [eé]sp[eé]c[ií][aá]l[ií]z[aá]d[oó] ún[ií]c[aá]m[eé]nt[eé] [eé]n t[eé]m[aá]s [aá]gríc[oó]l[aá]s;/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1 },
+  { pattern: /h[aá]s cr[eé][aá]d[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['filterFertilizers'] },
 ];
 
 export type ActionResult = 
