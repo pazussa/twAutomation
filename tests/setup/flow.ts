@@ -241,9 +241,20 @@ export const test = base.extend<WppFixtures>({
           }
           await pauseIf('after-aggregate');
           console.log(`[DEBUG] Mensajes recibidos: ${newMessages.length}`, newMessages);
-          if (newMessages.length) conversation.logReceived(newMessages); else conversation.logRecvFailure('Sin mensajes');
           const action = detectActionFrom(newMessages, opts?.intentName);
           await pauseIf('after-detect');
+          
+          // Registrar mensajes según si se detectó regla o no
+          if (!newMessages.length) {
+            conversation.logRecvFailure('Sin mensajes');
+          } else if (!action) {
+            conversation.logRecvFailure(newMessages.join('\n'));
+            toSend = '';
+            continue;
+          } else {
+            conversation.logReceived(newMessages);
+          }
+          
           if (!action) { toSend = ''; continue; }
           if (action.type === 'REPLY') { 
             toSend = action.reply || ''; 

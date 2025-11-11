@@ -107,7 +107,9 @@ async function persistAddRule(regex: string, action: { type: string; reply?: str
     : '';
   
   if (action.type === 'REPLY') {
-    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 3${intentsStr} },`);
+    // Regla especial: __EXTRACT_FIRST_OPTION__ debe tener prioridad 1
+    const priority = (action.reply === '__EXTRACT_FIRST_OPTION__') ? 1 : 3;
+    ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: ${priority}${intentsStr} },`);
   } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
     ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`);
   } else {
@@ -161,7 +163,9 @@ async function persistUpdateRule(idx: number, regex: string, action: { type: str
   
   let newRuleLine: string;
   if (action.type === 'REPLY') {
-    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`;
+    // Regla especial: __EXTRACT_FIRST_OPTION__ debe tener prioridad 1
+    const priority = (action.reply === '__EXTRACT_FIRST_OPTION__') ? 1 : 3;
+    newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: ${priority}${intentsStr} },`;
   } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
     newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`;
   } else {

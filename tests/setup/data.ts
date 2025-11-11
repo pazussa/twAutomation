@@ -1128,7 +1128,7 @@ export const KEYWORD_RULES: Array<{
   intents?: string[]; // Lista de intents donde aplica esta regla. Si está vacío o undefined, aplica a todos
 }> = [
   // Opciones - se procesará con extractFirstOption en flow.ts
-  { pattern: /opciones:/i, action: { type: 'REPLY', reply: '__EXTRACT_FIRST_OPTION__' }, note: 'Lista de opciones detectada', priority: 3 },
+  { pattern: /opciones:/i, action: { type: 'REPLY', reply: '__EXTRACT_FIRST_OPTION__' }, note: 'Lista de opciones detectada', priority: 1 },
   
   // Ya existe - ahora es un finalizador exitoso
   { pattern: /y[aá]\s+(exist[eé]|exist|existe)/i, action: { type: 'END_OK' }, note: 'Elemento ya existe - finalizar como éxito', priority: 1 },
