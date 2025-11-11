@@ -1237,6 +1237,8 @@ export const KEYWORD_RULES: Array<{
   { pattern: /N[oó] s[eé] [eé]nc[oó]ntr[aá]r[oó]n tr[aá]b[aá]j[oó]s p[eé]nd[ií][eé]nt[eé]s p[aá]r[aá] h[oó]y [eé]n t[uúü]s c[aá]mp[oó]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['getPendingWorks'] },
   { pattern: /Pr[oó]d[uúü]ct[oó]:/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['getChemicalProducts'] },
   { pattern: /H[ií]st[oó]r[ií][aá]l d[eé] c[aá]mp[aá]ñ[aá]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['getPlannedCampaignsHistory'] },
+  { pattern: /y[aá] t[ií][eé]n[eé] [uúü]n[aá] c[aá]mp[aá]ñ[aá] [aá]ct[ií]v[aá]/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1, intents: ['createPlannedCampaign'] },
+  { pattern: /[eé]st[oó]y [eé]sp[eé]c[ií][aá]l[ií]z[aá]d[oó] ún[ií]c[aá]m[eé]nt[eé] [eé]n t[eé]m[aá]s [aá]gríc[oó]l[aá]s;/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1 },
 ];
 
 export type ActionResult = 
