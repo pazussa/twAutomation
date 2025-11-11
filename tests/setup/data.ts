@@ -1249,6 +1249,8 @@ export const KEYWORD_RULES: Array<{
   { pattern: /[eé]st[oó]y [eé]sp[eé]c[ií][aá]l[ií]z[aá]d[oó] ún[ií]c[aá]m[eé]nt[eé] [eé]n t[eé]m[aá]s [aá]gríc[oó]l[aá]s;/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1 },
   { pattern: /h[aá]s cr[eé][aá]d[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['filterFertilizers'] },
   { pattern: /F[eé]ch[aá] d[eé]l pr[eé]c[ií][oó]/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'UI added', priority: 1 },
+  { pattern: /v[aá]r[ií][eé]d[aá]d/i, action: { type: 'REPLY', reply: 'premium' }, note: 'premium', priority: 1 },
+  { pattern: /Y[aá] [eé]x[ií]st[eé]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
 ];
 
 export type ActionResult = 
