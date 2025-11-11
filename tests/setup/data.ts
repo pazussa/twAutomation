@@ -1128,10 +1128,10 @@ export const KEYWORD_RULES: Array<{
   intents?: string[]; // Lista de intents donde aplica esta regla. Si está vacío o undefined, aplica a todos
 }> = [
   // Opciones - se procesará con extractFirstOption en flow.ts
-  { pattern: /opciones:/i, action: { type: 'REPLY', reply: '__EXTRACT_FIRST_OPTION__' }, note: 'Lista de opciones detectada', priority: 1 },
+  { pattern: /opciones:/i, action: { type: 'REPLY', reply: '__EXTRACT_FIRST_OPTION__' }, note: 'Lista de opciones detectada', priority: 3 },
   
-  // Ya existe
-  { pattern: /ya\s+exist/i, action: { type: 'RETRY_EXISTS' }, note: 'Elemento ya existe - reintentar', priority: 1 },
+  // Ya existe - ahora es un finalizador exitoso
+  { pattern: /y[aá]\s+(exist[eé]|exist|existe)/i, action: { type: 'END_OK' }, note: 'Elemento ya existe - finalizar como éxito', priority: 1 },
   
   // Finalizadores específicos (máxima prioridad para evitar que sean capturados por reglas genéricas)
   { pattern: /fertilizante creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fertilizante creado exitosamente', priority: 1 },
@@ -1147,7 +1147,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /exito|exitoso|exitosa|exitosos|exitosas/i, action: { type: 'END_OK' }, note: 'Éxito detectado (cualquier variante)', priority: 1 },
   
   // Finalizadores para consultas GET (devuelven información sin acción adicional)
-  { pattern: /actualmente tienes \d+ cultivo/i, action: { type: 'END_OK' }, note: 'Lista de cultivos completada', priority: 1 },
+  { pattern: /[aáä]ct[uúü][aá]lm[eé]nt[eé] t[ií][eé]n[eé]s \d+ cultivos?/i, action: { type: 'END_OK' }, note: 'Lista de cultivos completada', priority: 1 },
   { pattern: /tienes \d+ fertilizante/i, action: { type: 'END_OK' }, note: 'Lista de fertilizantes completada', priority: 1 },
   { pattern: /estos son los (\d+ )?productos/i, action: { type: 'END_OK' }, note: 'Lista de productos completada', priority: 1 },
   { pattern: /aqu[ií] est[áa]n?:?\s*\.?\s*\n.*(?:cultivo|fertilizante|producto|trabajo|campaña)/i, action: { type: 'END_OK' }, note: 'Lista de resultados mostrada', priority: 1 },
@@ -1173,21 +1173,21 @@ export const KEYWORD_RULES: Array<{
   // Campos de Cliente
   { pattern: /\bnombre\s+del\s+cliente/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 3 },
   { pattern: /\bpara\s+qu[ée]\s+cliente/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 3 },
-  { pattern: /cl[ií][eé]nt[eé]/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 1 },
+  { pattern: /cl[ií][eé]nt[eé]/i, action: { type: 'REPLY', reply: '{client}' }, note: 'Pide cliente (usado en: createCrop, createChemicalProduct, getChemicalProductsByClient, searchProducts)', priority: 3 },
   { pattern: /\bnombre\s+de\s+usuario\s+del\s+cliente/i, action: { type: 'REPLY', reply: '{nombre_usuario_cliente}' }, note: 'Pide usuario cliente (usado en: requestOtp)', priority: 3 },
   { pattern: /\busuario\s+del\s+cliente/i, action: { type: 'REPLY', reply: '{nombre_usuario_cliente}' }, note: 'Pide usuario cliente (usado en: requestOtp)', priority: 3 },
   
   // Campos de Fertilizante
   { pattern: /\bnombre\s+del\s+fertilizante/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 3 },
-  { pattern: /f[eé]rt[ií]l[ií]z[aá]nt[eé]/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 1 },
+  { pattern: /f[eé]rt[ií]l[ií]z[aá]nt[eé]/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 3 },
   { pattern: /\btipo\s+de\s+fertilizante/i, action: { type: 'REPLY', reply: '{type_fertilizer}' }, note: 'Pide tipo fertilizante (usado en: createFertilizer, filterFertilizers)', priority: 3 },
-  { pattern: /c[oó]mp[oó]s[ií]c[ií][oó]n/i, action: { type: 'REPLY', reply: '{composition}' }, note: 'Pide composición (usado en: createFertilizer)', priority: 1 },
+  { pattern: /c[oó]mp[oó]s[ií]c[ií][oó]n/i, action: { type: 'REPLY', reply: '{composition}' }, note: 'Pide composición (usado en: createFertilizer)', priority: 3 },
   { pattern: /\bforma(\s+del\s+fertilizante)?/i, action: { type: 'REPLY', reply: '{form_type}' }, note: 'Pide forma (usado en: createFertilizer, filterFertilizers)', priority: 3 },
   { pattern: /\bnivel\s+de\s+nitr[oó]geno/i, action: { type: 'REPLY', reply: '{nitrogen_level}' }, note: 'Pide nitrógeno (usado en: createFertilizer, filterFertilizers)', priority: 3 },
   
   // Campos de Producto Químico
   { pattern: /\bnombre\s+del\s+fabricante/i, action: { type: 'REPLY', reply: '{manufacturer_name}' }, note: 'Pide fabricante (usado en: createChemicalProduct, createFertilizer, getManufacturerProducts)', priority: 3 },
-  { pattern: /f[aá]br[ií]c[aá]nt[eé]/i, action: { type: 'REPLY', reply: '{manufacturer_name}' }, note: 'Pide fabricante (usado en: createChemicalProduct, createFertilizer, getManufacturerProducts)', priority: 1 },
+  { pattern: /f[aá]br[ií]c[aá]nt[eé]/i, action: { type: 'REPLY', reply: '{manufacturer_name}' }, note: 'Pide fabricante (usado en: createChemicalProduct, createFertilizer, getManufacturerProducts)', priority: 3 },
   { pattern: /\bnombre\s+del\s+producto\s+qu[ií]mico/i, action: { type: 'REPLY', reply: '{chemical_product_name}' }, note: 'Pide producto químico (usado en: createChemicalProduct, getActiveMatterChemicalProducts)', priority: 3 },
   { pattern: /\bproducto\s+qu[ií]mico/i, action: { type: 'REPLY', reply: '{chemical_product_name}' }, note: 'Pide producto químico (usado en: createChemicalProduct, getActiveMatterChemicalProducts)', priority: 3 },
   { pattern: /\bmateria\s+activa/i, action: { type: 'REPLY', reply: '{active_matter_name}' }, note: 'Pide materia activa (usado en: getActiveMatterChemicalProducts)', priority: 3 },
@@ -1227,12 +1227,12 @@ export const KEYWORD_RULES: Array<{
   
   
   { pattern: /T[oó]t[aá]l:/i, action: { type: 'END_OK' }, note: 'ok', priority: 1, intents: ['checkUnplannedFields', 'getPlannedCampaignsHistory'] },
-  { pattern: /[ií]ngr[eé]s[aá] l[aá] f[eé]ch[aá]/i, action: { type: 'REPLY', reply: '2026-10-15' }, note: 'fecha', priority: 1 },
+  { pattern: /[ií]ngr[eé]s[aá] l[aá] f[eé]ch[aá]/i, action: { type: 'REPLY', reply: '2026-10-15' }, note: 'fecha', priority: 3 },
   { pattern: /H[eé]ch[oó]:/i, action: { type: 'END_OK' }, note: 'ok', priority: 1 },
-  { pattern: /pl[aá]n[ií]f[ií]c[aá]d[aá] [eé]n d[eé]c[ií]m[aá]l/i, action: { type: 'REPLY', reply: '180.0' }, note: 'd', priority: 1 },
-  { pattern: /[ií]ngr[eé]s[aá] l[aá] h[oó]r[aá]/i, action: { type: 'REPLY', reply: '14:30' }, note: 'yy', priority: 1 },
-  { pattern: /N[oó]mbr[eé] d[eé]l [oó]p[eé]r[aá]d[oó]r/i, action: { type: 'REPLY', reply: 'Juan Andrés Menton' }, note: 'jose', priority: 1 },
-  { pattern: /D[oó]s[ií]s d[eé]l c[uúü]lt[ií]v[oó]/i, action: { type: 'REPLY', reply: '120.0' }, note: 'jj', priority: 1 },
+  { pattern: /pl[aá]n[ií]f[ií]c[aá]d[aá] [eé]n d[eé]c[ií]m[aá]l/i, action: { type: 'REPLY', reply: '180.0' }, note: 'd', priority: 3 },
+  { pattern: /[ií]ngr[eé]s[aá] l[aá] h[oó]r[aá]/i, action: { type: 'REPLY', reply: '14:30' }, note: 'yy', priority: 3 },
+  { pattern: /N[oó]mbr[eé] d[eé]l [oó]p[eé]r[aá]d[oó]r/i, action: { type: 'REPLY', reply: 'Juan Andrés Menton' }, note: 'jose', priority: 3 },
+  { pattern: /D[oó]s[ií]s d[eé]l c[uúü]lt[ií]v[oó]/i, action: { type: 'REPLY', reply: '120.0' }, note: 'jj', priority: 3 },
   { pattern: /[aá]ct[uúü][aá]lm[eé]nt[eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 1, intents: ['filterFertilizers', 'getActiveMatterChemicalProducts', 'getChemicalProducts', 'getChemicalProductsByClient', 'getCropDistribution', 'getCrops', 'getFertilizers', 'getLastPrice', 'getLastWork', 'getManufacturerProducts', 'getMinPrice', 'getPendingWorks', 'getPlannedCampaignsHistory', 'getPriceVariation', 'getSeedsNeeded', 'searchProducts', 'searchProductsCrops', 'searchProductsFertilizers'] },
   { pattern: /L[oó] s[ií][eé]nt[oó], n[oó] l[oó]gré [eé]nc[oó]ntr[aá]r l[aá] [ií]nf[oó]rm[aá]c[ií]ón q[uúü][eé] b[uúü]sc[aá]s/i, action: { type: 'END_ERR' }, note: 'err', priority: 1 },
   { pattern: /¡H[oó]l[aá]!, l[oó]s pr[oó]d[uúü]ct[oó]\(s\) q[uúü][eé] t[ií][eé]n[eé]s cr[eé][aá]d[oó]s s[oó]n/i, action: { type: 'END_OK' }, note: 'ok', priority: 1, intents: ['getChemicalProducts', 'getChemicalProductsByClient'] },
@@ -1248,10 +1248,11 @@ export const KEYWORD_RULES: Array<{
   { pattern: /y[aá] t[ií][eé]n[eé] [uúü]n[aá] c[aá]mp[aá]ñ[aá] [aá]ct[ií]v[aá]/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1, intents: ['createPlannedCampaign'] },
   { pattern: /[eé]st[oó]y [eé]sp[eé]c[ií][aá]l[ií]z[aá]d[oó] ún[ií]c[aá]m[eé]nt[eé] [eé]n t[eé]m[aá]s [aá]gríc[oó]l[aá]s;/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 1 },
   { pattern: /h[aá]s cr[eé][aá]d[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['filterFertilizers'] },
-  { pattern: /F[eé]ch[aá] d[eé]l pr[eé]c[ií][oó]/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'UI added', priority: 1 },
-  { pattern: /v[aá]r[ií][eé]d[aá]d/i, action: { type: 'REPLY', reply: 'premium' }, note: 'premium', priority: 1 },
+  { pattern: /F[eé]ch[aá] d[eé]l pr[eé]c[ií][oó]/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'UI added', priority: 3 },
+  { pattern: /v[aá]r[ií][eé]d[aá]d/i, action: { type: 'REPLY', reply: 'premium' }, note: 'premium', priority: 3 },
   { pattern: /Y[aá] [eé]x[ií]st[eé]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
   { pattern: /[aá]ct[uúü][aá]lm[eé]nt[eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
+  { pattern: /ddddd/i, action: { type: 'REPLY', reply: 'dddd' }, note: 'UI added', priority: 1 },
 ];
 
 export type ActionResult = 
