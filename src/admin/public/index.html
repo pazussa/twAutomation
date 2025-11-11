@@ -363,8 +363,42 @@
       }
       fetchState();
     }
-    async function deleteExample(intentName, idx){ if(!confirm('Eliminar ejemplo?')) return; await fetch(`/api/intents/${encodeURIComponent(intentName)}/examples/${idx}`, {method:'DELETE'}); fetchState(); }
-    async function deleteIntent(intentName){ if(!confirm(`Eliminar intent "${intentName}" completo?`)) return; await fetch(`/api/intents/${encodeURIComponent(intentName)}`, {method:'DELETE'}); fetchState(); }
+    async function deleteExample(intentName, idx){ 
+      if(!confirm('Eliminar ejemplo?')) return; 
+      try {
+        const r = await fetch(`/api/intents/${encodeURIComponent(intentName)}/examples/${idx}`, {method:'DELETE'}); 
+        if(!r.ok) {
+          const errorText = await r.text();
+          alert(`Error eliminando ejemplo: ${r.status} - ${errorText}`);
+          return;
+        }
+        fetchState(); 
+      } catch(e) {
+        alert('Error de conexión al eliminar ejemplo: ' + e.message);
+      }
+    }
+    
+    async function deleteIntent(intentName){ 
+      if(!confirm(`Eliminar intent "${intentName}" completo?`)) return; 
+      try {
+        console.log(`[Delete Intent] Eliminando intent: ${intentName}`);
+        const r = await fetch(`/api/intents/${encodeURIComponent(intentName)}`, {method:'DELETE'}); 
+        console.log(`[Delete Intent] Respuesta del servidor:`, r.status, r.statusText);
+        
+        if(!r.ok) {
+          const errorText = await r.text();
+          console.error(`[Delete Intent] Error:`, errorText);
+          alert(`Error eliminando intent: ${r.status} - ${errorText}`);
+          return;
+        }
+        
+        console.log(`[Delete Intent] Intent eliminado exitosamente`);
+        fetchState(); 
+      } catch(e) {
+        console.error(`[Delete Intent] Error de conexión:`, e);
+        alert('Error de conexión al eliminar intent: ' + e.message);
+      }
+    }
     document.getElementById('btn-new-intent').addEventListener('click', ()=>{
       const box = document.getElementById('new-intent-inline');
       box.style.display = box.style.display==='none' ? 'block':'none';

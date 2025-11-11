@@ -268,6 +268,60 @@ async function persistDeleteVariable(name: string) {
   delete VARS[name];
 }
 
+async function persistDeleteIntent(name: string) {
+  await loadDataModule();
+  name = sanitizeIdentifier(name);
+  const arr = (INTENTS_TEMPLATES as any)[name];
+  if (!Array.isArray(arr)) throw new Error('Intent no existe');
+  
+  const file = await readDataFile();
+  // Buscar y eliminar la definición completa del intent
+  const intentRegex = new RegExp(`\\s*${name}:\\s*\\[[\\s\\S]*?\\],?\\n`, 'gm');
+  const updated = file.replace(intentRegex, '');
+  
+  await writeDataFile(updated);
+  delete (INTENTS_TEMPLATES as any)[name];
+}
+
+async function persistDeleteIntentExample(name: string, exampleIndex: number) {
+  await loadDataModule();
+  name = sanitizeIdentifier(name);
+  const arr = (INTENTS_TEMPLATES as any)[name];
+  if (!Array.isArray(arr)) throw new Error('Intent no existe');
+  if (exampleIndex < 0 || exampleIndex >= arr.length) throw new Error('Índice de ejemplo inválido');
+  
+  const file = await readDataFile();
+  const intentRegex = new RegExp(`(${name}:\\s*\\[)([\\s\\S]*?)(\\n\\s*],?)`, 'm');
+  const match = file.match(intentRegex);
+  if (!match) throw new Error('No se pudo localizar el intent en el archivo');
+  
+  // Dividir el contenido del array en líneas
+  const before = match[1];
+  const body = match[2];
+  const tail = match[3];
+  
+  // Buscar las líneas que contienen los ejemplos
+  const exampleLines = body.split('\n').filter(line => line.trim().startsWith("'"));
+  
+  if (exampleIndex >= exampleLines.length) {
+    throw new Error('Índice de ejemplo inválido');
+  }
+  
+  // Remover la línea del ejemplo
+  exampleLines.splice(exampleIndex, 1);
+  
+  // Reconstruir el contenido
+  const newBody = exampleLines.length > 0 
+    ? '\n' + exampleLines.join('\n') + '\n  '
+    : '\n  '; // Array vacío
+  
+  const replaced = file.replace(intentRegex, `${before}${newBody}${tail}`);
+  await writeDataFile(replaced);
+  
+  // Actualizar en memoria
+  arr.splice(exampleIndex, 1);
+}
+
 
 const app = express();
 app.use(express.json());
@@ -361,6 +415,37 @@ app.post('/api/intents', async (req, res) => {
     await persistAddIntentCategory(String(name), list);
     res.json({ ok: true, name, total: list.length });
   } catch (e: any) { res.status(400).json({ error: e.message }); }
+});
+
+app.delete('/api/intents/:name', async (req, res) => {
+  try {
+    const name = req.params.name;
+    if (!name) return res.status(400).json({ error: 'name requerido' });
+    console.log(`[Delete Intent API] Intentando eliminar intent: ${name}`);
+    await persistDeleteIntent(name);
+    console.log(`[Delete Intent API] Intent ${name} eliminado exitosamente`);
+    res.json({ ok: true, deleted: name });
+  } catch (e: any) { 
+    console.error(`[Delete Intent API] Error:`, e.message);
+    res.status(400).json({ error: e.message }); 
+  }
+});
+
+app.delete('/api/intents/:name/examples/:idx', async (req, res) => {
+  try {
+    const name = req.params.name;
+    const idx = parseInt(req.params.idx);
+    if (!name) return res.status(400).json({ error: 'name requerido' });
+    if (isNaN(idx)) return res.status(400).json({ error: 'Índice inválido' });
+    
+    console.log(`[Delete Example API] Eliminando ejemplo ${idx} de intent ${name}`);
+    await persistDeleteIntentExample(name, idx);
+    console.log(`[Delete Example API] Ejemplo eliminado exitosamente`);
+    res.json({ ok: true, intent: name, deletedIndex: idx });
+  } catch (e: any) { 
+    console.error(`[Delete Example API] Error:`, e.message);
+    res.status(400).json({ error: e.message }); 
+  }
 });
 
 app.post('/api/rules', async (req, res) => {
