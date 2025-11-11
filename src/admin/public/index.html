@@ -946,6 +946,32 @@
       document.getElementById('selected-count').textContent = `${checkedExamples.length} ejemplos seleccionados`;
     }
     
+    function getDistributedIndices(totalLength, maxToSelect) {
+      if(maxToSelect >= totalLength) {
+        // Si queremos seleccionar todos o más, devolver todos los índices
+        return Array.from({length: totalLength}, (_, i) => i);
+      }
+      
+      const indices = [];
+      
+      if(maxToSelect === 1) {
+        // Si solo queremos 1, tomar el del medio
+        indices.push(Math.floor(totalLength / 2));
+      } else if(maxToSelect === 2) {
+        // Si queremos 2, tomar el primero y el último
+        indices.push(0, totalLength - 1);
+      } else {
+        // Para 3 o más, distribuir uniformemente
+        const step = (totalLength - 1) / (maxToSelect - 1);
+        for(let i = 0; i < maxToSelect; i++) {
+          indices.push(Math.round(i * step));
+        }
+      }
+      
+      // Asegurar que no hay duplicados y están dentro del rango
+      return [...new Set(indices)].filter(i => i >= 0 && i < totalLength).slice(0, maxToSelect);
+    }
+    
     function selectCreateSet(){
       // Desmarcar todos primero
       clearSelection();
@@ -953,14 +979,21 @@
       // Definir los intents de creación
       const createIntents = ['createChemicalProduct', 'createCrop', 'createFertilizer', 'createPlannedCampaign', 'createPlannedWork'];
       
-      // Seleccionar máximo 5 ejemplos de intents de creación
+      // Seleccionar máximo 5 ejemplos distribuidos de intents de creación
       createIntents.forEach(intentName => {
-        // Seleccionar máximo 5 ejemplos de este intent
+        // Seleccionar ejemplos distribuidos de este intent
         const exampleCheckboxes = document.querySelectorAll(`input[data-example-check="${intentName}"]`);
         const maxToSelect = Math.min(5, exampleCheckboxes.length);
         
-        for(let i = 0; i < maxToSelect; i++) {
-          exampleCheckboxes[i].checked = true;
+        if(maxToSelect > 0) {
+          // Calcular indices distribuidos
+          const indices = getDistributedIndices(exampleCheckboxes.length, maxToSelect);
+          
+          indices.forEach(index => {
+            if(exampleCheckboxes[index]) {
+              exampleCheckboxes[index].checked = true;
+            }
+          });
         }
         
         // Actualizar el estado del checkbox del intent
@@ -992,14 +1025,21 @@
                            'goodbye', 'greet', 'reportFinishedWork', 'requestOtp', 'searchProducts', 
                            'searchProductsCrops', 'searchProductsFertilizers', 'filterFertilizers'];
       
-      // Seleccionar máximo 5 ejemplos de intents de consulta
+      // Seleccionar máximo 5 ejemplos distribuidos de intents de consulta
       queryIntents.forEach(intentName => {
-        // Seleccionar máximo 5 ejemplos de este intent
+        // Seleccionar ejemplos distribuidos de este intent
         const exampleCheckboxes = document.querySelectorAll(`input[data-example-check="${intentName}"]`);
         const maxToSelect = Math.min(5, exampleCheckboxes.length);
         
-        for(let i = 0; i < maxToSelect; i++) {
-          exampleCheckboxes[i].checked = true;
+        if(maxToSelect > 0) {
+          // Calcular indices distribuidos
+          const indices = getDistributedIndices(exampleCheckboxes.length, maxToSelect);
+          
+          indices.forEach(index => {
+            if(exampleCheckboxes[index]) {
+              exampleCheckboxes[index].checked = true;
+            }
+          });
         }
         
         // Actualizar el estado del checkbox del intent
