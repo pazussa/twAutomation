@@ -1151,7 +1151,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /tienes \d+ fertilizante/i, action: { type: 'END_OK' }, note: 'Lista de fertilizantes completada', priority: 2 },
   { pattern: /estos son los (\d+ )?productos/i, action: { type: 'END_OK' }, note: 'Lista de productos completada', priority: 2 },
   { pattern: /aqu[ií] est[áa]n?:?\s*\.?\s*\n.*(?:cultivo|fertilizante|producto|trabajo|campaña)/i, action: { type: 'END_OK' }, note: 'Lista de resultados mostrada', priority: 2 },
-  { pattern: /n[oó] h[aá]y \(c[uúü]lt[ií]v[oó]s\|f[eé]rt[ií]l[ií]z[aá]nt[eé]s\|pr[oó]d[uúü]ct[oó]s\|tr[aá]b[aá]j[oó]s\|c[aá]mp[aá]ñ[aá]s\) d[ií]sp[oó]n[ií]bl[eé]s/i, action: { type: 'END_ERR' }, note: 'Consulta sin resultados', priority: 2 },
+  { pattern: /n[oó] h[aá]y \(c[uúü]lt[ií]v[oó]s\|f[eé]rt[ií]l[ií]z[aá]nt[eé]s\|pr[oó]d[uúü]ct[oó]s\|tr[aá]b[aá]j[oó]s\|c[aá]mp[aá]ñ[aá]s\) d[ií]sp[oó]n[ií]bl[eé]s/i, action: { type: 'END_OK' }, note: 'Consulta sin resultados', priority: 1 },
   { pattern: /no se encontr[óo] ningún/i, action: { type: 'END_OK' }, note: 'Consulta sin resultados', priority: 2 },
   { pattern: /el [úu]ltimo (precio|trabajo|campaña)/i, action: { type: 'END_OK' }, note: 'Consulta de último registro', priority: 2 },
   { pattern: /la distribuci[óo]n (de cultivos )?es:/i, action: { type: 'END_OK' }, note: 'Distribución mostrada', priority: 2 },
@@ -1160,7 +1160,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /variaci[óo]n de precio/i, action: { type: 'END_OK' }, note: 'Variación mostrada', priority: 2 },
   
   // Finalizadores de error
-  { pattern: /error|fallo|problema|no se pudo|no se encontró|no existe|inválido/i, action: { type: 'END_ERR' }, note: 'Error detectado', priority: 2 },
+  { pattern: /[eé]rr[oó]r\|f[aá]ll[oó]\|pr[oó]bl[eé]m[aá]\|n[oó] s[eé] p[uúü]d[oó]\|n[oó] s[eé] [eé]nc[oó]ntró\|n[oó] [eé]x[ií]st[eé]\|[ií]nvál[ií]d[oó]/i, action: { type: 'END_OK' }, note: 'Error detectado', priority: 1 },
   
   // Campos de Cultivo
   { pattern: /\bnombre\s+de\s+la\s+variedad/i, action: { type: 'REPLY', reply: '{variety_name}' }, note: 'Pide variedad (usado en: createCrop, createPlannedCampaign, createPlannedWork)', priority: 3 },
@@ -1234,9 +1234,9 @@ export const KEYWORD_RULES: Array<{
   { pattern: /N[oó]mbr[eé] d[eé]l [oó]p[eé]r[aá]d[oó]r/i, action: { type: 'REPLY', reply: 'Juan Andrés Menton' }, note: 'jose', priority: 3 },
   { pattern: /D[oó]s[ií]s d[eé]l c[uúü]lt[ií]v[oó]/i, action: { type: 'REPLY', reply: '120.0' }, note: 'jj', priority: 3 },
   { pattern: /[aá]ct[uúü][aá]lm[eé]nt[eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 2, intents: ['filterFertilizers', 'getActiveMatterChemicalProducts', 'getChemicalProducts', 'getChemicalProductsByClient', 'getCropDistribution', 'getCrops', 'getFertilizers', 'getLastPrice', 'getLastWork', 'getManufacturerProducts', 'getMinPrice', 'getPendingWorks', 'getPlannedCampaignsHistory', 'getPriceVariation', 'getSeedsNeeded', 'searchProducts', 'searchProductsCrops', 'searchProductsFertilizers'] },
-  { pattern: /L[oó] s[ií][eé]nt[oó], n[oó] l[oó]gré [eé]nc[oó]ntr[aá]r l[aá] [ií]nf[oó]rm[aá]c[ií]ón q[uúü][eé] b[uúü]sc[aá]s/i, action: { type: 'END_ERR' }, note: 'err', priority: 2 },
+  { pattern: /L[oó] s[ií][eé]nt[oó], n[oó] l[oó]gré [eé]nc[oó]ntr[aá]r l[aá] [ií]nf[oó]rm[aá]c[ií]ón q[uúü][eé] b[uúü]sc[aá]s/i, action: { type: 'END_OK' }, note: 'err', priority: 1 },
   { pattern: /¡H[oó]l[aá]!, l[oó]s pr[oó]d[uúü]ct[oó]\(s\) q[uúü][eé] t[ií][eé]n[eé]s cr[eé][aá]d[oó]s s[oó]n/i, action: { type: 'END_OK' }, note: 'ok', priority: 2, intents: ['getChemicalProducts', 'getChemicalProductsByClient'] },
-  { pattern: /n[oó] l[oó]gré [eé]nc[oó]ntr[aá]r/i, action: { type: 'END_ERR' }, note: 'err', priority: 2 },
+  { pattern: /n[oó] l[oó]gré [eé]nc[oó]ntr[aá]r/i, action: { type: 'END_OK' }, note: 'err', priority: 1 },
   { pattern: /l[oó]s pr[oó]d[uúü]ct[oó]\(s\) q[uúü][eé] t[ií][eé]n[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 2, intents: ['getChemicalProducts', 'getChemicalProductsByClient'] },
   { pattern: /D[ií]str[ií]b[uúü]c[ií]ón d[eé] c[uúü]lt[ií]v[oó]s p[oó]r cl[ií][eé]nt[eé]s/i, action: { type: 'END_OK' }, note: 'ok', priority: 2, intents: ['getCropDistribution'] },
   { pattern: /[eé]nc[oó]ntré l[oó] s[ií]g[uúü][ií][eé]nt[eé]/i, action: { type: 'END_OK' }, note: 'ok', priority: 2, intents: ['getActiveMatterChemicalProducts', 'getChemicalProducts', 'getChemicalProductsByClient', 'getCropDistribution', 'getCrops', 'getFertilizers', 'getLastPrice', 'getLastWork', 'getManufacturerProducts', 'getMinPrice', 'getPendingWorks', 'getPlannedCampaignsHistory', 'getPriceVariation', 'getSeedsNeeded', 'searchProducts', 'searchProductsCrops', 'searchProductsFertilizers'] },
@@ -1245,7 +1245,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /N[oó] s[eé] [eé]nc[oó]ntr[aá]r[oó]n tr[aá]b[aá]j[oó]s p[eé]nd[ií][eé]nt[eé]s p[aá]r[aá] h[oó]y [eé]n t[uúü]s c[aá]mp[oó]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 2, intents: ['getPendingWorks'] },
   { pattern: /Pr[oó]d[uúü]ct[oó]:/i, action: { type: 'END_OK' }, note: 'UI added', priority: 2, intents: ['getChemicalProducts'] },
   { pattern: /H[ií]st[oó]r[ií][aá]l d[eé] c[aá]mp[aá]ñ[aá]s/i, action: { type: 'END_OK' }, note: 'UI added', priority: 2, intents: ['getPlannedCampaignsHistory'] },
-  { pattern: /y[aá] t[ií][eé]n[eé] [uúü]n[aá] c[aá]mp[aá]ñ[aá] [aá]ct[ií]v[aá]/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 2, intents: ['createPlannedCampaign'] },
+  { pattern: /y[aá] t[ií][eé]n[eé] [uúü]n[aá] c[aá]mp[aá]ñ[aá] [aá]ct[ií]v[aá]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['createPlannedCampaign'] },
   { pattern: /[eé]st[oó]y [eé]sp[eé]c[ií][aá]l[ií]z[aá]d[oó] ún[ií]c[aá]m[eé]nt[eé] [eé]n t[eé]m[aá]s [aá]gríc[oó]l[aá]s;/i, action: { type: 'END_ERR' }, note: 'UI added', priority: 2 },
   { pattern: /h[aá]s cr[eé][aá]d[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 2, intents: ['filterFertilizers'] },
   { pattern: /F[eé]ch[aá] d[eé]l pr[eé]c[ií][oó]/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'UI added', priority: 3 },
