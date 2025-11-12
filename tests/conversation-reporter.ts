@@ -128,7 +128,12 @@ export default class ConversationReporter implements Reporter {
     const groupsHtml = intentStats.map(g => {
       const rows = g.events.length
         ? g.events.map((ev, i) => {
-            const iso = new Date(ev.t).toISOString();
+            const colTime = new Date(ev.t).toLocaleTimeString('es-CO', { 
+              timeZone: 'America/Bogota', 
+              hour: '2-digit', 
+              minute: '2-digit',
+              hour12: false
+            });
             const tipo = ev.kind === 'send' ? 'Enviado' : ev.kind === 'recv' ? 'Recibido' : 'Intent';
             const badge = ev.ok
               ? '<span class="badge ok">OK</span>'
@@ -137,7 +142,7 @@ export default class ConversationReporter implements Reporter {
   <td class="idx">${i + 1}</td>
   <td class="tipo ${ev.kind}">${tipo}</td>
   <td class="texto">${esc((ev.text || '').replace(/\s+/g, ' ').trim())}</td>
-  <td class="time">${iso}</td>
+  <td class="time">${colTime}</td>
   <td class="estado">${badge}</td>
 </tr>`;
           }).join('\n')
@@ -156,7 +161,7 @@ export default class ConversationReporter implements Reporter {
   </div>
   <table>
     <thead><tr>
-      <th>#</th><th>Tipo</th><th>Texto</th><th>Timestamp (UTC)</th><th>Resultado</th>
+      <th>#</th><th>Tipo</th><th>Texto</th><th>Hora</th><th>Resultado</th>
     </tr></thead>
     <tbody>${rows}</tbody>
   </table>
