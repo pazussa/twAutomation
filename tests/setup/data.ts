@@ -1193,17 +1193,17 @@ export const KEYWORD_RULES: Array<{
   { pattern: /\bmateria\s+activa/i, action: { type: 'REPLY', reply: '{active_matter_name}' }, note: 'Pide materia activa (usado en: getActiveMatterChemicalProducts)', priority: 3 },
   { pattern: /\bprincipio\s+activo/i, action: { type: 'REPLY', reply: '{active_matter_name}' }, note: 'Pide principio activo (usado en: getActiveMatterChemicalProducts)', priority: 3 },
   { pattern: /\bplaga\s+objetivo/i, action: { type: 'REPLY', reply: '{target_pest}' }, note: 'Pide plaga objetivo (usado en: createChemicalProduct)', priority: 3 },
-  { pattern: /\bplaga/i, action: { type: 'REPLY', reply: '{target_pest}' }, note: 'Pide plaga (usado en: createChemicalProduct)', priority: 3 },
+  { pattern: /pl[aá]g[aá]/i, action: { type: 'REPLY', reply: '{target_pest}' }, note: 'Pide plaga (usado en: createChemicalProduct)', priority: 3 },
   { pattern: /\bmodo\s+de\s+acci[oó]n/i, action: { type: 'REPLY', reply: '{mode_of_action}' }, note: 'Pide modo acción (usado en: createChemicalProduct)', priority: 3 },
   
   // Campos de Granja/Campo
   { pattern: /\bnombre\s+de\s+la\s+granja/i, action: { type: 'REPLY', reply: '{farm_name}' }, note: 'Pide granja (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
-  { pattern: /\bgranja/i, action: { type: 'REPLY', reply: '{farm_name}' }, note: 'Pide granja (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
-  { pattern: /\bexplotaci[oó]n/i, action: { type: 'REPLY', reply: '{farm_name}' }, note: 'Pide explotación (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
+  { pattern: /gr[aá]nj[aá]/i, action: { type: 'REPLY', reply: '{farm_name}' }, note: 'Pide granja (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
+  { pattern: /[eé]xpl[oó]t[aá]c[ií][oó]n/i, action: { type: 'REPLY', reply: '{farm_name}' }, note: 'Pide explotación (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
   { pattern: /\bqu[ée]\s+granja/i, action: { type: 'REPLY', reply: '{farm_name}' }, note: 'Pide qué granja (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
   { pattern: /\bnombre\s+del\s+campo/i, action: { type: 'REPLY', reply: '{field_name}' }, note: 'Pide campo (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
-  { pattern: /\bcampo/i, action: { type: 'REPLY', reply: '{field_name}' }, note: 'Pide campo (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
-  { pattern: /\bparcela/i, action: { type: 'REPLY', reply: '{field_name}' }, note: 'Pide parcela (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
+  { pattern: /c[aá]mp[oó]/i, action: { type: 'REPLY', reply: '{field_name}' }, note: 'Pide campo (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
+  { pattern: /p[aá]rc[eé]l[aá]/i, action: { type: 'REPLY', reply: '{field_name}' }, note: 'Pide parcela (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
   { pattern: /\bqu[ée]\s+campo/i, action: { type: 'REPLY', reply: '{field_name}' }, note: 'Pide qué campo (usado en: createPlannedCampaign, createPlannedWork, reportFinishedWork)', priority: 3 },
   
   // Campos de Trabajo
