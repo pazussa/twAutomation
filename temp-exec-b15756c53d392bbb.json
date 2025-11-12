@@ -1,0 +1,96 @@
+{
+  "examples": [
+    {
+      "intent": "createChemicalProduct",
+      "example": "crear producto químico"
+    },
+    {
+      "intent": "createChemicalProduct",
+      "example": "agregar producto químico"
+    },
+    {
+      "intent": "createChemicalProduct",
+      "example": "Crear pesticida Roundup para mildiu en AgroMartín SL"
+    },
+    {
+      "intent": "createChemicalProduct",
+      "example": "Dar de alta plaguicida Roundup para mildiu de Bayer con precio 340"
+    },
+    {
+      "intent": "createChemicalProduct",
+      "example": "Crear para el fabricante Bayer, el producto químico Roundup, con precio de 340 para AgroMartín SL"
+    },
+    {
+      "intent": "createCrop",
+      "example": "crear cultivo"
+    },
+    {
+      "intent": "createCrop",
+      "example": "alta de un cultivo"
+    },
+    {
+      "intent": "createCrop",
+      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para el cliente AgroMartín SL"
+    },
+    {
+      "intent": "createCrop",
+      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer cliente AgroMartín SL"
+    },
+    {
+      "intent": "createCrop",
+      "example": "Hola luca, necesito registrar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+    },
+    {
+      "intent": "createFertilizer",
+      "example": "crear fertilizante"
+    },
+    {
+      "intent": "createFertilizer",
+      "example": "deseo crear un fertilizante"
+    },
+    {
+      "intent": "createFertilizer",
+      "example": "Quiero registrar el Nitrofoska como fertilizante granulado, del fabricante Bayer"
+    },
+    {
+      "intent": "createFertilizer",
+      "example": "Meter un fertilizante granulado Nitrofoska"
+    },
+    {
+      "intent": "createFertilizer",
+      "example": "Dar de alta un fertilizante Nitrofoska granulado"
+    },
+    {
+      "intent": "createPlannedCampaign",
+      "example": "Hola Luca, pon en la parcela campo el cultivo de maíz"
+    },
+    {
+      "intent": "createPlannedCampaign",
+      "example": "pon amarillo costeño de maíz en la parcela campo"
+    },
+    {
+      "intent": "createPlannedCampaign",
+      "example": "planifica maíz amarillo costeño en prueba y prueba"
+    },
+    {
+      "intent": "createPlannedCampaign",
+      "example": "añade maíz amarillo costeño en campo"
+    },
+    {
+      "intent": "createPlannedCampaign",
+      "example": "planificar una campaña"
+    },
+    {
+      "intent": "createPlannedWork",
+      "example": "crear un trabajo planificado"
+    },
+    {
+      "intent": "createPlannedWork",
+      "example": "planificar un trabajo"
+    },
+    {
+      "intent": "createPlannedWork",
+      "example": "quiero crear un trabajo en una campaña"
+    }
+  ]
+}
