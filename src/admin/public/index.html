@@ -1013,6 +1013,9 @@
       // Definir los intents de creación
       const createIntents = ['createChemicalProduct', 'createCrop', 'createFertilizer', 'createPlannedCampaign', 'createPlannedWork'];
       
+      // Intents especiales donde NO seleccionar la primera frase
+      const skipFirstIntents = ['createChemicalProduct', 'createCrop', 'createFertilizer'];
+      
       // Seleccionar máximo 5 ejemplos distribuidos de intents de creación
       createIntents.forEach(intentName => {
         // Seleccionar ejemplos distribuidos de este intent
@@ -1020,8 +1023,24 @@
         const maxToSelect = Math.min(5, exampleCheckboxes.length);
         
         if(maxToSelect > 0) {
-          // Calcular indices distribuidos
-          const indices = getDistributedIndices(exampleCheckboxes.length, maxToSelect);
+          let indices;
+          
+          // Para intents especiales, empezar desde índice 2 (tercera frase)
+          if(skipFirstIntents.includes(intentName)) {
+            // Crear array de checkboxes excluyendo los primeros 2 elementos
+            const adjustedLength = Math.max(0, exampleCheckboxes.length - 2);
+            if(adjustedLength > 0) {
+              const adjustedMaxToSelect = Math.min(5, adjustedLength);
+              indices = getDistributedIndices(adjustedLength, adjustedMaxToSelect);
+              // Sumar 2 a cada índice para compensar el offset
+              indices = indices.map(i => i + 2);
+            } else {
+              indices = [];
+            }
+          } else {
+            // Comportamiento normal para los demás intents
+            indices = getDistributedIndices(exampleCheckboxes.length, maxToSelect);
+          }
           
           indices.forEach(index => {
             if(exampleCheckboxes[index]) {
@@ -1051,12 +1070,12 @@
       // Desmarcar todos primero
       clearSelection();
       
-      // Definir los intents de consulta (todos los que NO son create*)
+      // Definir los intents de consulta (todos los que NO son create*) - EXCLUYENDO requestOtp
       const queryIntents = ['assignPriceProduct', 'checkUnplannedFields', 'getActiveMattersChemicalProducts', 
                            'getChemicalProducts', 'getChemicalProductsByClient', 'getCropDistribution', 'getCrops', 
                            'getFertilizers', 'getLastPrice', 'getLastWork', 'getManufacturerProducts', 'getMinPrice', 
                            'getPendingWorks', 'getPlannedCampaignsHistory', 'getPriceVariation', 'getSeedsNeeded', 
-                           'goodbye', 'greet', 'reportFinishedWork', 'requestOtp', 'searchProducts', 
+                           'goodbye', 'greet', 'reportFinishedWork', 'searchProducts', 
                            'searchProductsCrops', 'searchProductsFertilizers', 'filterFertilizers'];
       
       // Seleccionar máximo 5 ejemplos distribuidos de intents de consulta

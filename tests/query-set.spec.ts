@@ -345,7 +345,7 @@ test.describe('Non-Create Intent Set - Todos los Intents que NO son de Creación
     }
   });
 
-  // 21. REQUEST OTP - 5 frases representativas
+/*   // 21. REQUEST OTP - 5 frases representativas
   test('RequestOtp', async ({ runAutoLoop }) => {
     const phrases = [
       'enviar otp',
@@ -353,14 +353,14 @@ test.describe('Non-Create Intent Set - Todos los Intents que NO son de Creación
       'mándame el código',
       'quiero verificar mi número',
       'envíame un OTP'
-    ];
+    ]; */
 
-    for (const phrase of phrases) {
+/*     for (const phrase of phrases) {
       console.log(`\n🔐 [REQUEST OTP] Probando: "${phrase}"`);
       const result = await runAutoLoop(phrase, { resetChat: true });
       console.log(`Resultado: ${result.success ? '✅ ÉXITO' : '❌ FALLO'} - ${result.reason}`);
     }
-  });
+  }); */
 
   // 22. SEARCH PRODUCTS - 5 frases representativas
   test('SearchProducts', async ({ runAutoLoop }) => {

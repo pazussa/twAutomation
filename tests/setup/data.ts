@@ -1256,6 +1256,12 @@ export const KEYWORD_RULES: Array<{
   { pattern: /H[eé] c[oó]l[oó]c[aá]d[oó] [eé]l c[uúü]lt[ií]v[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 2, intents: ['createPlannedCampaign'] },
   { pattern: /y[aá] cr[eé][aá]d[oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
   { pattern: /F[eé]ch[aá] d[eé] [ií]n[ií]c[ií][oó]/i, action: { type: 'REPLY', reply: '2020-03-02' }, note: 'UI updated', priority: 2, intents: ['createPlannedCampaign', 'createPlannedWork'] },
+  { pattern: /[oó] [eé]nc[oó]ntré f[eé]rt[ií]l[ií]z[aá]nt[eé]s q[uúü][eé] c[oó][ií]nc[ií]d[aá]n/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['filterFertilizers'] },
+  { pattern: /n[eé]c[eé]s[ií]t[aá]s l[aá]s s[ií]g[uúü][ií][eé]nt[eé]s c[aá]nt[ií]d[aá]d[eé]s d[eé] s[eé]m[ií]ll[aá]s:/i, action: { type: 'END_OK' }, note: 'UI updated', priority: 1, intents: ['getSeedsNeeded'] },
+  { pattern: /¡H[aá]st[aá] l[uúü][eé]g[oó]!/i, action: { type: 'END_OK' }, note: 'UI updated', priority: 1, intents: ['goodbye'] },
+  { pattern: /¡H[oó]l[aá]!/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['greet'] },
+  { pattern: /¿C[uúü]ál [eé]s l[aá] f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá] p[aá]r[aá] [eé]l tr[aá]b[aá]j[oó]\?/i, action: { type: 'REPLY', reply: '06-10- 2026' }, note: 'UI added', priority: 3, intents: ['reportFinishedWork'] },
+  { pattern: /r[eé]v[ií]s[aá] t[uúü] c[oó]rr[eé][oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['requestOtp'] },
 ];
 
 export type ActionResult = 
