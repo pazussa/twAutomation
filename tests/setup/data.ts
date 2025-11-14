@@ -1141,6 +1141,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /(precio (asignado|actualizado|registrado)|asigno un precio|precio fijado)/i, action: { type: 'END_OK' }, note: 'Precio asignado/actualizado exitosamente', priority: 2 },
   
   // Finalizadores de éxito
+  { pattern: /operaci[óo]n cancelada/i, action: { type: 'END_OK' }, note: 'Operación cancelada por el usuario (finalizar como éxito)', priority: 2 },
   { pattern: /creado correctamente|registrado correctamente|guardado correctamente|planificado correctamente|asignado correctamente/i, action: { type: 'END_OK' }, note: 'Creación exitosa', priority: 2 },
   { pattern: /operación completada|proceso finalizado|todo listo|completado exitosamente/i, action: { type: 'END_OK' }, note: 'Operación exitosa', priority: 2 },
   { pattern: /reporte enviado|trabajo reportado/i, action: { type: 'END_OK' }, note: 'Reporte exitoso', priority: 2 },
@@ -1260,9 +1261,15 @@ export const KEYWORD_RULES: Array<{
   { pattern: /n[eé]c[eé]s[ií]t[aá]s l[aá]s s[ií]g[uúü][ií][eé]nt[eé]s c[aá]nt[ií]d[aá]d[eé]s d[eé] s[eé]m[ií]ll[aá]s:/i, action: { type: 'END_OK' }, note: 'UI updated', priority: 1, intents: ['getSeedsNeeded'] },
   { pattern: /¡H[aá]st[aá] l[uúü][eé]g[oó]!/i, action: { type: 'END_OK' }, note: 'UI updated', priority: 1, intents: ['goodbye'] },
   { pattern: /¡H[oó]l[aá]!/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['greet'] },
-  { pattern: /¿C[uúü]ál [eé]s l[aá] f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá] p[aá]r[aá] [eé]l tr[aá]b[aá]j[oó]\?/i, action: { type: 'REPLY', reply: '06-10- 2026' }, note: 'UI added', priority: 3, intents: ['reportFinishedWork'] },
+  { pattern: /¿C[uúü]ál [eé]s l[aá] f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá] p[aá]r[aá] [eé]l tr[aá]b[aá]j[oó]\?/i, action: { type: 'REPLY', reply: '06-10- 2026' }, note: 'UI added', priority: 2, intents: ['reportFinishedWork'] },
   { pattern: /r[eé]v[ií]s[aá] t[uúü] c[oó]rr[eé][oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['requestOtp'] },
   { pattern: /H[oó]r[aá] d[eé] [ií]n[ií]c[ií][oó]\./i, action: { type: 'REPLY', reply: '14:30' }, note: 'UI added', priority: 2},
+  { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
+  { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
+  { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
+  { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
+  { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
+  { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: '"g', priority: 2 },
 ];
 
 export type ActionResult =
@@ -1274,7 +1281,11 @@ export type ActionResult =
   
   
   
-  /// *
+  /// te amo
+  // no trasnoches
+  // mañana sera un lindo dia 
+  // y el universo conspirara a tu favor
+
 
 export async function detectAction(messages: string[], currentVars: Record<string, string>): Promise<ActionResult> {
   if (!messages || messages.length === 0) {
