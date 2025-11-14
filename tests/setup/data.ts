@@ -1262,14 +1262,19 @@ export const KEYWORD_RULES: Array<{
   { pattern: /¡H[oó]l[aá]!/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['greet'] },
   { pattern: /¿C[uúü]ál [eé]s l[aá] f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá] p[aá]r[aá] [eé]l tr[aá]b[aá]j[oó]\?/i, action: { type: 'REPLY', reply: '06-10- 2026' }, note: 'UI added', priority: 3, intents: ['reportFinishedWork'] },
   { pattern: /r[eé]v[ií]s[aá] t[uúü] c[oó]rr[eé][oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['requestOtp'] },
+  { pattern: /H[oó]r[aá] d[eé] [ií]n[ií]c[ií][oó]\./i, action: { type: 'REPLY', reply: '14:30' }, note: 'UI added', priority: 2},
 ];
 
-export type ActionResult = 
+export type ActionResult =
   | { type: 'REPLY'; message: string; rawResponse: string; materializedReply: string }
   | { type: 'END_OK'; message: string; rawResponse: string }
   | { type: 'END_ERR'; message: string; rawResponse: string }
   | { type: 'RETRY_EXISTS'; message: string; rawResponse: string }
   | { type: 'UNKNOWN'; message: string; rawResponse: string };
+  
+  
+  
+  /// *
 
 export async function detectAction(messages: string[], currentVars: Record<string, string>): Promise<ActionResult> {
   if (!messages || messages.length === 0) {
