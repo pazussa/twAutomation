@@ -1212,7 +1212,15 @@
           selected.push({intent: intentName, example: intent.examples[idx]});
         }
       });
-      return selected;
+      
+      // Ordenar: primero los intents que comienzan con "create", después el resto
+      // Mantener el orden original dentro de cada grupo
+      const createIntents = selected.filter(item => item.intent.startsWith('create'));
+      const otherIntents = selected.filter(item => !item.intent.startsWith('create'));
+      
+      console.log('[getSelectedExamples] Ordenando ejemplos: primero creates (' + createIntents.length + '), después otros (' + otherIntents.length + ')');
+      
+      return [...createIntents, ...otherIntents];
     }
     // Verificar estado de ejecución cada 2 segundos
     let executionCheckInterval = null;
