@@ -1219,8 +1219,8 @@ export const KEYWORD_RULES: Array<{
   
   // Campos de Precio
   { pattern: /Precio/i, action: { type: 'REPLY', reply: '{price}' }, note: 'Pide precio (usado en: assignPriceProduct, createChemicalProduct, getMinPrice, getLastPrice, getPriceVariation)', priority: 3 },
-  { pattern: /Fecha del precio/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'Pide fecha precio (usado en: assignPriceProduct)', priority: 3 },
-  { pattern: /Nombre del producto/i, action: { type: 'REPLY', reply: '{product_name}' }, note: 'Pide nombre producto (usado en: assignPriceProduct, getMinPrice, getLastPrice, getPriceVariation, getSeedsNeeded)', priority: 3 },
+  { pattern: /Fecha del precio/i, action: { type: 'REPLY', reply: '{price_date}' }, note: 'Pide fecha precio (usado en: assignPriceProduct)', priority: 2 },
+  { pattern: /Nombre del producto/i, action: { type: 'REPLY', reply: '{product_name}' }, note: 'Pide nombre producto (usado en: assignPriceProduct, getMinPrice, getLastPrice, getPriceVariation, getSeedsNeeded)', priority: 2 },
   
   // Búsquedas
   { pattern: /Búsqueda/i, action: { type: 'REPLY', reply: '{search_query}' }, note: 'Pide búsqueda (usado en: searchProducts, searchProductsCrops, searchProductsFertilizers)', priority: 3 },

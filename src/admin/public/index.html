@@ -117,6 +117,7 @@
           <span class="small" id="selected-count" style="margin-left:auto;">0 ejemplos seleccionados</span>
         </div>
         <div class="execute-bar" style="margin-top:6px; gap:4px;">
+          <button type="button" class="outline" id="btn-select-all" title="Seleccionar todos los intents">✅ Seleccionar todo</button>
           <button type="button" class="outline" id="btn-select-create-set" title="Seleccionar todos los intents create*">🛠️ Set Creación</button>
           <button type="button" class="outline" id="btn-select-query-set" title="Seleccionar todos los intents no-create*">🔍 Set Consulta</button>
           <button type="button" class="outline" id="btn-clear-selection" title="Deseleccionar todos">❌ Limpiar</button>
@@ -1112,6 +1113,19 @@
       updateSelectedCount();
     }
     
+    function selectAll(){
+      // Marcar todos los checkboxes de intents y ejemplos
+      document.querySelectorAll('input[data-intent-check]').forEach(checkbox => {
+        checkbox.checked = true;
+        checkbox.indeterminate = false;
+      });
+      document.querySelectorAll('input[data-example-check]').forEach(checkbox => {
+        checkbox.checked = true;
+      });
+      
+      updateSelectedCount();
+    }
+    
     function clearSelection(){
       // Desmarcar todos los checkboxes
       document.querySelectorAll('input[data-intent-check]').forEach(checkbox => {
@@ -1304,10 +1318,14 @@
         updateCarousel();
         
         // Event listeners para botones de selección de sets
+        const btnSelectAll = document.getElementById('btn-select-all');
         const btnSelectCreate = document.getElementById('btn-select-create-set');
         const btnSelectQuery = document.getElementById('btn-select-query-set');
         const btnClearSelection = document.getElementById('btn-clear-selection');
         
+        if (btnSelectAll) {
+          btnSelectAll.addEventListener('click', selectAll);
+        }
         if (btnSelectCreate) {
           btnSelectCreate.addEventListener('click', selectCreateSet);
         }
