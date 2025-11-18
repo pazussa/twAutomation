@@ -245,15 +245,59 @@ async function persistUpdateVariable(name: string, value: string) {
   if (!Object.prototype.hasOwnProperty.call(VARS, name)) throw new Error('La variable no existe');
   const file = await readDataFile();
   
-  // Buscar la línea de la variable
-  const varPattern = new RegExp(`^(\\s*${name}:\\s*)'([^']*)'(,?)$`, 'gm');
-  const match = varPattern.exec(file);
+  // Buscar la línea de la variable con un patrón más flexible
+  // El formato puede ser:
+  // - name: 'valor',
+  // - name: process.env.VAR_NAME || 'valor',
+  const lines = file.split('\n');
+  let lineIndex = -1;
+  let indent = '  ';
+  let hasComma = true;
   
-  if (!match) throw new Error('No se pudo localizar la variable en el archivo');
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    // Buscar línea que contenga el nombre de la variable seguido de :
+    // Puede tener process.env o solo el valor directo
+    const simpleMatch = line.match(new RegExp(`^(\\s*)(${name}):\\s*'.*'(,?)\\s*$`));
+    const envMatch = line.match(new RegExp(`^(\\s*)(${name}):\\s*process\\.env\\.[A-Z_]+\\s*\\|\\|\\s*'.*'(,?)\\s*$`));
+    
+    if (simpleMatch) {
+      lineIndex = i;
+      indent = simpleMatch[1];
+      hasComma = simpleMatch[3] === ',';
+      break;
+    } else if (envMatch) {
+      lineIndex = i;
+      indent = envMatch[1];
+      hasComma = envMatch[3] === ',';
+      break;
+    }
+  }
   
-  const newLine = `${match[1]}'${value.replace(/'/g, "\\'")}'${match[3]}`;
-  const updated = file.replace(varPattern, newLine);
+  if (lineIndex === -1) {
+    throw new Error('No se pudo localizar la variable en el archivo');
+  }
   
+  // Reemplazar la línea completa
+  const escapedValue = value.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  
+  // Mantener el formato process.env si lo tenía, o usar el formato simple
+  const originalLine = lines[lineIndex];
+  if (originalLine.includes('process.env')) {
+    // Mantener la estructura process.env
+    const envVarName = originalLine.match(/process\.env\.([A-Z_]+)/)?.[1];
+    if (envVarName) {
+      lines[lineIndex] = `${indent}${name}: process.env.${envVarName} || '${escapedValue}'${hasComma ? ',' : ''}`;
+    } else {
+      // Fallback a formato simple
+      lines[lineIndex] = `${indent}${name}: '${escapedValue}'${hasComma ? ',' : ''}`;
+    }
+  } else {
+    // Formato simple
+    lines[lineIndex] = `${indent}${name}: '${escapedValue}'${hasComma ? ',' : ''}`;
+  }
+  
+  const updated = lines.join('\n');
   await writeDataFile(updated);
   VARS[name] = value;
 }
@@ -326,6 +370,43 @@ async function persistDeleteIntentExample(name: string, exampleIndex: number) {
   arr.splice(exampleIndex, 1);
 }
 
+async function persistUpdateIntentExample(name: string, exampleIndex: number, newExample: string) {
+  await loadDataModule();
+  name = sanitizeIdentifier(name);
+  const arr = (INTENTS_TEMPLATES as any)[name];
+  if (!Array.isArray(arr)) throw new Error('Intent no existe');
+  if (exampleIndex < 0 || exampleIndex >= arr.length) throw new Error('Índice de ejemplo inválido');
+  
+  const file = await readDataFile();
+  const intentRegex = new RegExp(`(${name}:\\s*\\[)([\\s\\S]*?)(\\n\\s*],?)`, 'm');
+  const match = file.match(intentRegex);
+  if (!match) throw new Error('No se pudo localizar el intent en el archivo');
+  
+  // Dividir el contenido del array en líneas
+  const before = match[1];
+  const body = match[2];
+  const tail = match[3];
+  
+  // Buscar las líneas que contienen los ejemplos
+  const exampleLines = body.split('\n').filter(line => line.trim().startsWith("'"));
+  
+  if (exampleIndex >= exampleLines.length) {
+    throw new Error('Índice de ejemplo inválido');
+  }
+  
+  // Actualizar la línea del ejemplo
+  exampleLines[exampleIndex] = `    '${newExample.replace(/'/g, "\\'")}',`;
+  
+  // Reconstruir el contenido
+  const newBody = '\n' + exampleLines.join('\n') + '\n  ';
+  
+  const replaced = file.replace(intentRegex, `${before}${newBody}${tail}`);
+  await writeDataFile(replaced);
+  
+  // Actualizar en memoria
+  arr[exampleIndex] = newExample;
+}
+
 
 const app = express();
 app.use(express.json());
@@ -381,9 +462,16 @@ app.put('/api/variables/:name', async (req, res) => {
     const name = req.params.name;
     const { value } = req.body || {};
     if (!name) return res.status(400).json({ error: 'name requerido' });
+    
+    console.log(`[Update Variable] Actualizando variable "${name}" con valor:`, value);
     await persistUpdateVariable(name, String(value ?? ''));
+    console.log(`[Update Variable] Variable "${name}" actualizada exitosamente`);
+    
     res.json({ ok: true, name, value: VARS[name] });
-  } catch (e: any) { res.status(400).json({ error: e.message }); }
+  } catch (e: any) { 
+    console.error(`[Update Variable] Error:`, e.message);
+    res.status(400).json({ error: e.message }); 
+  }
 });
 
 app.delete('/api/variables/:name', async (req, res) => {
@@ -448,6 +536,25 @@ app.delete('/api/intents/:name/examples/:idx', async (req, res) => {
     res.json({ ok: true, intent: name, deletedIndex: idx });
   } catch (e: any) { 
     console.error(`[Delete Example API] Error:`, e.message);
+    res.status(400).json({ error: e.message }); 
+  }
+});
+
+app.put('/api/intents/:name/examples/:idx', async (req, res) => {
+  try {
+    const name = req.params.name;
+    const idx = parseInt(req.params.idx);
+    const { example } = req.body || {};
+    if (!name) return res.status(400).json({ error: 'name requerido' });
+    if (isNaN(idx)) return res.status(400).json({ error: 'Índice inválido' });
+    if (!example) return res.status(400).json({ error: 'example requerido' });
+    
+    console.log(`[Update Example API] Actualizando ejemplo ${idx} de intent ${name}`);
+    await persistUpdateIntentExample(name, idx, String(example).trim());
+    console.log(`[Update Example API] Ejemplo actualizado exitosamente`);
+    res.json({ ok: true, intent: name, updatedIndex: idx, example });
+  } catch (e: any) { 
+    console.error(`[Update Example API] Error:`, e.message);
     res.status(400).json({ error: e.message }); 
   }
 });

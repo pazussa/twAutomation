@@ -292,7 +292,26 @@
         ch.addEventListener('click',()=> insertAtCursor(currentFocusInput, ch.textContent));
       });
     }
-    async function updateVarRow(name){ const input = document.querySelector(`input[data-var-name="${name}"]`); if(!input) return; const r = await fetch(`/api/variables/${encodeURIComponent(name)}`, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify({value:input.value})}); if(!r.ok){ alert('Error actualizando variable'); } fetchState(); }
+    async function updateVarRow(name){ 
+      const input = document.querySelector(`input[data-var-name="${name}"]`); 
+      if(!input) return; 
+      try {
+        const r = await fetch(`/api/variables/${encodeURIComponent(name)}`, {
+          method:'PUT', 
+          headers:{'Content-Type':'application/json'}, 
+          body:JSON.stringify({value:input.value})
+        }); 
+        if(!r.ok){ 
+          const error = await r.json().catch(() => ({error: 'Error desconocido'}));
+          alert('Error actualizando variable: ' + (error.error || r.statusText)); 
+          return;
+        }
+        console.log(`Variable ${name} actualizada exitosamente`);
+        fetchState(); 
+      } catch(err) {
+        alert('Error de red al actualizar variable: ' + err.message);
+      }
+    }
     async function deleteVarRow(name){ if(!confirm(`Eliminar variable ${name}?`)) return; const r = await fetch(`/api/variables/${encodeURIComponent(name)}`, {method:'DELETE'}); if(!r.ok){ alert('Error eliminando variable'); } fetchState(); }
     document.getElementById('form-new-var').addEventListener('submit', async e=>{ e.preventDefault(); const fd = new FormData(e.target); const name=fd.get('name'); const value=fd.get('value'); const r= await fetch('/api/variables/new',{method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,value})}); if(!r.ok){ const err = await r.json().catch(()=>({error:'Error'})); alert('Error creando variable: ' + err.error); return; } e.target.reset(); fetchState(); });
     document.getElementById('btn-refresh').addEventListener('click', fetchState);
@@ -338,7 +357,26 @@
     }
     function buildExampleRow(intentName, idx, value){
       const checkbox = el('input',{type:'checkbox', 'data-example-check':intentName, 'data-example-idx':idx, onchange:(e)=>handleExampleCheckChange(e, intentName)});
-      const inp = el('input',{type:'text', value, 'data-intent':intentName, 'data-idx':idx, onfocus:e=>currentFocusInput=e.target, style:'flex:1'});
+      const inp = el('input',{
+        type:'text', 
+        value, 
+        'data-intent':intentName, 
+        'data-idx':idx, 
+        onfocus:e=>currentFocusInput=e.target, 
+        style:'flex:1',
+        onkeydown: (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            saveExample(intentName, idx, inp.value);
+          }
+        },
+        onblur: () => {
+          // Auto-guardar al perder foco si el valor cambió
+          if (inp.value !== value) {
+            saveExample(intentName, idx, inp.value);
+          }
+        }
+      });
       const saveBtn = el('button',{class:'outline', title:'Guardar', onclick:()=>saveExample(intentName, idx, inp.value)},'💾');
       const delBtn = el('button',{class:'danger outline', title:'Eliminar', onclick:()=>deleteExample(intentName, idx)},'🗑️');
       return el('div',{class:'example-row'}, [checkbox, inp, el('div',{class:'row-actions'},[saveBtn, delBtn])]);
@@ -757,7 +795,28 @@
     }
     function buildRuleRow(idx, phrase, rule){
       const tr = el('tr',{},[]);
-      const phraseInput = el('input',{value: phrase, style:'min-width:170px'});
+      const phraseInput = el('input',{
+        value: phrase, 
+        style:'min-width:170px',
+        onkeydown: (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            const newPhrase = phraseInput.value.trim(); 
+            if(!newPhrase) return alert('Frase vacía');
+            const pattern = buildPatternFromPhrase(newPhrase,{variants:true, punct:true});
+            const selectedIntents = getSelectedIntentsFromCell(intentsTd);
+            saveRule(idx, pattern, actionSelect.value, replyInput.value, noteInput.value, selectedIntents);
+          }
+        },
+        onblur: () => {
+          // Auto-guardar al perder foco si el valor cambió
+          if (phraseInput.value !== phrase && phraseInput.value.trim()) {
+            const pattern = buildPatternFromPhrase(phraseInput.value.trim(),{variants:true, punct:true});
+            const selectedIntents = getSelectedIntentsFromCell(intentsTd);
+            saveRule(idx, pattern, actionSelect.value, replyInput.value, noteInput.value, selectedIntents);
+          }
+        }
+      });
       const actionType = rule.action && rule.action.type ? rule.action.type : rule.action;
       const replyValue = (rule.action && rule.action.reply) ? rule.action.reply : '';
       const actionSelect = el('select',{},['END_OK','END_ERR','REPLY'].map(a=> {

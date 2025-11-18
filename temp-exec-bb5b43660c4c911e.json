@@ -2,99 +2,99 @@
   "examples": [
     {
       "intent": "assignPriceProduct",
-      "example": "Hola Luca, asigna un precio de 340€/tonelada al Trigo Filón hoy"
+      "example": "Hola Luca, asigna un precio de 340€/tonelada al fungicida epoxiconazol hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Hola Luca, asigna un precio de 340€/tonelada al Trigo Filón hoy"
+      "example": "Hola Luca, asigna un precio de 340€/tonelada al fungicida epoxiconazol hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Hola Luca, acabo de recibir una factura a 340€/tonelada el Trigo Filón a fecha hoy"
+      "example": "Hola Luca, acabo de recibir una factura a 340€/tonelada el fungicida epoxiconazol a fecha hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Establece 340 €/tn para el Trigo Filón hoy"
+      "example": "Establece 340 €/tn para el fungicida epoxiconazol hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Establece 340 €/tn para el Trigo Filón hoy"
+      "example": "Establece 340 €/tn para el fungicida epoxiconazol hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Hola Luca, el Trigo Filón queda a 340 euros por tonelada desde el hoy"
+      "example": "Hola Luca, el fungicida epoxiconazol queda a 340 euros por tonelada desde el hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Sube el precio del Trigo Filón a 340 €/tn hoy"
+      "example": "Sube el precio del fungicida epoxiconazol a 340 €/tn hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Asigna para la Trigo Filón un precio de 340 euros/tn con fecha de hoy"
+      "example": "Asigna para la fungicida epoxiconazol un precio de 340 euros/tn con fecha de hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Coloca 340 €/tonelada al Trigo Filón a partir del hoy"
+      "example": "Coloca 340 €/tonelada al fungicida epoxiconazol a partir del hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Luca, el precio del Trigo Filón será de 340 €/tn desde hoy"
+      "example": "Luca, el precio del fungicida epoxiconazol será de 340 €/tn desde hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Para el Trigo Filón, pon 340 euros por tonelada hoy"
+      "example": "Para el fungicida epoxiconazol, pon 340 euros por tonelada hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Ponme 340 euros/tn a la Trigo Filón de este año hoy"
+      "example": "Ponme 340 euros/tn a la fungicida epoxiconazol de este año hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Quiero que el precio de la Trigo Filón sea de 340 €/tn a fecha hoy"
+      "example": "Quiero que el precio de la fungicida epoxiconazol sea de 340 €/tn a fecha hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "El Trigo Filón sube a 340 €/tonelada desde el hoy"
+      "example": "El fungicida epoxiconazol sube a 340 €/tonelada desde el hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Fija para la Trigo Filón un precio de 340 €/tn hoy"
+      "example": "Fija para la fungicida epoxiconazol un precio de 340 €/tn hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Quiero 340 euros por tonelada para la Trigo Filón del hoy"
+      "example": "Quiero 340 euros por tonelada para la fungicida epoxiconazol del hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Pon el Trigo Filón a 340 €/tn desde hoy"
+      "example": "Pon el fungicida epoxiconazol a 340 €/tn desde hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Luca, actualiza el precio de la Trigo Filón a 340 euros/tn, fecha hoy"
+      "example": "Luca, actualiza el precio de la fungicida epoxiconazol a 340 euros/tn, fecha hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Para la Trigo Filón, establece 340 €/tonelada desde el hoy"
+      "example": "Para la fungicida epoxiconazol, establece 340 €/tonelada desde el hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Sube la Trigo Filón a 340 €/tn hoy"
+      "example": "Sube la fungicida epoxiconazol a 340 €/tn hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Trigo Filón a 340 €/tonelada desde el hoy"
+      "example": "fungicida epoxiconazol a 340 €/tonelada desde el hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Quiero asignar para el Trigo Filón un precio de 340 euros/tn hoy"
+      "example": "Quiero asignar para el fungicida epoxiconazol un precio de 340 euros/tn hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Pon el Trigo Filón a 340 €/tn, fecha hoy"
+      "example": "Pon el fungicida epoxiconazol a 340 €/tn, fecha hoy"
     },
     {
       "intent": "assignPriceProduct",
-      "example": "Fija hoy 340 euros por tonelada para la Trigo Filón"
+      "example": "Fija hoy a 340 euros por tonelada para la fungicida epoxiconazol"
     },
     {
       "intent": "checkUnplannedFields",
@@ -262,111 +262,111 @@
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Añade el fitosanitario Roundup"
+      "example": "Añade el fitosanitario fungicida epoxiconazol"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Quiero registrar el pesticida Roundup contra mildiu"
+      "example": "Quiero registrar el pesticida fungicida epoxiconazol contra mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Mete el herbicida Roundup de tipo sistémico"
+      "example": "Mete el herbicida fungicida epoxiconazol de tipo sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Apunta el plaguicida Roundup para mildiu de la marca Bayer"
+      "example": "Apunta el plaguicida fungicida epoxiconazol para mildiu de la marca Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Apunta el plaguicida Roundup para mildiu de la marca Bayer"
+      "example": "Apunta el plaguicida fungicida epoxiconazol para mildiu de la marca Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crea un insecticida llamado Roundup que sea sistémico"
+      "example": "Crea un insecticida llamado fungicida epoxiconazol que sea sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Dar de alta el fungicida Roundup para mildiu en Bayer"
+      "example": "Dar de alta el fungicida fungicida epoxiconazol para mildiu en Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Registra un producto de control de plagas, Roundup, sistémico"
+      "example": "Registra un producto de control de plagas, fungicida epoxiconazol, sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Añade el herbicida Roundup contra mildiu"
+      "example": "Añade el herbicida fungicida epoxiconazol contra mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Meter insecticida Roundup de Bayer que sea sistémico"
+      "example": "Meter insecticida fungicida epoxiconazol de Bayer que sea sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Apunta el plaguicida Roundup para mildiu"
+      "example": "Apunta el plaguicida fungicida epoxiconazol para mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear el fitosanitario Roundup sistémico para mildiu"
+      "example": "Crear el fitosanitario fungicida epoxiconazol sistémico para mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Dar de alta un fungicida Roundup de Bayer"
+      "example": "Dar de alta un fungicida fungicida epoxiconazol de Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Registra herbicida Roundup de Bayer para mildiu"
+      "example": "Registra herbicida fungicida epoxiconazol de Bayer para mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Quiero añadir insecticida Roundup para mildiu sistémico"
+      "example": "Quiero añadir insecticida fungicida epoxiconazol para mildiu sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Apuntar plaguicida Roundup sistémico en cuenta de AgroMartín SL"
+      "example": "Apuntar plaguicida fungicida epoxiconazol sistémico en cuenta de AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Mete fungicida Roundup para mildiu de Bayer"
+      "example": "Mete fungicida fungicida epoxiconazol para mildiu de Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear pesticida Roundup para mildiu en AgroMartín SL"
+      "example": "Crear pesticida fungicida epoxiconazol para mildiu en AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Añadir producto de control de plagas Roundup para mildiu"
+      "example": "Añadir producto de control de plagas fungicida epoxiconazol para mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Apuntar herbicida Roundup sistémico"
+      "example": "Apuntar herbicida fungicida epoxiconazol sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Mete insecticida Roundup de Bayer contra mildiu"
+      "example": "Mete insecticida fungicida epoxiconazol de Bayer contra mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Registrar el plaguicida Roundup sistémico"
+      "example": "Registrar el plaguicida fungicida epoxiconazol sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Dar de alta el fitosanitario Roundup de Bayer"
+      "example": "Dar de alta el fitosanitario fungicida epoxiconazol de Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Añade pesticida Roundup sistémico para mildiu"
+      "example": "Añade pesticida fungicida epoxiconazol sistémico para mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Apuntar herbicida Roundup para mildiu de Bayer"
+      "example": "Apuntar herbicida fungicida epoxiconazol para mildiu de Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Mete fungicida Roundup sistémico"
+      "example": "Mete fungicida fungicida epoxiconazol sistémico"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Perdona, cambio la marca del insecticida Roundup a Bayer"
+      "example": "Perdona, cambio la marca del insecticida fungicida epoxiconazol a Bayer"
     },
     {
       "intent": "createChemicalProduct",
@@ -374,155 +374,155 @@
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Corrijo, el plaguicida Roundup es para mildiu"
+      "example": "Corrijo, el plaguicida fungicida epoxiconazol es para mildiu"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "El producto de control de plagas Roundup es sistémico de Bayer"
+      "example": "El producto de control de plagas fungicida epoxiconazol es sistémico de Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Quiero registrar pesticida Roundup para mildiu de Bayer"
+      "example": "Quiero registrar pesticida fungicida epoxiconazol para mildiu de Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Registra el herbicida Roundup de Bayer por 340 euros"
+      "example": "Registra el herbicida fungicida epoxiconazol de Bayer por 340 euros"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Añade el plaguicida Roundup contra mildiu sistémico a 340€"
+      "example": "Añade el plaguicida fungicida epoxiconazol contra mildiu sistémico a 340€"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Para AgroMartín SL mete el fungicida Roundup sistémico de Bayer"
+      "example": "Para AgroMartín SL mete el fungicida fungicida epoxiconazol sistémico de Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Dar de alta insecticida Roundup para mildiu en AgroMartín SL por 340 euros"
+      "example": "Dar de alta insecticida fungicida epoxiconazol para mildiu en AgroMartín SL por 340 euros"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear fitosanitario Roundup sistémico contra mildiu de Bayer a 340"
+      "example": "Crear fitosanitario fungicida epoxiconazol sistémico contra mildiu de Bayer a 340"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Registra pesticida Roundup de Bayer para mildiu en AgroMartín SL"
+      "example": "Registra pesticida fungicida epoxiconazol de Bayer para mildiu en AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Apunta producto químico Roundup sistémico por 340"
+      "example": "Apunta producto químico fungicida epoxiconazol sistémico por 340"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Añade insecticida Roundup para mildiu de Bayer en AgroMartín SL"
+      "example": "Añade insecticida fungicida epoxiconazol para mildiu de Bayer en AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Necesito registrar herbicida Roundup sistémico contra mildiu por 340 euros"
+      "example": "Necesito registrar herbicida fungicida epoxiconazol sistémico contra mildiu por 340 euros"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Para el cliente AgroMartín SL, crea el fungicida Roundup de Bayer a 340"
+      "example": "Para el cliente AgroMartín SL, crea el fungicida fungicida epoxiconazol de Bayer a 340"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Dar de alta plaguicida Roundup para mildiu de Bayer con precio 340"
+      "example": "Dar de alta plaguicida fungicida epoxiconazol para mildiu de Bayer con precio 340"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Registrar fitosanitario Roundup en AgroMartín SL sistémico por 340 euros"
+      "example": "Registrar fitosanitario fungicida epoxiconazol en AgroMartín SL sistémico por 340 euros"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear para el fabricante Bayer, el producto químico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Crear para el fabricante Bayer, el producto químico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Para el fabricante Bayer, crear el producto químico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Para el fabricante Bayer, crear el producto químico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Luca crea para el fabricante Bayer, el producto quimico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Luca crea para el fabricante Bayer, el producto quimico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Necesito agregar para el fabricante Bayer, el producto químico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Necesito agregar para el fabricante Bayer, el producto químico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear para el fabricante Bayer, el producto químico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Crear para el fabricante Bayer, el producto químico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crea el producto químico Roundup, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Crea el producto químico fungicida epoxiconazol, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Oye luca crea el producto quimico Roundup, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Oye luca crea el producto quimico fungicida epoxiconazol, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Agrega el producto químico Roundup, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Agrega el producto químico fungicida epoxiconazol, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Quiero agregar para el fabricante Bayer, el producto quimico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Quiero agregar para el fabricante Bayer, el producto quimico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Por favor registra el producto químico Roundup, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Por favor registra el producto químico fungicida epoxiconazol, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Necesito guardar el producto químico Roundup, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Necesito guardar el producto químico fungicida epoxiconazol, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Luca aguardar para el fabricante Bayer, el producto químico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Luca aguardar para el fabricante Bayer, el producto químico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Luca necesito agregar para el fabricante Bayer, el producto químico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Luca necesito agregar para el fabricante Bayer, el producto químico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Asocia para el fabricante Bayer, el producto químico Roundup, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Asocia para el fabricante Bayer, el producto químico fungicida epoxiconazol, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Facilita el producto químico Roundup, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Facilita el producto químico fungicida epoxiconazol, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Oye luca necesito crear el producto químico Roundup, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
+      "example": "Oye luca necesito crear el producto químico fungicida epoxiconazol, para el fabricante Bayer, con el precio de 340 para el cliente AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear para el fabricante Bayer, el producto quimico Roundup, con el precio de 340"
+      "example": "Crear para el fabricante Bayer, el producto quimico fungicida epoxiconazol, con el precio de 340"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crea para el fabricante Bayer, el producto quimico Roundup, con precio de 340 para AgroMartín SL"
+      "example": "Crea para el fabricante Bayer, el producto quimico fungicida epoxiconazol, con precio de 340 para AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crea para el fabricante Bayer, el producto químico Roundup, con el precio de 340 para AgroMartín SL"
+      "example": "Crea para el fabricante Bayer, el producto químico fungicida epoxiconazol, con el precio de 340 para AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Para el fabricante Bayer, crea el producto quimico Roundup a 340 para AgroMartín SL"
+      "example": "Para el fabricante Bayer, crea el producto quimico fungicida epoxiconazol a 340 para AgroMartín SL"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Para AgroMartín SL, crear producto químico Roundup del fabricante Bayer con precio 340"
+      "example": "Para AgroMartín SL, crear producto químico fungicida epoxiconazol del fabricante Bayer con precio 340"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear producto quimico Roundup con precio 340 para AgroMartín SL del fabricante Bayer"
+      "example": "Crear producto quimico fungicida epoxiconazol con precio 340 para AgroMartín SL del fabricante Bayer"
     },
     {
       "intent": "createChemicalProduct",
-      "example": "Crear para el fabricante Bayer, el producto químico Roundup, con precio de 340 para AgroMartín SL"
+      "example": "Crear para el fabricante Bayer, el producto químico fungicida epoxiconazol, con precio de 340 para AgroMartín SL"
     },
     {
       "intent": "createCrop",
@@ -654,171 +654,171 @@
     },
     {
       "intent": "createCrop",
-      "example": "Luca, registra cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer y cliente AgroMartín SL."
+      "example": "Luca, registra cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer y cliente AgroMartín SL."
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer."
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer."
     },
     {
       "intent": "createCrop",
-      "example": "Luca, registra cultivo maíz, destino consumo, marca Bayer."
+      "example": "Luca, registra cultivo cebada, destino consumo, marca Bayer."
     },
     {
       "intent": "createCrop",
-      "example": "Luca, agrega cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para cliente AgroMartín SL."
+      "example": "Luca, agrega cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para cliente AgroMartín SL."
     },
     {
       "intent": "createCrop",
-      "example": "Hola LUCA, registrar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para el cliente AgroMartín SL"
+      "example": "Hola LUCA, registrar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para el cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer, para el cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer, para el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con el cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Necesito guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer y el cliente AgroMartín SL"
+      "example": "Necesito guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer y el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, agrega cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer cliente AgroMartín SL"
+      "example": "Luca, agrega cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, agrega cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Luca, agrega cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Hola LUCA, registrar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para el cliente AgroMartín SL"
+      "example": "Hola LUCA, registrar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para el cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer, para el cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer, para el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con el cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Necesito guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer y el cliente AgroMartín SL"
+      "example": "Necesito guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer y el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, agrega cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer cliente AgroMartín SL"
+      "example": "Luca, agrega cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, agrega cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Luca, agrega cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Hola luca, queiro crear el cultivo maíz con variedad amarillo costeño con destino consumo y marca Bayer con el cliente AgroMartín SL"
+      "example": "Hola luca, queiro crear el cultivo cebada con variedad rgt covadonga con destino consumo y marca Bayer con el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "luca, me puedes registrar el cultivo maíz con variedad amarillo costeño con destino consumo y marca Bayer con el cliente AgroMartín SL"
+      "example": "luca, me puedes registrar el cultivo cebada con variedad rgt covadonga con destino consumo y marca Bayer con el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "luca, quiero regiatrar el cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "luca, quiero regiatrar el cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "hola luca, agregame el cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "hola luca, agregame el cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca registrar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Luca registrar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Hola luca, mete cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para cliente AgroMartín SL"
+      "example": "Hola luca, mete cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, agregá cultivo maíz con variedad amarillo costeño, destino consumo, marca Bayer, cliente AgroMartín SL"
+      "example": "Luca, agregá cultivo cebada con variedad rgt covadonga, destino consumo, marca Bayer, cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca quiero guardar cultivo maíz variedad amarillo costeño destino consumo marca Bayer con cliente AgroMartín SL"
+      "example": "Luca quiero guardar cultivo cebada variedad rgt covadonga destino consumo marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Agregame cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer, cliente AgroMartín SL"
+      "example": "Agregame cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer, cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Necesito registrar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Necesito registrar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, mete cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer cliente AgroMartín SL"
+      "example": "Luca, mete cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para el cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para el cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Hola Luca, quiero registrar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer cliente AgroMartín SL"
+      "example": "Hola Luca, quiero registrar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, apúntame cultivo maíz variedad amarillo costeño destino consumo marca Bayer con cliente AgroMartín SL"
+      "example": "Luca, apúntame cultivo cebada variedad rgt covadonga destino consumo marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer, cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer, cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca registra cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer, cliente AgroMartín SL"
+      "example": "Luca registra cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer, cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Necesito crear cultivo maíz con variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Necesito crear cultivo cebada con variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Hola luca, guarda cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Hola luca, guarda cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca, quiero meter cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Luca, quiero meter cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Apunta cultivo maíz con variedad amarillo costeño, destino consumo, marca Bayer cliente AgroMartín SL"
+      "example": "Apunta cultivo cebada con variedad rgt covadonga, destino consumo, marca Bayer cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Guardar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer, cliente AgroMartín SL"
+      "example": "Guardar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer, cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Luca agrega cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer para cliente AgroMartín SL"
+      "example": "Luca agrega cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer para cliente AgroMartín SL"
     },
     {
       "intent": "createCrop",
-      "example": "Hola luca, necesito registrar cultivo maíz, variedad amarillo costeño, destino consumo, marca Bayer con cliente AgroMartín SL"
+      "example": "Hola luca, necesito registrar cultivo cebada, variedad rgt covadonga, destino consumo, marca Bayer con cliente AgroMartín SL"
     },
     {
       "intent": "createFertilizer",
@@ -1078,79 +1078,79 @@
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "Hola Luca, pon en la parcela campo el cultivo de maíz"
+      "example": "Hola Luca, pon en la parcela campo el cultivo de cebada"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "pon maíz en la parcela campo"
+      "example": "pon cebada en la parcela campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "planifica maíz en prueba"
+      "example": "planifica cebada en prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "pon maíz variedad amarillo costeño en la parcela campo"
+      "example": "pon cebada variedad rgt covadonga en la parcela campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "planifica maíz variedad amarillo costeño en la parcela campo"
+      "example": "planifica cebada variedad rgt covadonga en la parcela campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "mete maíz amarillo costeño en prueba y prueba"
+      "example": "mete cebada rgt covadonga en prueba y prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "pon amarillo costeño de maíz en la parcela campo"
+      "example": "pon rgt covadonga de cebada en la parcela campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "quiero maíz amarillo costeño en la parcela campo"
+      "example": "quiero cebada rgt covadonga en la parcela campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "este año quiero maíz amarillo costeño en prueba"
+      "example": "este año quiero cebada rgt covadonga en prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "pon maíz amarillo costeño en la parcela campo y campo"
+      "example": "pon cebada rgt covadonga en la parcela campo y campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "planifica maíz amarillo costeño en prueba"
+      "example": "planifica cebada rgt covadonga en prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "mete maíz amarillo costeño en prueba"
+      "example": "mete cebada rgt covadonga en prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "planifica maíz amarillo costeño en prueba y prueba"
+      "example": "planifica cebada rgt covadonga en prueba y prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "planifica maíz en prueba"
+      "example": "planifica cebada en prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "planifica maíz amarillo costeño en prueba campo"
+      "example": "planifica cebada rgt covadonga en prueba campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "para AgroMartín SL planifica maíz amarillo costeño en prueba campo"
+      "example": "para AgroMartín SL planifica cebada rgt covadonga en prueba campo"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "pon maíz en prueba"
+      "example": "pon cebada en prueba"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "quiero poner maíz, maíz y maíz"
+      "example": "quiero poner cebada, cebada y cebada"
     },
     {
       "intent": "createPlannedCampaign",
-      "example": "añade maíz amarillo costeño en campo"
+      "example": "añade cebada rgt covadonga en campo"
     },
     {
       "intent": "createPlannedCampaign",
@@ -2574,99 +2574,99 @@
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola Luca, dime que fertilizantes tiene Mosaic Company"
+      "example": "Hola Luca, dime que fertilizantes tiene bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola Luca, que clasificación de fertilizantes tiene Mosaic Company?"
+      "example": "Hola Luca, que clasificación de fertilizantes tiene bayer cropscience?"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola Luca! Que productos de D-Coder tiene Mosaic Company?"
+      "example": "Hola Luca! Que productos de D-Coder tiene bayer cropscience?"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola Luca, cuántos fertilizantes tiene Mosaic Company"
+      "example": "Hola Luca, cuántos fertilizantes tiene bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Luca, muéstrame la clasificación de productos químicos de Mosaic Company"
+      "example": "Luca, muéstrame la clasificación de productos químicos de bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Qué gamas de fertilizantes ofrece Mosaic Company"
+      "example": "Qué gamas de fertilizantes ofrece bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Luca, dime los fertilizantes que tiene Mosaic Company"
+      "example": "Luca, dime los fertilizantes que tiene bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Quiero saber qué fitosanitarios tiene Mosaic Company"
+      "example": "Quiero saber qué fitosanitarios tiene bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Dime las gamas de químicos que vende Mosaic Company"
+      "example": "Dime las gamas de químicos que vende bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola Luca, listado de fertilizantes de Mosaic Company por favor"
+      "example": "Hola Luca, listado de fertilizantes de bayer cropscience por favor"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "¿Cuántos productos químicos tiene Mosaic Company en la app?"
+      "example": "¿Cuántos productos químicos tiene bayer cropscience en la app?"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "¿Cuántos productos químicos tiene Mosaic Company en la app?"
+      "example": "¿Cuántos productos químicos tiene bayer cropscience en la app?"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Muestra la clasificación de fertilizantes de Mosaic Company"
+      "example": "Muestra la clasificación de fertilizantes de bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola, dime todos los químicos que ofrece Mosaic Company"
+      "example": "Hola, dime todos los químicos que ofrece bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Luca, qué gamas de fitosanitarios tiene Mosaic Company?"
+      "example": "Luca, qué gamas de fitosanitarios tiene bayer cropscience?"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Quiero saber las gamas de fertilizantes de Mosaic Company"
+      "example": "Quiero saber las gamas de fertilizantes de bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola Luca, cuántos fitosanitarios vende Mosaic Company"
+      "example": "Hola Luca, cuántos fitosanitarios vende bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Dime todos los fertilizantes de Mosaic Company"
+      "example": "Dime todos los fertilizantes de bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Luca, clasificación de fertilizantes de Mosaic Company"
+      "example": "Luca, clasificación de fertilizantes de bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Muéstrame cuántos productos químicos tiene Mosaic Company"
+      "example": "Muéstrame cuántos productos químicos tiene bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Qué gamas de fertilizantes hay en Mosaic Company?"
+      "example": "Qué gamas de fertilizantes hay en bayer cropscience?"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Hola Luca, lista de fitosanitarios de Mosaic Company"
+      "example": "Hola Luca, lista de fitosanitarios de bayer cropscience"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Clasificación de productos químicos de Mosaic Company por favor"
+      "example": "Clasificación de productos químicos de bayer cropscience por favor"
     },
     {
       "intent": "getManufacturerProducts",
-      "example": "Cuántos fertilizantes tiene Mosaic Company en total?"
+      "example": "Cuántos fertilizantes tiene bayer cropscience en total?"
     },
     {
       "intent": "getMinPrice",

@@ -52,11 +52,11 @@ export const VARS: Record<string, string> = {
   amount_harvested: process.env.VAR_AMOUNT_HARVESTED || '8500',
   applied_dose: process.env.VAR_APPLIED_DOSE || '180',
   brand: process.env.VAR_BRAND || 'Bayer',
-  chemical_product_name: process.env.VAR_CHEMICAL_PRODUCT_NAME || 'Roundup',
+  chemical_product_name: process.env.VAR_CHEMICAL_PRODUCT_NAME || 'fungicida epoxiconazol',
   client: process.env.VAR_CLIENT || 'AgroMartín SL',
   client_name: process.env.VAR_CLIENT_NAME || 'Automatización Clnt',
   composition: process.env.VAR_COMPOSITION || 'consumo humano',
-  crop_name: process.env.VAR_CROP_NAME || 'maíz',
+  crop_name: process.env.VAR_CROP_NAME || 'cebada',
   depth: process.env.VAR_DEPTH || '25',
   destination: process.env.VAR_DESTINATION || 'consumo',
   farm_name: process.env.VAR_FARM_NAME || 'prueba',
@@ -65,17 +65,17 @@ export const VARS: Record<string, string> = {
   form_type: process.env.VAR_FORM_TYPE || 'líquido',
   fuel_used: process.env.VAR_FUEL_USED || '45.5',
   general_dose: process.env.VAR_GENERAL_DOSE || '300',
-  manufacturer_name: process.env.VAR_MANUFACTURER_NAME || 'Mosaic Company',
+  manufacturer_name: process.env.VAR_MANUFACTURER_NAME || 'bayer cropscience',
   mode_of_action: process.env.VAR_MODE_OF_ACTION || 'sistémico',
   nitrogen_level: process.env.VAR_NITROGEN_LEVEL || '20',
   nombre_usuario_cliente: process.env.VAR_NOMBRE_USUARIO_CLIENTE || 'Automatización Clnt',
   price: process.env.VAR_PRICE || '340',
-  product_name: process.env.VAR_PRODUCT_NAME || 'Trigo Filón',
+  product_name: process.env.VAR_PRODUCT_NAME || 'fungicida epoxiconazol',
   search_query: process.env.VAR_SEARCH_QUERY || 'Girasol',
   target_pest: process.env.VAR_TARGET_PEST || 'mildiu',
   type_fertilizer: process.env.VAR_TYPE_FERTILIZER || 'granulado',
   type_work: process.env.VAR_TYPE_WORK || 'SIEMBRA',
-  variety_name: process.env.VAR_VARIETY_NAME || 'amarillo costeño',
+  variety_name: process.env.VAR_VARIETY_NAME || 'rgt covadonga',
   work_id: process.env.VAR_WORK_ID || '64f1b2c3d4e5f6a7b8c9d0e0',
   worked_hours: process.env.VAR_WORKED_HOURS || '6.5',
   price_date: 'hoy',
@@ -124,7 +124,10 @@ export const INTENTS_TEMPLATES = {
     '{product_name} a {price} €/tonelada desde el {price_date}',
     'Quiero asignar para el {product_name} un precio de {price} euros/tn {price_date}',
     'Pon el {product_name} a {price} €/tn, fecha {price_date}',
-    'Fija {price_date} {price} euros por tonelada para la {product_name}'
+    'Fija {price_date} a {price} euros por tonelada para la {product_name}',
+  
+  
+  
   ],
   createChemicalProduct: [
     'quiero registrar un producto químico',
@@ -1351,20 +1354,28 @@ export function extractFirstOption(text: string): string | null {
   console.log('--- FIN TEXTO ---');
   
   // 1. Buscar patrón "Opciones: opcion1, opcion2, opcion3" (case insensitive)
-  const optionsMatch = text.match(/opciones:\s*([^,\n]+)/i);
-  if (optionsMatch) {
-    let firstOption = optionsMatch[1].trim();
-    // Remover cualquier punto final
-    firstOption = firstOption.replace(/\.$/, '');
-    console.log('[extractFirstOption] ✅ Encontrado en "Opciones:":', firstOption);
-    return firstOption;
+  // Capturar hasta que encontremos ", " seguido de una letra minúscula (indica nueva opción)
+  // O hasta el punto final
+  const optionsLineMatch = text.match(/opciones:\s*(.+?)(?=\n|$)/i);
+  if (optionsLineMatch) {
+    const optionsLine = optionsLineMatch[1].trim();
+    // Extraer la primera opción: todo hasta ", " seguido de letra minúscula
+    // o hasta "." al final
+    const firstOptionMatch = optionsLine.match(/^([^.]+?)(?:,\s+(?=[a-z])|\.?\s*$)/);
+    if (firstOptionMatch) {
+      let firstOption = firstOptionMatch[1].trim();
+      // Remover punto final si existe
+      firstOption = firstOption.replace(/\.$/, '');
+      console.log('[extractFirstOption] ✅ Encontrado en "Opciones:":', firstOption);
+      return firstOption;
+    }
   }
   
   // 2. Buscar patrones numerados como "1) Opción", "1. Opción", "1: Opción"
   const numberedMatch = text.match(/^\s*1[\)\.:\-]\s*(.+)$/m);
   if (numberedMatch) {
     let firstOption = numberedMatch[1].trim();
-    // Remover cualquier punto final o coma
+    // Remover cualquier punto final o coma que separa opciones
     firstOption = firstOption.replace(/[,\.]$/, '');
     console.log('[extractFirstOption] ✅ Encontrado numerado:', firstOption);
     return firstOption;
