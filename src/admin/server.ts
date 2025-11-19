@@ -422,6 +422,55 @@ async function persistUpdateIntentExample(name: string, exampleIndex: number, ne
   arr[exampleIndex] = newExample;
 }
 
+async function persistUpdateVarPool(name: string, values: string[]) {
+  await loadDataModule();
+  name = sanitizeIdentifier(name);
+  
+  if (!values || values.length === 0) {
+    throw new Error('El pool debe tener al menos un valor');
+  }
+  
+  const file = await readDataFile();
+  
+  // Buscar el bloque VAR_POOLS
+  const poolsMatch = file.match(/const VAR_POOLS\s*=\s*{([\s\S]*?)};/);
+  if (!poolsMatch) {
+    throw new Error('No se encontró bloque VAR_POOLS');
+  }
+  
+  const poolsContent = poolsMatch[1];
+  const poolsStart = file.indexOf('const VAR_POOLS');
+  const poolsEnd = file.indexOf('};', poolsStart) + 2;
+  
+  // Buscar la propiedad específica dentro del pool
+  const propRegex = new RegExp(`(\\s*${name}:\\s*\\[)([\\s\\S]*?)(\\],?)`, 'm');
+  const propMatch = poolsContent.match(propRegex);
+  
+  if (!propMatch) {
+    throw new Error(`No se encontró el pool para la variable ${name}`);
+  }
+  
+  // Construir el nuevo array de valores
+  const newValuesStr = values.map(v => `'${v.replace(/'/g, "\\'")}'`).join(', ');
+  const newPoolProp = `  ${name}: [\n    ${newValuesStr}\n  ],`;
+  
+  // Reemplazar en el contenido completo del archivo
+  const beforePools = file.substring(0, poolsStart);
+  const afterPools = file.substring(poolsEnd);
+  
+  // Reconstruir el contenido de VAR_POOLS con el pool actualizado
+  const updatedPoolsContent = poolsContent.replace(propRegex, `\n${newPoolProp}\n`);
+  const updatedPools = `const VAR_POOLS = {${updatedPoolsContent}};`;
+  
+  const updatedFile = beforePools + updatedPools + afterPools;
+  await writeDataFile(updatedFile);
+  
+  // Actualizar en memoria
+  if (VAR_POOLS) {
+    VAR_POOLS[name] = values;
+  }
+}
+
 
 const app = express();
 app.use(express.json());
@@ -497,6 +546,28 @@ app.delete('/api/variables/:name', async (req, res) => {
     await persistDeleteVariable(name);
     res.json({ ok: true, deleted: name });
   } catch (e: any) { res.status(400).json({ error: e.message }); }
+});
+
+// Endpoint para actualizar pools de variables
+app.put('/api/variable-pools/:name', async (req, res) => {
+  try {
+    const name = req.params.name;
+    const { values } = req.body || {};
+    
+    if (!name) return res.status(400).json({ error: 'name requerido' });
+    if (!Array.isArray(values) || values.length === 0) {
+      return res.status(400).json({ error: 'values debe ser un array con al menos un valor' });
+    }
+    
+    console.log(`[Update Pool] Actualizando pool de "${name}" con ${values.length} valores`);
+    await persistUpdateVarPool(name, values);
+    console.log(`[Update Pool] Pool de "${name}" actualizado exitosamente`);
+    
+    res.json({ ok: true, name, count: values.length });
+  } catch (e: any) {
+    console.error(`[Update Pool] Error:`, e.message);
+    res.status(400).json({ error: e.message });
+  }
 });
 
 // NOTE: Modifying intents/rules persistently would require file writes; here we accept ephemeral additions.

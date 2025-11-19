@@ -276,14 +276,17 @@
       entries.forEach(([k,v])=>{
         // Obtener el pool de valores disponibles para esta variable
         const pool = STATE.variablePools && STATE.variablePools[k] ? STATE.variablePools[k] : null;
-        const poolInfo = pool && Array.isArray(pool) 
-          ? `<div class="small" style="margin-top:4px; color:var(--muted);">Pool (${pool.length}): ${pool.slice(0, 3).join(', ')}${pool.length > 3 ? ', ...' : ''}</div>`
-          : '';
         
         const tr = el('tr',{},[
           el('td',{}, [
-            document.createTextNode(k),
-            ...(poolInfo ? [createElementFromHTML(poolInfo)] : [])
+            el('div', {}, [
+              el('strong', {}, k),
+              el('button', {
+                class: 'outline',
+                style: 'margin-left: 8px; padding: 2px 8px; font-size: 11px;',
+                onclick: () => editVarPool(k)
+              }, '🔧 Pool')
+            ])
           ]),
           el('td',{},[el('input',{value:v, 'data-var-name':k, oninput:e=>e.target.dataset.dirty='1'})]),
           el('td',{},[
@@ -307,6 +310,70 @@
       const div = document.createElement('div');
       div.innerHTML = htmlString.trim();
       return div.firstChild;
+    }
+    
+    // Editar pool de una variable
+    function editVarPool(name) {
+      const pool = STATE.variablePools && STATE.variablePools[name] ? STATE.variablePools[name] : [];
+      const poolStr = Array.isArray(pool) ? pool.join('\n') : '';
+      
+      const modal = el('div', {
+        style: 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:9999;'
+      }, [
+        el('div', {
+          class: 'card',
+          style: 'width:90%; max-width:600px; max-height:80vh; overflow:auto;'
+        }, [
+          el('h2', {}, `Pool de valores: ${name}`),
+          el('p', {class: 'small'}, 'Un valor por línea. Estos valores se usarán aleatoriamente en los tests.'),
+          el('textarea', {
+            id: 'pool-editor',
+            style: 'min-height:300px; font-family:monospace; font-size:13px;'
+          }, poolStr),
+          el('div', {class: 'flex', style: 'margin-top:12px; gap:8px;'}, [
+            el('button', {
+              onclick: async () => {
+                const textarea = document.getElementById('pool-editor');
+                const values = textarea.value.split('\n')
+                  .map(line => line.trim())
+                  .filter(line => line.length > 0);
+                
+                if (values.length === 0) {
+                  alert('El pool debe tener al menos un valor');
+                  return;
+                }
+                
+                try {
+                  const r = await fetch(`/api/variable-pools/${encodeURIComponent(name)}`, {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ values })
+                  });
+                  
+                  if (!r.ok) {
+                    const error = await r.json().catch(() => ({error: 'Error desconocido'}));
+                    alert('Error actualizando pool: ' + (error.error || r.statusText));
+                    return;
+                  }
+                  
+                  console.log(`Pool de ${name} actualizado con ${values.length} valores`);
+                  document.body.removeChild(modal);
+                  fetchState();
+                } catch (err) {
+                  alert('Error de red: ' + err.message);
+                }
+              }
+            }, '💾 Guardar Pool'),
+            el('button', {
+              class: 'outline',
+              onclick: () => document.body.removeChild(modal)
+            }, 'Cancelar')
+          ])
+        ])
+      ]);
+      
+      document.body.appendChild(modal);
+      document.getElementById('pool-editor').focus();
     }
     async function updateVarRow(name){ 
       const input = document.querySelector(`input[data-var-name="${name}"]`); 
