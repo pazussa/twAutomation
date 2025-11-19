@@ -65,12 +65,12 @@ export const VARS: Record<string, string> = {
   form_type: process.env.VAR_FORM_TYPE || 'líquido',
   fuel_used: process.env.VAR_FUEL_USED || '45.5',
   general_dose: process.env.VAR_GENERAL_DOSE || '300',
-  manufacturer_name: process.env.VAR_MANUFACTURER_NAME || 'bayer cropscience',
+  manufacturer_name: process.env.VAR_MANUFACTURER_NAME || 'main',
   mode_of_action: process.env.VAR_MODE_OF_ACTION || 'sistémico',
   nitrogen_level: process.env.VAR_NITROGEN_LEVEL || '20',
   nombre_usuario_cliente: process.env.VAR_NOMBRE_USUARIO_CLIENTE || 'Automatización Clnt',
   price: process.env.VAR_PRICE || '340',
-  product_name: process.env.VAR_PRODUCT_NAME || 'fungicida epoxiconazol',
+  product_name: process.env.VAR_PRODUCT_NAME || 'product',
   search_query: process.env.VAR_SEARCH_QUERY || 'Girasol',
   target_pest: process.env.VAR_TARGET_PEST || 'mildiu',
   type_fertilizer: process.env.VAR_TYPE_FERTILIZER || 'granulado',
@@ -1349,40 +1349,68 @@ export function mutateOneVariableForRetry() {
 }
 
 export function extractFirstOption(text: string): string | null {
-  console.log('[extractFirstOption] Texto completo recibido:');
+  // Mantener esta función por compatibilidad, pero internamente usar extractRandomOption
+  return extractRandomOption(text);
+}
+
+export function extractRandomOption(text: string): string | null {
+  console.log('[extractRandomOption] Texto completo recibido:');
   console.log(text);
   console.log('--- FIN TEXTO ---');
   
   // 1. Buscar patrón "Opciones: opcion1, opcion2, opcion3" (case insensitive)
-  // Capturar hasta que encontremos ", " seguido de una letra minúscula (indica nueva opción)
-  // O hasta el punto final
   const optionsLineMatch = text.match(/opciones:\s*(.+?)(?=\n|$)/i);
   if (optionsLineMatch) {
     const optionsLine = optionsLineMatch[1].trim();
-    // Extraer la primera opción: todo hasta ", " seguido de letra minúscula
-    // o hasta "." al final
-    const firstOptionMatch = optionsLine.match(/^([^.]+?)(?:,\s+(?=[a-z])|\.?\s*$)/);
-    if (firstOptionMatch) {
-      let firstOption = firstOptionMatch[1].trim();
-      // Remover punto final si existe
-      firstOption = firstOption.replace(/\.$/, '');
-      console.log('[extractFirstOption] ✅ Encontrado en "Opciones:":', firstOption);
-      return firstOption;
+    console.log('[extractRandomOption] Línea de opciones encontrada:', optionsLine);
+    
+    // Extraer todas las opciones separadas por comas
+    // Dividir por ", " pero considerar que algunas opciones pueden tener comas internas (como "herbicida 2,4-d")
+    const allOptionsRaw = optionsLine.split(/,\s+(?=[a-z])/i); // Split por ", " seguido de letra minúscula
+    const allOptions = allOptionsRaw.map(opt => opt.trim().replace(/\.$/, '')); // Limpiar puntos finales
+    
+    if (allOptions.length > 0) {
+      // Filtrar opciones vacías
+      const validOptions = allOptions.filter(opt => opt.length > 0);
+      
+      if (validOptions.length > 0) {
+        // Seleccionar una opción aleatoria
+        const randomIndex = Math.floor(Math.random() * validOptions.length);
+        const selectedOption = validOptions[randomIndex];
+        
+        console.log('[extractRandomOption] ✅ Opciones encontradas:', validOptions.length);
+        console.log('[extractRandomOption] ✅ Opciones disponibles:', validOptions);
+        console.log('[extractRandomOption] ✅ Opción seleccionada aleatoriamente [' + randomIndex + ']:', selectedOption);
+        
+        return selectedOption;
+      }
     }
   }
   
   // 2. Buscar patrones numerados como "1) Opción", "1. Opción", "1: Opción"
-  const numberedMatch = text.match(/^\s*1[\)\.:\-]\s*(.+)$/m);
-  if (numberedMatch) {
-    let firstOption = numberedMatch[1].trim();
-    // Remover cualquier punto final o coma que separa opciones
-    firstOption = firstOption.replace(/[,\.]$/, '');
-    console.log('[extractFirstOption] ✅ Encontrado numerado:', firstOption);
-    return firstOption;
+  const numberedMatches = text.match(/^\s*\d+[\)\.:\-]\s*(.+)$/gm);
+  if (numberedMatches && numberedMatches.length > 0) {
+    const numberedOptions = numberedMatches.map(match => {
+      const optionMatch = match.match(/^\s*\d+[\)\.:\-]\s*(.+)$/);
+      return optionMatch ? optionMatch[1].trim().replace(/[,\.]$/, '') : '';
+    }).filter(opt => opt.length > 0);
+    
+    if (numberedOptions.length > 0) {
+      const randomIndex = Math.floor(Math.random() * numberedOptions.length);
+      const selectedOption = numberedOptions[randomIndex];
+      
+      console.log('[extractRandomOption] ✅ Opciones numeradas encontradas:', numberedOptions.length);
+      console.log('[extractRandomOption] ✅ Opciones disponibles:', numberedOptions);
+      console.log('[extractRandomOption] ✅ Opción seleccionada aleatoriamente [' + randomIndex + ']:', selectedOption);
+      
+      return selectedOption;
+    }
   }
   
-  // 3. Buscar líneas separadas (caso de lista vertical)
+  // 3. Buscar líneas separadas (caso de lista vertical) - recolectar todas
   const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+  const validLines = [];
+  
   for (const line of lines) {
     // Si encuentra una línea que parece ser una opción válida (no es pregunta ni metadata)
     if (!line.match(/opciones:/i) && 
@@ -1390,26 +1418,49 @@ export function extractFirstOption(text: string): string | null {
         !line.match(/que?\s+deseas/i) &&
         line.length > 2 &&
         !line.includes('?')) {
-      let firstOption = line.trim();
-      // Remover cualquier punto final o coma
-      firstOption = firstOption.replace(/[,\.]$/, '');
-      console.log('[extractFirstOption] ✅ Encontrado en línea separada:', firstOption);
-      return firstOption;
+      const cleanLine = line.trim().replace(/[,\.]$/, '');
+      if (cleanLine.length > 0) {
+        validLines.push(cleanLine);
+      }
     }
   }
   
-  // 4. Fallback: buscar la primera frase que no sea una pregunta
+  if (validLines.length > 0) {
+    const randomIndex = Math.floor(Math.random() * validLines.length);
+    const selectedOption = validLines[randomIndex];
+    
+    console.log('[extractRandomOption] ✅ Opciones en líneas separadas encontradas:', validLines.length);
+    console.log('[extractRandomOption] ✅ Opciones disponibles:', validLines);
+    console.log('[extractRandomOption] ✅ Opción seleccionada aleatoriamente [' + randomIndex + ']:', selectedOption);
+    
+    return selectedOption;
+  }
+  
+  // 4. Fallback: buscar frases que no sean preguntas - recolectar todas y elegir aleatoria
   const sentences = text.split(/[.!?]/).map(s => s.trim()).filter(s => s.length > 2);
+  const validSentences = [];
+  
   for (const sentence of sentences) {
     if (!sentence.includes('?') && 
         !sentence.match(/opciones/i) && 
         !sentence.match(/nombre/i) &&
-        !sentence.match(/fabricante/i)) {
-      console.log('[extractFirstOption] ✅ Encontrado como fallback:', sentence);
-      return sentence;
+        !sentence.match(/fabricante/i) &&
+        sentence.length > 0) {
+      validSentences.push(sentence);
     }
   }
   
-  console.log('[extractFirstOption] ❌ No se encontró ningún patrón válido');
+  if (validSentences.length > 0) {
+    const randomIndex = Math.floor(Math.random() * validSentences.length);
+    const selectedOption = validSentences[randomIndex];
+    
+    console.log('[extractRandomOption] ✅ Opciones como fallback encontradas:', validSentences.length);
+    console.log('[extractRandomOption] ✅ Opciones disponibles:', validSentences);
+    console.log('[extractRandomOption] ✅ Opción seleccionada aleatoriamente [' + randomIndex + ']:', selectedOption);
+    
+    return selectedOption;
+  }
+  
+  console.log('[extractRandomOption] ❌ No se encontró ningún patrón válido');
   return null;
 }
