@@ -102,26 +102,109 @@ export async function openChat(page: Page, name: string) {
 }
 
 export async function clearChat(page: Page) {
+  console.log('[clearChat] Intentando limpiar chat...');
   
-  const overflowBtn = page.locator('header div[role="button"]:has(span[data-icon="more-refreshed"])').last();
-  await overflowBtn.click({ timeout: 5_000 }).catch(() => {});
-  await page.waitForSelector('[role="menu"], [role="menuitem"], li:has-text("Vaciar chat"), li:has-text("Clear chat")', { timeout: 5_000 }).catch(() => {});
+  // Intentar múltiples selectores para el botón de menú (WhatsApp cambia frecuentemente)
+  const menuButtonSelectors = [
+    'header div.x1hm9lzh:nth-child(3) > div:nth-child(1) > span:nth-child(1) > button:nth-child(1)', // Selector específico actual
+    'header div.x1hm9lzh button', // Variante más genérica del anterior
+    'header div[role="button"]:has(span[data-icon="menu"])',
+    'header div[role="button"]:has(span[data-icon="more-refreshed"])',
+    'header button[aria-label*="Menú"]',
+    'header div[role="button"][aria-label*="Menu"]',
+    'header span[data-icon="menu"]',
+    'header span[data-icon="down"]'
+  ];
+  
+  let menuOpened = false;
+  
+  for (const selector of menuButtonSelectors) {
+    try {
+      const btn = page.locator(selector).last();
+      const isVisible = await btn.isVisible({ timeout: 1000 }).catch(() => false);
+      
+      if (isVisible) {
+        console.log(`[clearChat] ✓ Botón de menú encontrado con selector: ${selector}`);
+        await btn.click({ timeout: 3_000 });
+        await page.waitForTimeout(500);
+        menuOpened = true;
+        break;
+      }
+    } catch (e) {
+      console.log(`[clearChat] Selector "${selector}" no funcionó, probando siguiente...`);
+    }
+  }
+  
+  if (!menuOpened) {
+    console.log('[clearChat] ⚠ No se pudo abrir el menú, abortando limpieza');
+    return;
+  }
+  
+  // Esperar a que aparezca el menú
+  await page.waitForSelector('[role="menu"], [role="menuitem"], li:has-text("Vaciar"), li:has-text("Clear")', { timeout: 3_000 }).catch(() => {});
+  await page.waitForTimeout(300);
+  
+  // Buscar la opción "Vaciar chat" / "Clear chat"
   const clearSelectors = [
     'div[role="button"]:has-text("Vaciar chat")',
     'li:has-text("Vaciar chat")',
+    'span:has-text("Vaciar chat")',
     'div[role="button"]:has-text("Clear chat")',
-    'li:has-text("Clear chat")'
+    'li:has-text("Clear chat")',
+    'span:has-text("Clear chat")'
   ];
+  
+  let clearClicked = false;
+  
   for (const s of clearSelectors) {
-    const el = page.locator(s);
-    if ((await el.count()) && (await el.first().isVisible().catch(() => false))) {
-      await el.first().click();
-      const conf = page.locator('div[role="button"]:has-text("Vaciar"), button:has-text("Vaciar"), div[role="button"]:has-text("Clear"), button:has-text("Clear")');
-      if ((await conf.count()) > 0) await conf.first().click().catch(() => {});
-      await page.waitForTimeout(800);
-      return;
+    try {
+      const el = page.locator(s).first();
+      const isVisible = await el.isVisible({ timeout: 1000 }).catch(() => false);
+      
+      if (isVisible) {
+        console.log(`[clearChat] ✓ Opción "Vaciar" encontrada con selector: ${s}`);
+        await el.click();
+        clearClicked = true;
+        break;
+      }
+    } catch (e) {
+      // Continuar con el siguiente selector
     }
   }
+  
+  if (!clearClicked) {
+    console.log('[clearChat] ⚠ No se encontró la opción "Vaciar chat"');
+    return;
+  }
+  
+  // Confirmar la limpieza
+  await page.waitForTimeout(300);
+  
+  const confirmSelectors = [
+    'div[role="button"]:has-text("Vaciar")',
+    'button:has-text("Vaciar")',
+    'div[role="button"]:has-text("Clear")',
+    'button:has-text("Clear")'
+  ];
+  
+  for (const s of confirmSelectors) {
+    try {
+      const conf = page.locator(s).first();
+      const isVisible = await conf.isVisible({ timeout: 1000 }).catch(() => false);
+      
+      if (isVisible) {
+        console.log(`[clearChat] ✓ Confirmación encontrada, limpiando chat...`);
+        await conf.click();
+        await page.waitForTimeout(800);
+        console.log('[clearChat] ✅ Chat limpiado exitosamente');
+        return;
+      }
+    } catch (e) {
+      // Continuar
+    }
+  }
+  
+  console.log('[clearChat] ⚠ No se encontró botón de confirmación');
 }
 
 export async function typeIntoComposer(page: Page, text: string) {
