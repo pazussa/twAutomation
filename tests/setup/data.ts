@@ -47,39 +47,168 @@ export const CFG = {
   }
 } as const;
 
-export const VARS: Record<string, string> = {
-  active_matter_name: process.env.VAR_ACTIVE_MATTER_NAME || 'diflufenican',
-  amount_harvested: process.env.VAR_AMOUNT_HARVESTED || '8500',
-  applied_dose: process.env.VAR_APPLIED_DOSE || '180',
-  brand: process.env.VAR_BRAND || 'Bayer',
-  chemical_product_name: process.env.VAR_CHEMICAL_PRODUCT_NAME || 'fungicida epoxiconazol',
-  client: process.env.VAR_CLIENT || 'AgroMartín SL',
-  client_name: process.env.VAR_CLIENT_NAME || 'Automatización Clnt',
-  composition: process.env.VAR_COMPOSITION || 'consumo humano',
-  crop_name: process.env.VAR_CROP_NAME || 'cebada',
-  depth: process.env.VAR_DEPTH || '25',
-  destination: process.env.VAR_DESTINATION || 'consumo',
-  farm_name: process.env.VAR_FARM_NAME || 'prueba',
-  fertilizer_name: process.env.VAR_FERTILIZER_NAME || 'Nitrofoska',
-  field_name: process.env.VAR_FIELD_NAME || 'campo',
-  form_type: process.env.VAR_FORM_TYPE || 'líquido',
-  fuel_used: process.env.VAR_FUEL_USED || '45.5',
-  general_dose: process.env.VAR_GENERAL_DOSE || '300',
-  manufacturer_name: process.env.VAR_MANUFACTURER_NAME || 'Adama',
-  mode_of_action: process.env.VAR_MODE_OF_ACTION || 'sistémico',
-  nitrogen_level: process.env.VAR_NITROGEN_LEVEL || '20',
-  nombre_usuario_cliente: process.env.VAR_NOMBRE_USUARIO_CLIENTE || 'Automatización Clnt',
-  price: process.env.VAR_PRICE || '340',
-  product_name: process.env.VAR_PRODUCT_NAME || 'Fungicida carbendazim',
-  search_query: process.env.VAR_SEARCH_QUERY || 'Girasol',
-  target_pest: process.env.VAR_TARGET_PEST || 'mildiu',
-  type_fertilizer: process.env.VAR_TYPE_FERTILIZER || 'granulado',
-  type_work: process.env.VAR_TYPE_WORK || 'SIEMBRA',
-  variety_name: process.env.VAR_VARIETY_NAME || 'rgt covadonga',
-  work_id: process.env.VAR_WORK_ID || '64f1b2c3d4e5f6a7b8c9d0e0',
-  worked_hours: process.env.VAR_WORKED_HOURS || '6.5',
-  price_date: 'hoy',
+// ====== POOLS DE VALORES PARA VARIABLES ALEATORIAS ======
+// Cada variable puede tener múltiples valores, se elige uno aleatoriamente en cada uso
 
+const VAR_POOLS = {
+  active_matter_name: [
+    'diflufenican', 'glifosato', 'abamectina', 'cipermetrina', 'azufre',
+    'mancozeb', 'clorotalonil', 'tebuconazol', 'imidacloprid', 'lambda-cihalotrina',
+    'tiametoxam', 'deltametrina', 'carbendazim', 'epoxiconazol', 'fluazifop-p-butil'
+  ],
+  amount_harvested: ['8500', '7200', '9100', '6800', '10500', '5900', '11200', '7800', '9500', '8200'],
+  applied_dose: ['180', '200', '150', '220', '170', '190', '210', '160', '230', '175'],
+  brand: [
+    'Bayer', 'Syngenta', 'BASF', 'Corteva', 'FMC',
+    'Nufarm', 'Adama', 'UPL', 'Sumitomo', 'Arysta'
+  ],
+  chemical_product_name: [
+    'fungicida epoxiconazol',
+    'herbicida glifosato',
+    'insecticida clorpirifos',
+    'fungicida carbendazim',
+    'herbicida fluazifop-p-butil',
+    'acaricida abamectina',
+    'fungicida tebuconazol',
+    'insecticida lambda-cihalotrina',
+    'herbicida 2,4-d',
+    'fungicida mancozeb',
+    'insecticida imidacloprid',
+    'herbicida metolacloro',
+    'fungicida azoxistrobina',
+    'insecticida bifentrina',
+    'herbicida atrazina'
+  ],
+  client: [
+    'AgroMartín SL', 'AgroTalavera', 'Finca Los Olivos', 'Agrícola San José', 'El Cortijo',
+    'La Dehesa', 'Cooperativa del Norte', 'Agropecuaria Sur', 'Finca Santa María', 'Campos Verdes SA'
+  ],
+  client_name: [
+    'Automatización Clnt', 'Cliente Prueba', 'Usuario Test',
+    'Juan Pérez', 'María García', 'Pedro Sánchez', 'Ana López'
+  ],
+  composition: ['consumo humano', 'pienso animal', 'uso industrial', 'biocombustible', 'semilla'],
+  crop_name: [
+    'cebada', 'trigo blando', 'girasol', 'maíz', 'avena',
+    'trigo duro', 'colza', 'soja', 'guisante', 'lenteja',
+    'garbanzo', 'veza', 'centeno', 'sorgo', 'arroz'
+  ],
+  depth: ['25', '30', '20', '35', '28', '22', '32', '27', '18', '40'],
+  destination: ['consumo', 'pienso', 'industrial', 'semilla'],
+  farm_name: [
+    'prueba', 'finca norte', 'campo sur', 'lote 1',
+    'terreno este', 'parcela oeste', 'finca central', 'campo alto',
+    'la vega', 'el prado', 'la sierra', 'los olivares'
+  ],
+  fertilizer_name: [
+    'Nitrofoska', 'Urea 46%', 'NPK 15-15-15', 'Sulfato amónico', 'MAP',
+    'DAP', 'Nitrato amónico', 'Superfosfato', 'Cloruro potásico', 'NPK 8-15-15',
+    'Nitrato de calcio', 'Sulfato de zinc', 'Quelato de hierro'
+  ],
+  field_name: [
+    'campo', 'parcela A', 'lote 3', 'terreno norte',
+    'sector B', 'parcela 12', 'campo bajo', 'lote este',
+    'terreno sur', 'parcela nueva', 'campo viejo', 'sector 4'
+  ],
+  form_type: ['líquido', 'granulado', 'polvo', 'emulsión', 'suspensión', 'soluble', 'microgranulado'],
+  fuel_used: ['45.5', '38.2', '52.7', '41.3', '48.9', '35.8', '50.2', '43.6', '47.1', '39.5'],
+  general_dose: ['300', '250', '350', '280', '320', '270', '330', '290', '310', '260'],
+  manufacturer_name: [
+    'Adama', 'Bayer CropScience', 'Helm AG', 'DuPont', 'Nufarm',
+    'Syngenta', 'BASF Agro', 'FMC Corporation', 'Corteva Agriscience', 'UPL Limited',
+    'Sumitomo Chemical', 'Arysta LifeScience', 'Monsanto', 'Dow AgroSciences'
+  ],
+  mode_of_action: ['sistémico', 'contacto', 'traslocación', 'fumigante', 'ingestión', 'inhibidor'],
+  nitrogen_level: ['20', '15', '25', '18', '22', '12', '28', '16', '24', '19'],
+  nombre_usuario_cliente: [
+    'Automatización Clnt', 'Usuario Prueba', 'Test User',
+    'Admin Test', 'Operador 1', 'Usuario Demo'
+  ],
+  price: ['340', '285', '420', '310', '375', '260', '395', '325', '450', '290', '365', '305'],
+  product_name: [
+    'Fungicida carbendazim',
+    'Herbicida glifosato',
+    'Insecticida clorpirifos',
+    'Fungicida epoxiconazol',
+    'Acaricida abamectina',
+    'Herbicida 2,4-d',
+    'Fungicida tebuconazol',
+    'Insecticida lambda-cihalotrina',
+    'Herbicida atrazina',
+    'Fungicida mancozeb'
+  ],
+  search_query: [
+    'Girasol', 'Trigo', 'Cebada', 'Maíz', 'Avena',
+    'Colza', 'Soja', 'Guisante', 'Lenteja', 'Garbanzo'
+  ],
+  target_pest: [
+    'mildiu', 'roya', 'pulgón', 'araña roja', 'oídio',
+    'septoriosis', 'fusarium', 'trips', 'mosca blanca', 'nematodos',
+    'botrytis', 'helmintosporiosis', 'alternaria'
+  ],
+  type_fertilizer: ['granulado', 'líquido', 'soluble', 'microgranulado', 'suspensión'],
+  type_work: ['SIEMBRA', 'COSECHA', 'ABONADO', 'TRATAMIENTO', 'RIEGO', 'LABOREO', 'PODA', 'RECOLECCIÓN'],
+  variety_name: [
+    'rgt covadonga', 'n4h309 e', 'sin variedad', 'premium', 'tango st',
+    'filon', 'orlogue', 'saratoga', 'pr22d66', 'sy noveo',
+    'es mercury', 'don ricardo', 'arlequín', 'nerea'
+  ],
+  work_id: [
+    '64f1b2c3d4e5f6a7b8c9d0e0', '64f1b2c3d4e5f6a7b8c9d0e1', '64f1b2c3d4e5f6a7b8c9d0e2',
+    '64f1b2c3d4e5f6a7b8c9d0e3', '64f1b2c3d4e5f6a7b8c9d0e4'
+  ],
+  worked_hours: ['6.5', '7.2', '5.8', '8.0', '4.5', '7.5', '6.0', '8.5', '5.0', '9.0'],
+  price_date: ['hoy']
+};
+
+// Función para obtener un valor aleatorio de un pool
+function getRandomFromPool(poolName: keyof typeof VAR_POOLS): string {
+  const pool = VAR_POOLS[poolName];
+  if (!pool || pool.length === 0) return '';
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+// Función para reinicializar todas las variables con valores aleatorios
+export function randomizeAllVars() {
+  for (const varName of Object.keys(VAR_POOLS) as Array<keyof typeof VAR_POOLS>) {
+    VARS[varName] = getRandomFromPool(varName);
+  }
+  console.log('[randomizeAllVars] ✨ Variables aleatorizadas:', VARS);
+}
+
+// Inicializar VARS con valores aleatorios o desde variables de entorno
+export const VARS: Record<string, string> = {
+  active_matter_name: process.env.VAR_ACTIVE_MATTER_NAME || getRandomFromPool('active_matter_name'),
+  amount_harvested: process.env.VAR_AMOUNT_HARVESTED || getRandomFromPool('amount_harvested'),
+  applied_dose: process.env.VAR_APPLIED_DOSE || getRandomFromPool('applied_dose'),
+  brand: process.env.VAR_BRAND || getRandomFromPool('brand'),
+  chemical_product_name: process.env.VAR_CHEMICAL_PRODUCT_NAME || getRandomFromPool('chemical_product_name'),
+  client: process.env.VAR_CLIENT || getRandomFromPool('client'),
+  client_name: process.env.VAR_CLIENT_NAME || getRandomFromPool('client_name'),
+  composition: process.env.VAR_COMPOSITION || getRandomFromPool('composition'),
+  crop_name: process.env.VAR_CROP_NAME || getRandomFromPool('crop_name'),
+  depth: process.env.VAR_DEPTH || getRandomFromPool('depth'),
+  destination: process.env.VAR_DESTINATION || getRandomFromPool('destination'),
+  farm_name: process.env.VAR_FARM_NAME || getRandomFromPool('farm_name'),
+  fertilizer_name: process.env.VAR_FERTILIZER_NAME || getRandomFromPool('fertilizer_name'),
+  field_name: process.env.VAR_FIELD_NAME || getRandomFromPool('field_name'),
+  form_type: process.env.VAR_FORM_TYPE || getRandomFromPool('form_type'),
+  fuel_used: process.env.VAR_FUEL_USED || getRandomFromPool('fuel_used'),
+  general_dose: process.env.VAR_GENERAL_DOSE || getRandomFromPool('general_dose'),
+  manufacturer_name: process.env.VAR_MANUFACTURER_NAME || getRandomFromPool('manufacturer_name'),
+  mode_of_action: process.env.VAR_MODE_OF_ACTION || getRandomFromPool('mode_of_action'),
+  nitrogen_level: process.env.VAR_NITROGEN_LEVEL || getRandomFromPool('nitrogen_level'),
+  nombre_usuario_cliente: process.env.VAR_NOMBRE_USUARIO_CLIENTE || getRandomFromPool('nombre_usuario_cliente'),
+  price: process.env.VAR_PRICE || getRandomFromPool('price'),
+  product_name: process.env.VAR_PRODUCT_NAME || getRandomFromPool('product_name'),
+  search_query: process.env.VAR_SEARCH_QUERY || getRandomFromPool('search_query'),
+  target_pest: process.env.VAR_TARGET_PEST || getRandomFromPool('target_pest'),
+  type_fertilizer: process.env.VAR_TYPE_FERTILIZER || getRandomFromPool('type_fertilizer'),
+  type_work: process.env.VAR_TYPE_WORK || getRandomFromPool('type_work'),
+  variety_name: process.env.VAR_VARIETY_NAME || getRandomFromPool('variety_name'),
+  work_id: process.env.VAR_WORK_ID || getRandomFromPool('work_id'),
+  worked_hours: process.env.VAR_WORKED_HOURS || getRandomFromPool('worked_hours'),
+  price_date: 'hoy',
 };
 
 export const DEFAULT_VARS: Readonly<Record<string, string>> = { ...VARS };
@@ -94,9 +223,8 @@ export const withVars = (vars: Record<string, string>) => {
 };
 
 export function resetVarsToDefaults() {
-  for (const [k, v] of Object.entries(DEFAULT_VARS)) {
-    setVar(k, v);
-  }
+  // En lugar de resetear a valores fijos, randomizar de nuevo
+  randomizeAllVars();
 }
 
 export const INTENTS_TEMPLATES = {

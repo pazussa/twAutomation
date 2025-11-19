@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 // Import using explicit .ts so ts-node ESM can resolve the source file
 // We'll lazy import the data module to avoid ESM resolution issues with ts-node.
-let INTENTS_TEMPLATES: any; let INTENTS: any; let VARS: any; let KEYWORD_RULES: any; let setVar: any; let withVars: any; let DEFAULT_VARS: any;
+let INTENTS_TEMPLATES: any; let INTENTS: any; let VARS: any; let KEYWORD_RULES: any; let setVar: any; let withVars: any; let DEFAULT_VARS: any; let VAR_POOLS: any;
 async function loadDataModule() {
   if (!INTENTS_TEMPLATES) {
     // Resolve to .ts when running via ts-node/tsx, or .js when running compiled
@@ -31,6 +31,21 @@ async function loadDataModule() {
     setVar = mod.setVar;
     withVars = mod.withVars;
     DEFAULT_VARS = mod.DEFAULT_VARS;
+    // VAR_POOLS is internal and not exported, so we need to parse the file to get it
+    // For now, we'll read and parse the data.ts file to extract VAR_POOLS
+    try {
+      const dataContent = await fs.readFile(resolvedFile.replace('.js', '.ts'), 'utf8');
+      const poolsMatch = dataContent.match(/const VAR_POOLS\s*=\s*({[\s\S]*?});/);
+      if (poolsMatch) {
+        // Parse the object using eval (safe since it's our own code)
+        VAR_POOLS = eval('(' + poolsMatch[1] + ')');
+      } else {
+        VAR_POOLS = {};
+      }
+    } catch (e) {
+      console.warn('[loadDataModule] No se pudo cargar VAR_POOLS:', e);
+      VAR_POOLS = {};
+    }
   }
 }
 
@@ -417,6 +432,7 @@ function getState() {
   const state = {
     variables: { ...VARS },
     defaultVariables: { ...DEFAULT_VARS },
+    variablePools: VAR_POOLS || {},
     // Enviar INTENTS_TEMPLATES (con {variables}) para el panel de edición
     intents: Object.entries(INTENTS_TEMPLATES as Record<string, string[]>).map(([k, arr]) => ({ name: k, examples: arr })),
     // Enviar INTENTS materializados para ejecución

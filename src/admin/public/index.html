@@ -274,8 +274,17 @@
       const entries = Object.entries(STATE.variables).sort((a,b)=>a[0].localeCompare(b[0]));
       document.getElementById('var-chips').innerHTML = entries.map(([k])=>`<span class="tag" data-var="${k}">{${k}}</span>`).join('');
       entries.forEach(([k,v])=>{
+        // Obtener el pool de valores disponibles para esta variable
+        const pool = STATE.variablePools && STATE.variablePools[k] ? STATE.variablePools[k] : null;
+        const poolInfo = pool && Array.isArray(pool) 
+          ? `<div class="small" style="margin-top:4px; color:var(--muted);">Pool (${pool.length}): ${pool.slice(0, 3).join(', ')}${pool.length > 3 ? ', ...' : ''}</div>`
+          : '';
+        
         const tr = el('tr',{},[
-          el('td',{},k),
+          el('td',{}, [
+            document.createTextNode(k),
+            ...(poolInfo ? [createElementFromHTML(poolInfo)] : [])
+          ]),
           el('td',{},[el('input',{value:v, 'data-var-name':k, oninput:e=>e.target.dataset.dirty='1'})]),
           el('td',{},[
             el('div',{class:'row-actions'},[
@@ -291,6 +300,13 @@
       document.querySelectorAll('[data-var]').forEach(ch=>{
         ch.addEventListener('click',()=> insertAtCursor(currentFocusInput, ch.textContent));
       });
+    }
+    
+    // Helper to create element from HTML string
+    function createElementFromHTML(htmlString) {
+      const div = document.createElement('div');
+      div.innerHTML = htmlString.trim();
+      return div.firstChild;
     }
     async function updateVarRow(name){ 
       const input = document.querySelector(`input[data-var-name="${name}"]`); 
