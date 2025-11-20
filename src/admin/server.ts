@@ -125,7 +125,7 @@ async function persistAddRule(regex: string, action: { type: string; reply?: str
     // Regla especial: __EXTRACT_FIRST_OPTION__ debe tener prioridad 1
     const priority = (action.reply === '__EXTRACT_FIRST_OPTION__') ? 1 : 3;
     ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: ${priority}${intentsStr} },`);
-  } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
+  } else if (action.type === 'END_OK' || action.type === 'END_ERR' || action.type === 'IGNORE') {
     ruleLineParts.push(`  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI added').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`);
   } else {
     throw new Error('Acción no soportada para persistencia');
@@ -181,7 +181,7 @@ async function persistUpdateRule(idx: number, regex: string, action: { type: str
     // Regla especial: __EXTRACT_FIRST_OPTION__ debe tener prioridad 1
     const priority = (action.reply === '__EXTRACT_FIRST_OPTION__') ? 1 : 3;
     newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: 'REPLY', reply: '${(action.reply||'').replace(/'/g, "\\'")}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: ${priority}${intentsStr} },`;
-  } else if (action.type === 'END_OK' || action.type === 'END_ERR') {
+  } else if (action.type === 'END_OK' || action.type === 'END_ERR' || action.type === 'IGNORE') {
     newRuleLine = `  { pattern: /${regEscaped}/i, action: { type: '${action.type}' }, note: '${(note||'UI updated').replace(/'/g, "\\'")}', priority: 1${intentsStr} },`;
   } else {
     throw new Error('Acción no soportada para persistencia');
@@ -660,13 +660,14 @@ app.post('/api/rules', async (req, res) => {
   const act = (() => {
     if (actionType === 'END_OK') return { type: 'END_OK' } as const;
     if (actionType === 'END_ERR') return { type: 'END_ERR' } as const;
+    if (actionType === 'IGNORE') return { type: 'IGNORE' } as const;
     if (actionType === 'REPLY') {
       if (!actionReply) return res.status(400).json({ error: 'reply requerido para action REPLY' });
       return { type: 'REPLY', reply: String(actionReply) } as const;
     }
     return null;
   })();
-  if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, REPLY)' });
+  if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, IGNORE, REPLY)' });
   try {
     await persistAddRule(regex, act as any, note, intents);
     res.json({ ok: true, total: KEYWORD_RULES.length });
@@ -693,10 +694,11 @@ app.put('/api/rules/:idx', async (req, res) => {
   const act = (() => {
     if (actionType === 'END_OK') return { type: 'END_OK' } as const;
     if (actionType === 'END_ERR') return { type: 'END_ERR' } as const;
+    if (actionType === 'IGNORE') return { type: 'IGNORE' } as const;
     if (actionType === 'REPLY') return { type: 'REPLY', reply: String(actionReply) } as const;
     return null;
   })();
-  if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, REPLY)' });
+  if (!act) return res.status(400).json({ error: 'action inválida (permitidos: END_OK, END_ERR, IGNORE, REPLY)' });
   try {
     await persistUpdateRule(idx, regex, act as any, note, intents);
     res.json({ ok: true, total: KEYWORD_RULES.length });

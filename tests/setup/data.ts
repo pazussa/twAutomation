@@ -1253,7 +1253,7 @@ export function randomCrop(): typeof CROPS_POOL[number] {
 
 export const KEYWORD_RULES: Array<{
   pattern: RegExp;
-  action: { type: 'REPLY'; reply: string } | { type: 'END_OK' } | { type: 'END_ERR' } | { type: 'RETRY_EXISTS' };
+  action: { type: 'REPLY'; reply: string } | { type: 'END_OK' } | { type: 'END_ERR' } | { type: 'RETRY_EXISTS' } | { type: 'IGNORE' };
   note: string;
   priority?: number;
   intents?: string[]; // Lista de intents donde aplica esta regla. Si está vacío o undefined, aplica a todos
@@ -1271,8 +1271,10 @@ export const KEYWORD_RULES: Array<{
   { pattern: /(fitosanitario|producto químico|producto) creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fitosanitario/Producto creado exitosamente', priority: 2 },
   { pattern: /(precio (asignado|actualizado|registrado)|asigno un precio|precio fijado)/i, action: { type: 'END_OK' }, note: 'Precio asignado/actualizado exitosamente', priority: 2 },
   
+  // Mensajes que se deben ignorar (no terminan el flujo, solo se ignoran)
+  { pattern: /operaci[óo]n cancelada/i, action: { type: 'IGNORE' }, note: 'Operación cancelada por el usuario (ignorar y continuar)', priority: 2 },
+  
   // Finalizadores de éxito
-  { pattern: /operaci[óo]n cancelada/i, action: { type: 'END_OK' }, note: 'Operación cancelada por el usuario (finalizar como éxito)', priority: 2 },
   { pattern: /creado correctamente|registrado correctamente|guardado correctamente|planificado correctamente|asignado correctamente/i, action: { type: 'END_OK' }, note: 'Creación exitosa', priority: 2 },
   { pattern: /operación completada|proceso finalizado|todo listo|completado exitosamente/i, action: { type: 'END_OK' }, note: 'Operación exitosa', priority: 2 },
   { pattern: /reporte enviado|trabajo reportado/i, action: { type: 'END_OK' }, note: 'Reporte exitoso', priority: 2 },
@@ -1401,6 +1403,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
   { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
   { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: '"g', priority: 2 },
+  { pattern: /H[eé] d[aá]d[oó] d[eé] [aá]lt[aá]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
 ];
 
 export type ActionResult =
@@ -1408,6 +1411,7 @@ export type ActionResult =
   | { type: 'END_OK'; message: string; rawResponse: string }
   | { type: 'END_ERR'; message: string; rawResponse: string }
   | { type: 'RETRY_EXISTS'; message: string; rawResponse: string }
+  | { type: 'IGNORE'; message: string; rawResponse: string }
   | { type: 'UNKNOWN'; message: string; rawResponse: string };
   
   

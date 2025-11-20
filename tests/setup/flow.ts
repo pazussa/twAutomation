@@ -27,7 +27,8 @@ export type Action =
   | { type: 'REPLY'; reply: string }
   | { type: 'END_OK' }
   | { type: 'END_ERR' }
-  | { type: 'RETRY_EXISTS' };
+  | { type: 'RETRY_EXISTS' }
+  | { type: 'IGNORE' };
 
 import { KEYWORD_RULES, extractFirstOption } from './data';
 import { materialize } from './utils';
@@ -276,6 +277,11 @@ export const test = base.extend<WppFixtures>({
             }
             
             continue; 
+          }
+          if (action.type === 'IGNORE') {
+            // Ignorar este mensaje y continuar esperando la siguiente respuesta del bot
+            console.log(`[Flow] 🔇 Mensaje ignorado: "${newMessages.join(' ').substring(0, 80)}..."`);
+            continue;
           }
           if (action.type === 'RETRY_EXISTS') {
             if (!retriedOnExists) { retriedOnExists = true; mutateOneVariableForRetry(); await finishIntent(page, conversation); toSend = starter; continue; }
