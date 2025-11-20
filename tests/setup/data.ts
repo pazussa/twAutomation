@@ -1271,9 +1271,6 @@ export const KEYWORD_RULES: Array<{
   { pattern: /(fitosanitario|producto químico|producto) creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fitosanitario/Producto creado exitosamente', priority: 2 },
   { pattern: /(precio (asignado|actualizado|registrado)|asigno un precio|precio fijado)/i, action: { type: 'END_OK' }, note: 'Precio asignado/actualizado exitosamente', priority: 2 },
   
-  // Mensajes que se deben ignorar (no terminan el flujo, solo se ignoran)
-  { pattern: /operaci[óo]n cancelada/i, action: { type: 'IGNORE' }, note: 'Operación cancelada por el usuario (ignorar y continuar)', priority: 2 },
-  
   // Finalizadores de éxito
   { pattern: /creado correctamente|registrado correctamente|guardado correctamente|planificado correctamente|asignado correctamente/i, action: { type: 'END_OK' }, note: 'Creación exitosa', priority: 2 },
   { pattern: /operación completada|proceso finalizado|todo listo|completado exitosamente/i, action: { type: 'END_OK' }, note: 'Operación exitosa', priority: 2 },
