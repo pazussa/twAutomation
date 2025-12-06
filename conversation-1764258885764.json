@@ -1,0 +1,63 @@
+{
+  "title": "Ejecución missing-19ac5520e70 - Automática",
+  "events": [
+    {
+      "t": 1764258885769,
+      "kind": "intent",
+      "text": "[154/153] searchProducts › Consultar subtipos del cultivo Cebada registrados por Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 154,
+        "total": 153
+      }
+    },
+    {
+      "t": 1764258887964,
+      "kind": "send",
+      "text": "Consultar subtipos del cultivo Cebada registrados por Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764258908302,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764258908302,
+      "kind": "recv",
+      "text": "Cultivo: cebada (Variedad: mallorquina) - Marca: HarvestPlus - Destino: pienso Cultivo: cebada (Variedad: mallorquina) - Marca: HarvestPlus - Destino: pienso.",
+      "ok": true
+    },
+    {
+      "t": 1764258908302,
+      "kind": "recv",
+      "text": "¡Encontré 42 resultado(s) para tu búsqueda de 'cebada'!.",
+      "ok": true
+    },
+    {
+      "t": 1764258908302,
+      "kind": "recv",
+      "text": "Cultivo: cebada (Variedad: rgt orijino) - Marca: HarvestPlus - Destino: pienso Cultivo: cebada (Variedad: rgt orijino) - Marca: HarvestPlus - Destino: pienso.",
+      "ok": true
+    },
+    {
+      "t": 1764258908302,
+      "kind": "recv",
+      "text": "Cultivo: cebada (Variedad: rgt covadonga) - Marca: HarvestPlus - Destino: pienso Cultivo: cebada (Variedad: rgt covadonga) - Marca: HarvestPlus - Destino: pienso.",
+      "ok": true
+    },
+    {
+      "t": 1764258908302,
+      "kind": "recv",
+      "text": "Cultivo: cebada (Variedad: rgt style) - Marca: nufarm - Destino: pienso Cultivo: cebada (Variedad: rgt style) - Marca: nufarm - Destino: pienso.",
+      "ok": true
+    },
+    {
+      "t": 1764258908302,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    }
+  ]
+}

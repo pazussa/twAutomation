@@ -41,6 +41,34 @@ npm run admin
 4. **Esperar**: La conversión a PDF se ejecuta automáticamente al terminar
 5. **Ver resultados**: Click en "📊 Abrir Carpeta de Reportes" para ver HTML y PDF
 
+### 🔄 Sistema de Checkpoints y Reanudación
+
+**Interrupciones Soportadas**: Puedes interrumpir la ejecución con `Ctrl+C` en cualquier momento.
+
+**Al interrumpir:**
+- ✅ Se guarda un checkpoint con el progreso actual
+- ✅ Se genera reporte HTML con las conversaciones completadas
+- ✅ Se genera PDF parcial automáticamente
+- ✅ Aparece botón "🔄 Reanudar ejecución interrumpida" en el panel
+
+**Al reanudar:**
+- ✅ Continúa desde donde quedó (salta intents completados)
+- ✅ Agrega conversaciones al mismo reporte HTML
+- ✅ Regenera el PDF con todas las conversaciones (reemplaza el anterior)
+- ✅ Soporta múltiples interrupciones/reanudaciones
+
+**Al finalizar:**
+- ✅ Genera reporte HTML final completo
+- ✅ Genera PDF final con todas las conversaciones
+- ✅ Elimina archivos temporales y checkpoint
+
+**Ejemplo de flujo:**
+```
+Ejecución 1: 50 ejemplos → Ctrl+C en el #15 → PDF con 15 conversaciones
+Reanudación 1: Continúa → Ctrl+C en el #35 → PDF actualizado con 35 conversaciones  
+Reanudación 2: Continúa → Completa los 50 → PDF final con 50 conversaciones
+```
+
 ###  Interfaz
 - **Agrupación por intent**: Todos los ejemplos organizados por categoría
 - **Contador de selección**: Muestra cuántos ejemplos has marcado

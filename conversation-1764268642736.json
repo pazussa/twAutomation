@@ -1,0 +1,33 @@
+{
+  "title": "Ejecución price-cebada-19ac6525431 - Automática",
+  "events": [
+    {
+      "t": 1764268642740,
+      "kind": "intent",
+      "text": "[113/117] getPriceVariation › Consultar evolución del importe del Cebada asociado a Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 113,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764268644897,
+      "kind": "send",
+      "text": "Consultar evolución del importe del Cebada asociado a Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764268645173,
+      "kind": "recv",
+      "text": "Excepción durante el flujo",
+      "ok": false
+    },
+    {
+      "t": 1764268645173,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    }
+  ]
+}

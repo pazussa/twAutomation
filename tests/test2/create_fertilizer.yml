@@ -34,35 +34,35 @@ nlu:
     - crea fertilizante
     - quiero crear un nuevo fertilizante en el sistema
     - me gustaría crear un fertilizante nuevo
-    - Quiero registrar el [Nitrofoska](fertilizer_name) como fertilizante [granulado](type_fertilizer), del fabricante [FertiMax](brand)
-    - Quiero registrar el fertilizante [Nitrofoska](fertilizer_name) de tipo [granulado](type_fertilizer) de la marca [FertiMax](brand)
-    - Quiero registrar el fertilizante [map monoamónico](fertilizer_name) como [granulado](type_fertilizer) de la marca [mosaic company](brand)
-    - Apúntame un abono [Urea](fertilizer_name) para [consumo humano](composition)
-    - Añade el fertilizante [Triple 15](fertilizer_name) de [FertiEspaña](brand)
-    - Necesito dar de alta un abono [orgánico](type_fertilizer) con [alto en nitrógeno](composition)
-    - Registra un nutriente [Sulfato amónico](fertilizer_name) para [pienso](composition)
-    - Crea el fertilizante [NPK 20-10-10](fertilizer_name) marca [AgroPlus](brand)
-    - Me gustaría meter un abono [mineral](type_fertilizer) llamado [Superfosfato](fertilizer_name)
-    - Anota un fertilizante [líquido](type_fertilizer) de [FertiAgro](brand) con fórmula [15-15-15](composition)
-    - Para la finca, crea el abono [Nitram](fertilizer_name) de tipo [granulado](type_fertilizer)
-    - Dar de alta un corrector [Calcimag](fertilizer_name) de [AgroEspaña](brand) con [calcio y magnesio](composition)
-    - Añadir un fertilizante [orgánico](type_fertilizer) [CompoBio](fertilizer_name) para [consumo humano](composition)
-    - Crea un abono [líquido](type_fertilizer) llamado [FertiMax](fertilizer_name) con fórmula [10-5-20](composition)
-    - Registra un nutriente [Urea](fertilizer_name) para [industria](composition) marca [CampoFértil](brand)
-    - Meter un fertilizante [granulado](type_fertilizer) [Superfosfato](fertilizer_name)
-    - Dar de alta un abono [orgánico](type_fertilizer) de [BioCampo](brand)
-    - Crear fertilizante [NPK 12-12-17](fertilizer_name) marca [AgroFert](brand)
-    - Apuntar un nutriente [Fosfato diamónico](fertilizer_name) para [consumo humano](composition)
-    - Añade fertilizante [Nitrofoska](fertilizer_name) para [aceite](composition)
-    - Registra un abono [Triple 15](fertilizer_name) de [AgroFert](brand) con fórmula [15-15-15](composition)
-    - Crea fertilizante [Urea](fertilizer_name) marca [CampoVerde](brand)
-    - Perdona, la marca del abono es [FertiMax](brand)
-    - Me refería al tipo de fertilizante [orgánico](type_fertilizer)
-    - Cambia la fórmula del nutriente a [20-10-10](composition)
-    - Para el cliente [AgroCampos SL](client), registra fertilizante [NPK 15-15-15](fertilizer_name)
-    - Cliente [Finca Los Olivos](client), dar de alta abono [Superfosfato](fertilizer_name) [granulado](type_fertilizer)
-    - Añadir para [AgroExport SA](client) el fertilizante [Nitram](fertilizer_name) [mineral](type_fertilizer)
-    - Registrar para [Cooperativa del Campo](client) un nutriente [Urea](fertilizer_name) para [pienso](composition)
-    - Crear abono [líquido](type_fertilizer) [FertiAgro](fertilizer_name) para [consumo humano](composition)
-    - Apúntame un corrector [Calcimag](fertilizer_name) de [AgroEspaña](brand)
-    - Dar de alta un fertilizante [Sulfato potásico](fertilizer_name) [granulado](type_fertilizer)
+    - Quiero registrar el {fertilizer_name} como fertilizante {type_fertilizer}, del fabricante {brand}
+    - Quiero registrar el fertilizante {fertilizer_name} de tipo {type_fertilizer} de la marca {brand}
+    - Quiero registrar el fertilizante {fertilizer_name} como {type_fertilizer} de la marca {brand}
+    - Apúntame un abono {fertilizer_name} para {composition}
+    - Añade el fertilizante {fertilizer_name} de {brand}
+    - Necesito dar de alta un abono {type_fertilizer} con {composition}
+    - Registra un nutriente {fertilizer_name} para {composition}
+    - Crea el fertilizante {fertilizer_name} marca {brand}
+    - Me gustaría meter un abono {type_fertilizer} llamado {fertilizer_name}
+    - Anota un fertilizante {type_fertilizer} de {brand} con fórmula {composition}
+    - Para la finca, crea el abono {fertilizer_name} de tipo {type_fertilizer}
+    - Dar de alta un corrector {fertilizer_name} de {brand} con {composition}
+    - Añadir un fertilizante {type_fertilizer} {fertilizer_name} para {composition}
+    - Crea un abono {type_fertilizer} llamado {fertilizer_name} con fórmula {composition}
+    - Registra un nutriente {fertilizer_name} para {composition} marca {brand}
+    - Meter un fertilizante {type_fertilizer} {fertilizer_name}
+    - Dar de alta un abono {type_fertilizer} de {brand}
+    - Crear fertilizante {fertilizer_name} marca {brand}
+    - Apuntar un nutriente {fertilizer_name} para {composition}
+    - Añade fertilizante {fertilizer_name} para {composition}
+    - Registra un abono {fertilizer_name} de {brand} con fórmula {composition}
+    - Crea fertilizante {fertilizer_name} marca {brand}
+    - Perdona, la marca del abono es {brand}
+    - Me refería al tipo de fertilizante {type_fertilizer}
+    - Cambia la fórmula del nutriente a {composition}
+    - Para el cliente {client}, registra fertilizante {fertilizer_name}
+    - Cliente {client}, dar de alta abono {fertilizer_name} {type_fertilizer}
+    - Añadir para {client} el fertilizante {fertilizer_name} {type_fertilizer}
+    - Registrar para {client} un nutriente {fertilizer_name} para {composition}
+    - Crear abono {type_fertilizer} {fertilizer_name} para {composition}
+    - Apúntame un corrector {fertilizer_name} de {brand}
+    - Dar de alta un fertilizante {fertilizer_name} {type_fertilizer}

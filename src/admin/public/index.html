@@ -113,8 +113,10 @@
         <div class="small" style="margin-bottom:8px;">Define los comandos del usuario. Cada intent agrupa frases ejemplo que el bot debe reconocer.</div>
         <div class="execute-bar">
           <button type="button" id="btn-execute-selected">▶ Ejecutar seleccionados</button>
+          <button type="button" id="btn-pause-execution" style="display:none; background:#d97706;">⏸ Pausar ejecución</button>
           <button type="button" class="outline" id="btn-open-reports" title="Abrir carpeta de reportes">📊 Reportes</button>
           <span class="small" id="selected-count" style="margin-left:auto;">0 ejemplos seleccionados</span>
+          <span class="small" id="execution-status" style="margin-left:8px; color:#059669; font-weight:600;"></span>
         </div>
         <div class="execute-bar" style="margin-top:6px; gap:4px;">
           <button type="button" class="outline" id="btn-select-all" title="Seleccionar todos los intents">✅ Seleccionar todo</button>
@@ -1313,15 +1315,57 @@
         const r = await fetch('/api/execution-status');
         const status = await r.json();
         const btn = document.getElementById('btn-execute-selected');
+        const pauseBtn = document.getElementById('btn-pause-execution');
+        const executionStatus = document.getElementById('execution-status');
         
-        if(status.isExecuting) {
+        if(status.isPostProcessing) {
+          // Generando reporte/PDF
+          btn.disabled = true;
+          btn.textContent = '📄 Generando reporte...';
+          btn.style.opacity = '0.6';
+          pauseBtn.style.display = 'none';
+          executionStatus.innerHTML = `<span class="ok">📄 Generando reporte y PDF...</span>`;
+        } else if(status.isPausing) {
+          // Se está pausando
+          btn.disabled = true;
+          btn.textContent = '💾 Guardando checkpoint...';
+          btn.style.opacity = '0.6';
+          pauseBtn.style.display = 'inline-block';
+          pauseBtn.style.background = '#9333ea';
+          pauseBtn.textContent = '💾 Pausando...';
+          pauseBtn.disabled = true;
+          executionStatus.innerHTML = `<span class="ok">💾 Guardando progreso...</span>`;
+        } else if(status.isExecuting) {
+          // Hay ejecución en curso
           btn.disabled = true;
           btn.textContent = '⏳ Ejecutando... (ver terminal)';
           btn.style.opacity = '0.6';
+          pauseBtn.style.display = 'inline-block';
+          pauseBtn.style.background = '#d97706';
+          pauseBtn.textContent = '⏸ Pausar ejecución';
+          pauseBtn.disabled = false;
+          executionStatus.innerHTML = `<span class="ok">✓ Ejecutando...</span>`;
         } else {
           btn.disabled = false;
           btn.textContent = '▶ Ejecutar seleccionados';
           btn.style.opacity = '1';
+          
+          // Mostrar botón de reanudar si hay checkpoint
+          if(status.checkpoint && status.checkpoint.exists) {
+            pauseBtn.style.display = 'inline-block';
+            pauseBtn.style.background = '#059669';
+            pauseBtn.textContent = '▶ Reanudar ejecución';
+            pauseBtn.disabled = false;
+            const progress = status.checkpoint.totalProcessed;
+            const total = status.checkpoint.totalExamples;
+            const remaining = total - progress;
+            const interruptions = status.checkpoint.interruptionCount || 0;
+            const interruptText = interruptions > 0 ? ` (${interruptions} pausas)` : '';
+            executionStatus.innerHTML = `<span class="warn">⏸ ${remaining} pendientes (${progress}/${total})${interruptText}</span>`;
+          } else {
+            pauseBtn.style.display = 'none';
+            executionStatus.textContent = '';
+          }
         }
       } catch(err) {
         console.error('Error verificando estado:', err);
@@ -1400,6 +1444,91 @@
         alert('Error de red: ' + err.message);
         btn.disabled = false;
         btn.textContent = '▶ Ejecutar seleccionados';
+      }
+    });
+
+    // Botón para pausar/reanudar ejecución
+    document.getElementById('btn-pause-execution').addEventListener('click', async () => {
+      const pauseBtn = document.getElementById('btn-pause-execution');
+      const isPaused = pauseBtn.textContent.includes('▶');
+      
+      if (isPaused) {
+        // Reanudar
+        const confirmed = confirm(
+          '▶ Reanudar Ejecución\n\n' +
+          'Se continuará desde donde quedó pausada.\n\n' +
+          '¿Deseas continuar?'
+        );
+        
+        if (!confirmed) return;
+        
+        pauseBtn.disabled = true;
+        pauseBtn.textContent = '⏳ Reanudando...';
+        
+        try {
+          const r = await fetch('/api/execute', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ resumeFromCheckpoint: true })
+          });
+          
+          const result = await r.json();
+          
+          if(r.ok) {
+            pauseBtn.disabled = false;
+            pauseBtn.style.background = '#d97706';
+            pauseBtn.textContent = '⏸ Pausar ejecución';
+            document.getElementById('execution-status').innerHTML = `<span class="ok">✓ Ejecutando...</span>`;
+            
+            // Polling de estado
+            checkExecutionStatus();
+          } else {
+            alert('Error al reanudar: ' + (result.error || r.status));
+            pauseBtn.disabled = false;
+            pauseBtn.textContent = '▶ Reanudar ejecución';
+          }
+        } catch(err) {
+          alert('Error de red: ' + err.message);
+          pauseBtn.disabled = false;
+          pauseBtn.textContent = '▶ Reanudar ejecución';
+        }
+      } else {
+        // Pausar
+        const confirmed = confirm(
+          '⏸ Pausar Ejecución\n\n' +
+          'Se guardará el progreso y podrás reanudar después.\n\n' +
+          '¿Deseas pausar?'
+        );
+        
+        if (!confirmed) return;
+        
+        pauseBtn.disabled = true;
+        pauseBtn.textContent = '💾 Pausando...';
+        
+        try {
+          const r = await fetch('/api/pause-execution', {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'}
+          });
+          
+          const result = await r.json();
+          
+          if(r.ok) {
+            // No cambiar el estado del botón aquí - dejar que checkExecutionStatus lo maneje
+            console.log('✅ Pausa solicitada correctamente');
+          } else if(r.status === 409) {
+            // Ya se está pausando - no hacer nada, solo log
+            console.log('⏳ Ya se está pausando la ejecución...');
+          } else {
+            alert('Error al pausar: ' + (result.error || r.status));
+            pauseBtn.disabled = false;
+            pauseBtn.textContent = '⏸ Pausar ejecución';
+          }
+        } catch(err) {
+          alert('Error de red: ' + err.message);
+          pauseBtn.disabled = false;
+          pauseBtn.textContent = '⏸ Pausar ejecución';
+        }
       }
     });
 

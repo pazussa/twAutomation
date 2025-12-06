@@ -1,0 +1,21 @@
+{
+  "title": "Ejecución price-cebada-19ac6525431 - Automática",
+  "events": [
+    {
+      "t": 1764268690867,
+      "kind": "intent",
+      "text": "[1/117] getLastPrice › Hola Luca, cuál es el último precio de Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764268693036,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio de Cebada?",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Ignorar todo el contenido de la papelera
+*
+# Excepto este archivo
+!.gitignore

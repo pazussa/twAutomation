@@ -34,48 +34,48 @@ nlu:
     - crea cultivo
     - quiero crear un nuevo cultivo en el sistema
     - me gustaría crear un cultivo nuevo
-    - Luca, registra cultivo [maíz](crop_name), variedad [amarillo costeño](variety_name), destino [consumo](destination), marca [AgroCol](brand) y cliente [Juan Pérez](client).
-    - Guardar cultivo [papa](crop_name), variedad [criolla](variety_name), destino [exportación](destination), marca [Papandina](brand).
-    - Luca, registra cultivo [tomate](crop_name), destino [exportación](destination), marca [Tomafresh](brand).
-    - Luca, agrega cultivo [avena](crop_name), variedad [civada negra](variety_name), destino [consumo](destination), marca [Yucasol](brand) para cliente [Juan Andres Perez](client).
-    - Hola LUCA, registrar cultivo [zanahoria](crop_name), variedad [carvejo](variety_name), destino [consumo](destination), marca [parda](brand) para el cliente [Abastores del norte](client)
-    - Guardar cultivo [arroz](crop_name), variedad [meco](variety_name), destino [pienso](destination), marca [Roa](brand) para el cliente [Emma Dubois](client)
-    - Guardar cultivo [arroz](crop_name), variedad [meco](variety_name), destino [pienso](destination), marca [Roa](brand), para el cliente [Emma Dubois](client)
-    - Guardar cultivo [arroz](crop_name), variedad [meco](variety_name), destino [pienso](destination), marca [Roa](brand) con el cliente [Emma Dubois Martin](client)
-    - Necesito guardar cultivo [arroz](crop_name), variedad [castore](variety_name), destino [pienso](destination), marca [Legumax](brand) y el cliente [Emma Dubois](client)
-    - Luca, agrega cultivo [arros](crop_name), variedad [meco](variety_name), destino [consumo](destination), marca [Yucasol](brand) cliente [Emma Dubois](client)
-    - Luca, agrega cultivo [arroz](crop_name), variedad [meco](variety_name), destino [consumo](destination), marca [Yucasol](brand) con cliente [Emma Dubois](client)
-    - Hola LUCA, registrar cultivo [zanahoria](crop_name), variedad [carvejo](variety_name), destino [consumo](destination), marca [parda](brand) para el cliente [Abastores del norte](client)
-    - Guardar cultivo [arroz](crop_name), variedad [meco](variety_name), destino [pienso](destination), marca [Roa](brand) para el cliente [Emma Dubois](client)
-    - Guardar cultivo [arroz](crop_name), variedad [meco](variety_name), destino [pienso](destination), marca [Roa](brand), para el cliente [Emma Dubois](client)
-    - Guardar cultivo [arroz](crop_name), variedad [meco](variety_name), destino [pienso](destination), marca [Roa](brand) con el cliente [Emma Dubois Martin](client)
-    - Necesito guardar cultivo [arroz](crop_name), variedad [castore](variety_name), destino [pienso](destination), marca [Legumax](brand) y el cliente [Emma Dubois](client)
-    - Luca, agrega cultivo [arros](crop_name), variedad [meco](variety_name), destino [consumo](destination), marca [Yucasol](brand) cliente [Emma Dubois](client)
-    - Luca, agrega cultivo [arroz](crop_name), variedad [meco](variety_name), destino [consumo](destination), marca [Yucasol](brand) con cliente [Emma Dubois](client)
-    - Hola luca, queiro crear el cultivo [arroz](crop_name) con variedad [meco](variety_name) con destino [consumo](destination) y marca [Yucasol](brand) con el cliente [Emma Dubois](client)
-    - luca, me puedes registrar el cultivo [trigo](crop_name) con variedad [trigo filon tri](variety_name) con destino [consumo](destination) y marca [Yucasol](brand) con el cliente [Emma Dubois](client)
-    - luca, quiero regiatrar el cultivo [arroz](crop_name), variedad [meco](variety_name), destino [consumo](destination), marca [Yucasol](brand) con cliente [Emma Dubois](client)
-    - hola luca, agregame el cultivo [papa](crop_name), variedad [parda de oro](variety_name), destino [consumo](destination), marca [Yucasol](brand) con cliente [Emma Dubois](client)
-    - Luca registrar cultivo [maíz](crop_name), variedad [amarillo costeño](variety_name), destino [pienso](destination), marca [AgroCol](brand) con cliente [Carlos Gómez](client)
-    - Guardar cultivo [papa](crop_name), variedad [criolla sabanera](variety_name), destino [consumo](destination), marca [Papandina](brand) cliente [Almacenes Unidos](client)
-    - Hola luca, mete cultivo [trigo](crop_name), variedad [filón blanco](variety_name), destino [exportación](destination), marca [GranoFino](brand) para cliente [Luis Morales](client)
-    - Luca, agregá cultivo [arroz](crop_name) con variedad [meco](variety_name), destino [pienso](destination), marca [Roa](brand), cliente [Emma Dubois](client)
-    - Luca quiero guardar cultivo [soya](crop_name) variedad [verde clara](variety_name) destino [consumo](destination) marca [Legumax](brand) con cliente [Don Mario](client)
-    - Agregame cultivo [arros](crop_name), variedad [meco](variety_name), destino [pienso](destination), marca [Yucasol](brand), cliente [Emma Dubois](client)
-    - Necesito registrar cultivo [papa](crop_name), variedad [pastusa](variety_name), destino [exportación](destination), marca [Papandina](brand) con cliente [Carlos Ruiz](client)
-    - Luca, mete cultivo [yuca](crop_name), variedad [blanca criolla](variety_name), destino [consumo](destination), marca [AgroYuca](brand) cliente [Supermercado La 14](client)
-    - Guardar cultivo [cebada](crop_name), variedad [andina](variety_name), destino [pienso](destination), marca [CervesaCol](brand) para el cliente [Cervecería Bogotá](client)
-    - Hola Luca, quiero registrar cultivo [arros](crop_name), variedad [meco](variety_name), destino [consumo](destination), marca [Yucasol](brand) cliente [Emma Dubois](client)
-    - Luca, apúntame cultivo [maiz](crop_name) variedad [dulce amarillo](variety_name) destino [exportación](destination) marca [AgroCol](brand) con cliente [Cooperativa Norte](client)
-    - Guardar cultivo [frijol](crop_name), variedad [rojo cargamanto](variety_name), destino [consumo](destination), marca [Legumax](brand), cliente [Pedro Herrera](client)
-    - Luca registra cultivo [papa](crop_name), variedad [criolla pequeña](variety_name), destino [pienso](destination), marca [Papandina](brand), cliente [Los Andes Ltda](client)
-    - Necesito crear cultivo [arroz](crop_name) con variedad [meco](variety_name), destino [consumo](destination), marca [Yucasol](brand) con cliente [Emma Dubois](client)
-    - Hola luca, guarda cultivo [café](crop_name), variedad [arábigo](variety_name), destino [exportación](destination), marca [Cafeteros](brand) con cliente [Juan Valdez](client)
-    - Luca, quiero meter cultivo [sorgo](crop_name), variedad [blanco común](variety_name), destino [pienso](destination), marca [AgroCol](brand) con cliente [Luis Salazar](client)
-    - Apunta cultivo [trigo](crop_name) con variedad [trigal dorado](variety_name), destino [consumo](destination), marca [PanMolino](brand) cliente [Panadería Central](client)
-    - Guardar cultivo [soya](crop_name), variedad [verde](variety_name), destino [exportación](destination), marca [Legumax](brand), cliente [AgroExport](client)
-    - Luca agrega cultivo [maiz](crop_name), variedad [amarillo duro](variety_name), destino [pienso](destination), marca [AgroCol](brand) para cliente [Juan Pérez](client)
-    - Hola luca, necesito registrar cultivo [tomate](crop_name), variedad [chonto](variety_name), destino [consumo](destination), marca [Tomafresh](brand) con cliente [Restaurantes S.A](client)
+    - Luca, registra cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} y cliente {client}.
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}.
+    - Luca, registra cultivo {crop_name}, destino {destination}, marca {brand}.
+    - Luca, agrega cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para cliente {client}.
+    - Hola LUCA, registrar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para el cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para el cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}, para el cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con el cliente {client}
+    - Necesito guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} y el cliente {client}
+    - Luca, agrega cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} cliente {client}
+    - Luca, agrega cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Hola LUCA, registrar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para el cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para el cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}, para el cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con el cliente {client}
+    - Necesito guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} y el cliente {client}
+    - Luca, agrega cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} cliente {client}
+    - Luca, agrega cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Hola luca, queiro crear el cultivo {crop_name} con variedad {variety_name} con destino {destination} y marca {brand} con el cliente {client}
+    - luca, me puedes registrar el cultivo {crop_name} con variedad {variety_name} con destino {destination} y marca {brand} con el cliente {client}
+    - luca, quiero regiatrar el cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - hola luca, agregame el cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Luca registrar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} cliente {client}
+    - Hola luca, mete cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para cliente {client}
+    - Luca, agregá cultivo {crop_name} con variedad {variety_name}, destino {destination}, marca {brand}, cliente {client}
+    - Luca quiero guardar cultivo {crop_name} variedad {variety_name} destino {destination} marca {brand} con cliente {client}
+    - Agregame cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}, cliente {client}
+    - Necesito registrar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Luca, mete cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para el cliente {client}
+    - Hola Luca, quiero registrar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} cliente {client}
+    - Luca, apúntame cultivo {crop_name} variedad {variety_name} destino {destination} marca {brand} con cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}, cliente {client}
+    - Luca registra cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}, cliente {client}
+    - Necesito crear cultivo {crop_name} con variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Hola luca, guarda cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Luca, quiero meter cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
+    - Apunta cultivo {crop_name} con variedad {variety_name}, destino {destination}, marca {brand} cliente {client}
+    - Guardar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand}, cliente {client}
+    - Luca agrega cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} para cliente {client}
+    - Hola luca, necesito registrar cultivo {crop_name}, variedad {variety_name}, destino {destination}, marca {brand} con cliente {client}
 
 - synonym: consumo
   examples: |

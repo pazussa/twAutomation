@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import fs from 'fs/promises';
+import { statSync } from 'fs';
 
 // ESM dirname emulation early so later helpers can use it
 const __filename = fileURLToPath(import.meta.url);
@@ -529,10 +530,23 @@ app.put('/api/variables/:name', async (req, res) => {
     if (!name) return res.status(400).json({ error: 'name requerido' });
     
     console.log(`[Update Variable] Actualizando variable "${name}" con valor:`, value);
-    await persistUpdateVariable(name, String(value ?? ''));
-    console.log(`[Update Variable] Variable "${name}" actualizada exitosamente`);
     
-    res.json({ ok: true, name, value: VARS[name] });
+    // Detectar si es un pool (array) o variable simple
+    await loadDataModule();
+    const isPool = Object.prototype.hasOwnProperty.call(VAR_POOLS, name);
+    
+    if (isPool) {
+      // Si es un pool, actualizar el pool con un solo valor o array de valores
+      const values = Array.isArray(value) ? value : [String(value ?? '')];
+      await persistUpdateVarPool(name, values);
+      console.log(`[Update Variable] Pool "${name}" actualizado exitosamente con ${values.length} valores`);
+      res.json({ ok: true, name, values: VAR_POOLS[name], isPool: true });
+    } else {
+      // Variable simple
+      await persistUpdateVariable(name, String(value ?? ''));
+      console.log(`[Update Variable] Variable "${name}" actualizada exitosamente`);
+      res.json({ ok: true, name, value: VARS[name], isPool: false });
+    }
   } catch (e: any) { 
     console.error(`[Update Variable] Error:`, e.message);
     res.status(400).json({ error: e.message }); 
@@ -721,54 +735,486 @@ import { spawn } from 'child_process';
 import crypto from 'crypto';
 
 let isExecuting = false;
+let isPostProcessing = false; // Generando PDF después de la ejecución
+let isPausing = false; // Evita pausas múltiples simultáneas
 let currentExecutionId: string | null = null;
+let child: any = null; // Referencia al proceso hijo para poder pausarlo
+
+// Función para procesar archivos conversation-*.json pendientes y generar reportes
+async function processOrphanedConversationFiles(forcedExecutionId?: string, keepFile: boolean = false): Promise<{processed: boolean, htmlPath?: string, eventCount?: number}> {
+  const cwd = path.resolve(__dirname, '../..');
+  let conversationFiles: string[] = [];
+  
+  try {
+    const files = await fs.readdir(cwd);
+    // Buscar archivos de conversación - ahora pueden ser:
+    // - conversation-{executionId}.json (nuevo formato persistente)
+    // - conversation-{timestamp}.json (formato legacy)
+    conversationFiles = files.filter(f => f.startsWith('conversation-') && f.endsWith('.json'));
+    
+    // Si hay un executionId específico, priorizar ese archivo
+    if (forcedExecutionId) {
+      const specificFile = `conversation-${forcedExecutionId}.json`;
+      if (conversationFiles.includes(specificFile)) {
+        conversationFiles = [specificFile];
+      }
+    }
+  } catch (e) {
+    console.warn('[ProcessConversations] ⚠️ Error al buscar archivos:', e);
+    return { processed: false };
+  }
+  
+  if (conversationFiles.length === 0) {
+    return { processed: false };
+  }
+  
+  console.log(`[ProcessConversations] 📝 Procesando ${conversationFiles.length} archivos de conversación...`);
+  
+  // Determinar el executionId: usar el forzado, o extraerlo del nombre del archivo, o del temp-exec
+  let executionId = forcedExecutionId;
+  if (!executionId) {
+    // Intentar extraer del nombre del archivo de conversación (nuevo formato)
+    const execIdMatch = conversationFiles[0]?.match(/conversation-([a-f0-9]{16})\.json/);
+    if (execIdMatch) {
+      executionId = execIdMatch[1];
+    }
+  }
+  if (!executionId) {
+    try {
+      const files = await fs.readdir(cwd);
+      const tempFiles = files.filter(f => f.startsWith('temp-exec-'));
+      if (tempFiles.length > 0) {
+        executionId = tempFiles[0].replace('temp-exec-', '').replace('.json', '');
+      }
+    } catch {}
+  }
+  if (!executionId) {
+    executionId = `orphan-${Date.now()}`;
+  }
+  
+  try {
+    // Leer todos los archivos de conversación y combinarlos
+    const allEvents: any[] = [];
+    for (const file of conversationFiles) {
+      const filePath = path.join(cwd, file);
+      try {
+        const content = await fs.readFile(filePath, 'utf8');
+        const data = JSON.parse(content);
+        if (data.events && Array.isArray(data.events)) {
+          allEvents.push(...data.events);
+        }
+      } catch (e) {
+        console.warn(`[ProcessConversations] ⚠️ Error al leer ${file}:`, e);
+        continue;
+      }
+      
+      // SIEMPRE conservar archivos JSON de conversación
+      console.log(`[ProcessConversations] 💾 Archivo conservado: ${file}`);
+    }
+    
+    if (allEvents.length === 0) {
+      console.log('[ProcessConversations] ⚠️ No hay eventos en los archivos');
+      return { processed: false };
+    }
+    
+    // Generar HTML
+    const htmlPath = path.resolve(__dirname, `../../test-results/conversations/Ejecucion-${executionId}.html`);
+    const htmlDir = path.dirname(htmlPath);
+    await fs.mkdir(htmlDir, { recursive: true });
+    
+    const esc = (s: string) => (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    
+    // Agrupar por intent
+    const groups: Array<{ label: string; idx: number; total: number; events: any[] }> = [];
+    let current: { label: string; idx: number; total: number; events: any[] } | null = null;
+    
+    for (const ev of allEvents) {
+      if (ev.kind === 'intent') {
+        if (current) groups.push(current);
+        current = { 
+          label: ev.text || `Intent ${groups.length + 1}`, 
+          idx: ev.meta?.idx ?? groups.length + 1, 
+          total: ev.meta?.total ?? allEvents.filter(e => e.kind === 'intent').length, 
+          events: [] 
+        };
+        continue;
+      }
+      if (!current) {
+        current = { label: `Intent 1`, idx: 1, total: 1, events: [] };
+      }
+      current.events.push(ev);
+    }
+    if (current) groups.push(current);
+    
+    const groupSummaries = groups.map(g => {
+      const failed = g.events.some(e => e.ok === false);
+      return { ...g, status: failed ? 'fail' : 'ok' };
+    });
+    
+    const intentStats = groupSummaries.map(g => {
+      const intentPhrases = g.events.filter(e => e.kind === 'send' || e.kind === 'recv');
+      const intentPassed = intentPhrases.filter(e => e.ok).length;
+      const intentTotal = intentPhrases.length;
+      const intentSuccessRate = intentTotal > 0 ? ((intentPassed / intentTotal) * 100).toFixed(1) : '0.0';
+      return { ...g, intentPassed, intentTotal, intentSuccessRate };
+    });
+    
+    const totalIntents = groups.length;
+    
+    const groupsHtml = intentStats.map(g => {
+      const rows = g.events.length
+        ? g.events.map((ev: any, i: number) => {
+            const colTime = new Date(ev.t).toLocaleTimeString('es-CO', { 
+              timeZone: 'America/Bogota', 
+              hour: '2-digit', 
+              minute: '2-digit',
+              hour12: false
+            });
+            const tipo = ev.kind === 'send' ? 'Enviado' : ev.kind === 'recv' ? 'Recibido' : 'Intent';
+            const badge = ev.ok ? '<span class="badge ok">OK</span>' : '<span class="badge fail">FAIL</span>';
+            return `<tr data-timestamp="${ev.t}">
+<td class="idx">${i + 1}</td>
+<td class="tipo ${ev.kind}">${tipo}</td>
+<td class="texto">${esc((ev.text || '').replace(/\s+/g, ' ').trim())}</td>
+<td class="time">${colTime}</td>
+<td class="estado">${badge}</td>
+</tr>`;
+          }).join('\n')
+        : '<tr><td colspan="5" style="color:#64748b">Sin eventos en este intent</td></tr>';
+      
+      const chipClass = g.status === 'ok' ? 'ok' : 'fail';
+      const chipText = g.status === 'ok' ? 'OK' : 'FAIL';
+      
+      return `<div class="intent-card">
+<div class="intent-header">
+  <div class="intent-title">${esc(g.label)} <span class="intent-sub">(${g.idx}/${g.total})</span></div>
+  <div class="intent-stats">
+    <span class="chip success-rate">Éxito: ${g.intentSuccessRate}% (${g.intentPassed}/${g.intentTotal})</span>
+    <span class="chip ${chipClass}">${chipText}</span>
+  </div>
+</div>
+<table>
+  <thead><tr>
+    <th>#</th><th>Tipo</th><th>Texto</th><th>Hora</th><th>Resultado</th>
+  </tr></thead>
+  <tbody>${rows}</tbody>
+</table>
+</div>`;
+    }).join('\n');
+    
+    const html = `<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Ejecución ${executionId} - INTERRUMPIDA</title>
+<style>
+:root {
+  --ok: #10b981;
+  --fail: #ef4444;
+  --send: #1d4ed8;
+  --recv: #6b7280;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e5e7eb;
+}
+html,body{background:var(--bg);}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;margin:24px;color:#0f172a;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 3px rgba(0,0,0,.05);padding:18px 20px;margin-bottom:18px;}
+h1{font-size:20px;margin:0 0 4px;}
+.meta{color:#475569;margin:0 0 12px;font-size:14px}
+.summary{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0 0}
+.chip{border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:13px;background:#fff}
+.chip.ok{border-color:var(--ok);color:var(--ok)}
+.chip.fail{border-color:var(--fail);color:var(--fail)}
+.chip.success-rate{border-color:#8b5cf6;color:#8b5cf6;background:rgba(139,92,246,.08)}
+.chip.total-events{border-color:#0ea5e9;color:#0ea5e9;background:rgba(14,165,233,.08)}
+table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px}
+thead th{font-weight:600;text-align:left;color:#334155;border-bottom:1px solid var(--border);padding:8px}
+tbody td{border-top:1px solid var(--border);padding:8px;vertical-align:top}
+td.idx{width:44px;color:#64748b}
+td.tipo.send{color:var(--send);font-weight:600}
+td.tipo.recv{color:var(--recv);font-weight:600}
+td.tipo.intent{color:#7c3aed;font-weight:700}
+td.time{white-space:nowrap;color:#64748b}
+td.texto{white-space:pre-wrap;word-wrap:break-word}
+.badge{display:inline-block;border-radius:8px;padding:2px 8px;font-size:12px;border:1px solid}
+.badge.ok{border-color:var(--ok);color:var(--ok);background:rgba(16,185,129,.08)}
+.badge.fail{border-color:var(--fail);color:var(--fail);background:rgba(239,68,68,.08)}
+.intent-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin:14px 0}
+.intent-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.intent-title{font-weight:700}
+.intent-sub{color:#64748b;font-weight:500;margin-left:6px}
+.intent-stats{display:flex;gap:8px;align-items:center}
+.interrupt-notice{background:#fef3c7;border:2px solid #f59e0b;border-radius:12px;padding:12px 16px;margin-bottom:16px;}
+.interrupt-notice h3{margin:0 0 4px;color:#92400e;font-size:15px;}
+.interrupt-notice p{margin:0;color:#78350f;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="interrupt-notice">
+  <h3>⚠️ Ejecución Interrumpida</h3>
+  <p>Esta ejecución fue interrumpida por el usuario. Los datos mostrados son parciales.</p>
+</div>
+<div class="card">
+  <h1>Ejecución ${executionId} - Interrumpida</h1>
+  <div class="meta">
+    <div><strong>Estado:</strong> Interrumpida por el usuario</div>
+    <div><strong>Eventos registrados:</strong> ${allEvents.length}</div>
+  </div>
+  <div class="summary">
+    <div class="chip total-events">Total Intents: ${totalIntents}</div>
+    <div class="chip ok">Intents OK: ${intentStats.filter(g => g.status === 'ok').length}</div>
+    <div class="chip fail">Intents FAIL: ${intentStats.filter(g => g.status === 'fail').length}</div>
+    <div class="chip success-rate">Éxito: ${totalIntents > 0 ? ((intentStats.filter(g => g.status === 'ok').length / totalIntents) * 100).toFixed(1) : '0.0'}%</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="margin:0 0 8px;font-size:16px">Conversación por intent</h2>
+  ${groupsHtml}
+</div>
+</body>
+</html>`;
+    
+    await fs.writeFile(htmlPath, html, 'utf8');
+    console.log(`[ProcessConversations] ✅ HTML generado: Ejecucion-${executionId}.html (${allEvents.length} eventos, ${totalIntents} intents)`);
+    
+    return { processed: true, htmlPath, eventCount: allEvents.length };
+  } catch (e) {
+    console.error('[ProcessConversations] ❌ Error al generar HTML:', e);
+    return { processed: false };
+  }
+}
+
+// Endpoint para procesar manualmente archivos de conversación pendientes
+app.post('/api/process-conversations', async (_req, res) => {
+  console.log('[API] 📝 Solicitud manual para procesar conversaciones pendientes');
+  const result = await processOrphanedConversationFiles();
+  
+  if (result.processed) {
+    res.json({ 
+      ok: true, 
+      message: `Reporte generado con ${result.eventCount} eventos`,
+      htmlPath: result.htmlPath
+    });
+  } else {
+    res.json({ 
+      ok: false, 
+      message: 'No hay archivos de conversación pendientes' 
+    });
+  }
+});
 
 app.post('/api/execute', async (req, res) => {
   if (isExecuting) {
     return res.status(409).json({ error: 'Ya hay una ejecución en proceso' });
   }
 
-  const { examples } = req.body || {};
-  if (!Array.isArray(examples) || examples.length === 0) {
-    return res.status(400).json({ error: 'Se requiere array de ejemplos' });
+  const { examples, resumeFromCheckpoint } = req.body || {};
+  const cwd = path.resolve(__dirname, '../..');
+  let executionId: string;
+  let tempConfigPath: string | null = null;
+  
+  if (resumeFromCheckpoint) {
+    // MODO REANUDACIÓN: Usar archivos existentes
+    const files = await fs.readdir(cwd);
+    const checkpointFiles = files.filter(f => f.startsWith('checkpoint-'));
+    
+    if (checkpointFiles.length === 0) {
+      return res.status(404).json({ error: 'No hay checkpoint para reanudar' });
+    }
+    
+    // Buscar el temp-exec correspondiente
+    const tempFiles = files.filter(f => f.startsWith('temp-exec-'));
+    if (tempFiles.length === 0) {
+      return res.status(404).json({ error: 'No se encontró configuración de ejecución anterior' });
+    }
+    
+    // Extraer el execution ID del archivo temp-exec
+    const tempFile = tempFiles[0];
+    executionId = tempFile.replace('temp-exec-', '').replace('.json', '');
+    tempConfigPath = path.join(cwd, tempFile);
+    
+    console.log(`[Execution] 🔄 Reanudando ejecución ${executionId} desde checkpoint`);
+  } else {
+    // MODO NUEVA EJECUCIÓN: Limpiar archivos anteriores y crear nuevos
+    if (!Array.isArray(examples) || examples.length === 0) {
+      return res.status(400).json({ error: 'Se requiere array de ejemplos' });
+    }
+    
+    // Mover archivos temp-exec y checkpoint anteriores a papelera en lugar de eliminar
+    console.log('[Execution] 🗑️  Moviendo checkpoints anteriores a papelera...');
+    const files = await fs.readdir(cwd);
+    
+    // Crear carpeta papelera si no existe
+    const trashDir = path.join(cwd, '.trash');
+    await fs.mkdir(trashDir, { recursive: true });
+    
+    // Conservar archivos conversation-*.json (nunca borrar)
+    const pendingConversations = files.filter(f => f.startsWith('conversation-') && f.endsWith('.json'));
+    if (pendingConversations.length > 0) {
+      console.log(`[Execution] 💾 Conservando ${pendingConversations.length} archivos de conversación existentes`);
+    }
+    
+    const oldFiles = files.filter(f => f.startsWith('temp-exec-') || f.startsWith('checkpoint-'));
+    for (const file of oldFiles) {
+      try {
+        const sourcePath = path.join(cwd, file);
+        const destPath = path.join(trashDir, `${Date.now()}-${file}`);
+        await fs.rename(sourcePath, destPath);
+        console.log(`[Execution] ✓ Movido a papelera: ${file}`);
+      } catch (e) {
+        console.warn(`[Execution] ⚠️  No se pudo mover ${file}:`, e);
+      }
+    }
+    
+    // Generar nuevo execution ID
+    executionId = crypto.randomBytes(8).toString('hex');
+    tempConfigPath = path.resolve(__dirname, `../../temp-exec-${executionId}.json`);
+    
+    try {
+      await fs.writeFile(tempConfigPath, JSON.stringify({ examples }, null, 2), 'utf8');
+      console.log(`[Execution] 🆕 Nueva ejecución ${executionId} con ${examples.length} ejemplos`);
+    } catch (e: any) {
+      return res.status(500).json({ error: `Error escribiendo config temporal: ${e.message}` });
+    }
   }
 
-  // Generate execution ID
-  const executionId = crypto.randomBytes(8).toString('hex');
   currentExecutionId = executionId;
 
-  // Save selected examples to temp file
-  const tempConfigPath = path.resolve(__dirname, `../../temp-exec-${executionId}.json`);
-  try {
-    await fs.writeFile(tempConfigPath, JSON.stringify({ examples }, null, 2), 'utf8');
-  } catch (e: any) {
-    return res.status(500).json({ error: `Error escribiendo config temporal: ${e.message}` });
-  }
-
   // Respond immediately
-  res.json({ ok: true, executionId, examples: examples.length });
+  res.json({ 
+    ok: true, 
+    executionId, 
+    examples: resumeFromCheckpoint ? 'Reanudando desde checkpoint' : examples.length 
+  });
+
+  // Limpiar archivo de señal de pausa si existe de ejecuciones anteriores
+  const pauseSignalFile = path.join(cwd, '.pause-signal');
+  await fs.unlink(pauseSignalFile).catch(() => {});
 
   // Start Playwright execution in background
   isExecuting = true;
-  const child = spawn('npx', ['playwright', 'test', 'tests/execute-selected.spec.ts', '--headed'], {
+  const isWindows = process.platform === 'win32';
+  child = spawn('npx', ['playwright', 'test', 'tests/execute-selected.spec.ts', '--headed'], {
     cwd: path.resolve(__dirname, '../..'),
     stdio: 'inherit', // Show output in server terminal
     shell: true, // Required for Windows to find npx.cmd
+    detached: !isWindows, // En Linux/Mac, crear grupo de procesos para poder matar todo el árbol
     env: { 
       ...process.env, 
-      EXEC_CONFIG: tempConfigPath,
       HEADLESS: 'false' // Force headless to false
     }
   });
-
-  child.on('close', async (code) => {
-    isExecuting = false;
-    currentExecutionId = null;
-    console.log(`\n[Execution] Proceso finalizado con código: ${code}`);
+  
+  // Monitorear archivo de señal de auto-save para generar reportes intermedios
+  const autoSaveSignalFile = path.join(cwd, '.autosave-signal');
+  let autoSaveWatcher: ReturnType<typeof setInterval> | null = null;
+  
+  // Limpiar señal de auto-save si existe de ejecuciones anteriores
+  await fs.unlink(autoSaveSignalFile).catch(() => {});
+  
+  // Iniciar monitoreo de señal de auto-save cada 10 segundos
+  autoSaveWatcher = setInterval(async () => {
+    if (!isExecuting) return;
     
-    // Convert HTML reports to PDF automatically (ALWAYS, even if there were errors)
-    console.log(`\n[Execution] 📄 Convirtiendo reportes HTML a PDF...`);
-    const pdfChild = spawn('node', ['scripts/export-report-to-pdf.mjs'], {
+    try {
+      const signalContent = await fs.readFile(autoSaveSignalFile, 'utf8');
+      const signal = JSON.parse(signalContent);
+      
+      console.log(`\n💾 [Auto-Save] Señal recibida - Generando reporte intermedio #${signal.autoSaveCount}...`);
+      
+      // Procesar archivos de conversación para generar reporte intermedio
+      // keepFile = true para NO mover el archivo a .trash (ejecución activa)
+      const result = await processOrphanedConversationFiles(signal.executionId, true);
+      if (result.processed) {
+        console.log(`💾 [Auto-Save] ✅ Reporte intermedio generado con ${result.eventCount} eventos (${signal.totalProcessed}/${signal.totalExamples})`);
+      }
+      
+      // Eliminar señal después de procesarla
+      await fs.unlink(autoSaveSignalFile).catch(() => {});
+    } catch {
+      // No hay señal o error al leer - ignorar
+    }
+  }, 10000); // Verificar cada 10 segundos
+
+  child.on('close', async (code: number | null) => {
+    // Detener monitoreo de auto-save
+    if (autoSaveWatcher) {
+      clearInterval(autoSaveWatcher);
+      autoSaveWatcher = null;
+    }
+    await fs.unlink(autoSaveSignalFile).catch(() => {}); // Limpiar señal si quedó
+    
+    isExecuting = false;
+    isPostProcessing = true; // Iniciar post-procesamiento
+    isPausing = false; // Reset flag de pausa
+    child = null; // Limpiar referencia al proceso
+    const wasInterrupted = code === 130 || code === null; // 130 = SIGINT (pausa UI/Ctrl+C)
+    const executionIdForReport = currentExecutionId || executionId; // Guardar antes de limpiar
+    
+    // Limpiar archivo de señal de pausa
+    const pauseSignalCleanup = path.join(path.resolve(__dirname, '../..'), '.pause-signal');
+    await fs.unlink(pauseSignalCleanup).catch(() => {});
+    
+    console.log(`\n[Execution] Proceso finalizado con código: ${code}${wasInterrupted ? ' (INTERRUMPIDO)' : ''}`);
+    
+    // Wait a bit to ensure files are fully written
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Procesar archivos de conversación pendientes usando la función reutilizable
+    // Si fue interrumpido (pausado), conservar el archivo para poder reanudar
+    const result = await processOrphanedConversationFiles(executionIdForReport, wasInterrupted);
+    if (result.processed) {
+      if (wasInterrupted) {
+        console.log(`[Execution] ⏸️ Reporte generado con ${result.eventCount} eventos (archivo conservado para reanudar)`);
+      } else {
+        console.log(`[Execution] ✅ Reporte generado con ${result.eventCount} eventos`);
+      }
+    }
+    
+    // Find the most recent HTML report (prefer specific execution ID)
+    const conversationsDir = path.resolve(__dirname, '../../test-results/conversations');
+    let latestHtml = null;
+    
+    // Primero intentar buscar el HTML específico de esta ejecución
+    if (executionIdForReport) {
+      const specificHtml = path.join(conversationsDir, `Ejecucion-${executionIdForReport}.html`);
+      try {
+        await fs.access(specificHtml);
+        latestHtml = specificHtml;
+        console.log(`[Execution] 📝 HTML específico encontrado: Ejecucion-${executionIdForReport}.html`);
+      } catch {
+        // No existe, buscar el más reciente
+      }
+    }
+    
+    // Si no hay HTML específico, buscar el más reciente
+    if (!latestHtml) {
+      try {
+        const files = await fs.readdir(conversationsDir);
+        const htmlFiles = files
+          .filter(f => f.endsWith('.html') && f !== 'index.html')
+          .map(f => ({
+            name: f,
+            path: path.join(conversationsDir, f),
+            time: statSync(path.join(conversationsDir, f)).mtimeMs
+          }))
+          .sort((a, b) => b.time - a.time);
+        
+        if (htmlFiles.length > 0) {
+          latestHtml = htmlFiles[0].path;
+          console.log(`[Execution] 📝 HTML más reciente: ${htmlFiles[0].name}`);
+        }
+      } catch (e) {
+        console.warn('[Execution] ⚠️ No se pudo determinar el HTML generado');
+      }
+    }
+    
+    // Convert HTML reports to PDF automatically (ALWAYS, even if there were errors or interrupted)
+    console.log(`\n[Execution] 📄 ${wasInterrupted ? 'Generando PDF parcial (interrumpido)' : 'Convirtiendo reportes HTML a PDF'}...`);
+    const pdfArgs = latestHtml ? ['scripts/export-report-to-pdf.mjs', latestHtml] : ['scripts/export-report-to-pdf.mjs'];
+    const pdfChild = spawn('node', pdfArgs, {
       cwd: path.resolve(__dirname, '../..'),
       stdio: 'inherit',
       env: { ...process.env }
@@ -776,37 +1222,134 @@ app.post('/api/execute', async (req, res) => {
     
     pdfChild.on('close', async (pdfCode) => {
       if (pdfCode === 0) {
-        console.log(`[Execution] ✅ Reportes convertidos a PDF exitosamente`);
+        console.log(`[Execution] ✅ ${wasInterrupted ? 'PDF parcial generado' : 'Reportes convertidos a PDF'} exitosamente`);
+        if (wasInterrupted) {
+          console.log(`[Execution] 💡 Al reanudar, el PDF se actualizará con las nuevas conversaciones`);
+        }
       } else {
         console.warn(`[Execution] ⚠️ Error al convertir reportes a PDF (código ${pdfCode})`);
       }
       
-      // Clean up temp file after PDF conversion
-      try {
-        await fs.unlink(tempConfigPath);
-      } catch (e) {
-        // Silent cleanup - ignore errors
+      isPostProcessing = false; // Post-procesamiento completo
+      currentExecutionId = null;
+      
+      // SIEMPRE conservar temp-exec (nunca borrar)
+      if (tempConfigPath) {
+        console.log(`[Execution] 💾 Archivo temp-exec conservado: ${path.basename(tempConfigPath)}`);
       }
     });
     
-    pdfChild.on('error', (err) => {
+    pdfChild.on('error', async (err) => {
       console.error(`[Execution] ❌ Error al convertir a PDF: ${err.message}`);
-      // Clean up temp file silently
-      fs.unlink(tempConfigPath).catch(() => {});
+      // SIEMPRE conservar archivos (nunca borrar)
     });
   });
 
-  child.on('error', (err) => {
+  child.on('error', (err: Error) => {
     isExecuting = false;
+    isPostProcessing = false;
+    isPausing = false; // Reset flag de pausa
     currentExecutionId = null;
+    child = null; // Limpiar referencia
     console.error(`[Execution] Error en spawn: ${err.message}`);
   });
 });
 
-app.get('/api/execution-status', (_req, res) => {
+app.post('/api/pause-execution', async (_req, res) => {
+  if (!isExecuting) {
+    return res.status(400).json({ error: 'No hay ejecución en curso' });
+  }
+  
+  if (!child) {
+    return res.status(400).json({ error: 'Proceso no encontrado' });
+  }
+  
+  if (isPausing) {
+    return res.status(409).json({ error: 'Ya se está pausando la ejecución' });
+  }
+  
+  console.log('\n[Admin] ⏸ Solicitud de pausa recibida desde interfaz');
+  isPausing = true;
+  
+  try {
+    const cwd = path.resolve(__dirname, '../..');
+    const pauseSignalFile = path.join(cwd, '.pause-signal');
+    
+    // Crear archivo de señal de pausa para que el test lo detecte
+    await fs.writeFile(pauseSignalFile, JSON.stringify({ 
+      timestamp: Date.now(),
+      executionId: currentExecutionId 
+    }), 'utf8');
+    console.log('[Admin] 📄 Archivo de señal de pausa creado');
+    
+    // Dar tiempo al test para detectar la señal (5 segundos)
+    // Si no termina, enviar SIGINT
+    setTimeout(() => {
+      if (child && isExecuting) {
+        console.log('[Admin] ⏰ Timeout - enviando SIGINT al proceso');
+        const pid = child.pid;
+        if (pid) {
+          try {
+            process.kill(-pid, 'SIGINT');
+          } catch (e) {
+            child.kill('SIGINT');
+          }
+        } else {
+          child.kill('SIGINT');
+        }
+      }
+    }, 5000);
+    
+    console.log('[Admin] 💾 El progreso se guardará en checkpoint');
+    
+    res.json({ 
+      ok: true, 
+      message: 'Ejecución pausada. El progreso se está guardando...',
+      executionId: currentExecutionId
+    });
+  } catch (err: any) {
+    console.error('[Admin] Error al pausar:', err);
+    isPausing = false; // Reset flag on error
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/api/execution-status', async (_req, res) => {
+  // Buscar si hay checkpoint pendiente
+  const cwd = path.resolve(__dirname, '../..');
+  let checkpointInfo = null;
+  
+  try {
+    const files = await fs.readdir(cwd);
+    const checkpointFiles = files.filter(f => f.startsWith('checkpoint-'));
+    
+    if (checkpointFiles.length > 0) {
+      const latestCheckpoint = checkpointFiles.sort().reverse()[0];
+      const checkpointPath = path.join(cwd, latestCheckpoint);
+      const checkpointData = JSON.parse(await fs.readFile(checkpointPath, 'utf8'));
+      
+      checkpointInfo = {
+        exists: true,
+        file: latestCheckpoint,
+        totalProcessed: checkpointData.totalProcessed,
+        totalExamples: checkpointData.totalExamples,
+        lastCompletedIntent: checkpointData.lastCompletedIntent,
+        currentIntent: checkpointData.currentIntent,
+        currentExampleIndex: checkpointData.currentExampleIndex,
+        timestamp: checkpointData.timestamp,
+        interruptionCount: checkpointData.interruptionCount || 0
+      };
+    }
+  } catch (err) {
+    console.error('[Checkpoint] Error al buscar checkpoint:', err);
+  }
+  
   res.json({ 
     isExecuting, 
-    executionId: currentExecutionId 
+    isPostProcessing,
+    isPausing,
+    executionId: currentExecutionId,
+    checkpoint: checkpointInfo
   });
 });
 
@@ -855,6 +1398,26 @@ const PORT = Number(process.env.PORT) || 3000;
 const server = app.listen(PORT, async () => {
   console.log(`Admin UI disponible en http://localhost:${PORT}`);
   
+  // Verificar si hay una ejecución en progreso (checkpoint o temp-exec activo) antes de procesar archivos
+  const cwd = path.resolve(__dirname, '../..');
+  const files = await fs.readdir(cwd).catch(() => []);
+  const hasActiveCheckpoint = files.some(f => f.startsWith('checkpoint-') && f.endsWith('.json'));
+  const hasActiveExecution = files.some(f => f.startsWith('temp-exec-') && f.endsWith('.json'));
+  const hasConversationFile = files.some(f => f.startsWith('conversation-') && f.endsWith('.json'));
+  
+  // Proteger si existe CUALQUIER indicador de ejecución activa (OR, no AND)
+  if (hasActiveCheckpoint || hasActiveExecution) {
+    console.log('[Startup] ⏸️  Ejecución pausada detectada - NO se procesan archivos de conversación');
+    console.log('[Startup] ✓ Los archivos se procesarán cuando finalice la ejecución');
+  } else if (hasConversationFile) {
+    // Hay archivo de conversación pero sin checkpoint ni temp-exec
+    // Preguntar al usuario o simplemente no procesarlo automáticamente
+    console.log('[Startup] ⚠️  Archivo de conversación encontrado sin ejecución activa');
+    console.log('[Startup] 💡 Use la interfaz para procesar o descartar el archivo');
+  } else {
+    console.log('[Startup] ✓ No hay archivos pendientes');
+  }
+  
   // Auto-open browser
   const { exec } = await import('child_process');
   const url = `http://localhost:${PORT}`;
@@ -878,4 +1441,46 @@ server.on('error', (err: any) => {
     console.error(`\n[Admin] Error al iniciar el servidor: ${err?.message || err}`);
   }
   process.exit(1);
+});
+
+// Manejador de SIGINT (Ctrl+C) para cerrar gracefully
+let isShuttingDown = false;
+process.on('SIGINT', async () => {
+  if (isShuttingDown) {
+    console.log('\n[Admin] Forzando cierre...');
+    process.exit(1);
+  }
+  
+  isShuttingDown = true;
+  console.log('\n\n[Admin] 🛑 Señal de interrupción recibida (Ctrl+C)');
+  
+  // Si hay una ejecución en progreso o post-procesamiento, esperar
+  if (isExecuting || isPostProcessing) {
+    console.log('[Admin] ⏳ Esperando a que termine la ejecución de tests...');
+    console.log('[Admin] 💡 El reporte HTML y PDF se generarán automáticamente');
+    console.log('[Admin] 💡 Presiona Ctrl+C nuevamente SOLO si es urgente (se perderá el reporte)\n');
+    
+    // Esperar hasta que termine la ejecución Y el post-procesamiento (máximo 20 segundos)
+    const maxWait = 20000;
+    const startWait = Date.now();
+    while ((isExecuting || isPostProcessing) && (Date.now() - startWait) < maxWait) {
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+    
+    if (isExecuting || isPostProcessing) {
+      console.log('[Admin] ⚠️ Tiempo de espera agotado, cerrando de todos modos...');
+    } else {
+      console.log('[Admin] ✅ Ejecución finalizada, reportes generados');
+    }
+  }
+  
+  console.log('[Admin] 👋 Cerrando servidor...\n');
+  server.close(() => {
+    process.exit(0);
+  });
+  
+  // Si el servidor no cierra en 3 segundos, forzar
+  setTimeout(() => {
+    process.exit(0);
+  }, 3000);
 });

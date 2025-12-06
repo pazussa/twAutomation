@@ -1,0 +1,33 @@
+{
+  "title": "Ejecución zzz-requestOtp - Automática",
+  "events": [
+    {
+      "t": 1764275890732,
+      "kind": "intent",
+      "text": "[1/1] requestOtp › enviar otp",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 1
+      }
+    },
+    {
+      "t": 1764275893187,
+      "kind": "send",
+      "text": "enviar otp",
+      "ok": true
+    },
+    {
+      "t": 1764275911946,
+      "kind": "recv",
+      "text": "¡Hola! Para consultar información en Luca, necesitamos confirmar tu identidad. Por favor, revisa tu correo y escribe el código de 6 dígitos que te hemos enviado..",
+      "ok": true
+    },
+    {
+      "t": 1764275911946,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    }
+  ]
+}

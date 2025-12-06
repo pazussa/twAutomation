@@ -1,0 +1,4049 @@
+{
+  "title": "Ejecución price-cebada-19ac6525431 - Automática",
+  "events": [
+    {
+      "t": 1764263897330,
+      "kind": "intent",
+      "text": "[1/117] getLastPrice › Hola Luca, cuál es el último precio de Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263899494,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio de Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764263916531,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764263916531,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764263916531,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764263922866,
+      "kind": "intent",
+      "text": "[2/117] getLastPrice › Luca, dime el precio más reciente del Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 2,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263925031,
+      "kind": "send",
+      "text": "Luca, dime el precio más reciente del Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764263941586,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764263941586,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764263941587,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764263948008,
+      "kind": "intent",
+      "text": "[3/117] getLastPrice › cuánto fue lo último que pagué por Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 3,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263950166,
+      "kind": "send",
+      "text": "cuánto fue lo último que pagué por Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764263967560,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764263967560,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764263967560,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764263974056,
+      "kind": "intent",
+      "text": "[4/117] getLastPrice › cuál fue el último precio registrado del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 4,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263976217,
+      "kind": "send",
+      "text": "cuál fue el último precio registrado del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764263993451,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764263993451,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764263993451,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764263999873,
+      "kind": "intent",
+      "text": "[5/117] getLastPrice › dime el precio actualizado del Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 5,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264002079,
+      "kind": "send",
+      "text": "dime el precio actualizado del Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764264018948,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264018948,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264018948,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264025387,
+      "kind": "intent",
+      "text": "[6/117] getLastPrice › Luca, ¿cuánto costó por última vez el Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 6,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264027548,
+      "kind": "send",
+      "text": "Luca, ¿cuánto costó por última vez el Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764264044361,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264044361,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264044361,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264050786,
+      "kind": "intent",
+      "text": "[7/117] getLastPrice › cuál es el precio más reciente que tengo del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 7,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264053010,
+      "kind": "send",
+      "text": "cuál es el precio más reciente que tengo del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764264069688,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264069688,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264069688,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264076089,
+      "kind": "intent",
+      "text": "[8/117] getLastPrice › quiero saber el último valor de venta de Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 8,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264078262,
+      "kind": "send",
+      "text": "quiero saber el último valor de venta de Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764264095380,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264095380,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264095380,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264101767,
+      "kind": "intent",
+      "text": "[9/117] getLastPrice › Luca, ¿a cómo estuvo el Cebada en la última compra?",
+      "ok": true,
+      "meta": {
+        "idx": 9,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264103956,
+      "kind": "send",
+      "text": "Luca, ¿a cómo estuvo el Cebada en la última compra?",
+      "ok": true
+    },
+    {
+      "t": 1764264121320,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264121320,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264121320,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264127693,
+      "kind": "intent",
+      "text": "[10/117] getLastPrice › ¿A cómo he comprado la última vez Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 10,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264129872,
+      "kind": "send",
+      "text": "¿A cómo he comprado la última vez Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764264146836,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264146836,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264146836,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264153211,
+      "kind": "intent",
+      "text": "[11/117] getLastPrice › Muéstrame el precio más reciente del producto Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 11,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264155372,
+      "kind": "send",
+      "text": "Muéstrame el precio más reciente del producto Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264172803,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264172803,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264172803,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264179215,
+      "kind": "intent",
+      "text": "[12/117] getLastPrice › Quiero consultar el valor actual de la Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 12,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264181424,
+      "kind": "send",
+      "text": "Quiero consultar el valor actual de la Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264197874,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264197874,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264197874,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264204298,
+      "kind": "intent",
+      "text": "[13/117] getLastPrice › Dime cuál es el coste registrado de Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 13,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264206502,
+      "kind": "send",
+      "text": "Dime cuál es el coste registrado de Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264222896,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264222896,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264222896,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264229297,
+      "kind": "intent",
+      "text": "[14/117] getLastPrice › ¿Puedes mostrar el precio actualizado de Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 14,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264231469,
+      "kind": "send",
+      "text": "¿Puedes mostrar el precio actualizado de Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764264248554,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264248554,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264248555,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264254946,
+      "kind": "intent",
+      "text": "[15/117] getLastPrice › Listar el último importe registrado para Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 15,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264257169,
+      "kind": "send",
+      "text": "Listar el último importe registrado para Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264274281,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264274281,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264274281,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264280676,
+      "kind": "intent",
+      "text": "[16/117] getLastPrice › Ver el último coste anotado del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 16,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264282868,
+      "kind": "send",
+      "text": "Ver el último coste anotado del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264299847,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264299847,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264299847,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264306243,
+      "kind": "intent",
+      "text": "[17/117] getLastPrice › Dime el precio reciente del producto Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 17,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264308407,
+      "kind": "send",
+      "text": "Dime el precio reciente del producto Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264356811,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764264356811,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264363258,
+      "kind": "intent",
+      "text": "[18/117] getLastPrice › ¿Cuál es la última tarifa del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 18,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264365462,
+      "kind": "send",
+      "text": "¿Cuál es la última tarifa del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764264383011,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264383011,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264383011,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264389393,
+      "kind": "intent",
+      "text": "[19/117] getLastPrice › Mostrar el importe más reciente registrado para Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 19,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264391599,
+      "kind": "send",
+      "text": "Mostrar el importe más reciente registrado para Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264408626,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264408626,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264408626,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264415038,
+      "kind": "intent",
+      "text": "[20/117] getLastPrice › Kiero ver a cuánto está actualmente la Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 20,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264417243,
+      "kind": "send",
+      "text": "Kiero ver a cuánto está actualmente la Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264459828,
+      "kind": "recv",
+      "text": "Para decirte el precio actual necesito saber en qué país/mercado y en qué unidad lo quieres (€/t, €/q, €/kg, $/bu, etc.)..",
+      "ok": true
+    },
+    {
+      "t": 1764264459828,
+      "kind": "recv",
+      "text": "Fuentes donde puedes consultarlo: lonjas provinciales/comarcales y cooperativas locales; el Observatorio de Precios del Ministerio de Agricultura (MAPA) u organismo equivalente; mercados de futuros (Euronext/MATIF para Europa, CBOT para EE. UU.); y plataformas/servicios de información de cereales o brokers del sector..",
+      "ok": true
+    },
+    {
+      "t": 1764264459828,
+      "kind": "recv",
+      "text": "Nota rápida de conversión: si tienes €/t, divide entre 10 para obtener €/q (100 kg) y entre 1.000 para €/kg; si tienes una cifra en otra unidad/moneda, dímela y te la convierto. ¿Qué mercado/unidad prefieres que consulte o quieres que convierta un precio que tengas?.",
+      "ok": true
+    },
+    {
+      "t": 1764264459831,
+      "kind": "send",
+      "text": "340",
+      "ok": true
+    },
+    {
+      "t": 1764264475693,
+      "kind": "recv",
+      "text": "El Código no es valido o ha expirado. Por favor, intenta de nuevo..",
+      "ok": false
+    },
+    {
+      "t": 1764264522341,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764264522342,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264528769,
+      "kind": "intent",
+      "text": "[21/117] getLastPrice › ¿A qué valor tengo registrado el producto Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 21,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264530975,
+      "kind": "send",
+      "text": "¿A qué valor tengo registrado el producto Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764264547488,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264547488,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264547488,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264553887,
+      "kind": "intent",
+      "text": "[22/117] getLastPrice › Dime el importe reciente que pagó Automatización Clnt por Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 22,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264556105,
+      "kind": "send",
+      "text": "Dime el importe reciente que pagó Automatización Clnt por Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764264573097,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264573097,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264573097,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264579484,
+      "kind": "intent",
+      "text": "[23/117] getLastPrice › ¿Cuál es el precio actualizado de Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 23,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264581698,
+      "kind": "send",
+      "text": "¿Cuál es el precio actualizado de Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764264598995,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264598995,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264598997,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264605407,
+      "kind": "intent",
+      "text": "[24/117] getLastPrice › Muéstrame el valor más reciente de la Cebada registrada por Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 24,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264607624,
+      "kind": "send",
+      "text": "Muéstrame el valor más reciente de la Cebada registrada por Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764264625344,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264625344,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264625345,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264631785,
+      "kind": "intent",
+      "text": "[25/117] getLastPrice › Consultar coste del Cebada para Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 25,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264633973,
+      "kind": "send",
+      "text": "Consultar coste del Cebada para Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764264688469,
+      "kind": "recv",
+      "text": "¿Te refieres al precio de mercado (€/t, €/q, $/bu) o al coste de producción por hectárea para integrar en Automatización Clnt? Dime también país/mercado y la unidad que quieres usar..",
+      "ok": true
+    },
+    {
+      "t": 1764264688469,
+      "kind": "recv",
+      "text": "Dime: 1) si quieres que calcule el coste con esos m3 de purín, pásame el precio del purín (€/m3) y el coste de aplicación (€/ha), y 2) si además necesitas el precio de mercado de la cebada, indícame país/mercado y unidad para consultarlo y convertirlo..",
+      "ok": true
+    },
+    {
+      "t": 1764264688469,
+      "kind": "recv",
+      "text": "Con el contexto que has pegado, te doy ya los datos útiles para el cálculo de aportes por purín (se pueden incorporar directamente en la automatización): Para una cebada con rendimiento objetivo 2.100 (kg/ha), y purín con contenidos N‑P‑K ≈ 5,5 – 6,0 – 3,0 kg/m3 (valores del contexto): necesidad de N = 51,4 kg/ha → m3 de purín = 51,4 / 5,5 = 9,35 m3/ha (si se asume eficiencia del 100%); con una eficiencia práctica del 70% → 9,35 / 0,7 = 13,4 m3/ha.\nFórmula para coste de purín por ha: Coste_purín_ha = m3_ha × Precio_purín_por_m3 + Coste_aplicación_por_ha.\nFórmula para coste total de producción por ha (plantilla para Automatización Clnt): Coste_prod_ha = Coste_semilla + Coste_labores + Coste_fertilizantes (mineral + orgánico) + Coste_fitosanitarios … Con el contexto que has pegado, te doy ya los datos útiles para el cálculo de aportes por purín (se pueden incorporar directamente en la automatización): Para una cebada con rendimiento objetivo 2.100 (kg/ha), y purín con contenidos N‑P‑K ≈ 5,5 – 6,0 – 3,0 kg/m3 (valores del contexto): necesidad de N = 51,4 kg/ha → m3 de purín = 51,4 / 5,5 = 9,35 m3/ha (si se asume eficiencia del 100%); con una eficiencia práctica del 70% → 9,35 / 0,7 = 13,4 m3/ha.\nFórmula para coste de purín por ha: Coste_purín_ha = m3_ha × Precio_purín_por_m3 + Coste_aplicación_por_ha.\nFórmula para coste total de producción por ha (plantilla para Automatización Clnt): Para una cebada con rendimiento objetivo 2.100 (kg/ha), y purín con contenidos N‑P‑K ≈ 5,5 – 6,0 – 3,0 kg/m3 (valores del contexto): necesidad de N = 51,4 kg/ha → m3 de purín = 51,4 / 5,5 = 9,35 m3/ha (si se asume eficiencia del 100%); con una eficiencia práctica del 70% → 9,35 / 0,7 = 13,4 m3/ha. Fórmula para coste de purín por ha: Coste_purín_ha = m3_ha × Precio_purín_por_m3 + Coste_aplicación_por_ha. Fórmula para coste total de producción por ha (plantilla para Automatización Clnt): Coste_prod_ha = Coste_semilla + Coste_labores + Coste_fertilizantes (mineral + orgánico) + Coste_fitosanitarios ….",
+      "ok": true
+    },
+    {
+      "t": 1764264688472,
+      "kind": "send",
+      "text": "Quelato de hierro",
+      "ok": true
+    },
+    {
+      "t": 1764264727965,
+      "kind": "recv",
+      "text": "Si me das cultivo, pH del suelo y si prefieres aplicación foliar o suelo, te indico la formulación más adecuada y la orientación práctica de manejo..\nUn quelato de hierro es hierro ligado a un ligando orgánico que mantiene el Fe soluble y disponible para la planta, evitando que precipite en suelos calcáreos o con pH alto. Tipos y uso práctico: Fe‑EDTA y Fe‑DTPA: adecuados en suelos ácidos a neutros; buena opción para suelos con pH moderado.\nFe‑EDDHA (y sus variantes EDDHSA/HBED): los más eficaces en suelos calizos/pH elevado; son los recomendados cuando existe clorosis por carbonatos.\nAplicación: puede administrarse por fertirrigación (corrección más duradera en suelo) o por vía foliar (respuesta rápida y temporal).\nDiagnóstico y manejo: identifica clorosis interveinal en hojas jóvenes, confirma con análisis de suelo/petiolo y ajusta pH/plan de fertilización; evita exceso de P y encharcamientos\n… Un quelato de hierro es hierro ligado a un ligando orgánico que mantiene el Fe soluble y disponible para la planta, evitando que precipite en suelos calcáreos o con pH alto. Tipos y uso práctico: Fe‑EDTA y Fe‑DTPA: adecuados en suelos ácidos a neutros; buena opción para suelos con pH moderado.\nFe‑EDDHA (y sus variantes EDDHSA/HBED): los más eficaces en suelos calizos/pH elevado; son los recomendados cuando existe clorosis por carbonatos.\nAplicación: puede administrarse por fertirrigación (corrección más duradera en suelo) o por vía foliar (respuesta rápida y temporal).\nDiagnóstico y manejo: identifica clorosis interveinal en hojas jóvenes, confirma con análisis de suelo/petiolo y ajusta pH/plan de fertilización; evita exceso de P y encharcamientos\n… Fe‑EDTA y Fe‑DTPA: adecuados en suelos ácidos a neutros; buena opción para suelos con pH moderado. Fe‑EDDHA (y sus variantes EDDHSA/HBED): los más eficaces en suelos calizos/pH elevado; son los recomendados cuando existe clorosis por carbonatos. Aplicación: puede administrarse por fertirrigación (corrección más duradera en suelo) o por vía foliar (respuesta rápida y temporal). Diagnóstico y manejo: identifica clorosis interveinal en hojas jóvenes, confirma con análisis de suelo/petiolo y ajusta pH/plan de fertilización; evita exceso de P y encharcamientos.",
+      "ok": false
+    },
+    {
+      "t": 1764264774601,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764264774601,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264781044,
+      "kind": "intent",
+      "text": "[26/117] getLastPrice › Listar el importe registrado del producto Cebada para Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 26,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264783254,
+      "kind": "send",
+      "text": "Listar el importe registrado del producto Cebada para Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764264800903,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764264800903,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764264800904,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264807294,
+      "kind": "intent",
+      "text": "[27/117] getLastPrice › Ver tarifa actual del Cebada que tiene Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 27,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264809507,
+      "kind": "send",
+      "text": "Ver tarifa actual del Cebada que tiene Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764264850639,
+      "kind": "recv",
+      "text": "¿Te refieres al precio/tarifa guardada dentro de Automatización Clnt o al precio de mercado actual? Dime también país/mercado y unidad (€/t, €/q, €/kg, $/bu) para buscar o convertir..",
+      "ok": true
+    },
+    {
+      "t": 1764264850639,
+      "kind": "recv",
+      "text": "Si quieres el dato desde Automatización Clnt, exporta la tabla de tarifas o productos (o filtra por cultivo = “cebada” en el módulo de precios/comercial) y pégame aquí la columna/filas; te devuelvo la tarifa actual que figure. Si prefieres que consulte precio de mercado, indícame país/mercado y unidad y lo traigo y convierto..",
+      "ok": true
+    },
+    {
+      "t": 1764264850644,
+      "kind": "send",
+      "text": "260",
+      "ok": true
+    },
+    {
+      "t": 1764264866322,
+      "kind": "recv",
+      "text": "El Código no es valido o ha expirado. Por favor, intenta de nuevo..",
+      "ok": false
+    },
+    {
+      "t": 1764264913040,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764264913041,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764264919473,
+      "kind": "intent",
+      "text": "[28/117] getLastPrice › ¿Qué valor tiene anotado Automatización Clnt para el producto Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 28,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764264921698,
+      "kind": "send",
+      "text": "¿Qué valor tiene anotado Automatización Clnt para el producto Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764264956900,
+      "kind": "recv",
+      "text": "No tengo acceso directo a Automatización Clnt; para decirte el valor, por favor exporta o copia la fila/columna correspondiente al producto “Cebada” y pégala aquí (o filtra en Comercial/Precios → cultivo = “cebada” y exporta a CSV/XLS). Si prefieres, toma y pega solo la celda con la tarifa (unidad y moneda) y yo la interpreto/transformo y la convierto a la unidad que necesites (€/t, €/q, €/kg, $/bu)..",
+      "ok": true
+    },
+    {
+      "t": 1764264956903,
+      "kind": "send",
+      "text": "290",
+      "ok": true
+    },
+    {
+      "t": 1764264973003,
+      "kind": "recv",
+      "text": "El Código no es valido o ha expirado. Por favor, intenta de nuevo..",
+      "ok": false
+    },
+    {
+      "t": 1764265019718,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764265019719,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265026201,
+      "kind": "intent",
+      "text": "[29/117] getLastPrice › Dime el coste más reciente de Cebada para Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 29,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265028442,
+      "kind": "send",
+      "text": "Dime el coste más reciente de Cebada para Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764265045686,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265045686,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265045687,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265052116,
+      "kind": "intent",
+      "text": "[30/117] getLastPrice › ¿Puedes mostrarme la tarifa actual del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 30,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265054327,
+      "kind": "send",
+      "text": "¿Puedes mostrarme la tarifa actual del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265071038,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265071038,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265071038,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265077427,
+      "kind": "intent",
+      "text": "[31/117] getLastPrice › Listar precio reciente del producto Cebada para mis parcelas.",
+      "ok": true,
+      "meta": {
+        "idx": 31,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265079641,
+      "kind": "send",
+      "text": "Listar precio reciente del producto Cebada para mis parcelas.",
+      "ok": true
+    },
+    {
+      "t": 1764265096580,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265096580,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265096581,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265102994,
+      "kind": "intent",
+      "text": "[32/117] getLastPrice › Muéstrame el importe registrado del Cebada en mi cuenta.",
+      "ok": true,
+      "meta": {
+        "idx": 32,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265105174,
+      "kind": "send",
+      "text": "Muéstrame el importe registrado del Cebada en mi cuenta.",
+      "ok": true
+    },
+    {
+      "t": 1764265128583,
+      "kind": "recv",
+      "text": "Gracias por escribir. Estoy especializado únicamente en temas agrícolas; si tienes alguna pregunta sobre cultivos, suelos, riego u otro tema del agro, con gusto te ayudo..",
+      "ok": true
+    },
+    {
+      "t": 1764265128583,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265134962,
+      "kind": "intent",
+      "text": "[33/117] getLastPrice › Consultar el coste actualizado de la Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 33,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265137182,
+      "kind": "send",
+      "text": "Consultar el coste actualizado de la Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764265154662,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265154662,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265154663,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265161130,
+      "kind": "intent",
+      "text": "[34/117] getLastPrice › ¿A cuánto he comprado la última vez Cebada en mis fincas?",
+      "ok": true,
+      "meta": {
+        "idx": 34,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265163352,
+      "kind": "send",
+      "text": "¿A cuánto he comprado la última vez Cebada en mis fincas?",
+      "ok": true
+    },
+    {
+      "t": 1764265180692,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265180692,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265180692,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265187127,
+      "kind": "intent",
+      "text": "[35/117] getLastPrice › Ver precio reciente anotado para el producto Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 35,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265189354,
+      "kind": "send",
+      "text": "Ver precio reciente anotado para el producto Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764265206213,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265206213,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265206214,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265212591,
+      "kind": "intent",
+      "text": "[36/117] getLastPrice › Dime el valor actual que tengo del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 36,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265214836,
+      "kind": "send",
+      "text": "Dime el valor actual que tengo del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764265231899,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265231899,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265231899,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265238289,
+      "kind": "intent",
+      "text": "[37/117] getLastPrice › Listar tarifa más reciente para el producto Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 37,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265240482,
+      "kind": "send",
+      "text": "Listar tarifa más reciente para el producto Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764265258131,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265258131,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265258131,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265264542,
+      "kind": "intent",
+      "text": "[38/117] getLastPrice › ¿Qué importe tengo registrado para Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 38,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265266750,
+      "kind": "send",
+      "text": "¿Qué importe tengo registrado para Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265284052,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265284052,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265284052,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265290447,
+      "kind": "intent",
+      "text": "[39/117] getLastPrice › Mostrar coste actualizado del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 39,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265292667,
+      "kind": "send",
+      "text": "Mostrar coste actualizado del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764265309251,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265309251,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265309251,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265315606,
+      "kind": "intent",
+      "text": "[40/117] getLastPrice › Hola Luca, cuál es el último precio del Cebada para el cliente Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 40,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265317847,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio del Cebada para el cliente Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265335230,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265335230,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265335231,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265341591,
+      "kind": "intent",
+      "text": "[41/117] getLastPrice › Hola Luca, cuál es el último precio del Cebada para el cliente Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 41,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265343727,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio del Cebada para el cliente Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265361545,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265361545,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265361546,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265367957,
+      "kind": "intent",
+      "text": "[42/117] getLastPrice › Hola Luca, cuál es el último precio de Cebada para el cliente Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 42,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265370137,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio de Cebada para el cliente Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265387869,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265387869,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265387869,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265394348,
+      "kind": "intent",
+      "text": "[43/117] getLastPrice › Hola Luca, cuál es el último precio de Cebada para el cliente Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 43,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265396519,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio de Cebada para el cliente Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265413842,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265413842,
+      "kind": "recv",
+      "text": "Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27 Producto: mallorquina (cebada, HarvestPlus) Último precio registrado: $395 el 2025-11-27.",
+      "ok": true
+    },
+    {
+      "t": 1764265413843,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265420267,
+      "kind": "intent",
+      "text": "[44/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 44,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265422441,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265439312,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265439312,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265439313,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265445677,
+      "kind": "intent",
+      "text": "[45/117] getMinPrice › Luca, dime el valor más bajo que ha tenido el Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 45,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265447815,
+      "kind": "send",
+      "text": "Luca, dime el valor más bajo que ha tenido el Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764265496353,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764265496353,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265502749,
+      "kind": "intent",
+      "text": "[46/117] getMinPrice › ¿A cómo ha estado el Cebada en su punto más bajo?",
+      "ok": true,
+      "meta": {
+        "idx": 46,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265504999,
+      "kind": "send",
+      "text": "¿A cómo ha estado el Cebada en su punto más bajo?",
+      "ok": true
+    },
+    {
+      "t": 1764265522248,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265522248,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265522248,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265528610,
+      "kind": "intent",
+      "text": "[47/117] getMinPrice › ¿Cuál fue el precio mínimo del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 47,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265530830,
+      "kind": "send",
+      "text": "¿Cuál fue el precio mínimo del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265548083,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265548083,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265548083,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265554482,
+      "kind": "intent",
+      "text": "[48/117] getMinPrice › Luca, cuánto ha sido lo más barato que me ha costado el Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 48,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265556708,
+      "kind": "send",
+      "text": "Luca, cuánto ha sido lo más barato que me ha costado el Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265573989,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265573989,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265573990,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265580429,
+      "kind": "intent",
+      "text": "[49/117] getMinPrice › cuál es el menor precio registrado del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 49,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265582600,
+      "kind": "send",
+      "text": "cuál es el menor precio registrado del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265599978,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265599978,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265599979,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265606346,
+      "kind": "intent",
+      "text": "[50/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 50,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265608573,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764265625796,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265625796,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265625798,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265632235,
+      "kind": "intent",
+      "text": "[51/117] getMinPrice › Luca, dime el valor más bajo que ha tenido el Cebada para Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 51,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265634414,
+      "kind": "send",
+      "text": "Luca, dime el valor más bajo que ha tenido el Cebada para Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265652813,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265652813,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265652814,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265659242,
+      "kind": "intent",
+      "text": "[52/117] getMinPrice › ¿A cómo ha estado el Cebada en su punto más bajo para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 52,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265661453,
+      "kind": "send",
+      "text": "¿A cómo ha estado el Cebada en su punto más bajo para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764265679154,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265679154,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265679154,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265685534,
+      "kind": "intent",
+      "text": "[53/117] getMinPrice › Para Automatización Clnt, ¿cuál fue el precio mínimo del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 53,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265687732,
+      "kind": "send",
+      "text": "Para Automatización Clnt, ¿cuál fue el precio mínimo del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265705008,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265705008,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265705009,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265711436,
+      "kind": "intent",
+      "text": "[54/117] getMinPrice › Luca, para el cliente Automatización Clnt cuánto ha sido lo más barato del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 54,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265713609,
+      "kind": "send",
+      "text": "Luca, para el cliente Automatización Clnt cuánto ha sido lo más barato del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265724271,
+      "kind": "recv",
+      "text": "Operación cancelada..",
+      "ok": true
+    },
+    {
+      "t": 1764265724271,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265724271,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265770967,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764265770968,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265777398,
+      "kind": "intent",
+      "text": "[55/117] getMinPrice › precio mínimo del Cebada de Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 55,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265779652,
+      "kind": "send",
+      "text": "precio mínimo del Cebada de Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265797082,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265797082,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265797082,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265803479,
+      "kind": "intent",
+      "text": "[56/117] getMinPrice › Automatización Clnt precio mínimo Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 56,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265805700,
+      "kind": "send",
+      "text": "Automatización Clnt precio mínimo Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764265822788,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265822788,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265822789,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265829178,
+      "kind": "intent",
+      "text": "[57/117] getMinPrice › necesito saber el precio mínimo del Cebada para Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 57,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265831354,
+      "kind": "send",
+      "text": "necesito saber el precio mínimo del Cebada para Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265848529,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265848529,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265848530,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265854974,
+      "kind": "intent",
+      "text": "[58/117] getMinPrice › quiero consultar el mínimo del Cebada para Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 58,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265857148,
+      "kind": "send",
+      "text": "quiero consultar el mínimo del Cebada para Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764265874295,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265874295,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265874296,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265880732,
+      "kind": "intent",
+      "text": "[59/117] getMinPrice › Automatización Clnt ¿cuál es el precio más bajo del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 59,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265882969,
+      "kind": "send",
+      "text": "Automatización Clnt ¿cuál es el precio más bajo del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265900657,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265900657,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265900658,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265907078,
+      "kind": "intent",
+      "text": "[60/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada para el cliente Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 60,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265909269,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada para el cliente Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764265927200,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265927200,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265927201,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265933618,
+      "kind": "intent",
+      "text": "[61/117] getMinPrice › ¿Podrías indicarme cuál ha sido el precio más económico de la Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 61,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265935784,
+      "kind": "send",
+      "text": "¿Podrías indicarme cuál ha sido el precio más económico de la Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764265953234,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265953234,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265953235,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265959692,
+      "kind": "intent",
+      "text": "[62/117] getMinPrice › Necesito información sobre el mínimo histórico del Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 62,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265961894,
+      "kind": "send",
+      "text": "Necesito información sobre el mínimo histórico del Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764265979106,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764265979106,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764265979106,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764265985523,
+      "kind": "intent",
+      "text": "[63/117] getMinPrice › En qué momento la Cebada alcanzó su precio más bajo",
+      "ok": true,
+      "meta": {
+        "idx": 63,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764265987746,
+      "kind": "send",
+      "text": "En qué momento la Cebada alcanzó su precio más bajo",
+      "ok": true
+    },
+    {
+      "t": 1764266004865,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266004865,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266004866,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266011299,
+      "kind": "intent",
+      "text": "[64/117] getMinPrice › Consulta de precio mínimo para Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 64,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266013558,
+      "kind": "send",
+      "text": "Consulta de precio mínimo para Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764266030860,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266030860,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266030861,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266037232,
+      "kind": "intent",
+      "text": "[65/117] getMinPrice › ¿Sabes cuál es el precio más económico al que se ha vendido el Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 65,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266039487,
+      "kind": "send",
+      "text": "¿Sabes cuál es el precio más económico al que se ha vendido el Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266056923,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266056923,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266056924,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266063373,
+      "kind": "intent",
+      "text": "[66/117] getMinPrice › Para Automatización Clnt, ¿cuál es el valor mínimo registrado del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 66,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266065561,
+      "kind": "send",
+      "text": "Para Automatización Clnt, ¿cuál es el valor mínimo registrado del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266082849,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266082849,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266082849,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266089311,
+      "kind": "intent",
+      "text": "[67/117] getMinPrice › Dime el mejor precio que puedes ofrecerle a Automatización Clnt para Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 67,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266091527,
+      "kind": "send",
+      "text": "Dime el mejor precio que puedes ofrecerle a Automatización Clnt para Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764266108857,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266108857,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266108858,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266115320,
+      "kind": "intent",
+      "text": "[68/117] getMinPrice › Mínimo histórico de Cebada para la cuenta de Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 68,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266117545,
+      "kind": "send",
+      "text": "Mínimo histórico de Cebada para la cuenta de Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764266134887,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266134887,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266134889,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266141312,
+      "kind": "intent",
+      "text": "[69/117] getMinPrice › El cliente Automatización Clnt quiere saber el precio más bajo del Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 69,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266143524,
+      "kind": "send",
+      "text": "El cliente Automatización Clnt quiere saber el precio más bajo del Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764266161444,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266161444,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266161445,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266167900,
+      "kind": "intent",
+      "text": "[70/117] getMinPrice › Automatización Clnt solicita información sobre el mínimo del Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 70,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266170061,
+      "kind": "send",
+      "text": "Automatización Clnt solicita información sobre el mínimo del Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764266187703,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266187703,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266187703,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266194171,
+      "kind": "intent",
+      "text": "[71/117] getMinPrice › ¿A cuánto ha llegado a bajar el Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 71,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266196433,
+      "kind": "send",
+      "text": "¿A cuánto ha llegado a bajar el Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764266245245,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764266245247,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266251640,
+      "kind": "intent",
+      "text": "[72/117] getMinPrice › Luca, ¿cuál es el menor precio que ha tenido la Cebada en nuestra base de datos?",
+      "ok": true,
+      "meta": {
+        "idx": 72,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266253900,
+      "kind": "send",
+      "text": "Luca, ¿cuál es el menor precio que ha tenido la Cebada en nuestra base de datos?",
+      "ok": true
+    },
+    {
+      "t": 1764266271782,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266271782,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266271783,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266278192,
+      "kind": "intent",
+      "text": "[73/117] getMinPrice › ¿Me puedes decir a qué precio mínimo ha estado el Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 73,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266280414,
+      "kind": "send",
+      "text": "¿Me puedes decir a qué precio mínimo ha estado el Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764266298551,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266298551,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266298552,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266304974,
+      "kind": "intent",
+      "text": "[74/117] getMinPrice › Búscame el mínimo histórico del Cebada para el cliente Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 74,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266307233,
+      "kind": "send",
+      "text": "Búscame el mínimo histórico del Cebada para el cliente Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764266325215,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266325215,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266325216,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266331653,
+      "kind": "intent",
+      "text": "[75/117] getMinPrice › Automatización Clnt necesita saber cuándo estuvo más barato el Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 75,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266333873,
+      "kind": "send",
+      "text": "Automatización Clnt necesita saber cuándo estuvo más barato el Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764266351276,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266351276,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266351276,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266357736,
+      "kind": "intent",
+      "text": "[76/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 76,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266359946,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764266378745,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266378745,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266378745,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266385173,
+      "kind": "intent",
+      "text": "[77/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 77,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266387375,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764266405556,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266405556,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266405558,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266412042,
+      "kind": "intent",
+      "text": "[78/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 78,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266414232,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764266431625,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266431625,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266431625,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266438055,
+      "kind": "intent",
+      "text": "[79/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 79,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266440277,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764266457614,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266457614,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266457615,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266464081,
+      "kind": "intent",
+      "text": "[80/117] getMinPrice › Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 80,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266466333,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el precio mínimo del Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764266484284,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266484284,
+      "kind": "recv",
+      "text": "Precio mínimo de mallorquina (cebada, HarvestPlus): $395 el 2025-11-27..",
+      "ok": true
+    },
+    {
+      "t": 1764266484285,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266490689,
+      "kind": "intent",
+      "text": "[81/117] getPriceVariation › Hola Luca, cuál ha sido la variación del precio del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 81,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266492946,
+      "kind": "send",
+      "text": "Hola Luca, cuál ha sido la variación del precio del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266510647,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266510647,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266510648,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266517084,
+      "kind": "intent",
+      "text": "[82/117] getPriceVariation › Luca, dime cuánto ha variado el precio del Cebada",
+      "ok": true,
+      "meta": {
+        "idx": 82,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266519293,
+      "kind": "send",
+      "text": "Luca, dime cuánto ha variado el precio del Cebada",
+      "ok": true
+    },
+    {
+      "t": 1764266536886,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266536886,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266536887,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266543324,
+      "kind": "intent",
+      "text": "[83/117] getPriceVariation › ¿Qué tanta variación ha tenido el producto Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 83,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266545569,
+      "kind": "send",
+      "text": "¿Qué tanta variación ha tenido el producto Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266562960,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266562960,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266562961,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266569378,
+      "kind": "intent",
+      "text": "[84/117] getPriceVariation › quiero saber si el precio del Cebada ha subido o bajado",
+      "ok": true,
+      "meta": {
+        "idx": 84,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266571601,
+      "kind": "send",
+      "text": "quiero saber si el precio del Cebada ha subido o bajado",
+      "ok": true
+    },
+    {
+      "t": 1764266589879,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266589879,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266589880,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266596326,
+      "kind": "intent",
+      "text": "[85/117] getPriceVariation › cuánto ha cambiado el valor del Cebada en los últimos años?",
+      "ok": true,
+      "meta": {
+        "idx": 85,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266598547,
+      "kind": "send",
+      "text": "cuánto ha cambiado el valor del Cebada en los últimos años?",
+      "ok": true
+    },
+    {
+      "t": 1764266616510,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266616510,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266616510,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266622925,
+      "kind": "intent",
+      "text": "[86/117] getPriceVariation › Luca, ¿cuánto ha aumentado o disminuido el precio del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 86,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266625113,
+      "kind": "send",
+      "text": "Luca, ¿cuánto ha aumentado o disminuido el precio del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266642522,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266642522,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266642522,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266648923,
+      "kind": "intent",
+      "text": "[87/117] getPriceVariation › ¿Cuál ha sido el cambio reciente del precio del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 87,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266651129,
+      "kind": "send",
+      "text": "¿Cuál ha sido el cambio reciente del precio del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266669035,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266669035,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266669035,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266676406,
+      "kind": "intent",
+      "text": "[88/117] getPriceVariation › Muéstrame cómo ha evolucionado el precio de la Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 88,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266678716,
+      "kind": "send",
+      "text": "Muéstrame cómo ha evolucionado el precio de la Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266727300,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764266727304,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266733701,
+      "kind": "intent",
+      "text": "[89/117] getPriceVariation › Quiero consultar las variaciones recientes en el precio del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 89,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266735894,
+      "kind": "send",
+      "text": "Quiero consultar las variaciones recientes en el precio del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266754429,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266754429,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266754430,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266760843,
+      "kind": "intent",
+      "text": "[90/117] getPriceVariation › Dime cómo ha fluctuado el precio del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 90,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266763061,
+      "kind": "send",
+      "text": "Dime cómo ha fluctuado el precio del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266791873,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266791873,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266791873,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266798307,
+      "kind": "intent",
+      "text": "[91/117] getPriceVariation › ¿Puedes mostrarme la evolución del coste de Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 91,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266800506,
+      "kind": "send",
+      "text": "¿Puedes mostrarme la evolución del coste de Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266818307,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266818307,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266818308,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266824805,
+      "kind": "intent",
+      "text": "[92/117] getPriceVariation › Listar cambios de precio registrados para el producto Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 92,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266827003,
+      "kind": "send",
+      "text": "Listar cambios de precio registrados para el producto Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266844843,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266844843,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266844844,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266851225,
+      "kind": "intent",
+      "text": "[93/117] getPriceVariation › Ver cómo ha cambiado últimamente el importe del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 93,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266853459,
+      "kind": "send",
+      "text": "Ver cómo ha cambiado últimamente el importe del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266871601,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266871601,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266871605,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266878028,
+      "kind": "intent",
+      "text": "[94/117] getPriceVariation › Consultar el movimiento reciente en el valor del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 94,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266880236,
+      "kind": "send",
+      "text": "Consultar el movimiento reciente en el valor del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266898625,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266898625,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266898626,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266904996,
+      "kind": "intent",
+      "text": "[95/117] getPriceVariation › Muéstrame la tendencia del precio para Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 95,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266907208,
+      "kind": "send",
+      "text": "Muéstrame la tendencia del precio para Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266924721,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266924721,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266924722,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266931163,
+      "kind": "intent",
+      "text": "[96/117] getPriceVariation › ¿Qué modificaciones ha tenido el precio del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 96,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266933408,
+      "kind": "send",
+      "text": "¿Qué modificaciones ha tenido el precio del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764266952140,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266952140,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266952141,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266958578,
+      "kind": "intent",
+      "text": "[97/117] getPriceVariation › Mostrar evolución reciente del importe del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 97,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266960788,
+      "kind": "send",
+      "text": "Mostrar evolución reciente del importe del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764266978870,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764266978870,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764266978871,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764266985323,
+      "kind": "intent",
+      "text": "[98/117] getPriceVariation › Dime si ha habido variación en el coste de la Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 98,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764266987548,
+      "kind": "send",
+      "text": "Dime si ha habido variación en el coste de la Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764267005028,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764267005028,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267005030,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267011447,
+      "kind": "intent",
+      "text": "[99/117] getPriceVariation › ¿Cómo ha fluctuado últimamente el precio del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 99,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267013660,
+      "kind": "send",
+      "text": "¿Cómo ha fluctuado últimamente el precio del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764267031561,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267031561,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764267031562,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267037981,
+      "kind": "intent",
+      "text": "[100/117] getPriceVariation › Consultar cambios recientes en la tarifa del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 100,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267040165,
+      "kind": "send",
+      "text": "Consultar cambios recientes en la tarifa del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764267058838,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267058838,
+      "kind": "recv",
+      "text": "No hay suficientes datos de precios para calcular una variación de 'cebada'..",
+      "ok": true
+    },
+    {
+      "t": 1764267058842,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267065390,
+      "kind": "intent",
+      "text": "[101/117] getPriceVariation › Muéstrame la variación reciente del coste del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 101,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267067625,
+      "kind": "send",
+      "text": "Muéstrame la variación reciente del coste del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764267085677,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267085677,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267085678,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267092078,
+      "kind": "intent",
+      "text": "[102/117] getPriceVariation › ¿Ha habido cambios últimamente en el valor de la Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 102,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267094302,
+      "kind": "send",
+      "text": "¿Ha habido cambios últimamente en el valor de la Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764267112196,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267112196,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267112199,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267118646,
+      "kind": "intent",
+      "text": "[103/117] getPriceVariation › Quiero ver cómo ha evolucionado el precio del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 103,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267120876,
+      "kind": "send",
+      "text": "Quiero ver cómo ha evolucionado el precio del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764267139034,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267139034,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267139035,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267145446,
+      "kind": "intent",
+      "text": "[104/117] getPriceVariation › Mostrar la fluctuación reciente en el precio del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 104,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267147637,
+      "kind": "send",
+      "text": "Mostrar la fluctuación reciente en el precio del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764267166276,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267166276,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267166277,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267172669,
+      "kind": "intent",
+      "text": "[105/117] getPriceVariation › Kiero saber los movimientos del precio del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 105,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267174900,
+      "kind": "send",
+      "text": "Kiero saber los movimientos del precio del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764267192364,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267192364,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267192366,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267198836,
+      "kind": "intent",
+      "text": "[106/117] getPriceVariation › ¿Cuál es la tendencia del importe del producto Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 106,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267201065,
+      "kind": "send",
+      "text": "¿Cuál es la tendencia del importe del producto Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764267219445,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267219445,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267219447,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267225881,
+      "kind": "intent",
+      "text": "[107/117] getPriceVariation › Ver modificaciones recientes en el coste del Cebada.",
+      "ok": true,
+      "meta": {
+        "idx": 107,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267228047,
+      "kind": "send",
+      "text": "Ver modificaciones recientes en el coste del Cebada.",
+      "ok": true
+    },
+    {
+      "t": 1764267276820,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764267276823,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267283257,
+      "kind": "intent",
+      "text": "[108/117] getPriceVariation › Listar evolución del precio del Cebada para Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 108,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267285490,
+      "kind": "send",
+      "text": "Listar evolución del precio del Cebada para Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764267304399,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267304399,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267304401,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267310825,
+      "kind": "intent",
+      "text": "[109/117] getPriceVariation › Muéstrame cómo ha variado el precio de la Cebada para Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 109,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267313075,
+      "kind": "send",
+      "text": "Muéstrame cómo ha variado el precio de la Cebada para Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764267331022,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267331022,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267331022,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267337461,
+      "kind": "intent",
+      "text": "[110/117] getPriceVariation › Dime el cambio reciente en la tarifa de Cebada registrada por Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 110,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267339678,
+      "kind": "send",
+      "text": "Dime el cambio reciente en la tarifa de Cebada registrada por Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764267357722,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267357722,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267357724,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267364204,
+      "kind": "intent",
+      "text": "[111/117] getPriceVariation › ¿Cuál ha sido la fluctuación del precio del producto Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 111,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267366391,
+      "kind": "send",
+      "text": "¿Cuál ha sido la fluctuación del precio del producto Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764267385028,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267385028,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267385029,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267391503,
+      "kind": "intent",
+      "text": "[112/117] getPriceVariation › Consultar evolución del importe del Cebada asociado a Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 112,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267393744,
+      "kind": "send",
+      "text": "Consultar evolución del importe del Cebada asociado a Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764267412445,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267412445,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267412446,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267418840,
+      "kind": "intent",
+      "text": "[113/117] getPriceVariation › Mostrar variaciones recientes del coste del Cebada para Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 113,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267421028,
+      "kind": "send",
+      "text": "Mostrar variaciones recientes del coste del Cebada para Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764267439322,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267439322,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267439325,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267445767,
+      "kind": "intent",
+      "text": "[114/117] getPriceVariation › ¿Puedes decirme cómo ha cambiado el valor de Cebada para Automatización Clnt?",
+      "ok": true,
+      "meta": {
+        "idx": 114,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267447973,
+      "kind": "send",
+      "text": "¿Puedes decirme cómo ha cambiado el valor de Cebada para Automatización Clnt?",
+      "ok": true
+    },
+    {
+      "t": 1764267466550,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267466550,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267466551,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267472952,
+      "kind": "intent",
+      "text": "[115/117] getPriceVariation › Listar modificaciones recientes en el precio de la Cebada registradas por Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 115,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267475145,
+      "kind": "send",
+      "text": "Listar modificaciones recientes en el precio de la Cebada registradas por Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764267494072,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267494072,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267494073,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267500565,
+      "kind": "intent",
+      "text": "[116/117] getPriceVariation › Ver evolución del precio del Cebada en la finca de Automatización Clnt.",
+      "ok": true,
+      "meta": {
+        "idx": 116,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267502741,
+      "kind": "send",
+      "text": "Ver evolución del precio del Cebada en la finca de Automatización Clnt.",
+      "ok": true
+    },
+    {
+      "t": 1764267513085,
+      "kind": "recv",
+      "text": "Operación cancelada..",
+      "ok": true
+    },
+    {
+      "t": 1764267513085,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267521385,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": false
+    },
+    {
+      "t": 1764267567938,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764267567940,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764267574411,
+      "kind": "intent",
+      "text": "[117/117] getPriceVariation › Hola Luca, cuál ha sido la variación del precio del Cebada?",
+      "ok": true,
+      "meta": {
+        "idx": 117,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764267576619,
+      "kind": "send",
+      "text": "Hola Luca, cuál ha sido la variación del precio del Cebada?",
+      "ok": true
+    },
+    {
+      "t": 1764267595167,
+      "kind": "recv",
+      "text": "Para el producto 'cebada' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764267595167,
+      "kind": "recv",
+      "text": "rgt orijino (cebada, HarvestPlus): variación -50.0% entre el 2025-11-26 y el 2025-11-27 (0 años)..",
+      "ok": true
+    },
+    {
+      "t": 1764267595168,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    }
+  ]
+}

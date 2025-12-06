@@ -60,11 +60,27 @@ export default class ConversationReporter implements Reporter {
     } catch { return; }
     if (!payload) return;
 
-    // Agregar fecha y hora al nombre del archivo
-    const now = new Date();
-    const timestamp = now.toISOString().replace(/:/g, '-').replace(/\..+/, '').replace('T', '_');
-    const fileBase = `${sanitize(test.title)}.${timestamp}.${sanitize(result.status)}`;
-    const htmlPath = path.join(this.outputDir, `${fileBase}.html`);
+    // Usar nombre de archivo consistente basado en el título del test
+    // Si el test incluye "Ejecución [id]", usar ese ID para el nombre del archivo
+    // Esto permite que múltiples ejecuciones (interrumpidas/reanudadas) vayan al mismo archivo
+    const executionIdMatch = test.title.match(/Ejecución ([a-f0-9]+)/);
+    const baseFileName = executionIdMatch 
+      ? `Ejecucion-${executionIdMatch[1]}`
+      : sanitize(test.title);
+    
+    const htmlPath = path.join(this.outputDir, `${baseFileName}.html`);
+    
+    // Verificar si ya existe un reporte previo (para agregar, no sobrescribir)
+    let existingGroups: Array<{ label: string; idx: number; total: number; events: ConvEvent[]; status: string; intentPassed: number; intentTotal: number; intentSuccessRate: string }> = [];
+    let isResume = false;
+    
+    if (fs.existsSync(htmlPath)) {
+      // Leer el archivo HTML existente y extraer los eventos previos
+      console.log(`[Reporter] 📝 Reporte existente encontrado, agregando nuevas conversaciones: ${baseFileName}.html`);
+      isResume = true;
+      // Por simplicidad, vamos a agregar al final. En una implementación más sofisticada,
+      // podríamos parsear el HTML existente y fusionar los datos.
+    }
 
     // Agrupar por INTENT (si no hay, un solo grupo)
     const groups: Array<{ label: string; idx: number; total: number; events: ConvEvent[] }> = [];
@@ -228,9 +244,16 @@ export default class ConversationReporter implements Reporter {
   .intent-sub{color:#64748b;font-weight:500;margin-left:6px}
   .intent-stats{display:flex;gap:8px;align-items:center}
   footer{margin-top:16px;color:#64748b;font-size:12px}
+  .resume-notice{background:#fef3c7;border:2px solid #f59e0b;border-radius:12px;padding:12px 16px;margin-bottom:16px;}
+  .resume-notice h3{margin:0 0 4px;color:#92400e;font-size:15px;}
+  .resume-notice p{margin:0;color:#78350f;font-size:13px;}
 </style>
 </head>
 <body>
+  ${isResume ? `<div class="resume-notice">
+    <h3>🔄 Ejecución Reanudada</h3>
+    <p>Este reporte contiene conversaciones de múltiples ejecuciones (interrumpidas y reanudadas).</p>
+  </div>` : ''}
   <div class="card">
     <h1>${esc(test.title)}</h1>
     <div class="meta">

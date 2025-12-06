@@ -1,0 +1,12 @@
+{
+  "examples": [
+    {
+      "intent": "createCrop",
+      "example": "crear cultivo"
+    },
+    {
+      "intent": "assignPriceProduct",
+      "example": "Hola Luca, asigna un precio de 340€/tonelada al Herbicida atrazina hoy"
+    }
+  ]
+}

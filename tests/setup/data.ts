@@ -84,9 +84,11 @@ const VAR_POOLS = {
     'La Dehesa', 'Cooperativa del Norte', 'Agropecuaria Sur', 'Finca Santa María', 'Campos Verdes SA'
   ],
   client_name: [
-    'Automatización Clnt', 'Cliente Prueba', 'Usuario Test',
-    'Juan Pérez', 'María García', 'Pedro Sánchez', 'Ana López'
+    'Automatización Clnt'
   ],
+
+
+
   composition: ['consumo humano', 'pienso animal', 'uso industrial', 'biocombustible', 'semilla'],
   crop_name: [
     'cebada', 'trigo blando', 'girasol', 'maíz', 'avena',
@@ -138,16 +140,29 @@ const VAR_POOLS = {
     'Fungicida mancozeb'
   ],
   search_query: [
-    'Girasol', 'Trigo', 'Cebada', 'Maíz', 'Avena',
-    'Colza', 'Soja', 'Guisante', 'Lenteja', 'Garbanzo'
+    'Cebada'
   ],
+
+
+
+
   target_pest: [
     'mildiu', 'roya', 'pulgón', 'araña roja', 'oídio',
     'septoriosis', 'fusarium', 'trips', 'mosca blanca', 'nematodos',
     'botrytis', 'helmintosporiosis', 'alternaria'
   ],
   type_fertilizer: ['granulado', 'líquido', 'soluble', 'microgranulado', 'suspensión'],
-  type_work: ['SIEMBRA', 'COSECHA', 'ABONADO', 'TRATAMIENTO', 'RIEGO', 'LABOREO', 'PODA', 'RECOLECCIÓN'],
+  type_work: [
+    'SIEMBRA', 'COSECHA'
+  ],
+
+
+
+
+
+
+
+
   variety_name: [
     'rgt covadonga', 'n4h309 e', 'sin variedad', 'premium', 'tango st',
     'filon', 'orlogue', 'saratoga', 'pr22d66', 'sy noveo',
@@ -1271,6 +1286,9 @@ export const KEYWORD_RULES: Array<{
   { pattern: /(fitosanitario|producto químico|producto) creado exitosamente/i, action: { type: 'END_OK' }, note: 'Fitosanitario/Producto creado exitosamente', priority: 2 },
   { pattern: /(precio (asignado|actualizado|registrado)|asigno un precio|precio fijado)/i, action: { type: 'END_OK' }, note: 'Precio asignado/actualizado exitosamente', priority: 2 },
   
+  // Mensajes que se deben ignorar (no terminan el flujo, solo se ignoran)
+  { pattern: /operaci[óo]n cancelada/i, action: { type: 'IGNORE' }, note: 'Operación cancelada por el usuario (ignorar y continuar)', priority: 2 },
+  
   // Finalizadores de éxito
   { pattern: /creado correctamente|registrado correctamente|guardado correctamente|planificado correctamente|asignado correctamente/i, action: { type: 'END_OK' }, note: 'Creación exitosa', priority: 2 },
   { pattern: /operación completada|proceso finalizado|todo listo|completado exitosamente/i, action: { type: 'END_OK' }, note: 'Operación exitosa', priority: 2 },
@@ -1312,7 +1330,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /\bnombre\s+del\s+fertilizante/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 3 },
   { pattern: /f[eé]rt[ií]l[ií]z[aá]nt[eé]/i, action: { type: 'REPLY', reply: '{fertilizer_name}' }, note: 'Pide fertilizante (usado en: createFertilizer, filterFertilizers, searchProductsFertilizers)', priority: 3 },
   { pattern: /\btipo\s+de\s+fertilizante/i, action: { type: 'REPLY', reply: '{type_fertilizer}' }, note: 'Pide tipo fertilizante (usado en: createFertilizer, filterFertilizers)', priority: 3 },
-  { pattern: /c[oó]mp[oó]s[ií]c[ií][oó]n/i, action: { type: 'REPLY', reply: '{composition}' }, note: 'Pide composición (usado en: createFertilizer)', priority: 3 },
+  { pattern: /c[oó]mp[oó]s[ií]c[ií][oó]n/i, action: { type: 'REPLY', reply: '{composition}' }, note: 'Pide composición (usado en: createFertilizer)', priority: 3, intents: ['createChemicalProduct', 'createCrop', 'createFertilizer', 'createPlannedCampaign', 'createPlannedWork'] },
   { pattern: /\bforma(\s+del\s+fertilizante)?/i, action: { type: 'REPLY', reply: '{form_type}' }, note: 'Pide forma (usado en: createFertilizer, filterFertilizers)', priority: 3 },
   { pattern: /\bnivel\s+de\s+nitr[oó]geno/i, action: { type: 'REPLY', reply: '{nitrogen_level}' }, note: 'Pide nitrógeno (usado en: createFertilizer, filterFertilizers)', priority: 3 },
   
@@ -1391,7 +1409,7 @@ export const KEYWORD_RULES: Array<{
   { pattern: /n[eé]c[eé]s[ií]t[aá]s l[aá]s s[ií]g[uúü][ií][eé]nt[eé]s c[aá]nt[ií]d[aá]d[eé]s d[eé] s[eé]m[ií]ll[aá]s:/i, action: { type: 'END_OK' }, note: 'UI updated', priority: 1, intents: ['getSeedsNeeded'] },
   { pattern: /¡H[aá]st[aá] l[uúü][eé]g[oó]!/i, action: { type: 'END_OK' }, note: 'UI updated', priority: 1, intents: ['goodbye'] },
   { pattern: /¡H[oó]l[aá]!/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['greet'] },
-  { pattern: /¿C[uúü]ál [eé]s l[aá] f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá] p[aá]r[aá] [eé]l tr[aá]b[aá]j[oó]\?/i, action: { type: 'REPLY', reply: '06-10- 2026' }, note: 'UI added', priority: 2, intents: ['reportFinishedWork'] },
+  { pattern: /¿C[uúü]ál [eé]s l[aá] f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá] p[aá]r[aá] [eé]l tr[aá]b[aá]j[oó]\?/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 2, intents: ['reportFinishedWork'] },
   { pattern: /r[eé]v[ií]s[aá] t[uúü] c[oó]rr[eé][oó]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1, intents: ['requestOtp'] },
   { pattern: /H[oó]r[aá] d[eé] [ií]n[ií]c[ií][oó]\./i, action: { type: 'REPLY', reply: '14:30' }, note: 'UI added', priority: 2},
   { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
@@ -1401,6 +1419,12 @@ export const KEYWORD_RULES: Array<{
   { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: 'UI added', priority: 3 },
   { pattern: /f[eé]ch[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '06-10-2026' }, note: '"g', priority: 2 },
   { pattern: /H[eé] d[aá]d[oó] d[eé] [aá]lt[aá]/i, action: { type: 'END_OK' }, note: 'UI added', priority: 1 },
+  { pattern: /q[uúü][eé] c[oó]nt[ií][eé]n[eé]n/i, action: { type: 'END_OK' }, note: 'UI updated', priority: 1, intents: ['checkUnplannedFields', 'getActiveMatterChemicalProducts', 'getChemicalProducts', 'getChemicalProductsByClient', 'getCropDistribution', 'getCrops', 'getFertilizers', 'getLastPrice', 'getLastWork', 'getManufacturerProducts', 'getMinPrice', 'getPendingWorks', 'getPlannedCampaignsHistory', 'getPriceVariation'] },
+  { pattern: /h[oó]r[aá] pl[aá]n[ií]f[ií]c[aá]d[aá]/i, action: { type: 'REPLY', reply: '10:12' }, note: 'UI added', priority: 2 },
+  { pattern: /f[eé]ch[aá] d[eé] [ií]n[ií]c[ií][oó]/i, action: { type: 'REPLY', reply: '23-09-2025' }, note: 'UI added', priority: 2, intents: ['reportFinishedWork'] },
+  { pattern: /h[oó]r[aá] d[eé] [ií]n[ií]c[ií][oó]/i, action: { type: 'REPLY', reply: '10:12' }, note: 'UI added', priority: 2, intents: ['reportFinishedWork'] },
+  { pattern: /f[eé]ch[aá] d[eé] f[ií]n[aá]l[ií]z[aá]c[ií]ón/i, action: { type: 'REPLY', reply: '27-11-2026' }, note: 'UI added', priority: 3, intents: ['reportFinishedWork'] },
+  { pattern: /h[oó]r[aá] d[eé] f[ií]n[aá]l[ií]z[aá]c[ií]ón/i, action: { type: 'REPLY', reply: '10:13' }, note: 'UI added', priority: 2, intents: ['reportFinishedWork'] },
 ];
 
 export type ActionResult =

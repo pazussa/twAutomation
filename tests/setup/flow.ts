@@ -137,18 +137,73 @@ export const test = base.extend<WppFixtures>({
     await use(page);
   },
   conversation: async ({}, use, testInfo) => {
-    const events: Array<{ t: number; kind: ConvKind; text: string; ok: boolean; meta?: any }> = [];
+    const fs = await import('fs');
+    const path = await import('path');
+    
+    // Extraer executionId del título del test si existe
+    const executionIdMatch = testInfo.title.match(/Ejecución ([a-f0-9]+)/);
+    const executionId = executionIdMatch ? executionIdMatch[1] : null;
+    
+    // Usar nombre de archivo basado en executionId para persistencia entre reanudaciones
+    const conversationFile = executionId 
+      ? path.default.join(process.cwd(), `conversation-${executionId}.json`)
+      : path.default.join(process.cwd(), `conversation-${Date.now()}.json`);
+    
+    // Cargar eventos previos si el archivo ya existe (reanudación)
+    let events: Array<{ t: number; kind: ConvKind; text: string; ok: boolean; meta?: any }> = [];
+    if (fs.default.existsSync(conversationFile)) {
+      try {
+        const existingData = JSON.parse(fs.default.readFileSync(conversationFile, 'utf8'));
+        events = existingData.events || [];
+        console.log(`[Conversation] 📂 Archivo existente cargado: ${events.length} eventos previos`);
+      } catch (e) {
+        console.log(`[Conversation] ⚠️ Error al cargar archivo existente, iniciando nuevo`);
+        events = [];
+      }
+    }
+    
+    const saveToFile = () => {
+      try {
+        fs.default.writeFileSync(conversationFile, JSON.stringify({ title: testInfo.title, events }, null, 2), 'utf8');
+      } catch (e) {
+        // Ignorar errores de escritura
+      }
+    };
+    
     const logger: ConversationLogger = {
-      logSent: (text) => { console.log(`Enviado: ${text}`); events.push({ t: Date.now(), kind: 'send', text, ok: true }); },
-      logReceived: (texts) => { texts.forEach((text) => { console.log(`Recibido: ${text}`); events.push({ t: Date.now(), kind: 'recv', text, ok: true }); }); },
-      logRecvFailure: (reason) => { console.log(`Error: ${reason}`); events.push({ t: Date.now(), kind: 'recv', text: reason, ok: false }); },
-      logIntent: (label, idx, total) => { console.log(`\n[${idx}/${total}] ${label}`); events.push({ t: Date.now(), kind: 'intent', text: label, ok: true, meta: { idx, total } }); }
+      logSent: (text) => { 
+        console.log(`Enviado: ${text}`); 
+        events.push({ t: Date.now(), kind: 'send', text, ok: true }); 
+        saveToFile();
+      },
+      logReceived: (texts) => { 
+        texts.forEach((text) => { 
+          console.log(`Recibido: ${text}`); 
+          events.push({ t: Date.now(), kind: 'recv', text, ok: true }); 
+        }); 
+        saveToFile();
+      },
+      logRecvFailure: (reason) => { 
+        console.log(`Error: ${reason}`); 
+        events.push({ t: Date.now(), kind: 'recv', text: reason, ok: false }); 
+        saveToFile();
+      },
+      logIntent: (label, idx, total) => { 
+        console.log(`\n[${idx}/${total}] ${label}`); 
+        events.push({ t: Date.now(), kind: 'intent', text: label, ok: true, meta: { idx, total } }); 
+        saveToFile();
+      }
     };
     await use(logger);
+    
+    // Guardar en attachments para compatibilidad con el reporter existente
     await testInfo.attach('conversation', {
       contentType: 'application/json',
       body: JSON.stringify({ title: testInfo.title, events }, null, 2)
     });
+    
+    // SIEMPRE conservar archivos de conversación (nunca borrar)
+    console.log(`[Conversation] 💾 Archivo conservado: ${path.default.basename(conversationFile)}`);
   },
   resetChat: async ({ page }, use) => { await use(async () => { await clearChat(page).catch(() => {}); }); },
   sendAndWait: async ({ page, conversation }, use) => {
@@ -280,7 +335,9 @@ export const test = base.extend<WppFixtures>({
           }
           if (action.type === 'IGNORE') {
             // Ignorar este mensaje y continuar esperando la siguiente respuesta del bot
+            // NO enviar nada, solo esperar más respuestas
             console.log(`[Flow] 🔇 Mensaje ignorado: "${newMessages.join(' ').substring(0, 80)}..."`);
+            toSend = ''; // Limpiar para NO reenviar el mensaje anterior
             continue;
           }
           if (action.type === 'RETRY_EXISTS') {

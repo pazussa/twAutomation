@@ -1,0 +1,97 @@
+{
+  "title": "Ejecución c856bf03e350d7bd - Automática",
+  "events": [
+    {
+      "t": 1764306747261,
+      "kind": "intent",
+      "text": "[1/2] createCrop › crear cultivo",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 2
+      }
+    },
+    {
+      "t": 1764306749507,
+      "kind": "send",
+      "text": "crear cultivo",
+      "ok": true
+    },
+    {
+      "t": 1764306773037,
+      "kind": "recv",
+      "text": "No se encontró la variedad \"alto\" para el cultivo \"cebada\"..",
+      "ok": true
+    },
+    {
+      "t": 1764306773037,
+      "kind": "recv",
+      "text": "Opciones: rgt covadonga, rgt orijino.",
+      "ok": true
+    },
+    {
+      "t": 1764306773037,
+      "kind": "recv",
+      "text": "Que variedad de cultivo quieres? (Ej: filon, orlogue, saratoga…).",
+      "ok": true
+    },
+    {
+      "t": 1764306773041,
+      "kind": "send",
+      "text": "rgt orijino",
+      "ok": true
+    },
+    {
+      "t": 1764306792035,
+      "kind": "recv",
+      "text": "Ya existe un cultivo con esta combinación de variedad, cliente, destino y marca..",
+      "ok": true
+    },
+    {
+      "t": 1764306792036,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764306798513,
+      "kind": "intent",
+      "text": "[2/2] assignPriceProduct › Hola Luca, asigna un precio de 340€/tonelada al Herbicida atrazina hoy",
+      "ok": true,
+      "meta": {
+        "idx": 2,
+        "total": 2
+      }
+    },
+    {
+      "t": 1764306800786,
+      "kind": "send",
+      "text": "Hola Luca, asigna un precio de 340€/tonelada al Herbicida atrazina hoy",
+      "ok": true
+    },
+    {
+      "t": 1764306818735,
+      "kind": "recv",
+      "text": "Nombre del producto.",
+      "ok": true
+    },
+    {
+      "t": 1764306818740,
+      "kind": "send",
+      "text": "Fungicida epoxiconazol",
+      "ok": true
+    },
+    {
+      "t": 1764306835203,
+      "kind": "recv",
+      "text": "Precio asignado exitosamente al producto químico..",
+      "ok": true
+    },
+    {
+      "t": 1764306835203,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    }
+  ]
+}

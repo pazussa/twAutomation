@@ -1,0 +1,1555 @@
+{
+  "title": "Ejecución zzz-humus-19ac69abd2c - Automática",
+  "events": [
+    {
+      "t": 1764268769620,
+      "kind": "intent",
+      "text": "[1/26] searchProductsFertilizers › busca Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764268771795,
+      "kind": "send",
+      "text": "busca Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764268788600,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764268788600,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764268788600,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764268795050,
+      "kind": "intent",
+      "text": "[2/26] searchProductsFertilizers › quiero buscar productos que contengan Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 2,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764268797248,
+      "kind": "send",
+      "text": "quiero buscar productos que contengan Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764268814478,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764268814478,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764268814478,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764268814478,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764268820882,
+      "kind": "intent",
+      "text": "[3/26] searchProductsFertilizers › encuentra Humus de lombriz para el cliente Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 3,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764268823058,
+      "kind": "send",
+      "text": "encuentra Humus de lombriz para el cliente Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764268840620,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764268840620,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764268840620,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764268840620,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764268847022,
+      "kind": "intent",
+      "text": "[4/26] searchProductsFertilizers › busca el fertilizante Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 4,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764268849211,
+      "kind": "send",
+      "text": "busca el fertilizante Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764268867369,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764268867369,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764268867369,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764268867370,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764268873795,
+      "kind": "intent",
+      "text": "[5/26] searchProductsFertilizers › necesito encontrar abono Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 5,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764268876000,
+      "kind": "send",
+      "text": "necesito encontrar abono Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764268923849,
+      "kind": "recv",
+      "text": "Qué es y beneficios (breve) Humus de lombriz: compost estabilizado producido por lombrices; aporta materia orgánica, nutrientes asimilables, mejora estructura, retención de agua y actividad microbiana del suelo. Qué es y beneficios (breve) Humus de lombriz: compost estabilizado producido por lombrices; aporta materia orgánica, nutrientes asimilables, mejora estructura, retención de agua y actividad microbiana del suelo..\nPerfecto — te doy una guía práctica para localizar y elegir humus de lombriz (vermicompost) y cómo usarlo. Si quieres, luego busco proveedores en tu zona: dime provincia/país..\nDónde buscar (opciones) Centros de agricultura/insumos agrícolas y cooperativas locales.\nViveros y garden centers especializados en orgánicos.\nProductores/empresas de compost y lombricultura (venta a granel o en sacos).\nPuntos municipales de compostaje o gestores de residuos orgánicos (algunas venden producto certificado).\nPlataformas de venta online y mercados especializados en agricultura ecológica. Dónde buscar (opciones) Centros de agricultura/insumos agrícolas y cooperativas locales.\nViveros y garden centers especializados en orgánicos.\nProductores/empresas de compost y lombricultura (venta a granel o en sacos).\nPuntos municipales de compostaje o gestores de residuos orgánicos (algunas venden producto certificado).\nPlataformas de venta online y mercados especializados en agricultura ecológica. Centros de agricultura/insumos agrícolas y cooperativas locales. Viveros y garden centers especializados en orgánicos. Productores/empresas de compost y lombricultura (venta a granel o en sacos). Puntos municipales de compostaje o gestores de residuos orgánicos (algunas venden producto certificado). Plataformas de venta online y mercados especializados en agricultura ecológica..\nQué pedir al proveedor (para verificar calidad) Análisis de laboratorio: materia seca, materia orgánica, N total, P (P2O5), K (K2O), pH y conductividad eléctrica (CE).\nCertificados de ausencia de patógenos y metales pesados, y control de semillas de malas hierbas.\nIndicador de madurez/estabilización (olor terroso, sin restos visibles).\nInformación sobre origen de la materia prima y proceso (temperatura, tiempo, cribado, tamizado). Qué pedir al proveedor (para verificar calidad) Análisis de laboratorio: materia seca, materia orgánica, N total, P (P2O5), K (K2O), pH y conductividad eléctrica (CE).\nCertificados de ausencia de patógenos y metales pesados, y control de semillas de malas hierbas.\nIndicador de madurez/estabilización (olor terroso, sin restos visibles).\nInformación sobre origen de la materia prima y proceso (temperatura, tiempo, cribado, tamizado). Análisis de laboratorio: materia seca, materia orgánica, N total, P (P2O5), K (K2O), pH y conductividad eléctrica (CE). Certificados de ausencia de patógenos y metales pesados, y control de semillas de malas hierbas. Indicador de madurez/estabilización (olor terroso, sin restos visibles). Información sobre origen de la materia prima y proceso (temperatura, tiempo, cribado, tamizado)..\nValores orientativos (rangos habituales) N total: ~0,5–2%; P2O5: ~0,2–1%; K2O: ~0,5–2%; pH ~6–8; CE baja-moderada. (Son rangos orientativos; confía en análisis del lote). Valores orientativos (rangos habituales) N total: ~0,5–2%; P2O5: ~0,2–1%; K2O: ~0,5–2%; pH ~6–8; CE baja-moderada. (Son rangos orientativos; confía en análisis del lote)..\nPrecauciones y almacenamiento Almacenar en lugar seco, protegido del sol y la lluvia para evitar lixiviados y pérdida de calidad.\nEvitar aplicar puro y en exceso en plantas sensibles; mezclar con suelo/sustrato.\nSi lo usas en fertirrigación, confirma que el producto está formulado/filtrado para evitar taponado de goteros. Precauciones y almacenamiento Almacenar en lugar seco, protegido del sol y la lluvia para evitar lixiviados y pérdida de calidad.\nEvitar aplicar puro y en exceso en plantas sensibles; mezclar con suelo/sustrato.\nSi lo usas en fertirrigación, confirma que el producto está formulado/filtrado para evitar taponado de goteros. Almacenar en lugar seco, protegido del sol y la lluvia para evitar lixiviados y pérdida de calidad. Evitar aplicar puro y en exceso en plantas sensibles; mezclar con suelo/sustrato. Si lo usas en fertirrigación, confirma que el producto está formulado/filtrado para evitar taponado de goteros..\nRecomendaciones de uso y dosis Cultivos extensivos: incorporación al suelo 5–20 t/ha según objetivo (mantenimiento vs enmienda fuerte).\nHorticultura en cama o huerto: 2–5 kg/m2 incorporado al terreno.\nSustratos y macetas: mezclar 10–30% de volumen con sustrato.\nAporte en superficie (top-dress): 0,5–2 kg/m2 y mezclar ligeramente.\nTé de humus (extracto): usar diluciones 1:10–1:20 para riegos o aplicaciones foliares como corrector rápido; filtrar y usar en 24–48 h. Recomendaciones de uso y dosis Cultivos extensivos: incorporación al suelo 5–20 t/ha según objetivo (mantenimiento vs enmienda fuerte).\nHorticultura en cama o huerto: 2–5 kg/m2 incorporado al terreno.\nSustratos y macetas: mezclar 10–30% de volumen con sustrato.\nAporte en superficie (top-dress): 0,5–2 kg/m2 y mezclar ligeramente.\nTé de humus (extracto): usar diluciones 1:10–1:20 para riegos o aplicaciones foliares como corrector rápido; filtrar y usar en 24–48 h. Cultivos extensivos: incorporación al suelo 5–20 t/ha según objetivo (mantenimiento vs enmienda fuerte). Horticultura en cama o huerto: 2–5 kg/m2 incorporado al terreno. Sustratos y macetas: mezclar 10–30% de volumen con sustrato. Aporte en superficie (top-dress): 0,5–2 kg/m2 y mezclar ligeramente. Té de humus (extracto): usar diluciones 1:10–1:20 para riegos o aplicaciones foliares como corrector rápido; filtrar y usar en 24–48 h..",
+      "ok": false
+    },
+    {
+      "t": 1764268935433,
+      "kind": "recv",
+      "text": "Si quieres, hago: Búsqueda de proveedores en tu zona (dime ubicación).\nUn email/consulta modelo para solicitar análisis y precios a un productor. Si quieres, hago: Búsqueda de proveedores en tu zona (dime ubicación).\nUn email/consulta modelo para solicitar análisis y precios a un productor. Búsqueda de proveedores en tu zona (dime ubicación). Un email/consulta modelo para solicitar análisis y precios a un productor..",
+      "ok": true
+    },
+    {
+      "t": 1764268935437,
+      "kind": "send",
+      "text": "375",
+      "ok": true
+    },
+    {
+      "t": 1764268951266,
+      "kind": "recv",
+      "text": "El Código no es valido o ha expirado. Por favor, intenta de nuevo..",
+      "ok": false
+    },
+    {
+      "t": 1764268997783,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764268997784,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269004191,
+      "kind": "intent",
+      "text": "[6/26] searchProductsFertilizers › muéstrame productos con Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 6,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269006378,
+      "kind": "send",
+      "text": "muéstrame productos con Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764269044173,
+      "kind": "recv",
+      "text": "Puedo mostrarte productos con humus de lombriz; dime país/provincia y si prefieres venta a granel, sacos (5–40 kg) o envíos online y hago la búsqueda. Mientras tanto, tipos habituales y qué comparar:.",
+      "ok": true
+    },
+    {
+      "t": 1764269044173,
+      "kind": "recv",
+      "text": "Formatos comunes: sacos (5–40 kg), a granel (t/ha), humus líquido/“té” y mezclas/sustratos con % de humus.\nQué pedir al proveedor: análisis de N total, P2O5, K2O, materia orgánica %, pH, conductividad eléctrica (CE), certificado de ausencia de patógenos y metales pesados y prueba de madurez/estabilización.\nUso y dosis orientativa: huerto 2–5 kg/m2, incorporaciones de campo 5–20 t/ha, sustratos 10–30% v/v; ajustar según análisis. Formatos comunes: sacos (5–40 kg), a granel (t/ha), humus líquido/“té” y mezclas/sustratos con % de humus. Qué pedir al proveedor: análisis de N total, P2O5, K2O, materia orgánica %, pH, conductividad eléctrica (CE), certificado de ausencia de patógenos y metales pesados y prueba de madurez/estabilización. Uso y dosis orientativa: huerto 2–5 kg/m2, incorporaciones de campo 5–20 t/ha, sustratos 10–30% v/v; ajustar según análisis..",
+      "ok": true
+    },
+    {
+      "t": 1764269044173,
+      "kind": "recv",
+      "text": "Dime ubicación y formato preferido (o pega aquí una lista/tabla de productos si la tienes) y te preparo una lista con productos, precios y enlaces o un email modelo para pedir análisis y precios..",
+      "ok": true
+    },
+    {
+      "t": 1764269044176,
+      "kind": "send",
+      "text": "microgranulado",
+      "ok": true
+    },
+    {
+      "t": 1764269061616,
+      "kind": "recv",
+      "text": "Nombre del fabricante del producto que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269061618,
+      "kind": "send",
+      "text": "UPL Limited",
+      "ok": true
+    },
+    {
+      "t": 1764269077553,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269077559,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269093355,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269093360,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269109167,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269109173,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269125595,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269125601,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269141174,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269141174,
+      "kind": "recv",
+      "text": "⚠️ Bucle infinito detectado: enviando \"Superfosfato\" 5 veces consecutivas",
+      "ok": false
+    },
+    {
+      "t": 1764269141176,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269147580,
+      "kind": "intent",
+      "text": "[7/26] searchProductsFertilizers › lista fertilizantes que tengan Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 7,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269149799,
+      "kind": "send",
+      "text": "lista fertilizantes que tengan Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764269159783,
+      "kind": "recv",
+      "text": "Operación cancelada..",
+      "ok": true
+    },
+    {
+      "t": 1764269159783,
+      "kind": "recv",
+      "text": "Actualmente tienes en tu configuración un total de 10 fertilizantes registrados en tu cuenta:.",
+      "ok": true
+    },
+    {
+      "t": 1764269178411,
+      "kind": "recv",
+      "text": "Fertilizante: Humus De Lombriz Fabricante: Lombricultura El Edén Formato: Sólido — Fertilizante: Basacote Plus Fabricante: Compo Expert Formato: Granulado — Fertilizante: Solution 32 Uan Fabricante: Fertiberia Formato: Líquido — Fertilizante: Phosphate Rock Grade Fabricante: Agrium Inc Formato: Polvo — Fertilizante: Zanahoria Verctorizada Fabricante: Yara Formato: Sólido — Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Map Monoamónico Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Fertilizante Triple 15 Fabricante: Abonos Sureños S.A. Formato: Sólido — Fertilizante: Potash Granular Fabricante: Nutrien Formato: Granu… Fertilizante: Humus De Lombriz Fabricante: Lombricultura El Edén Formato: Sólido — Fertilizante: Basacote Plus Fabricante: Compo Expert Formato: Granulado Fertilizante: Solution 32 Uan Fabricante: Fertiberia Formato: Líquido Fertilizante: Phosphate Rock Grade Fabricante: Agrium Inc Formato: Polvo Fertilizante: Zanahoria Verctorizada Fabricante: Yara Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Fertilizante: Map Monoamónico Fertilizante: Fertilizante Triple 15 Fabricante: Abonos Sureños S.A. Fertilizante: Potash Granular Fabricante: Nutrien Formato: Granu….",
+      "ok": true
+    },
+    {
+      "t": 1764269178413,
+      "kind": "send",
+      "text": "Quelato de hierro",
+      "ok": true
+    },
+    {
+      "t": 1764269219219,
+      "kind": "recv",
+      "text": "Qué es Un quelato de hierro es hierro ligado a un agente quelante que mantiene el Fe soluble y disponible para la planta, evitando que precipite en suelos calcáreos o alcalinos. Qué es Un quelato de hierro es hierro ligado a un agente quelante que mantiene el Fe soluble y disponible para la planta, evitando que precipite en suelos calcáreos o alcalinos..",
+      "ok": true
+    },
+    {
+      "t": 1764269219219,
+      "kind": "recv",
+      "text": "Tipos y cuándo elegir EDTA: eficaz en suelos ácidos-moderados.\nDTPA: intermedio, útil en pH algo más alto que EDTA.\nEDDHA (o EDDHSA): el más estable en suelos alcalinos/calcáreos y el recomendado cuando hay clorosis férrica persistente. Tipos y cuándo elegir EDTA: eficaz en suelos ácidos-moderados.\nDTPA: intermedio, útil en pH algo más alto que EDTA.\nEDDHA (o EDDHSA): el más estable en suelos alcalinos/calcáreos y el recomendado cuando hay clorosis férrica persistente. EDTA: eficaz en suelos ácidos-moderados. DTPA: intermedio, útil en pH algo más alto que EDTA. EDDHA (o EDDHSA): el más estable en suelos alcalinos/calcáreos y el recomendado cuando hay clorosis férrica persistente..",
+      "ok": true
+    },
+    {
+      "t": 1764269219219,
+      "kind": "recv",
+      "text": "Cómo se aplica (formas habituales) Foliar: corrección rápida de clorosis mediante pulverización (usar formulación foliar indicada en etiqueta).\nAl suelo/fertirrigación: incorporación al perfil radicular o por goteo para mantenimiento; en suelos calcáreos conviene usar EDDHA.\nTratamiento de plantones/raíces: inmersión o aplicación localizada en trasplantes. Cómo se aplica (formas habituales) Foliar: corrección rápida de clorosis mediante pulverización (usar formulación foliar indicada en etiqueta).\nAl suelo/fertirrigación: incorporación al perfil radicular o por goteo para mantenimiento; en suelos calcáreos conviene usar EDDHA.\nTratamiento de plantones/raíces: inmersión o aplicación localizada en trasplantes. Foliar: corrección rápida de clorosis mediante pulverización (usar formulación foliar indicada en etiqueta). Al suelo/fertirrigación: incorporación al perfil radicular o por goteo para mantenimiento; en suelos calcáreos conviene usar EDDHA. Tratamiento de plantones/raíces: inmersión o aplicación localizada en trasplantes..",
+      "ok": true
+    },
+    {
+      "t": 1764269219219,
+      "kind": "recv",
+      "text": "Precauciones y consejos prácticos Sigue siempre la etiqueta del producto para dosis y compatibilidades.\nEvita mezclas con caldos alcalinos o con fertilizantes que aumenten pH sin comprobar compatibilidad.\nRepite aplicaciones si la clorosis reaparece y confirma con análisis foliar/soil para planificar estrategia.\nPara elegir producto y dosis adecuadas dime cultivo, pH del suelo y país/mercado y te propongo opciones concretas. Precauciones y consejos prácticos Sigue siempre la etiqueta del producto para dosis y compatibilidades.\nEvita mezclas con caldos alcalinos o con fertilizantes que aumenten pH sin comprobar compatibilidad.\nRepite aplicaciones si la clorosis reaparece y confirma con análisis foliar/soil para planificar estrategia.\nPara elegir producto y dosis adecuadas dime cultivo, pH del suelo y país/mercado y te propongo opciones concretas. Sigue siempre la etiqueta del producto para dosis y compatibilidades. Evita mezclas con caldos alcalinos o con fertilizantes que aumenten pH sin comprobar compatibilidad. Repite aplicaciones si la clorosis reaparece y confirma con análisis foliar/soil para planificar estrategia. Para elegir producto y dosis adecuadas dime cultivo, pH del suelo y país/mercado y te propongo opciones concretas..",
+      "ok": true
+    },
+    {
+      "t": 1764269219223,
+      "kind": "send",
+      "text": "Quelato de hierro",
+      "ok": true
+    },
+    {
+      "t": 1764269252911,
+      "kind": "recv",
+      "text": "Un quelato de hierro es Fe ligado a un agente quelante que mantiene el hierro soluble y disponible para la planta, evitando su precipitación en suelos neutros o alcalinos. Tipos útiles: EDTA (óptimo en suelos ácidos–moderados), DTPA (intermedio) y EDDHA/EDD HSA (el más estable y recomendable en suelos calcáreos o con pH alto). Se aplica como tratamiento foliar para corrección rápida de clorosis y por suelo/fertirrigación para mantenimiento; en trasplantes puede emplearse en inmersiones o aplicaciones localizadas. Recomendaciones: confirma pH y diagnóstico foliar antes de tratar, sigue siempre la etiqueta del producto, evita mezclar con caldos alcalinos o productos que eleven el pH y usa filtros/coladores si lo aplicas por goteo. Si me indicas cultivo, pH del….",
+      "ok": false
+    },
+    {
+      "t": 1764269299600,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764269299602,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269305976,
+      "kind": "intent",
+      "text": "[8/26] searchProductsFertilizers › buscar Humus de lombriz en fertilizantes",
+      "ok": true,
+      "meta": {
+        "idx": 8,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269308103,
+      "kind": "send",
+      "text": "buscar Humus de lombriz en fertilizantes",
+      "ok": true
+    },
+    {
+      "t": 1764269325932,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764269325932,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764269325932,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764269325933,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269332339,
+      "kind": "intent",
+      "text": "[9/26] searchProductsFertilizers › Humus de lombriz fertilizantes",
+      "ok": true,
+      "meta": {
+        "idx": 9,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269334546,
+      "kind": "send",
+      "text": "Humus de lombriz fertilizantes",
+      "ok": true
+    },
+    {
+      "t": 1764269373383,
+      "kind": "recv",
+      "text": "Humus de lombriz es un compost estabilizado rico en materia orgánica que actúa como enmienda y fertilizante de liberación lenta, mejorando estructura, retención de agua y microbiología del suelo. Valores orientativos: N 0,5–2 %, P2O5 0,2–1 %, K2O 0,5–2 %, pH ~6–8; pide siempre análisis de lote, ausencia de patógenos y metales. Dosis orientativas: incorporación en campo 5–20 t/ha, huerto 2–5 kg/m2, sustratos 10–30 % v/v; para té de humus diluir 1:10–1:20. En España conviene comprobar la inscripción del producto en el registro de fertilizantes (MAPA) según la normativa recogida en el RD 840/2024 que modifica el RD 1051/2022..",
+      "ok": true
+    },
+    {
+      "t": 1764269373386,
+      "kind": "send",
+      "text": "Nitrofoska",
+      "ok": true
+    },
+    {
+      "t": 1764269402968,
+      "kind": "recv",
+      "text": "Nitrofoska es un nombre comercial habitual para una gama de fertilizantes compuestos N‑P‑K (formulaciones granuladas o solubles) usados en agricultura y horticultura; su función principal es aportar nutrientes balanceados según la formulación concreta. Para elegir el formato adecuado revisa siempre la ficha técnica/etiqueta (análisis N‑P‑K y micronutrientes, forma física, solubilidad, contenido en cloruros, recomendaciones de dosis y compatibilidades) y comprueba que el producto esté registrado y etiquetado conforme al RD aplicable y al registro REGFER. Si quieres, busco formulaciones y fichas técnicas de Nitrofoska disponibles en tu país o proveedores por provincia — dime ubicación y formato preferido..",
+      "ok": true
+    },
+    {
+      "t": 1764269402972,
+      "kind": "send",
+      "text": "Nitrofoska",
+      "ok": true
+    },
+    {
+      "t": 1764269438210,
+      "kind": "recv",
+      "text": "Nitrofoska es un nombre comercial habitual para una gama de fertilizantes compuestos N‑P‑K, disponibles en formulaciones granuladas y solubles. Para elegir el producto adecuado revisa la ficha técnica/etiqueta (análisis N‑P‑K y microelementos, forma física y solubilidad, contenido en cloruros, recomendaciones de dosis y compatibilidades) y verifica que esté registrado/etiquetado conforme a la normativa española (REGFER y los reales decretos aplicables). Si quieres, busco formulaciones, fichas técnicas y proveedores por país/provincia y formato (granulado, soluble, sacos o granel) — dime ubicación y preferencia..",
+      "ok": true
+    },
+    {
+      "t": 1764269438214,
+      "kind": "send",
+      "text": "Nitrofoska",
+      "ok": true
+    },
+    {
+      "t": 1764269470371,
+      "kind": "recv",
+      "text": "Nitrofoska es un nombre comercial habitual para una gama de fertilizantes compuestos N‑P‑K, disponibles en formulaciones granuladas y solubles. Para elegir el producto adecuado revise siempre la ficha técnica/etiqueta (análisis N‑P‑K y microelementos, solubilidad, contenido en cloruros, dosis recomendadas y compatibilidades) y compruebe que el producto esté registrado y etiquetado conforme a la normativa aplicable (p. ej. RD 824/2005 y registro REGFER). Si quieres, puedo buscar formulaciones, fichas técnicas o proveedores según tu país/provincia y formato preferido — dime ubicación y formato..",
+      "ok": true
+    },
+    {
+      "t": 1764269470376,
+      "kind": "send",
+      "text": "Nitrofoska",
+      "ok": true
+    },
+    {
+      "t": 1764269501979,
+      "kind": "recv",
+      "text": "Nitrofoska es un nombre comercial habitual para una gama de fertilizantes compuestos (N‑P‑K) disponibles en formulaciones granuladas y solubles. Para elegir el producto adecuado revise siempre la ficha técnica/etiqueta (análisis N‑P‑K y microelementos, solubilidad, contenido en cloruros, dosis recomendadas y compatibilidades) y compruebe que el producto esté registrado conforme a la normativa aplicable (p. ej. R.D. 824/2005 y registro REGFER). Además, calibre correctamente las abonadoras, respete los periodos de prohibición de fertilizaciones nitrogenadas y condiciones de almacenamiento para minimizar riesgos ambientales. Si quieres, busco formulaciones, fichas técnicas o proveedores según tu país/provincia y el uso previsto (cultivo, aplicación, formato)..",
+      "ok": true
+    },
+    {
+      "t": 1764269501979,
+      "kind": "recv",
+      "text": "⚠️ Bucle infinito detectado: enviando \"Nitrofoska\" 5 veces consecutivas",
+      "ok": false
+    },
+    {
+      "t": 1764269501982,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269508431,
+      "kind": "intent",
+      "text": "[10/26] searchProductsFertilizers › fertilizantes con Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 10,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269510609,
+      "kind": "send",
+      "text": "fertilizantes con Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764269520398,
+      "kind": "recv",
+      "text": "Operación cancelada..",
+      "ok": true
+    },
+    {
+      "t": 1764269520398,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764269528663,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764269528663,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764269528666,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269562956,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado simple (en la normativa se diferencia superfosfato simple y superfosfato concentrado). Está incluido en las categorías cuyos volúmenes de venta deben notificarse en el REGFER (toneladas de producto y de P2O5). Su comercialización exige que el responsable figure en el Registro general de fabricantes y otros agentes económicos (datos de identificación, categoría, instalaciones) y que el producto vaya etiquetado conforme a la normativa aplicable. En uso y manejo hay que respetar buenas prácticas: aplicar fósforo en los momentos de máxima demanda del cultivo para optimizar aprovechamiento y reducir acumulaciones, calibrar y mantener las abonadoras, almacenar fuera de zonas inundables (y, salvo autorización técnica, a ≥15….",
+      "ok": true
+    },
+    {
+      "t": 1764269562960,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269591807,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado (existen superfosfato simple y superfosfato concentrado) cuya venta debe notificarse en el REGFER (toneladas de producto y de P2O5). Su comercialización exige que el responsable figure en el Registro general de fabricantes y otros agentes económicos y que el producto lleve el etiquetado conforme a la normativa aplicable. En el manejo se recomiendan buenas prácticas: aplicar fósforo en los momentos de máxima demanda del cultivo, calibrar y mantener las abonadoras, almacenar fuera de zonas inundables (y, salvo autorización técnica, a ≥15 m de cauces) y no aplicar materiales sin valores analíticos o estándares reconocidos..",
+      "ok": true
+    },
+    {
+      "t": 1764269591812,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269625702,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado (existen superfosfato simple y superfosfato concentrado) usado para aportar P al cultivo. Su comercialización en España exige que el responsable figure en los registros correspondientes y que el producto vaya etiquetado conforme a la normativa (notificación de volúmenes y P2O5 en REGFER). En la aplicación práctica, conviene aplicar el fósforo en momentos de máxima demanda del cultivo para optimizar su aprovechamiento, calibrar y mantener las abonadoras, y almacenar el material fuera de zonas inundables (y, salvo autorización, a ≥15 m de cauces). No aplicar productos sin valores analíticos o sin etiqueta/equivalente técnico reconocido..",
+      "ok": true
+    },
+    {
+      "t": 1764269625708,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269653513,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado (existen superfosfato simple y superfosfato concentrado) usado para aportar P al cultivo. Su comercialización exige que el responsable figure en los registros correspondientes y que se notifiquen volúmenes y P2O5 en el REGFER, además de llevar etiquetado conforme a la normativa aplicable. En la aplicación conviene aportar el fósforo en los momentos de máxima demanda del cultivo para optimizar su aprovechamiento, calibrar y mantener las abonadoras, y almacenar el producto fuera de zonas inundables (y, salvo autorización técnica, a ≥15 m de cauces). No aplique materiales sin valores analíticos o sin etiquetado/equivalente técnico reconocido..",
+      "ok": true
+    },
+    {
+      "t": 1764269653514,
+      "kind": "recv",
+      "text": "⚠️ Bucle infinito detectado: enviando \"Superfosfato\" 5 veces consecutivas",
+      "ok": false
+    },
+    {
+      "t": 1764269653515,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269659888,
+      "kind": "intent",
+      "text": "[11/26] searchProductsFertilizers › productos fertilizantes Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 11,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269662116,
+      "kind": "send",
+      "text": "productos fertilizantes Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764269694420,
+      "kind": "recv",
+      "text": "El humus de lombriz (vermicompost) es un fertilizante orgánico resultado de la descomposición de materia orgánica por lombrices; aporta materia orgánica, sustancias húmicas y una fracción de N, P y K en forma de liberación lenta, además de estimular la actividad microbiana y mejorar la estructura del suelo. Se usa como enmienda o abonado de fondo (mezclado con el suelo o sustrato) y como aporte en cara de céspedes, huertos, macetas y frutales; las dosis y la formulación varían mucho según el producto, el cultivo y el objetivo (mejora de tierra vs aporte nutritivo), por lo que conviene ceñirse a la ficha técnica del suministro. Antes de comprar verifique que el producto y el responsable figure(n) en los registros exigidos (REGFER/etiquetado conforme a la norm….",
+      "ok": true
+    },
+    {
+      "t": 1764269694426,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269725161,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado (existen superfosfato simple y superfosfato concentrado) usado para aportar P al cultivo. Su comercialización exige que el responsable figure en el Registro general de fabricantes y otros agentes económicos (REGFER) y que se notifiquen los volúmenes de venta en toneladas de producto y de P2O5, además de llevar el etiquetado conforme a la normativa aplicable. En uso y manejo, aplique el fósforo en los momentos de máxima demanda del cultivo para optimizar su aprovechamiento y reducir acumulaciones; almacene fuera de zonas inundables y, salvo autorización técnica, a ≥15 m de cauces; y no aplique materiales sin valores analíticos o estándares reconocidos..",
+      "ok": true
+    },
+    {
+      "t": 1764269725168,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269750485,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado (simple o concentrado) usado para aportar P al cultivo. Su comercialización exige que el responsable figure en el Registro general de fabricantes y otros agentes económicos (REGFER) y que se notifiquen los volúmenes vendidos en toneladas de producto y de P2O5, además de llevar el etiquetado conforme a la normativa. En la aplicación conviene aportar el fósforo en los momentos de máxima demanda del cultivo, calibrar y mantener las abonadoras, y almacenar el producto fuera de zonas inundables y, salvo autorización técnica, a ≥15 m de cauces. No aplicar materiales sin valores analíticos o sin etiqueta/equivalente técnico reconocido..",
+      "ok": true
+    },
+    {
+      "t": 1764269750490,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269777273,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado (superfosfato simple o concentrado) para aportar P al cultivo. Su comercialización exige que el responsable figure en el Registro general de fabricantes y otros agentes económicos (REGFER), notificar volúmenes y P2O5 vendidos y llevar el etiquetado conforme a la normativa. En la práctica, conviene aplicar el fósforo en los momentos de máxima demanda del cultivo, calibrar y mantener las abonadoras, y almacenar el producto fuera de zonas inundables y, salvo autorización técnica, a ≥15 m de cauces. No aplique materiales sin valores analíticos o sin etiquetado/equivalente técnico reconocido..",
+      "ok": true
+    },
+    {
+      "t": 1764269777277,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764269802202,
+      "kind": "recv",
+      "text": "Superfosfato es un fertilizante fosfatado (simple o concentrado) usado para aportar fósforo (P) al cultivo. Su comercialización exige que el responsable figure en el Registro general de fabricantes y otros agentes económicos (REGFER), que se notifiquen volúmenes vendidos y P2O5, y que el producto lleve el etiquetado conforme a la normativa. En la aplicación conviene aportar el fósforo en los momentos de máxima demanda del cultivo, calibrar y mantener las abonadoras, y almacenar el producto fuera de zonas inundables y, salvo autorización técnica, a ≥15 m de cauces; no aplique materiales sin valores analíticos o sin etiquetado/equivalente técnico reconocido..",
+      "ok": true
+    },
+    {
+      "t": 1764269802203,
+      "kind": "recv",
+      "text": "⚠️ Bucle infinito detectado: enviando \"Superfosfato\" 5 veces consecutivas",
+      "ok": false
+    },
+    {
+      "t": 1764269802204,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269808653,
+      "kind": "intent",
+      "text": "[12/26] searchProductsFertilizers › abonos que contengan Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 12,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269810922,
+      "kind": "send",
+      "text": "abonos que contengan Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764269841166,
+      "kind": "recv",
+      "text": "Los abonos que contienen humus de lombriz se clasifican como fertilizantes orgánicos cuando proceden del tratamiento de materias orgánicas (vermicompost puro) o como fertilizantes órgano‑minerales cuando son mezclas/combina­ciones de humus con abonos minerales. En la etiqueta deben figurar los porcentajes de materia orgánica y nutrientes según las listas publicadas por el Ministerio, y su uso se integra en el plan de fertilización del cultivo..",
+      "ok": true
+    },
+    {
+      "t": 1764269841170,
+      "kind": "send",
+      "text": "NPK 8-15-15",
+      "ok": true
+    },
+    {
+      "t": 1764269858072,
+      "kind": "recv",
+      "text": "Nombre del fabricante del producto que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269858077,
+      "kind": "send",
+      "text": "UPL Limited",
+      "ok": true
+    },
+    {
+      "t": 1764269874346,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269874351,
+      "kind": "send",
+      "text": "NPK 8-15-15",
+      "ok": true
+    },
+    {
+      "t": 1764269890607,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269890610,
+      "kind": "send",
+      "text": "NPK 8-15-15",
+      "ok": true
+    },
+    {
+      "t": 1764269906019,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269906024,
+      "kind": "send",
+      "text": "NPK 8-15-15",
+      "ok": true
+    },
+    {
+      "t": 1764269921887,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269921890,
+      "kind": "send",
+      "text": "NPK 8-15-15",
+      "ok": true
+    },
+    {
+      "t": 1764269938165,
+      "kind": "recv",
+      "text": "Nombre del fertilizante que deseas registrar.",
+      "ok": true
+    },
+    {
+      "t": 1764269938166,
+      "kind": "recv",
+      "text": "⚠️ Bucle infinito detectado: enviando \"NPK 8-15-15\" 5 veces consecutivas",
+      "ok": false
+    },
+    {
+      "t": 1764269938167,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269944616,
+      "kind": "intent",
+      "text": "[13/26] searchProductsFertilizers › quiero ver Humus de lombriz en la lista de fertilizantes",
+      "ok": true,
+      "meta": {
+        "idx": 13,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269946856,
+      "kind": "send",
+      "text": "quiero ver Humus de lombriz en la lista de fertilizantes",
+      "ok": true
+    },
+    {
+      "t": 1764269965035,
+      "kind": "recv",
+      "text": "Actualmente tienes en tu configuración un total de 10 fertilizantes registrados en tu cuenta:.",
+      "ok": true
+    },
+    {
+      "t": 1764269965035,
+      "kind": "recv",
+      "text": "Fertilizante: Humus De Lombriz Fabricante: Lombricultura El Edén Formato: Sólido — Fertilizante: Basacote Plus Fabricante: Compo Expert Formato: Granulado — Fertilizante: Solution 32 Uan Fabricante: Fertiberia Formato: Líquido — Fertilizante: Phosphate Rock Grade Fabricante: Agrium Inc Formato: Polvo — Fertilizante: Zanahoria Verctorizada Fabricante: Yara Formato: Sólido — Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Map Monoamónico Fabricante: Mosaic Company Formato: Granulado — Fertilizante: Fertilizante Triple 15 Fabricante: Abonos Sureños S.A. Formato: Sólido — Fertilizante: Potash Granular Fabricante: Nutrien Formato: Granu… Fertilizante: Humus De Lombriz Fabricante: Lombricultura El Edén Formato: Sólido — Fertilizante: Basacote Plus Fabricante: Compo Expert Formato: Granulado Fertilizante: Solution 32 Uan Fabricante: Fertiberia Formato: Líquido Fertilizante: Phosphate Rock Grade Fabricante: Agrium Inc Formato: Polvo Fertilizante: Zanahoria Verctorizada Fabricante: Yara Fertilizante: Superfosfato Triple Fabricante: Mosaic Company Fertilizante: Map Monoamónico Fertilizante: Fertilizante Triple 15 Fabricante: Abonos Sureños S.A. Fertilizante: Potash Granular Fabricante: Nutrien Formato: Granu….",
+      "ok": true
+    },
+    {
+      "t": 1764269965037,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764269971450,
+      "kind": "intent",
+      "text": "[14/26] searchProductsFertilizers › mostrar Humus de lombriz fertilizante",
+      "ok": true,
+      "meta": {
+        "idx": 14,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764269973654,
+      "kind": "send",
+      "text": "mostrar Humus de lombriz fertilizante",
+      "ok": true
+    },
+    {
+      "t": 1764269983495,
+      "kind": "recv",
+      "text": "Operación cancelada..",
+      "ok": true
+    },
+    {
+      "t": 1764269983495,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764269983495,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764269991976,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764269991979,
+      "kind": "send",
+      "text": "DAP",
+      "ok": true
+    },
+    {
+      "t": 1764270007229,
+      "kind": "recv",
+      "text": "¡Hola! ¿En qué puedo ayudarte hoy?.",
+      "ok": false
+    },
+    {
+      "t": 1764270053805,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764270053806,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270060281,
+      "kind": "intent",
+      "text": "[15/26] searchProductsFertilizers › encuentra abono Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 15,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270062481,
+      "kind": "send",
+      "text": "encuentra abono Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764270099241,
+      "kind": "recv",
+      "text": "Según el contexto, el humus es la fracción estable de la materia orgánica del suelo resultante de la descomposición de restos vegetales y animales; el humus de lombriz (vermicompost) es un abono orgánico derivado de ese proceso microbiano. Puedes encontrarlo en centros de jardinería y suministros agrícolas, cooperativas agrarias, plantas municipales de compostaje y en plataformas de venta online; también lo comercializan productores locales de vermicompost. Al elegirlo, comprueba en la etiqueta que indique que es humus/vermicompost, el contenido de materia orgánica y nutrientes (N–P–K o análisis equivalente), la madurez/sanitización y que no contenga contaminantes; incorpóralo al plan de fertilización del cultivo siguiendo las indicaciones del proveedor o de….",
+      "ok": false
+    },
+    {
+      "t": 1764270145771,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764270145772,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270152227,
+      "kind": "intent",
+      "text": "[16/26] searchProductsFertilizers › busca productos fertilizantes con Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 16,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270154439,
+      "kind": "send",
+      "text": "busca productos fertilizantes con Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764270172243,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764270172243,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764270172243,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764270172247,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270178711,
+      "kind": "intent",
+      "text": "[17/26] searchProductsFertilizers › Humus de lombriz para abonar",
+      "ok": true,
+      "meta": {
+        "idx": 17,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270180919,
+      "kind": "send",
+      "text": "Humus de lombriz para abonar",
+      "ok": true
+    },
+    {
+      "t": 1764270215716,
+      "kind": "recv",
+      "text": "El humus de lombriz (vermicompost) es un abono orgánico —o fertilizante órgano‑mineral si está mezclado con minerales— que aporta materia orgánica y nutrientes (N‑P‑K) al suelo. Al adquirirlo, comprueba en la etiqueta el contenido de materia orgánica y nutrientes, la madurez/sanitización y la ausencia de contaminantes. Incorpóralo al plan de fertilización del cultivo siguiendo las indicaciones del proveedor o de un técnico (cantidad y momento según demanda del cultivo) y almacénalo en lugar seco y fuera de zonas inundables hasta su aplicación..",
+      "ok": true
+    },
+    {
+      "t": 1764270215721,
+      "kind": "send",
+      "text": "Cloruro potásico",
+      "ok": true
+    },
+    {
+      "t": 1764270256494,
+      "kind": "recv",
+      "text": "El cloruro potásico (KCl), llamado también muriato potásico, es un fertilizante mineral de potasio que aporta aproximadamente 52 % de K elemental (≈62–63 % en equivalente K2O). Es muy soluble y se usa para cubrir las necesidades de K por aplicación al suelo, en abonado de cobertera o en fertirrigación; no obstante, debe evitarse en cultivos sensibles al cloruro (por ejemplo tabaco, algunas frutales), en cuyo caso se prefiere sulfato potásico. Aplique siempre según análisis de suelo y plan de abonado del cultivo, calibre la maquinaria, y extreme precauciones contra la salinidad y la fitotoxicidad por exceso. Almacene el producto en lugar seco y fuera de zonas inundables (y alejado de cauces), compruebe en la etiqueta el porcentaje y la inscripción/registro del responsable, y use protección personal al manipularlo..",
+      "ok": true
+    },
+    {
+      "t": 1764270256500,
+      "kind": "send",
+      "text": "Cloruro potásico",
+      "ok": true
+    },
+    {
+      "t": 1764270288160,
+      "kind": "recv",
+      "text": "El cloruro potásico es un fertilizante mineral del grupo de los potásicos: un abono mineral simple cuya función es aportar potasio al cultivo. En la clasificación regulatoria entra en los fertilizantes procedentes de depósitos geológicos o de yacimientos y su contenido se declara como nutriente potásico. Su uso se integra en el plan de fertilización de la explotación, aplicándose en función del análisis de suelo y las necesidades del cultivo..",
+      "ok": true
+    },
+    {
+      "t": 1764270288165,
+      "kind": "send",
+      "text": "Cloruro potásico",
+      "ok": true
+    },
+    {
+      "t": 1764270323322,
+      "kind": "recv",
+      "text": "El cloruro potásico (KCl) es un fertilizante mineral procedente de depósitos geológicos y se encuadra como abono mineral simple del grupo potásico, cuyo nutriente declarable es el potasio. Su uso debe integrarse en el plan de fertilización de la explotación, aplicándose según el análisis de suelo y las necesidades del cultivo. Como fertilizante mineral, su expresión en etiqueta y su declaración de nutrientes se rigen por la normativa aplicable..",
+      "ok": true
+    },
+    {
+      "t": 1764270323327,
+      "kind": "send",
+      "text": "Cloruro potásico",
+      "ok": true
+    },
+    {
+      "t": 1764270351809,
+      "kind": "recv",
+      "text": "El cloruro potásico (KCl) es un fertilizante mineral procedente de yacimientos geológicos, clasificado como abono mineral simple del grupo potásico (su nutriente declarable es el potasio). Su utilización debe integrarse en el Plan de Fertilización de la explotación y aplicarse en función del análisis de suelo y de las necesidades del cultivo..",
+      "ok": true
+    },
+    {
+      "t": 1764270351809,
+      "kind": "recv",
+      "text": "⚠️ Bucle infinito detectado: enviando \"Cloruro potásico\" 5 veces consecutivas",
+      "ok": false
+    },
+    {
+      "t": 1764270351813,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270358307,
+      "kind": "intent",
+      "text": "[18/26] searchProductsFertilizers › necesito Humus de lombriz para mis cultivos",
+      "ok": true,
+      "meta": {
+        "idx": 18,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270360511,
+      "kind": "send",
+      "text": "necesito Humus de lombriz para mis cultivos",
+      "ok": true
+    },
+    {
+      "t": 1764270378305,
+      "kind": "recv",
+      "text": "¡Actualmente tienes 10 cultivo(s)! Aquí están:.",
+      "ok": true
+    },
+    {
+      "t": 1764270378305,
+      "kind": "recv",
+      "text": "Cultivo: cebada Variedad: rgt demetria Marca: nufarm Destino: consumo Precio actual: No reporta — Cultivo: cebada Variedad: rgt staffa Marca: nufarm Destino: consumo Precio actual: No reporta — Cultivo: cebada Variedad: rgt verona Marca: nufarm Destino: pienso Precio actual: No reporta — Cultivo: cebada Variedad: rgt serenata Marca: nufarm Destino: consumo Precio actual: No reporta — Cultivo: cebada Variedad: rgt covadonga Marca: nufarm Destino: pienso Precio actual: No reporta — Cultivo: cebada Variedad: rgt slida Marca: nufarm Destino: pienso Precio actual: No reporta — Cultivo: cebada Variedad: rgt skylab Marca: nufarm Destino: consumo Precio ac… Cultivo: cebada Variedad: rgt demetria Marca: nufarm Destino: consumo Precio actual: No reporta — Variedad: rgt staffa Variedad: rgt verona Destino: pienso Variedad: rgt serenata Variedad: rgt covadonga Variedad: rgt slida Variedad: rgt skylab Precio ac….",
+      "ok": true
+    },
+    {
+      "t": 1764270378308,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270384744,
+      "kind": "intent",
+      "text": "[19/26] searchProductsFertilizers › tienes Humus de lombriz disponible",
+      "ok": true,
+      "meta": {
+        "idx": 19,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270386900,
+      "kind": "send",
+      "text": "tienes Humus de lombriz disponible",
+      "ok": true
+    },
+    {
+      "t": 1764270422286,
+      "kind": "recv",
+      "text": "No vendo productos directamente, pero puedo ayudarte a conseguirlo. ¿Qué cantidad y formato necesitas y en qué zona estás? Mientras me dices, recuerda pedir al proveedor el porcentaje de materia orgánica y nutrientes, certificado de madurez/sanitización y ausencia de contaminantes, y almacénalo en lugar seco hasta su aplicación. Si quieres, busco proveedores cercanos o te doy recomendaciones de dosis según el cultivo..",
+      "ok": true
+    },
+    {
+      "t": 1764270422292,
+      "kind": "send",
+      "text": "suspensión",
+      "ok": true
+    },
+    {
+      "t": 1764270445227,
+      "kind": "recv",
+      "text": "Gracias por escribir. Estoy especializado únicamente en temas agrícolas; si tienes alguna pregunta sobre cultivos, suelos, riego u otro tema del agro, con gusto te ayudo..",
+      "ok": true
+    },
+    {
+      "t": 1764270445228,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270451687,
+      "kind": "intent",
+      "text": "[20/26] searchProductsFertilizers › hay Humus de lombriz en stock",
+      "ok": true,
+      "meta": {
+        "idx": 20,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270453898,
+      "kind": "send",
+      "text": "hay Humus de lombriz en stock",
+      "ok": true
+    },
+    {
+      "t": 1764270483133,
+      "kind": "recv",
+      "text": "No vendo productos directamente; ¿en qué zona estás y qué cantidad/formato necesitas? Puedo buscar proveedores cercanos y consultarles la disponibilidad en stock; cuando contactes al proveedor pide el porcentaje de materia orgánica y nutrientes, certificado de madurez/sanitización y ausencia de contaminantes, y almacénalo en lugar seco hasta su aplicación..",
+      "ok": true
+    },
+    {
+      "t": 1764270483138,
+      "kind": "send",
+      "text": "polvo",
+      "ok": true
+    },
+    {
+      "t": 1764270498540,
+      "kind": "recv",
+      "text": "¡Hola! ¿En qué puedo ayudarte hoy?.",
+      "ok": false
+    },
+    {
+      "t": 1764270545129,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764270545130,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270551616,
+      "kind": "intent",
+      "text": "[21/26] searchProductsFertilizers › consulta Humus de lombriz en fertilizantes",
+      "ok": true,
+      "meta": {
+        "idx": 21,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270553842,
+      "kind": "send",
+      "text": "consulta Humus de lombriz en fertilizantes",
+      "ok": true
+    },
+    {
+      "t": 1764270585640,
+      "kind": "recv",
+      "text": "El humus de lombriz es un fertilizante orgánico (procedente de residuos orgánicos) y debe integrarse en el Plan de Fertilización de la explotación, aplicándose según el análisis de suelo y las necesidades del cultivo. Al comprarlo pida el porcentaje de materia orgánica y de nutrientes, certificado de madurez/sanitización y ausencia de contaminantes. Guárdelo en lugar seco hasta su aplicación y utilícelo como parte de una gestión equilibrada de fertilizantes y riego. Si desea, puedo aconsejar dosis según cultivo y análisis de suelo o buscar proveedores cercanos..",
+      "ok": true
+    },
+    {
+      "t": 1764270585645,
+      "kind": "send",
+      "text": "MAP",
+      "ok": true
+    },
+    {
+      "t": 1764270601631,
+      "kind": "recv",
+      "text": "¡Hola! ¿En qué puedo ayudarte hoy?.",
+      "ok": false
+    },
+    {
+      "t": 1764270648347,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764270648347,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270654834,
+      "kind": "intent",
+      "text": "[22/26] searchProductsFertilizers › ver Humus de lombriz disponible",
+      "ok": true,
+      "meta": {
+        "idx": 22,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270657065,
+      "kind": "send",
+      "text": "ver Humus de lombriz disponible",
+      "ok": true
+    },
+    {
+      "t": 1764270674075,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764270674075,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764270674075,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764270674075,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270680492,
+      "kind": "intent",
+      "text": "[23/26] searchProductsFertilizers › mostrar fertilizante Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 23,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270682651,
+      "kind": "send",
+      "text": "mostrar fertilizante Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764270701266,
+      "kind": "recv",
+      "text": "Para el producto 'Humus' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764270701266,
+      "kind": "recv",
+      "text": "¡Encontré 1 resultado(s) para tu búsqueda de 'Humus'!.",
+      "ok": true
+    },
+    {
+      "t": 1764270701266,
+      "kind": "recv",
+      "text": "Fertilizante: humus de lombriz - Fabricante: lombricultura el edén Fertilizante: humus de lombriz - Fabricante: lombricultura el edén.",
+      "ok": true
+    },
+    {
+      "t": 1764270701267,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270707690,
+      "kind": "intent",
+      "text": "[24/26] searchProductsFertilizers › lista de Humus de lombriz",
+      "ok": true,
+      "meta": {
+        "idx": 24,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270709903,
+      "kind": "send",
+      "text": "lista de Humus de lombriz",
+      "ok": true
+    },
+    {
+      "t": 1764270744517,
+      "kind": "recv",
+      "text": "Formas comerciales: humus suelto/terroso (a granel o en saco), humus tamizado/pelletizado, y extracto líquido o “té de lombriz” (suspensión).\nUsos habituales: enmienda de suelo, sustrato para trasplantes, incorporación superficial y complemento en fertirriego (con el extracto líquido).\nQué pedir al comprar: porcentaje de materia orgánica y nutrientes, certificado de madurez/sanitización, análisis de contaminantes y recomendaciones de dosis.\nAlmacenaje y manejo: mantener seco hasta su aplicación; integrar en el Plan de Fertilización según análisis de suelo y necesidades del cultivo. Formas comerciales: humus suelto/terroso (a granel o en saco), humus tamizado/pelletizado, y extracto líquido o “té de lombriz” (suspensión). Usos habituales: enmienda de suelo, sustrato para trasplantes, incorporación superficial y complemento en fertirriego (con el extracto líquido). Qué pedir al comprar: porcentaje de materia orgánica y nutrientes, certificado de madurez/sanitización, análisis de contaminantes y recomendaciones de dosis. Almacenaje y manejo: mantener seco hasta su aplicación; integrar en el Plan de Fertilización según análisis de suelo y necesidades del cultivo..",
+      "ok": true
+    },
+    {
+      "t": 1764270744517,
+      "kind": "recv",
+      "text": "¿Te refieres a tipos/formas o a una lista de productos y proveedores? Mientras aclaras, aquí tienes una lista útil y breve de las presentaciones y aspectos a considerar del humus de lombriz:.",
+      "ok": true
+    },
+    {
+      "t": 1764270744517,
+      "kind": "recv",
+      "text": "Si quieres, busco proveedores en tu zona o te doy dosis orientativas según cultivo y formato. ¿Qué prefieres?.",
+      "ok": true
+    },
+    {
+      "t": 1764270744522,
+      "kind": "send",
+      "text": "emulsión",
+      "ok": true
+    },
+    {
+      "t": 1764270760437,
+      "kind": "recv",
+      "text": "¡Hola! ¿En qué puedo ayudarte hoy?.",
+      "ok": false
+    },
+    {
+      "t": 1764270807002,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764270807003,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270813402,
+      "kind": "intent",
+      "text": "[25/26] searchProductsFertilizers › productos con Humus de lombriz para Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 25,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270815587,
+      "kind": "send",
+      "text": "productos con Humus de lombriz para Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764270855317,
+      "kind": "recv",
+      "text": "Perfecto — te doy una lista práctica de formatos de producto con humus de lombriz útiles para integrarlos en una \"automatización\" (sistemas de fertirriego/dosis automáticas), más las consideraciones clave para su uso:.",
+      "ok": true
+    },
+    {
+      "t": 1764270855317,
+      "kind": "recv",
+      "text": "Formatos útiles para automatización Extracto líquido de humus / “té de lombriz” (concentrados líquidos): pensados para dosificación por bomba dosificadora o venturi.\nConcentrados líquidos orgánicos o mezclas órgano‑minerales líquidas que incorporan humus: formulados para fertirriego.\nSoluciones o polvos solubles (poco comunes): se disuelven antes de dosificar.\nHumus micronizado/pelletizado muy fino (solo si el sistema admite sólidos y tiene filtrado adecuado), aunque en general los sólidos sueltos no son adecuados para sistemas de riego automático. Formatos útiles para automatización Extracto líquido de humus / “té de lombriz” (concentrados líquidos): pensados para dosificación por bomba dosificadora o venturi.\nConcentrados líquidos orgánicos o mezclas órgano‑minerales líquidas que incorporan humus: formulados para fertirriego.\nSoluciones o polvos solubles (poco comunes): se disuelven antes de dosificar.\nHumus micronizado/pelletizado muy fino (solo si el sistema admite sólidos y tiene filtrado adecuado), aunque en general los sólidos sueltos no son adecuados para sistemas de riego automático. Extracto líquido de humus / “té de lombriz” (concentrados líquidos): pensados para dosificación por bomba dosificadora o venturi. Concentrados líquidos orgánicos o mezclas órgano‑minerales líquidas que incorporan humus: formulados para fertirriego. Soluciones o polvos solubles (poco comunes): se disuelven antes de dosificar. Humus micronizado/pelletizado muy fino (solo si el sistema admite sólidos y tiene filtrado adecuado), aunque en general los sólidos sueltos no son adecuados para sistemas de riego automático..",
+      "ok": true
+    },
+    {
+      "t": 1764270855317,
+      "kind": "recv",
+      "text": "Consideraciones prácticas para integrar en automatización Filtrado: instalar filtros finos y tamices (mallas <120–200 micras según suspensión) para evitar obstrucciones.\nBombas y materiales: confirmar compatibilidad con líquidos orgánicos (corrosión, sólidos en suspensión).\nPre‑dilución y agitación: muchos extractos requieren agitación constante y pre‑dilución antes de la dosificación.\nPrueba de compatibilidad: probar mezcla en pequeño volumen antes de introducir en la red (fito‑seguridad y precipitados).\nControl de calidad: pedir ficha analítica, % materia orgánica, N‑P‑K, certificación de madurez/sanitización y ausencia de contaminantes.\nMonitorización: medir pH y conductividad (EC) del tanque y del agua de riego; ajustar dosis en el Plan d\n… Consideraciones prácticas para integrar en automatización Filtrado: instalar filtros finos y tamices (mallas <120–200 micras según suspensión) para evitar obstrucciones.\nBombas y materiales: confirmar compatibilidad con líquidos orgánicos (corrosión, sólidos en suspensión).\nPre‑dilución y agitación: muchos extractos requieren agitación constante y pre‑dilución antes de la dosificación.\nPrueba de compatibilidad: probar mezcla en pequeño volumen antes de introducir en la red (fito‑seguridad y precipitados).\nControl de calidad: pedir ficha analítica, % materia orgánica, N‑P‑K, certificación de madurez/sanitización y ausencia de contaminantes.\nMonitorización: medir pH y conductividad (EC) del tanque y del agua de riego; ajustar dosis en el Plan d\n… Filtrado: instalar filtros finos y tamices (mallas <120–200 micras según suspensión) para evitar obstrucciones. Bombas y materiales: confirmar compatibilidad con líquidos orgánicos (corrosión, sólidos en suspensión). Pre‑dilución y agitación: muchos extractos requieren agitación constante y pre‑dilución antes de la dosificación. Prueba de compatibilidad: probar mezcla en pequeño volumen antes de introducir en la red (fito‑seguridad y precipitados). Control de calidad: pedir ficha analítica, % materia orgánica, N‑P‑K, certificación de madurez/sanitización y ausencia de contaminantes. Monitorización: medir pH y conductividad (EC) del tanque y del agua de riego; ajustar dosis en el Plan d.",
+      "ok": true
+    },
+    {
+      "t": 1764270855317,
+      "kind": "recv",
+      "text": "Formatos no recomendados para dosing automático Humus suelto/abono a granel: mejor incorporarlo al suelo manualmente; alto riesgo de obstrucción si se intenta pasar por tubería. Formatos no recomendados para dosing automático Humus suelto/abono a granel: mejor incorporarlo al suelo manualmente; alto riesgo de obstrucción si se intenta pasar por tubería..",
+      "ok": true
+    },
+    {
+      "t": 1764270855317,
+      "kind": "recv",
+      "text": "Si quieres, puedo: Buscar productos/formulaciones comerciales disponibles en tu zona, o\nRecomendar parámetros de diseño (tipo de filtro, tamaño de bomba, procedimiento de mezcla) según el equipo de automatización que uses. ¿Qué sistema de riego/automatización (goteo, nebulización, pivote) y qué cultivo tienes? Si quieres, puedo: Buscar productos/formulaciones comerciales disponibles en tu zona, o\nRecomendar parámetros de diseño (tipo de filtro, tamaño de bomba, procedimiento de mezcla) según el equipo de automatización que uses. ¿Qué sistema de riego/automatización (goteo, nebulización, pivote) y qué cultivo tienes? Buscar productos/formulaciones comerciales disponibles en tu zona, o Recomendar parámetros de diseño (tipo de filtro, tamaño de bomba, procedimiento de mezcla) según el equipo de automatización que uses. ¿Qué sistema de riego/automatización (goteo, nebulización, pivote) y qué cultivo tienes?.",
+      "ok": true
+    },
+    {
+      "t": 1764270855326,
+      "kind": "send",
+      "text": "cebada",
+      "ok": true
+    },
+    {
+      "t": 1764270892103,
+      "kind": "recv",
+      "text": "Perfecto — para cebada lo más práctico en automatización es usar extractos líquidos o concentrados de humus (o formulaciones líquidas órgano‑minerales); los humus sueltos a granel no son adecuados salvo si tu sistema admite sólidos y filtrado muy fino. En la parte técnica: usa filtros finos (orden 120–200 µm según suspensión), bombas compatibles con productos orgánicos, tanque con agitación y pre‑dilución, prueba previa de compatibilidad y limpieza/filtrado rutinario para evitar obstrucciones y biofouling. Legal y calidad: exige ficha analítica con %MO y N‑P‑K, certificado de madurez/sanitización y análisis de metales pesados (cumplir los límites del Anexo IV y registrar los valores en el cuaderno de explotación). Agronómicamente: integra el humus en e… Perfecto — para cebada lo más práctico en automatización es usar extractos líquidos o concentrados de humus (o formulaciones líquidas órgano‑minerales); los humus sueltos a granel no son adecuados salvo si tu sistema admite sólidos y filtrado muy fino. En la parte técnica: usa filtros finos (orden 120–200 µm según suspensión), bombas compatibles con productos orgánicos, tanque con agitación y pre‑dilución, prueba previa de compatibilidad y limpieza/filtrado rutinario para evitar obstrucciones y biofouling. Legal y calidad: exige ficha analítica con %MO y N‑P‑K, certificado de madurez/sanitización y análisis de metales pesados (cumplir los límites del Anexo IV y registrar los valores en el cuaderno de explotación). Agronómicamente: integra el humus en e….",
+      "ok": true
+    },
+    {
+      "t": 1764270892109,
+      "kind": "send",
+      "text": "prueba",
+      "ok": true
+    },
+    {
+      "t": 1764270912663,
+      "kind": "recv",
+      "text": "Gracias por escribir. Estoy especializado únicamente en temas agrícolas; si tienes alguna pregunta sobre cultivos, suelos, riego u otro tema del agro, con gusto te ayudo..",
+      "ok": true
+    },
+    {
+      "t": 1764270912664,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764270919081,
+      "kind": "intent",
+      "text": "[26/26] searchProductsFertilizers › busca Humus de lombriz para Automatización Clnt",
+      "ok": true,
+      "meta": {
+        "idx": 26,
+        "total": 26
+      }
+    },
+    {
+      "t": 1764270921295,
+      "kind": "send",
+      "text": "busca Humus de lombriz para Automatización Clnt",
+      "ok": true
+    },
+    {
+      "t": 1764270961357,
+      "kind": "recv",
+      "text": "Para buscar humus de lombriz destinado a una automatización, fíjate primero en el cumplimiento legal: debe estar inscrito en el Registro de Productos Fertilizantes y ajustarse a lo previsto en el RD 506/2013 y el Reglamento (UE) 2019/1009; no puede proceder de residuos fuera de los anexos autorizados ni superar los límites de contaminantes establecidos. Solicita ficha analítica y certificado de madurez/sanitización (%MO, N‑P‑K, metales pesados) y confirma que se comercializa por los canales legales. Desde el punto de vista técnico para automatización, prioriza extractos líquidos o concentrados diseñados para fertirriego, y verifica compatibilidad con bombas, necesidad de filtrado/agitación y recomendaciones del fabricante. ¿Quieres que busque proveedores/for….",
+      "ok": true
+    },
+    {
+      "t": 1764270961362,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764270997947,
+      "kind": "recv",
+      "text": "Superfosfato: qué es y tipos Es un fertilizante fosfatado producido al tratar rocas fosfóricas con ácido sulfúrico; aporta fósforo principalmente como P2O5 y suele contener sulfato.\nTipos habituales: superfosfato simple (SSP) ~16–20% P2O5 y aporta azufre, y superfosfato triple (TSP) ~45–48% P2O5 (más concentrado en P, sin tanto S). Superfosfato: qué es y tipos Es un fertilizante fosfatado producido al tratar rocas fosfóricas con ácido sulfúrico; aporta fósforo principalmente como P2O5 y suele contener sulfato.\nTipos habituales: superfosfato simple (SSP) ~16–20% P2O5 y aporta azufre, y superfosfato triple (TSP) ~45–48% P2O5 (más concentrado en P, sin tanto S). Es un fertilizante fosfatado producido al tratar rocas fosfóricas con ácido sulfúrico; aporta fósforo principalmente como P2O5 y suele contener sulfato. Tipos habituales: superfosfato simple (SSP) ~16–20% P2O5 y aporta azufre, y superfosfato triple (TSP) ~45–48% P2O5 (más concentrado en P, sin tanto S)..",
+      "ok": true
+    },
+    {
+      "t": 1764270997947,
+      "kind": "recv",
+      "text": "Usos y recomendaciones prácticas (cebada) Ajusta la dosis según análisis de suelo y necesidades del cultivo; orientativamente las aplicaciones de fósforo para cereales suelen situarse en un rango aproximado de 20–60 kg P2O5/ha según reservas del suelo.\nAplicación preferente: banda al voleo incorporada o siembra en banda junto a la línea de siembra (mantener distancia segura del grano para evitar fitotoxicidad), mejor en pre-siembra o al momento de la siembra que en aplicaciones foliares.\nSSP aporta además azufre útil en suelos deficitarios; TSP es mejor si necesitas alta concentración de P y menor volumen. Usos y recomendaciones prácticas (cebada) Ajusta la dosis según análisis de suelo y necesidades del cultivo; orientativamente las aplicaciones de fósforo para cereales suelen situarse en un rango aproximado de 20–60 kg P2O5/ha según reservas del suelo.\nAplicación preferente: banda al voleo incorporada o siembra en banda junto a la línea de siembra (mantener distancia segura del grano para evitar fitotoxicidad), mejor en pre-siembra o al momento de la siembra que en aplicaciones foliares.\nSSP aporta además azufre útil en suelos deficitarios; TSP es mejor si necesitas alta concentración de P y menor volumen. Ajusta la dosis según análisis de suelo y necesidades del cultivo; orientativamente las aplicaciones de fósforo para cereales suelen situarse en un rango aproximado de 20–60 kg P2O5/ha según reservas del suelo. Aplicación preferente: banda al voleo incorporada o siembra en banda junto a la línea de siembra (mantener distancia segura del grano para evitar fitotoxicidad), mejor en pre-siembra o al momento de la siembra que en aplicaciones foliares. SSP aporta además azufre útil en suelos deficitarios; TSP es mejor si necesitas alta concentración de P y menor volumen..",
+      "ok": true
+    },
+    {
+      "t": 1764270997947,
+      "kind": "recv",
+      "text": "Precauciones y manejo Mantener en lugar seco, manipular con EPIs; evitar mezcla directa con cal u otras sustancias alcalinas sin comprobar compatibilidades; para fertirriego se recomiendan fosfatos muy solubles (ej. MAP/DAP) en vez de formas parcialmente insolubles.\nSiempre priorizar dosis y momento según análisis de suelo y plan de fertilización del cultivo. ¿Quieres que calcule una dosis orientativa según un análisis de suelo concreto? Precauciones y manejo Mantener en lugar seco, manipular con EPIs; evitar mezcla directa con cal u otras sustancias alcalinas sin comprobar compatibilidades; para fertirriego se recomiendan fosfatos muy solubles (ej. MAP/DAP) en vez de formas parcialmente insolubles.\nSiempre priorizar dosis y momento según análisis de suelo y plan de fertilización del cultivo. ¿Quieres que calcule una dosis orientativa según un análisis de suelo concreto? Mantener en lugar seco, manipular con EPIs; evitar mezcla directa con cal u otras sustancias alcalinas sin comprobar compatibilidades; para fertirriego se recomiendan fosfatos muy solubles (ej. MAP/DAP) en vez de formas parcialmente insolubles. Siempre priorizar dosis y momento según análisis de suelo y plan de fertilización del cultivo. ¿Quieres que calcule una dosis orientativa según un análisis de suelo concreto?.",
+      "ok": true
+    },
+    {
+      "t": 1764270997952,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764271033108,
+      "kind": "recv",
+      "text": "Superfosfato: es un fertilizante fosfatado obtenido al tratar roca fosfórica con ácido; el superfosfato simple (SSP) aporta ~16–20% P2O5 y además azufre, y el superfosfato triple (TSP) aporta ~45–48% P2O5 (más concentrado en P). En cebada se aplica preferentemente en pre‑siembra o al momento de la siembra en banda (no en contacto directo con la semilla) para corregir déficit de fósforo según el análisis de suelo; orientativamente las necesidades pueden estar en el rango ~20–60 kg P2O5/ha según reservas del suelo. Para sistemas de fertirriego es mejor usar fosfatos muy solubles (MAP/DAP) porque los superfosfatos son menos solubles y pueden obstruir líneas; almacenar en sitio seco, usar EPI al manipular y evitar mezclas incompatibles. Si quieres, calculo una dosis orientativa según tu análisis de suelo..",
+      "ok": true
+    },
+    {
+      "t": 1764271033116,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764271061886,
+      "kind": "recv",
+      "text": "Superfosfato: es un fertilizante fosfatado obtenido al tratar roca fosfórica con ácido; el superfosfato simple (SSP) aporta aproximadamente 16–20% P2O5 y además azufre, mientras que el superfosfato triple (TSP) aporta ~45–48% P2O5. En cebada se aplica preferentemente en pre‑siembra o en banda al momento de la siembra (sin contacto directo con la semilla) para corregir déficits de fósforo; orientativamente las necesidades de P para cereales suelen ubicarse en ~20–60 kg P2O5/ha según reservas del suelo. Para sistemas de fertirriego es más recomendable usar fosfatos muy solubles (MAP/DAP), porque los superfosfatos son menos solubles y pueden obstruir las líneas; almacena en lugar seco, usa EPI y evita mezclas incompatibles. ¿Quieres que calcule una dosis orientativa según tu análisis de suelo?.",
+      "ok": true
+    },
+    {
+      "t": 1764271061892,
+      "kind": "send",
+      "text": "Superfosfato",
+      "ok": true
+    },
+    {
+      "t": 1764271093531,
+      "kind": "recv",
+      "text": "Superfosfato: es un fertilizante fosfatado obtenido al tratar roca fosfórica con ácido (habitualmente ácido sulfúrico). Hay dos tipos habituales: superfosfato simple (SSP) con ~16–20% P2O5 y aporte adicional de azufre, y superfosfato triple (TSP) con ~45–48% P2O5 (más concentrado en fósforo). Se aplica preferentemente en pre‑siembra o en banda junto a la línea de siembra (sin contacto directo con la semilla) para corregir déficits de P; la dosis debe ajustarse según análisis de suelo (orientativamente 20–60 kg P2O5/ha para cereales, según reservas). Precauciones: almacenar en lugar seco, usar EPI al manipular, evitar mezclas incompatibles (p. ej. con cal) y, para fertirriego, preferir fosfatos muy solubles (MAP/DAP) porque los superfosfatos pueden obstruir l….",
+      "ok": true
+    },
+    {
+      "t": 1764271093532,
+      "kind": "recv",
+      "text": "⚠️ Bucle infinito detectado: enviando \"Superfosfato\" 5 veces consecutivas",
+      "ok": false
+    },
+    {
+      "t": 1764271093534,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    }
+  ]
+}

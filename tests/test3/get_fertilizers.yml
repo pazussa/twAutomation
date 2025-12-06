@@ -4,8 +4,8 @@ nlu:
   examples: |
     - muéstrame los fertilizantes
     - quiero ver la lista de fertilizantes
-    - qué fertilizantes tiene el cliente [Juan Perez](client_name)
-    - fertilizantes del cliente [Maria Gomez](client_name)
+    - qué fertilizantes tiene el cliente {client_name}
+    - fertilizantes del cliente {client_name}
     - lista de fertilizantes
     - Muéstrame los abonos que tengo registrados ahora mismo.
     - ¿Qué fertilizantes tengo actualmente en la finca?
@@ -18,15 +18,15 @@ nlu:
     - Consultar los biofertilizantes registrados en mi cuenta.
     - Mostrar los abonos minerales que utilizo.
     - Ver la lista de abonos que tengo disponibles para aplicar.
-    - Dime los fertilizantes registrados por [Pedro](client_name).
-    - Quiero consultar los abonos que usa [Juan](client_name).
-    - ¿Puedes listar los productos fertilizantes que tiene [Maria](client_name)?
-    - Mostrar qué nutrientes agrícolas tiene registrados [Carlos](client_name).
-    - Listar todos los fertilizantes orgánicos registrados por [Laura](client_name).
-    - ¿Qué abonos minerales tiene actualmente [Pedro gonzales](client_name)?
-    - Consultar productos de abonado disponibles para [Sofia Ramirez](client_name).
-    - Muéstrame los biofertilizantes registrados por [Miguel](client_name).
-    - Listar nutrientes que tiene ahora mismo [Pedro dias](client_name).
+    - Dime los fertilizantes registrados por {client_name}.
+    - Quiero consultar los abonos que usa {client_name}.
+    - ¿Puedes listar los productos fertilizantes que tiene {client_name}?
+    - Mostrar qué nutrientes agrícolas tiene registrados {client_name}.
+    - Listar todos los fertilizantes orgánicos registrados por {client_name}.
+    - ¿Qué abonos minerales tiene actualmente {client_name}?
+    - Consultar productos de abonado disponibles para {client_name}.
+    - Muéstrame los biofertilizantes registrados por {client_name}.
+    - Listar nutrientes que tiene ahora mismo {client_name}.
     - Kiero ver qué fertilizantes tengo en la finca.
     - Mostrarme los productos de abono que utilizo ahora.
     - ¿Qué tipos de fertilizante tengo registrados?
@@ -37,18 +37,18 @@ nlu:
     - Quiero consultar todos los productos fertilizantes que utilizo en la finca.
     - Ver la lista completa de abonos registrados en mi cuenta.
     - Muéstrame los fertilizantes que tengo activos ahora mismo en mis cultivos.
-    - Listar fertilizantes de [Maria Gomez](client_name).
-    - Listar fertilizantes de [Finca Santa María](client_name).
-    - Listar fertilizantes de [Finca San José](client_name).
-    - Listar fertilizantes de [sofia lucia](client_name).
-    - Listar fertilizantes de [Anacos](client_name).
-    - Listar fertilizantes de [Hacienda Primavera](client_name).
+    - Listar fertilizantes de {client_name}.
+    - Listar fertilizantes de {client_name}.
+    - Listar fertilizantes de {client_name}.
+    - Listar fertilizantes de {client_name}.
+    - Listar fertilizantes de {client_name}.
+    - Listar fertilizantes de {client_name}.
     - Oye luca, dime todos los productos quimicos
-    - Oye luca, dime todos los productos quimicos de [Hacienda Primavera](client_name).
-    - Dime los fertilizantes de [Juan Alex Hernandez](client_name)
-    - Dime los fertilizantes de [Juan Alex hernandez](client_name)
-    - Dime los fertilizantes de [juan alex hernandez](client_name)
-    - dame los fertilizantes de [juan alex hernandez](client_name)
-    - lista los fertilizantes de [juan alex hernandez](client_name)
-    - Dime los fertilizantes de [María José Pérez](client_name)
-    - dime los fertilizantes de [maría josé pérez](client_name)
+    - Oye luca, dime todos los productos quimicos de {client_name}.
+    - Dime los fertilizantes de {client_name}
+    - Dime los fertilizantes de {client_name}
+    - Dime los fertilizantes de {client_name}
+    - dame los fertilizantes de {client_name}
+    - lista los fertilizantes de {client_name}
+    - Dime los fertilizantes de {client_name}
+    - dime los fertilizantes de {client_name}

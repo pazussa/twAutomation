@@ -1,0 +1,187 @@
+{
+  "title": "Ejecución zzz-reportFinishedWork - Automática",
+  "events": [
+    {
+      "t": 1764275116160,
+      "kind": "intent",
+      "text": "[1/17] reportFinishedWork › Quiero reportar un trabajo finalizado",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 17
+      }
+    },
+    {
+      "t": 1764275118460,
+      "kind": "send",
+      "text": "Quiero reportar un trabajo finalizado",
+      "ok": true
+    },
+    {
+      "t": 1764275132709,
+      "kind": "recv",
+      "text": "Operación cancelada..",
+      "ok": true
+    },
+    {
+      "t": 1764275132709,
+      "kind": "recv",
+      "text": "Nombre de la granja.",
+      "ok": true
+    },
+    {
+      "t": 1764275179241,
+      "kind": "recv",
+      "text": "Sin respuesta tras 45s",
+      "ok": false
+    },
+    {
+      "t": 1764275179242,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764275185751,
+      "kind": "intent",
+      "text": "[2/17] reportFinishedWork › Reportar trabajo terminado",
+      "ok": true,
+      "meta": {
+        "idx": 2,
+        "total": 17
+      }
+    },
+    {
+      "t": 1764275187934,
+      "kind": "send",
+      "text": "Reportar trabajo terminado",
+      "ok": true
+    },
+    {
+      "t": 1764275204664,
+      "kind": "recv",
+      "text": "Nombre de la granja.",
+      "ok": true
+    },
+    {
+      "t": 1764275204668,
+      "kind": "send",
+      "text": "finca central",
+      "ok": true
+    },
+    {
+      "t": 1764275219818,
+      "kind": "recv",
+      "text": "Nombre del campo.",
+      "ok": true
+    },
+    {
+      "t": 1764275219822,
+      "kind": "send",
+      "text": "sector 4",
+      "ok": true
+    },
+    {
+      "t": 1764275235420,
+      "kind": "recv",
+      "text": "Tipo de trabajo (LABOREO, SIEMBRA, FITOSANITARIOS, FERTILIZACION o COSECHA).",
+      "ok": true
+    },
+    {
+      "t": 1764275235431,
+      "kind": "send",
+      "text": "COSECHA",
+      "ok": true
+    },
+    {
+      "t": 1764275251101,
+      "kind": "recv",
+      "text": "¿Cuál es la fecha planificada para el trabajo? Por favor, indícala en este formato: día-mes-año (por ejemplo, 06-10-2025).",
+      "ok": true
+    },
+    {
+      "t": 1764275251104,
+      "kind": "send",
+      "text": "06-10-2026",
+      "ok": true
+    },
+    {
+      "t": 1764275266822,
+      "kind": "recv",
+      "text": "¿Cuál es la hora planificada para el trabajo? Por favor, indícala en este formato: hora:minutos (por ejemplo, 01:45).",
+      "ok": true
+    },
+    {
+      "t": 1764275266827,
+      "kind": "send",
+      "text": "10:12",
+      "ok": true
+    },
+    {
+      "t": 1764275282254,
+      "kind": "recv",
+      "text": "¿Cuál es la fecha de inicio del trabajo? Por favor, indícala en este formato: día-mes-año (por ejemplo, 06-10-2025).",
+      "ok": true
+    },
+    {
+      "t": 1764275282259,
+      "kind": "send",
+      "text": "23-09-2025",
+      "ok": true
+    },
+    {
+      "t": 1764275297332,
+      "kind": "recv",
+      "text": "¿Cuál es la hora de inicio del trabajo? Por favor, indícala en este formato: hora:minutos (por ejemplo, 07:00).",
+      "ok": true
+    },
+    {
+      "t": 1764275297335,
+      "kind": "send",
+      "text": "10:12",
+      "ok": true
+    },
+    {
+      "t": 1764275312367,
+      "kind": "recv",
+      "text": "¿Cuál es la fecha de finalización del trabajo? Por favor, indícala en este formato: día-mes-año (por ejemplo, 06-10-2025).",
+      "ok": true
+    },
+    {
+      "t": 1764275312371,
+      "kind": "send",
+      "text": "27-11-2025",
+      "ok": true
+    },
+    {
+      "t": 1764275327914,
+      "kind": "recv",
+      "text": "¿Cuál es la hora de finalización del trabajo? Por favor, indícala en este formato: hora:minutos (por ejemplo, 17:37).",
+      "ok": true
+    },
+    {
+      "t": 1764275327919,
+      "kind": "send",
+      "text": "10:13",
+      "ok": true
+    },
+    {
+      "t": 1764275343169,
+      "kind": "recv",
+      "text": "Cantidad de horas trabajadas en la ejecución del trabajo. Por favor, indica la cantidad de horas en número (por ejemplo, 340 o 12.5).",
+      "ok": true
+    },
+    {
+      "t": 1764275343176,
+      "kind": "send",
+      "text": "7.5",
+      "ok": true
+    },
+    {
+      "t": 1764275358842,
+      "kind": "recv",
+      "text": "Cantidad de kilos (Kg) cosechados.",
+      "ok": false
+    }
+  ]
+}

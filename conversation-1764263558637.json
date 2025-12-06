@@ -1,0 +1,21 @@
+{
+  "title": "Ejecución price-rerun-19ac64d3d70 - Automática",
+  "events": [
+    {
+      "t": 1764263558638,
+      "kind": "intent",
+      "text": "[1/117] getLastPrice › Hola Luca, cuál es el último precio de Trigo?",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263560868,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio de Trigo?",
+      "ok": true
+    }
+  ]
+}

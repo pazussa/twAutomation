@@ -1,0 +1,141 @@
+{
+  "title": "Ejecución price-rerun-19ac64d3d70 - Automática",
+  "events": [
+    {
+      "t": 1764263598678,
+      "kind": "intent",
+      "text": "[1/117] getLastPrice › Hola Luca, cuál es el último precio de Trigo?",
+      "ok": true,
+      "meta": {
+        "idx": 1,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263600855,
+      "kind": "send",
+      "text": "Hola Luca, cuál es el último precio de Trigo?",
+      "ok": true
+    },
+    {
+      "t": 1764263619786,
+      "kind": "recv",
+      "text": "Para el producto 'trigo' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764263619786,
+      "kind": "recv",
+      "text": "El producto: 'trigo', no esta asociado..",
+      "ok": true
+    },
+    {
+      "t": 1764263619786,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764263626209,
+      "kind": "intent",
+      "text": "[2/117] getLastPrice › Luca, dime el precio más reciente del Trigo",
+      "ok": true,
+      "meta": {
+        "idx": 2,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263628385,
+      "kind": "send",
+      "text": "Luca, dime el precio más reciente del Trigo",
+      "ok": true
+    },
+    {
+      "t": 1764263645380,
+      "kind": "recv",
+      "text": "El producto: 'trigo', no esta asociado..",
+      "ok": true
+    },
+    {
+      "t": 1764263645380,
+      "kind": "recv",
+      "text": "Para el producto 'trigo' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764263645381,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764263651767,
+      "kind": "intent",
+      "text": "[3/117] getLastPrice › cuánto fue lo último que pagué por Trigo?",
+      "ok": true,
+      "meta": {
+        "idx": 3,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263654013,
+      "kind": "send",
+      "text": "cuánto fue lo último que pagué por Trigo?",
+      "ok": true
+    },
+    {
+      "t": 1764263670754,
+      "kind": "recv",
+      "text": "Para el producto 'trigo' encontré lo siguiente:.",
+      "ok": true
+    },
+    {
+      "t": 1764263670754,
+      "kind": "recv",
+      "text": "El producto: 'trigo', no esta asociado..",
+      "ok": true
+    },
+    {
+      "t": 1764263670754,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    },
+    {
+      "t": 1764263677125,
+      "kind": "intent",
+      "text": "[4/117] getLastPrice › cuál fue el último precio registrado del Trigo?",
+      "ok": true,
+      "meta": {
+        "idx": 4,
+        "total": 117
+      }
+    },
+    {
+      "t": 1764263679317,
+      "kind": "send",
+      "text": "cuál fue el último precio registrado del Trigo?",
+      "ok": true
+    },
+    {
+      "t": 1764263693055,
+      "kind": "recv",
+      "text": "Sin mensajes",
+      "ok": false
+    },
+    {
+      "t": 1764263693061,
+      "kind": "recv",
+      "text": "Excepción durante el flujo",
+      "ok": false
+    },
+    {
+      "t": 1764263693061,
+      "kind": "send",
+      "text": "cancelar",
+      "ok": true
+    }
+  ]
+}

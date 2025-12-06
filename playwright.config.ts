@@ -18,5 +18,7 @@ export default defineConfig({
     // Forzar modo headed (navegador visible)
     headless: false,
     viewport: { width: 1280, height: 720 },
-  }
+  },
+  // Asegurar que los reportes se generen incluso si el test falla o es interrumpido
+  preserveOutput: 'always',
 });
